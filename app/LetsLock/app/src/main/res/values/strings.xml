@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">LetsLock</string>
+    <string name="enter_email">correo electronico</string>
+    <string name="enter_password">contraseña</string>
+    <string name="registrar">Registrar</string>
+    <string name="iniciarSesion">Iniciar Sesion</string>
 </resources>
