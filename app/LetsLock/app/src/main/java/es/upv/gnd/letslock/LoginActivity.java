@@ -1,6 +1,7 @@
 package es.upv.gnd.letslock;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -100,7 +101,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private void loguearUsuario (){
 
         //Obtenemos el email y la contraseña desde las cajas de texto
-        String email = TextEmail.getText().toString().trim();
+        final String email = TextEmail.getText().toString().trim();
         String password  = TextPassword.getText().toString().trim();
 
         //Verificamos que las cajas de texto no esten vacías
@@ -115,7 +116,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
 
 
-        progressDialog.setMessage("Procesando nuevo usuario...");
+        progressDialog.setMessage("Cargando...");
         progressDialog.show();
 
         //loging a new user
@@ -127,6 +128,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         if(task.isSuccessful()){
 
                             Toast.makeText(LoginActivity.this,"Bienvenido "+ TextEmail.getText(),Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent (getApplication(),MainActivity.class);
+                            intent.putExtra(MainActivity.user, email);
+                            startActivity(intent);
+
                         }else {
                             if (task.getException() instanceof FirebaseAuthUserCollisionException) { //si ya existe el user
                                 Toast.makeText(LoginActivity.this, "Este usuario ya está registrado", Toast.LENGTH_LONG).show();
