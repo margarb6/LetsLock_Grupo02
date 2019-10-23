@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/TxtEmail"
+        android:layout_width="265dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="@string/enter_email"
+        android:inputType="textEmailAddress"
+        android:textColor="#29acc3"
+        android:textColorHint="#1d7b8c"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <EditText
+        android:id="@+id/TxtPassword"
+        android:layout_width="265dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="32dp"
+        android:ems="10"
+        android:hint="contraseña"
+        android:inputType="textPassword"
+        android:textColor="#29acc3"
+        android:textColorHint="#1d7b8c"
+        app:layout_constraintEnd_toEndOf="@+id/botonRegistrar"
+        app:layout_constraintStart_toStartOf="@+id/botonRegistrar"
+        app:layout_constraintTop_toBottomOf="@+id/TxtEmail" />
+
+    <TextView
+        android:id="@+id/registrar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Registrarse con:"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/botonRegistrar"
+        app:layout_constraintVertical_bias="0.513" />
+
+    <Button
+        android:id="@+id/botonRegistrar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/registrar"
+        android:textColor="#1d7b8c"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TxtPassword"
+        app:layout_constraintVertical_bias="0.078" />
+
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="252dp"
+        android:layout_height="137dp"
+        android:layout_marginTop="136dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.45"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/nombreapp" />
+
+    <Button
+        android:id="@+id/botonIniciarSesion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/iniciarSesion"
+        android:textColor="#1d7b8c"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TxtPassword"
+        app:layout_constraintVertical_bias="0.319" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
