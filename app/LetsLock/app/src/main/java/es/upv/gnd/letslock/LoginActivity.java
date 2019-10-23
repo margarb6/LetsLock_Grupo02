@@ -1,6 +1,10 @@
 package es.upv.gnd.letslock;
 
 import android.app.ProgressDialog;
+<<<<<<< HEAD
+=======
+import android.content.Intent;
+>>>>>>> fabio
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -100,7 +104,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private void loguearUsuario (){
 
         //Obtenemos el email y la contraseña desde las cajas de texto
+<<<<<<< HEAD
         String email = TextEmail.getText().toString().trim();
+=======
+        final String email = TextEmail.getText().toString().trim();
+>>>>>>> fabio
         String password  = TextPassword.getText().toString().trim();
 
         //Verificamos que las cajas de texto no esten vacías
@@ -115,7 +123,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
 
 
+<<<<<<< HEAD
         progressDialog.setMessage("Procesando nuevo usuario...");
+=======
+        progressDialog.setMessage("Cargando...");
+>>>>>>> fabio
         progressDialog.show();
 
         //loging a new user
@@ -127,6 +139,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         if(task.isSuccessful()){
 
                             Toast.makeText(LoginActivity.this,"Bienvenido "+ TextEmail.getText(),Toast.LENGTH_LONG).show();
+<<<<<<< HEAD
+=======
+                            Intent intent = new Intent (getApplication(),MainActivity.class);
+                            intent.putExtra(MainActivity.user, email);
+                            startActivity(intent);
+
+>>>>>>> fabio
                         }else {
                             if (task.getException() instanceof FirebaseAuthUserCollisionException) { //si ya existe el user
                                 Toast.makeText(LoginActivity.this, "Este usuario ya está registrado", Toast.LENGTH_LONG).show();

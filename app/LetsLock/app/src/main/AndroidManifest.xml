@@ -19,6 +19,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".LoginActivity">
+<<<<<<< HEAD
+=======
+
+        </activity>
+        <activity android:name=".MainActivity">
+>>>>>>> fabio
 
         </activity>
     </application>
