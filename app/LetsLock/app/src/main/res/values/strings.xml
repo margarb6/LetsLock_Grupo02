@@ -20,4 +20,8 @@
     <string name="menu_preferencias">Preferencias</string>
     <string name="menu_acercade">Acerca de</string>
     <string name="menu_cerrarsesion">Cerrar sesión</string>
+    <string name="cerrarSesion">Cerrar Sesion</string>
+
+
+
 </resources>
