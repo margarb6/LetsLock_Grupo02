@@ -14,10 +14,9 @@
 
     <string name="menu_inicio">Inicio</string>
     <string name="menu_notificaciones">Notificaciones</string>
-    <string name="menu_camara">Cámara</string>
+    <string name="menu_plano">Plano</string>
     <string name="menu_perfil">Perfil</string>
     <string name="menu_nada"></string>
-    <string name="menu_preferencias">Preferencias</string>
     <string name="menu_acercade">Acerca de</string>
     <string name="menu_cerrarsesion">Cerrar sesión</string>
     <string name="cerrarSesion">Cerrar sesión</string>

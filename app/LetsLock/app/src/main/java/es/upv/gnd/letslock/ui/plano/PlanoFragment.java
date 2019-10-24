@@ -1,4 +1,4 @@
-package es.upv.gnd.letslock.ui.tools;
+package es.upv.gnd.letslock.ui.plano;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,17 +14,17 @@ import androidx.lifecycle.ViewModelProviders;
 
 import es.upv.gnd.letslock.R;
 
-public class ToolsFragment extends Fragment {
+public class PlanoFragment extends Fragment {
 
-    private ToolsViewModel toolsViewModel;
+    private PlanoViewModel PlanoViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        toolsViewModel =
-                ViewModelProviders.of(this).get(ToolsViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_tools, container, false);
-        final TextView textView = root.findViewById(R.id.text_tools);
-        toolsViewModel.getText().observe(this, new Observer<String>() {
+        PlanoViewModel =
+                ViewModelProviders.of(this).get(PlanoViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_plano, container, false);
+        final TextView textView = root.findViewById(R.id.text_slideshow);
+        PlanoViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

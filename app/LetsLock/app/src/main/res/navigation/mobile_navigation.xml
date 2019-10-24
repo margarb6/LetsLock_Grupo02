@@ -3,41 +3,41 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@+id/nav_inicio">
 
     <fragment
-        android:id="@+id/nav_home"
-        android:name="es.upv.gnd.letslock.ui.home.HomeFragment"
+        android:id="@+id/nav_inicio"
+        android:name="es.upv.gnd.letslock.ui.inicio.InicioFragment"
         android:label="@string/menu_inicio"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_inicio" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="es.upv.gnd.letslock.ui.gallery.GalleryFragment"
+        android:id="@+id/nav_notificaciones"
+        android:name="es.upv.gnd.letslock.ui.notificaciones.NotificacionesFragment"
         android:label="@string/menu_notificaciones"
-        tools:layout="@layout/fragment_gallery" />
+        tools:layout="@layout/fragment_notificaciones" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="es.upv.gnd.letslock.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_camara"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_plano"
+        android:name="es.upv.gnd.letslock.ui.plano.PlanoFragment"
+        android:label="@string/menu_plano"
+        tools:layout="@layout/fragment_plano" />
 
     <fragment
-        android:id="@+id/nav_tools"
-        android:name="es.upv.gnd.letslock.ui.tools.ToolsFragment"
+        android:id="@+id/nav_perfil"
+        android:name="es.upv.gnd.letslock.ui.perfil.PerfilFragment"
         android:label="@string/menu_perfil"
-        tools:layout="@layout/fragment_tools" />
+        tools:layout="@layout/fragment_perfil" />
 
     <fragment
-        android:id="@+id/nav_share"
-        android:name="es.upv.gnd.letslock.ui.share.ShareFragment"
+        android:id="@+id/nav_acercade"
+        android:name="es.upv.gnd.letslock.ui.acerca_de.AcercaDeFragment"
         android:label="@string/menu_acercade"
-        tools:layout="@layout/fragment_share" />
+        tools:layout="@layout/fragment_acerca_de" />
 
     <fragment
-        android:id="@+id/nav_send"
-        android:name="es.upv.gnd.letslock.ui.send.SendFragment"
+        android:id="@+id/nav_cerrarsesion"
+        android:name="es.upv.gnd.letslock.ui.cerrar_sesion.CerrarSesionFragment"
         android:label="@string/menu_cerrarsesion"
-        tools:layout="@layout/fragment_send" />
+        tools:layout="@layout/fragment_cerrar_sesion" />
 </navigation>
