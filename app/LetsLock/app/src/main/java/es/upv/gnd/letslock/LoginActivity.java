@@ -21,6 +21,7 @@ public class LoginActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         login();
+
     }
 
     private void login() {
@@ -37,6 +38,8 @@ public class LoginActivity extends Activity {
         } else {
             startActivityForResult(AuthUI.getInstance()
                     .createSignInIntentBuilder()
+                    .setLogo(R.drawable.nombreapp)
+                    .setTheme(R.style.FirebaseUITema)
                     .setAvailableProviders(Arrays.asList(
                             new AuthUI.IdpConfig.EmailBuilder().setAllowNewAccounts(true).build(),
                             new AuthUI.IdpConfig.GoogleBuilder().build())).build(), RC_SIGN_IN);

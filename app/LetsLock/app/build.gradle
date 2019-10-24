@@ -35,6 +35,9 @@ dependencies {
 
     //dependencia necesaria para firebase
     implementation 'com.firebaseui:firebase-ui-auth:4.3.1'
+    implementation 'androidx.navigation:navigation-fragment:2.1.0'
+    implementation 'androidx.navigation:navigation-ui:2.1.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
 
 
     // Java

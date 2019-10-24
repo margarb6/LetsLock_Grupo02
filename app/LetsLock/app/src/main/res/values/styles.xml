@@ -18,5 +18,18 @@
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 
+    <style name="FirebaseUITema" parent="FirebaseUI">
+        <item name="windowNoTitle">false</item>
+        <item name="windowActionBar">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorControlNormal">@color/colorPrimaryDark</item>
+        <item name="colorControlActivated">@color/colorAccent</item>
+        <item name="colorControlHighlight">@color/colorPrimary</item>
 
+        <!-- o reemplaza por drawable-->
+    </style>
 </resources>
