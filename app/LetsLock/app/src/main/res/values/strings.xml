@@ -4,4 +4,9 @@
     <string name="enter_password">contraseña</string>
     <string name="registrar">Registrar</string>
     <string name="iniciarSesion">Iniciar Sesion</string>
+    <string name="cerrarSesion">Cerrar Sesion</string>
+
+        <string name="action_settings">Settings</string>
+
+
 </resources>
