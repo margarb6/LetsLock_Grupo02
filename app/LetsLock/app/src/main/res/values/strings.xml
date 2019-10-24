@@ -19,4 +19,8 @@
     <string name="menu_nada"></string>
     <string name="menu_acercade">Acerca de</string>
     <string name="menu_cerrarsesion">Cerrar sesión</string>
+    <string name="cerrarSesion">Cerrar Sesion</string>
+
+
+
 </resources>
