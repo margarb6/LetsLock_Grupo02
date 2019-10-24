@@ -20,6 +20,7 @@ public class LoginActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         login();
 
     }
@@ -30,7 +31,7 @@ public class LoginActivity extends Activity {
             Toast.makeText(this, "inicia sesión: " +
                     usuario.getDisplayName() + " - " + usuario.getEmail() + " - " +
                     usuario.getProviders().get(0), Toast.LENGTH_LONG).show();
-            Intent i = new Intent(this, MainActivity.class);
+            Intent i = new Intent(this, Main2Activity.class);
             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
                     | Intent.FLAG_ACTIVITY_NEW_TASK
                     | Intent.FLAG_ACTIVITY_CLEAR_TASK);
