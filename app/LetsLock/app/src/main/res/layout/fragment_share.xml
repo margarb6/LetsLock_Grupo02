@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -16,4 +17,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/acerca_de"
+        android:layout_width="275dp"
+        android:layout_height="345dp"
+        android:layout_marginTop="156dp"
+        android:text="Esta aplicación permite a los usuarios multiples funciones relacionadas con la puerta tales como saber en todo momento el número de personas en la estancia, dar acceso remoto a la vivienda a personas ajenas, mútiples reconocimientos de acceso, etc. Aplicación desarrolada por el grupo 2 :)"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="20dp"
+        app:fontFamily="@font/montserrat"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_share" />
 </androidx.constraintlayout.widget.ConstraintLayout>

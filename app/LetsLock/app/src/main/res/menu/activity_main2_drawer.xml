@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:showIn="navigation_view">
+    tools:showIn="navigation_view"
+    android:fontFamily="@font/montserrat">
 
     <group android:checkableBehavior="single">
         <item
@@ -23,7 +24,10 @@
     </group>
 
     <group>
-
+        <item
+            android:id="@+id/nav_preferencias"
+            android:icon="@drawable/ic_settings_black_24dp"
+            android:title="@string/menu_preferencias" />
             <item
                 android:id="@+id/nav_share"
                 android:icon="@drawable/ic_info_black_24dp"

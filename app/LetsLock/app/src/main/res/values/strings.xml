@@ -7,8 +7,8 @@
     <string name="title_activity_main2">Main2Activity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_title">Fabio Hernández López</string>
+    <string name="nav_header_subtitle">fabioherlop@gmail.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Ajustes</string>
 
@@ -17,6 +17,7 @@
     <string name="menu_camara">Cámara</string>
     <string name="menu_perfil">Perfil</string>
     <string name="menu_nada"></string>
+    <string name="menu_preferencias">Preferencias</string>
     <string name="menu_acercade">Acerca de</string>
     <string name="menu_cerrarsesion">Cerrar sesión</string>
     <string name="cerrarSesion">Cerrar sesión</string>
