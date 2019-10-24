@@ -1,4 +1,4 @@
-package es.upv.gnd.letslock.ui.gallery;
+package es.upv.gnd.letslock.ui.acerca_de;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,17 +14,17 @@ import androidx.lifecycle.ViewModelProviders;
 
 import es.upv.gnd.letslock.R;
 
-public class GalleryFragment extends Fragment {
+public class AcercaDeFragment extends Fragment {
 
-    private GalleryViewModel galleryViewModel;
+    private AcercaDeViewModel AcercaDeViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        galleryViewModel =
-                ViewModelProviders.of(this).get(GalleryViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_gallery, container, false);
-        final TextView textView = root.findViewById(R.id.text_gallery);
-        galleryViewModel.getText().observe(this, new Observer<String>() {
+        AcercaDeViewModel =
+                ViewModelProviders.of(this).get(AcercaDeViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_acerca_de, container, false);
+        final TextView textView = root.findViewById(R.id.text_share);
+        AcercaDeViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
