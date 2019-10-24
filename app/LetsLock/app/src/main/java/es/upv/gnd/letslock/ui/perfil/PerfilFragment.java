@@ -1,4 +1,4 @@
-package es.upv.gnd.letslock.ui.send;
+package es.upv.gnd.letslock.ui.perfil;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,17 +14,17 @@ import androidx.lifecycle.ViewModelProviders;
 
 import es.upv.gnd.letslock.R;
 
-public class SendFragment extends Fragment {
+public class PerfilFragment extends Fragment {
 
-    private SendViewModel sendViewModel;
+    private PerfilViewModel PerfilViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        sendViewModel =
-                ViewModelProviders.of(this).get(SendViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_send, container, false);
-        final TextView textView = root.findViewById(R.id.text_send);
-        sendViewModel.getText().observe(this, new Observer<String>() {
+        PerfilViewModel=
+                ViewModelProviders.of(this).get(PerfilViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_perfil, container, false);
+        final TextView textView = root.findViewById(R.id.text_tools);
+        PerfilViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
@@ -32,6 +32,4 @@ public class SendFragment extends Fragment {
         });
         return root;
     }
-
-
 }
