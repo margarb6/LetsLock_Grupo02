@@ -14,6 +14,7 @@ import com.google.firebase.auth.FirebaseUser;
 import java.util.Arrays;
 
 public class LoginActivity extends Activity {
+
     private static final int RC_SIGN_IN = 123;
 
     @Override

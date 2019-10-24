@@ -1,6 +1,8 @@
 package es.upv.gnd.letslock;
 
 import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -14,17 +16,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 
 import java.io.InputStream;
 import java.net.URL;
 import java.util.List;
 
-public class UsuarioFragment extends Fragment {
+public class UsuarioEditarFragment extends Fragment {
 
     View vista;
 
@@ -33,51 +36,44 @@ public class UsuarioFragment extends Fragment {
 
         vista = inflador.inflate(R.layout.fragment_usuario, contenedor, false);
 
-        FirebaseUser usuario = FirebaseAuth.getInstance().getCurrentUser();
-        TextView nombre = vista.findViewById(R.id.nombre);
+        final FirebaseUser usuario = FirebaseAuth.getInstance().getCurrentUser();
+        final TextView nombre = vista.findViewById(R.id.nombre);
         TextView email = vista.findViewById(R.id.email);
-        TextView proveedores = vista.findViewById(R.id.proveedores);
-        TextView telefono = vista.findViewById(R.id.telefono);
-        TextView iden = vista.findViewById(R.id.iden);
 
-        List<String> proveedoresL = usuario.getProviders();
-        String proveed = "";
-
-        for (int i = 0; i < proveedoresL.size(); i++) {
-
-            if (i == proveedoresL.size() - 2) {
-
-                proveed += proveedoresL.get(i) + " y ";
-
-            } else {
-
-                if (proveedoresL.size() - 1 == i) {
-
-                    proveed += proveedoresL.get(i) + ".";
-
-                } else {
-
-                    proveed += proveedoresL.get(i) + ", ";
-                }
-            }
-        }
-
-        proveedores.setText(proveed);
         nombre.setText(usuario.getDisplayName());
         email.setText(usuario.getEmail());
-        iden.setText(usuario.getUid());
-        telefono.setText(usuario.getPhoneNumber());
 
         CargaImagenes nuevaTarea = new CargaImagenes();
         nuevaTarea.execute(usuario.getPhotoUrl().toString());
 
-       Button cambiarEditar = vista.findViewById(R.id.button);
+        Button cancelar = vista.findViewById(R.id.button2);
 
-        cambiarEditar.setOnClickListener(new View.OnClickListener() {
+        cancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+                Intent i = new Intent(vista.getContext(), UsuarioFragment.class);
+                startActivity(i);
+            }
+        });
 
+        Button guardar = vista.findViewById(R.id.button);
+
+        guardar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                usuario.updateEmail(usuario.getEmail()).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+
+                        UserProfileChangeRequest perfil = new UserProfileChangeRequest.Builder()
+                                .setDisplayName(nombre.getText().toString())
+                                .setPhotoUri(Uri.parse("https://www.ejemplo.com/usuario/foto.jpg"))
+                                .build();
+                        usuario.updateProfile(perfil);
+                    }
+                });
             }
         });
 
@@ -118,7 +114,6 @@ public class UsuarioFragment extends Fragment {
             foto.setImageBitmap(result);
             pDialog.dismiss();
         }
-
     }
 
     private Bitmap descargarImagen(String imageHttpAddress) {
