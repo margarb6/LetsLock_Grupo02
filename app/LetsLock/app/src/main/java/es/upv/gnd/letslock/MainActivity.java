@@ -1,6 +1,4 @@
-import android.widget.TextView;
 package es.upv.gnd.letslock;
-
 
 import android.content.Intent;
 import android.os.Bundle;

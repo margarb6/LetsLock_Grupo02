@@ -14,12 +14,14 @@ import com.google.firebase.auth.FirebaseUser;
 import java.util.Arrays;
 
 public class LoginActivity extends Activity {
+
     private static final int RC_SIGN_IN = 123;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         login();
+
     }
 
     private void login() {
@@ -36,6 +38,8 @@ public class LoginActivity extends Activity {
         } else {
             startActivityForResult(AuthUI.getInstance()
                     .createSignInIntentBuilder()
+                    .setLogo(R.drawable.nombreapp)
+                    .setTheme(R.style.FirebaseUITema)
                     .setAvailableProviders(Arrays.asList(
                             new AuthUI.IdpConfig.EmailBuilder().setAllowNewAccounts(true).build(),
                             new AuthUI.IdpConfig.GoogleBuilder().build())).build(), RC_SIGN_IN);

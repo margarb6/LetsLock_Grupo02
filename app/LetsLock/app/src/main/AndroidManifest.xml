@@ -28,8 +28,6 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".UsuarioActivity"
-            android:label="Información sobre el usuario" />
     </application>
 
 </manifest>
