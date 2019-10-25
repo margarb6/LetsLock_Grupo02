@@ -22,6 +22,7 @@
     <string name="cerrarSesion">Cerrar sesión</string>
     <string name="fui_sign_in_with_email">Entra con tu correo</string>
     <string name="fui_progress_dialog_signing_up">Creando cuenta...</string>
+    <string name="plano_casa">Mi casa</string>
 
 
 </resources>

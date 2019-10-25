@@ -15,7 +15,7 @@
 
     <string name="menu_inicio">Home</string>
     <string name="menu_notificaciones">Notificaciones</string>
-    <string name="menu_camara">Camera</string>
+    <string name="menu_plano">Plan</string>
     <string name="menu_perfil">Profile</string>
     <string name="menu_nada"></string>
     <string name="menu_acercade">About</string>
@@ -23,4 +23,6 @@
     <string name="cerrarSesion">Log out</string>
     <string name="fui_sign_in_with_email">Sign in with your email</string>
     <string name="fui_progress_dialog_signing_up">Creating account...</string>
+    <string name="plano_casa">My house</string>
+
 </resources>
