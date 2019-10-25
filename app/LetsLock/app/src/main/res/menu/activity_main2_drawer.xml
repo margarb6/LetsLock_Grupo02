@@ -28,10 +28,6 @@
                 android:id="@+id/nav_acercade"
                 android:icon="@drawable/ic_info_black_24dp"
                 android:title="@string/menu_acercade" />
-            <item
-                android:id="@+id/nav_cerrarsesion"
-                android:icon="@drawable/ic_exit_to_app_black_24dp"
-                android:title="@string/menu_cerrarsesion" />
 
     </group>
 

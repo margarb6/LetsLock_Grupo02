@@ -21,7 +21,6 @@ public class LoginActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         login();
 
     }
@@ -30,9 +29,8 @@ public class LoginActivity extends Activity {
         FirebaseUser usuario = FirebaseAuth.getInstance().getCurrentUser();
         if (usuario != null) {
             Toast.makeText(this, "inicia sesión: " +
-                    usuario.getDisplayName() + " - " + usuario.getEmail() + " - " +
-                    usuario.getProviders().get(0), Toast.LENGTH_LONG).show();
-            Intent i = new Intent(this, Main2Activity.class);
+                    usuario.getDisplayName() + " - " + usuario.getEmail(), Toast.LENGTH_LONG).show();
+            Intent i = new Intent(this, SplashActivity.class);
             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
                     | Intent.FLAG_ACTIVITY_NEW_TASK
                     | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -45,6 +43,7 @@ public class LoginActivity extends Activity {
                     .setAvailableProviders(Arrays.asList(
                             new AuthUI.IdpConfig.EmailBuilder().setAllowNewAccounts(true).build(),
                             new AuthUI.IdpConfig.GoogleBuilder().build(),
+                            new AuthUI.IdpConfig.AnonymousBuilder().build(),
                             new AuthUI.IdpConfig.PhoneBuilder().build())).build(), RC_SIGN_IN);
         }
     }

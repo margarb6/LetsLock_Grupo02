@@ -22,7 +22,7 @@ public class UsuarioFragment extends Fragment {
         TextView proveedores = (TextView) vista.findViewById(R.id.proveedores);
         TextView telefono = (TextView) vista.findViewById(R.id.telefono);
         TextView iden = (TextView) vista.findViewById(R.id.iden);
-        proveedores.setText(usuario.getProviders().toString());
+        //proveedores.setText(usuario.getProviders().toString());
         nombre.setText(usuario.getDisplayName());
         email.setText(usuario.getEmail());
         iden.setText(usuario.getUid());
