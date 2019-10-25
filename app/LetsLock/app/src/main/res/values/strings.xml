@@ -13,7 +13,7 @@
     <string name="action_settings">Ajustes</string>
 
     <string name="menu_inicio">Inicio</string>
-    <string name="menu_notificaciones">Notificaciones</string>
+    <string name="menu_notificaciones">Preferencias</string>
     <string name="menu_plano">Plano</string>
     <string name="menu_perfil">Perfil</string>
     <string name="menu_nada"></string>
