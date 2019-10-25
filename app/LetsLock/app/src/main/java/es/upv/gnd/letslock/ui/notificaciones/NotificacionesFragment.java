@@ -18,16 +18,9 @@ public class NotificacionesFragment extends Fragment {
 
     private NotificacionesViewModel NotificacionesViewModel;
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-<<<<<<< HEAD:app/LetsLock/app/src/main/java/es/upv/gnd/letslock/ui/gallery/GalleryFragment.java
-        galleryViewModel = ViewModelProviders.of(this).get(GalleryViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_gallery, container, false);
-=======
-        NotificacionesViewModel =
-                ViewModelProviders.of(this).get(NotificacionesViewModel.class);
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        ViewModelProviders.of(this).get(NotificacionesViewModel.class);
         View root = inflater.inflate(R.layout.fragment_inicio, container, false);
->>>>>>> develop:app/LetsLock/app/src/main/java/es/upv/gnd/letslock/ui/notificaciones/NotificacionesFragment.java
         final TextView textView = root.findViewById(R.id.text_gallery);
         NotificacionesViewModel.getText().observe(this, new Observer<String>() {
             @Override

@@ -1,9 +1,15 @@
 package es.upv.gnd.letslock;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -19,6 +25,11 @@ import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
+import java.io.InputStream;
+import java.net.URL;
 
 public class Main2Activity extends AppCompatActivity {
 
@@ -33,9 +44,19 @@ public class Main2Activity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
+
+        FirebaseUser usuario = FirebaseAuth.getInstance().getCurrentUser();
+
+        TextView correoTxt= navigationView.getHeaderView(0).findViewById(R.id.email);
+        correoTxt.setText(usuario.getEmail());
+
+        TextView nombreTxt= navigationView.getHeaderView(0).findViewById(R.id.nombre);
+        nombreTxt.setText(usuario.getDisplayName());
+
+        CargaImagenes nuevaTarea = new CargaImagenes();
+
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
@@ -50,6 +71,15 @@ public class Main2Activity extends AppCompatActivity {
         /* txtUser = (TextView) findViewById(R.id.textUser);
         String user = getIntent().getStringExtra("names");
         txtUser.setText("¡Bienvenido "+ user +"!");*/
+
+        try {
+
+            nuevaTarea.execute(usuario.getPhotoUrl().toString());
+        }
+        catch (NullPointerException error){
+
+            return;
+        }
 
     }
 
@@ -96,5 +126,58 @@ public class Main2Activity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private class CargaImagenes extends AsyncTask<String, Void, Bitmap> {
+
+        ProgressDialog pDialog;
+
+        @Override
+        protected void onPreExecute() {
+            // TODO Auto-generated method stub
+            super.onPreExecute();
+
+            pDialog = new ProgressDialog(Main2Activity.this);
+            pDialog.setMessage("Cargando Imagen");
+            pDialog.setCancelable(true);
+            pDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            pDialog.show();
+
+        }
+
+        @Override
+        protected Bitmap doInBackground(String... params) {
+            // TODO Auto-generated method stub
+            Log.i("doInBackground", "Entra en doInBackground");
+            String url = params[0];
+            Bitmap imagen = descargarImagen(url);
+            return imagen;
+        }
+
+        @Override
+        protected void onPostExecute(Bitmap result) {
+            // TODO Auto-generated method stub
+            super.onPostExecute(result);
+            NavigationView navigationView = findViewById(R.id.nav_view);
+            ImageView foto= navigationView.getHeaderView(0).findViewById(R.id.foto);
+            foto.setImageBitmap(result);
+            pDialog.dismiss();
+        }
+    }
+
+    private Bitmap descargarImagen(String imageHttpAddress) {
+        URL imageUrl = null;
+        Bitmap imagen = null;
+
+        try {
+            InputStream in = new URL(imageHttpAddress).openStream();
+            imagen= BitmapFactory.decodeStream(in);
+
+        } catch (Exception ex) {
+
+            ex.printStackTrace();
+        }
+
+        return imagen;
     }
 }

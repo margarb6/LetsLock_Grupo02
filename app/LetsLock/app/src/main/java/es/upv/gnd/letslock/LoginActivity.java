@@ -28,9 +28,8 @@ public class LoginActivity extends Activity {
     private void login() {
         FirebaseUser usuario = FirebaseAuth.getInstance().getCurrentUser();
         if (usuario != null) {
-            Toast.makeText(this, "inicia sesión: " +
-                    usuario.getDisplayName() + " - " + usuario.getEmail() + " - " +
-                    usuario.getProviders().get(0), Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Has iniciado sesion, " +
+                    usuario.getDisplayName(), Toast.LENGTH_LONG).show();
             Intent i = new Intent(this, Main2Activity.class);
             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
                     | Intent.FLAG_ACTIVITY_NEW_TASK
