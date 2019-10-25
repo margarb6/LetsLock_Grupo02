@@ -10,8 +10,10 @@ import com.firebase.ui.auth.ErrorCodes;
 import com.firebase.ui.auth.IdpResponse;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.PhoneAuthProvider;
 
 import java.util.Arrays;
+import java.util.concurrent.TimeUnit;
 
 public class LoginActivity extends Activity {
     private static final int RC_SIGN_IN = 123;
@@ -42,7 +44,8 @@ public class LoginActivity extends Activity {
                     .setTheme(R.style.FirebaseUITema)
                     .setAvailableProviders(Arrays.asList(
                             new AuthUI.IdpConfig.EmailBuilder().setAllowNewAccounts(true).build(),
-                            new AuthUI.IdpConfig.GoogleBuilder().build())).build(), RC_SIGN_IN);
+                            new AuthUI.IdpConfig.GoogleBuilder().build(),
+                            new AuthUI.IdpConfig.PhoneBuilder().build())).build(), RC_SIGN_IN);
         }
     }
 
@@ -70,4 +73,5 @@ public class LoginActivity extends Activity {
             }
         }
     }
+
 }
