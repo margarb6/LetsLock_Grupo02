@@ -22,6 +22,9 @@
     <string name="cerrarSesion">Cerrar sesión</string>
     <string name="fui_sign_in_with_email">Entra con tu correo</string>
     <string name="fui_progress_dialog_signing_up">Creando cuenta...</string>
+    <string name="plano_casa">Mi casa</string>
+    <string name="facebook_app_id">522081361670630</string> <string name="fb_login_protocol_scheme">fb522081361670630</string>
+
 
 
 </resources>

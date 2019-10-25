@@ -105,7 +105,7 @@ public class Main2Activity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.menuCerrarSesion) {
+        if (id == R.id.nav_cerrarsesion) {
 
             AuthUI.getInstance().signOut(Main2Activity.this).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
@@ -126,6 +126,7 @@ public class Main2Activity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+
     }
 
     private class CargaImagenes extends AsyncTask<String, Void, Bitmap> {

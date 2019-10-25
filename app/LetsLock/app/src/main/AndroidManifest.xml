@@ -20,6 +20,9 @@
         <activity android:name=".MainActivity">
         </activity>
 
+        <activity android:name=".SplashActivity">
+        </activity>
+
         <activity
             android:name=".Main2Activity"
             android:label="@string/app_name"
@@ -30,7 +33,11 @@
         <activity android:name=".UsuarioActivity"
             android:label="Información sobre el usuario" />
 
-
     </application>
+
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+
 
 </manifest>
