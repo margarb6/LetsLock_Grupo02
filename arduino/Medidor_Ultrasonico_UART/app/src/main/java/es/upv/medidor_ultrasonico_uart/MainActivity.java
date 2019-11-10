@@ -7,6 +7,8 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 /**
  * Skeleton of an Android Things activity.
@@ -30,7 +32,7 @@ import android.util.Log;
 public class MainActivity extends Activity {
 
     final String TAG = "Respuesta";
-    private ArduinoUart uart = new ArduinoUart("UART0", 9600);
+    private ArduinoUart uart = new ArduinoUart("UART0", 115200);
 
 
     @Override
@@ -38,11 +40,13 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_main);
         Log.i(TAG, "Lista de UART disponibles: " + ArduinoUart.disponibles());
-        //ArduinoUart uart2 = new ArduinoUart("USB1-1.5:1.0", 9600);
         Log.d(TAG, "Mandado a Arduino: D y P");
-        leerUltrasonico();
-        leerPIR();
+        //leerUltrasonico();
+        //leerPIR();
         //leerHora();
+        abrirPuerta();
+
+        //cerrarPuerta();
     }
 
     void leerUltrasonico() {
@@ -63,6 +67,28 @@ public class MainActivity extends Activity {
             Log.w(TAG, "Error en sleep()", e); }
         String p = uart.leer();
         Log.d(TAG, "Recibido de Arduino Prog_PIR: "+p);
+    }
+
+    void abrirPuerta() {
+        uart.escribir("A");
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            Log.w(TAG, "Error en sleep()", e); }
+
+        String p = uart.leer();
+        Log.d(TAG, "Recibido de Arduino: "+p);
+    }
+
+    void cerrarPuerta() {
+        uart.escribir("C");
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            Log.w(TAG, "Error en sleep()", e); }
+
+        String p = uart.leer();
+        Log.d(TAG, "Recibido de Arduino: "+p);
     }
 
     /*void leerHora() {
