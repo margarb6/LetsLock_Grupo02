@@ -13,17 +13,18 @@
     <string name="action_settings">Ajustes</string>
 
     <string name="menu_inicio">Inicio</string>
-    <string name="menu_notificaciones">Preferencias</string>
+    <string name="menu_notificaciones">Notificaciones</string>
     <string name="menu_plano">Plano</string>
     <string name="menu_perfil">Perfil</string>
-    <string name="menu_nada"></string>
+    <string name="menu_ajustes">Ajustes</string>
     <string name="menu_acercade">Acerca de</string>
+    <string name="menu_personas">Personas</string>
     <string name="menu_cerrarsesion">Cerrar sesión</string>
     <string name="cerrarSesion">Cerrar sesión</string>
     <string name="fui_sign_in_with_email">Entra con tu correo</string>
     <string name="fui_progress_dialog_signing_up">Creando cuenta...</string>
     <string name="plano_casa">Mi casa</string>
-    <string name="facebook_app_id">522081361670630</string> <string name="fb_login_protocol_scheme">fb522081361670630</string>
+
 
 
 

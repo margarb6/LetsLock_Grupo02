@@ -4,14 +4,20 @@
     <item
         android:id="@+id/nav_cerrarsesion"
         android:icon="@drawable/ic_exit_to_app_black_24dp"
-        android:orderInCategory="20"
+        android:orderInCategory="30"
         android:title="@string/cerrarSesion"
         app:showAsAction="ifRoom|withText" />
     <item
         android:id="@+id/nav_perfil"
-        android:icon="@drawable/ic_person_black_24dp"
-        android:orderInCategory="10"
+        android:icon="@drawable/ic_person_outline_black_24dp"
+        android:orderInCategory="20"
         android:title="@string/menu_perfil"
+        app:showAsAction="ifRoom|withText" />
+    <item
+        android:id="@+id/nav_acercade"
+        android:icon="@drawable/ic_settings_black_24dp"
+        android:orderInCategory="10"
+        android:title="@string/menu_ajustes"
         app:showAsAction="ifRoom|withText" />
 
 </menu>
