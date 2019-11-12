@@ -36,7 +36,6 @@ void setup()
       Serial.println();
     });
   }
-  configTime(gmtOffset_sec, daylightOffset_sec, ntpServer);
 }
 void loop()
 { //enviar datos
