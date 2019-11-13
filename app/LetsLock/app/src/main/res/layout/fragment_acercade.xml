@@ -8,5 +8,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="20dp"
-        android:text="Esta app ha sido desarrollada por el grupo 2. Esta basada en un soistema de acceso inteligente para cualquier vivienda" />
+        android:text="Esta app ha sido desarrollada
+por el grupo 2. Esta basada en un sistema de acceso
+inteligente para cualquier vivienda. Cuenta con funcionalidades
+varias como abrir y cerrar la puerta o visualizar el historial
+de entrada de la vivienda." />
 </LinearLayout>

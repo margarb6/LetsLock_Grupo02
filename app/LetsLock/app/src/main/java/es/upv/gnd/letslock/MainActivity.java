@@ -92,9 +92,9 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
 
-            case R.id.nav_acercade:
+            case R.id.nav_ajustes:
 
-                Intent intent2 = new Intent(this, AcercaDeActivity.class);
+                Intent intent2 = new Intent(this, PreferenciasActivity.class);
                 startActivity(intent2);
                 break;
         }

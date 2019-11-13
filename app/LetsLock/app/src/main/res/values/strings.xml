@@ -11,6 +11,8 @@
     <string name="nav_header_subtitle">fabioherlop@gmail.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Ajustes</string>
+    <string name="acerca_de">Acerca_de la aplicación</string>
+
 
     <string name="menu_inicio">Inicio</string>
     <string name="menu_notificaciones">Notificaciones</string>
@@ -24,8 +26,10 @@
     <string name="fui_sign_in_with_email">Entra con tu correo</string>
     <string name="fui_progress_dialog_signing_up">Creando cuenta...</string>
     <string name="plano_casa">Mi casa</string>
-
-
+    <string name="pagina_web">pagina web</string>
+    <string name="llamar_telefono">llamar telefono</string>
+    <string name="localizacion">localizacion</string>
+    <string name="email">email</string>
 
 
 </resources>

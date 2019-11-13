@@ -25,8 +25,6 @@ public class TabsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_tabs);
 
         //Inicializamos la toolbar
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
         ViewPager viewPager = findViewById(R.id.viewpager);
         viewPager.setAdapter(new MiPagerAdapter(getSupportFragmentManager()));

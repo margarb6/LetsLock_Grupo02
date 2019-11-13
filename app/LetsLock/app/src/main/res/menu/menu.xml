@@ -14,7 +14,7 @@
         android:title="@string/menu_perfil"
         app:showAsAction="ifRoom|withText" />
     <item
-        android:id="@+id/nav_acercade"
+        android:id="@+id/nav_ajustes"
         android:icon="@drawable/ic_settings_black_24dp"
         android:orderInCategory="10"
         android:title="@string/menu_ajustes"
