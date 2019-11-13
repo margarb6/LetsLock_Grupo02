@@ -65,8 +65,8 @@ public class LoginActivity extends Activity {
 
             startActivityForResult(AuthUI.getInstance()
                     .createSignInIntentBuilder()
-                    .setLogo(R.drawable.nombreapp)
-                    .setTheme(R.style.AppTheme_NoActionBar)
+                    .setLogo(R.drawable.applogonombre)
+                    .setTheme(R.style.FirebaseUITema)
                     .setAvailableProviders(Arrays.asList(
                             new AuthUI.IdpConfig.EmailBuilder().setAllowNewAccounts(true).build(),
                             new AuthUI.IdpConfig.GoogleBuilder().build(),
@@ -114,11 +114,11 @@ public class LoginActivity extends Activity {
 
                 Toast.makeText(LoginActivity.this, "Has iniciado sesion " + nombre, Toast.LENGTH_LONG).show();
 
-                Intent i = new Intent(LoginActivity.this, MainActivity.class);
                 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(i);
             }
         });
+                Intent i = new Intent(LoginActivity.this, MainActivity.class);
     }
 
     @Override

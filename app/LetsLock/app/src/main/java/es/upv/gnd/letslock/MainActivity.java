@@ -19,7 +19,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 
-import es.upv.gnd.letslock.Fragments.AcercaDeFragment;
+import es.upv.gnd.letslock.Fragments.PersonasFragments;
 import es.upv.gnd.letslock.Fragments.InicioFragment;
 import es.upv.gnd.letslock.Fragments.NotificacionesFragment;
 import es.upv.gnd.letslock.Fragments.PlanoFragment;
@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ArrayList<Fragment> fragments;
     private BottomNavigationView navigation;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +51,11 @@ public class MainActivity extends AppCompatActivity {
         //Inicializamos la toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
+
     }
+
 
     //Inicializa el menu
     @Override
@@ -78,12 +83,20 @@ public class MainActivity extends AppCompatActivity {
                         MainActivity.this.finish();
                     }
                 });
-                return true;
+                break;
 
             case R.id.nav_perfil:
 
                 Intent intent = new Intent(this, TabsActivity.class);
                 startActivity(intent);
+                break;
+
+
+            case R.id.nav_ajustes:
+
+                Intent intent2 = new Intent(this, PreferenciasActivity.class);
+                startActivity(intent2);
+                break;
         }
 
         return super.onOptionsItemSelected(item);
@@ -111,9 +124,9 @@ public class MainActivity extends AppCompatActivity {
 
                     fragSeleccionado = new NotificacionesFragment();
                     break;
-                case R.id.menu_inferior_acercade:
+                case R.id.menu_inferior_personas:
 
-                    fragSeleccionado = new AcercaDeFragment();
+                    fragSeleccionado = new PersonasFragments();
                     break;
             }
 
@@ -146,9 +159,9 @@ public class MainActivity extends AppCompatActivity {
 
                 Log.i("aa", String.valueOf(navigation.getMenu().findItem(R.id.menu_inferior_notificaciones).setChecked(true)));
 
-            } else if (fragmentAnterior instanceof AcercaDeFragment) {
+            } else if (fragmentAnterior instanceof PersonasFragments) {
 
-                Log.i("aa", String.valueOf(navigation.getMenu().findItem(R.id.menu_inferior_acercade).setChecked(true)));
+                Log.i("aa", String.valueOf(navigation.getMenu().findItem(R.id.menu_inferior_personas).setChecked(true)));
             }
 
             super.onBackPressed();
