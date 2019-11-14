@@ -3,6 +3,7 @@ package es.upv.gnd.letslock;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -20,6 +21,10 @@ import com.google.firebase.auth.UserInfo;
 
 import java.util.Arrays;
 import java.util.List;
+
+import es.upv.gnd.letslock.bbdd.Usuario;
+import es.upv.gnd.letslock.bbdd.Usuarios;
+import es.upv.gnd.letslock.bbdd.UsuariosCallback;
 
 public class LoginActivity extends Activity {
 
@@ -65,8 +70,8 @@ public class LoginActivity extends Activity {
 
             startActivityForResult(AuthUI.getInstance()
                     .createSignInIntentBuilder()
-                    .setLogo(R.drawable.nombreapp)
-                    .setTheme(R.style.AppTheme_NoActionBar)
+                    .setLogo(R.drawable.applogonombre)
+                    .setTheme(R.style.FirebaseUITema)
                     .setAvailableProviders(Arrays.asList(
                             new AuthUI.IdpConfig.EmailBuilder().setAllowNewAccounts(true).build(),
                             new AuthUI.IdpConfig.GoogleBuilder().build(),
@@ -94,16 +99,30 @@ public class LoginActivity extends Activity {
 
     public void entrar() {
 
-        FirebaseUser usuario = FirebaseAuth.getInstance().getCurrentUser();
-        String nombre= usuario.getDisplayName();
+        //Buscamos si existe ese usuario en la base de datos
+        final Usuarios userBD= new Usuarios();
+        userBD.getUsuario(new UsuariosCallback() {
 
-        if(nombre == null)nombre="";
+            public void getUsuariosCallback(Usuario usuarioBD) {
 
-        Toast.makeText(this, "Has iniciado sesion " + nombre, Toast.LENGTH_LONG).show();
+                final FirebaseUser usuario = FirebaseAuth.getInstance().getCurrentUser();
+                String nombre= usuario.getDisplayName();
 
-        Intent i = new Intent(this, MainActivity.class);
-        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(i);
+                //Si no existe y no esta logueandose como anónimo lo creamos
+                if(!usuarioBD.getId().equals(usuario.getUid()) && (!nombre.isEmpty() || !usuario.getPhoneNumber().isEmpty())){
+
+                    Usuario usuarioDefinitivo= new Usuario(nombre, usuario.getUid(),false);
+                    userBD.setUsuario(usuarioDefinitivo);
+                }
+
+                if(nombre == null)nombre="";
+
+                Toast.makeText(LoginActivity.this, "Has iniciado sesion " + nombre, Toast.LENGTH_LONG).show();
+                Intent i = new Intent(LoginActivity.this, SplashActivity.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(i);
+            }
+        });
     }
 
 
