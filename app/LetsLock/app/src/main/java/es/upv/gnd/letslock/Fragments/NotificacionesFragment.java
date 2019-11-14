@@ -40,6 +40,7 @@ public class NotificacionesFragment extends Fragment {
         recyclerNotificaciones.setAdapter(adaptador);
         recyclerNotificaciones.setHasFixedSize(true);
 
+        notificaciones.vaciarNotificaciones();
         notificaciones.anyade(new Notificacion("Timbre", "Alguien ha llamado al timbre", 1, TipoNotificacion.ALERTA));
         notificaciones.anyade(new Notificacion("Timbre", "Nadie ha llamado al timbre", 1, TipoNotificacion.TIMBRE));
         notificaciones.anyade(new Notificacion("Timbre", "8348543 ha llamado al timbre", 1, TipoNotificacion.ALERTA));
