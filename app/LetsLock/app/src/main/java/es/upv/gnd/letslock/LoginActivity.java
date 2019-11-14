@@ -113,12 +113,11 @@ public class LoginActivity extends Activity {
                 if(nombre == null)nombre="";
 
                 Toast.makeText(LoginActivity.this, "Has iniciado sesion " + nombre, Toast.LENGTH_LONG).show();
-
+                Intent i = new Intent(LoginActivity.this, SplashActivity.class);
                 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(i);
             }
         });
-                Intent i = new Intent(LoginActivity.this, MainActivity.class);
     }
 
     @Override
