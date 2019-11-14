@@ -36,20 +36,20 @@ public class AdaptadorNotificacion extends RecyclerView.Adapter<AdaptadorNotific
     public AdaptadorNotificacion.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.notificacion_lista, parent, false);
 
-       final ViewHolder vHolder = new ViewHolder(v);
+        final ViewHolder vHolder = new ViewHolder(v);
 
-       // Dialog
+        // Dialog
         timbreDialog = new Dialog(parent.getContext());
         timbreDialog.setContentView(R.layout.activity_foto_timbre);
 
         vHolder.notificacion_lista.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-             ImageView dialog_image = (ImageView) timbreDialog.findViewById(R.id.imageViewDialog);
-             dialog_image.setImageResource(R.drawable.timbre);
+                ImageView dialog_image = (ImageView) timbreDialog.findViewById(R.id.imageViewDialog);
+                dialog_image.setImageResource(R.drawable.timbre);
 
 
-            timbreDialog.show();
+                timbreDialog.show();
             }
         });
 
@@ -60,7 +60,7 @@ public class AdaptadorNotificacion extends RecyclerView.Adapter<AdaptadorNotific
     public void onBindViewHolder(ViewHolder holder, int position) {
         Notificacion notificacion = notificaciones.elemento(position);
 
-        Log.e("mamabichote",""+notificacion.getNombre());
+
         holder.personaliza(notificacion);
 
 
@@ -109,4 +109,3 @@ public class AdaptadorNotificacion extends RecyclerView.Adapter<AdaptadorNotific
         }
     }
 }
-
