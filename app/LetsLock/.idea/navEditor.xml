@@ -8,55 +8,89 @@
             <LayoutPositions>
               <option name="myPositions">
                 <map>
+<<<<<<< HEAD
                   <entry key="nav_cerrarsesion">
+=======
+                  <entry key="nav_gallery">
+>>>>>>> master
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
+<<<<<<< HEAD
                             <option name="x" value="500" />
                             <option name="y" value="368" />
-                          </Point>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
-                  <entry key="nav_inicio">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="12" />
-                            <option name="y" value="12" />
-                          </Point>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
-                  <entry key="nav_notificaciones">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
+=======
                             <option name="x" value="256" />
                             <option name="y" value="12" />
+>>>>>>> master
                           </Point>
                         </option>
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="nav_perfil">
+<<<<<<< HEAD
+                  <entry key="nav_inicio">
+=======
+                  <entry key="nav_home">
+>>>>>>> master
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
                             <option name="x" value="12" />
+                            <option name="y" value="12" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+<<<<<<< HEAD
+                  <entry key="nav_notificaciones">
+=======
+                  <entry key="nav_send">
+>>>>>>> master
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+<<<<<<< HEAD
+                            <option name="x" value="256" />
+                            <option name="y" value="12" />
+=======
+                            <option name="x" value="500" />
+                            <option name="y" value="368" />
+>>>>>>> master
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+<<<<<<< HEAD
+                  <entry key="nav_perfil">
+=======
+                  <entry key="nav_share">
+>>>>>>> master
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+<<<<<<< HEAD
+                            <option name="x" value="12" />
+=======
+                            <option name="x" value="256" />
+>>>>>>> master
                             <option name="y" value="368" />
                           </Point>
                         </option>
                       </LayoutPositions>
                     </value>
                   </entry>
+<<<<<<< HEAD
                   <entry key="nav_plano">
+=======
+                  <entry key="nav_slideshow">
+>>>>>>> master
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
@@ -68,6 +102,21 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+<<<<<<< HEAD
+=======
+                  <entry key="nav_tools">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="12" />
+                            <option name="y" value="368" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+>>>>>>> master
                 </map>
               </option>
             </LayoutPositions>
