@@ -11,11 +11,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.auth.AuthUI;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.core.Query;
 
 import java.util.ArrayList;
 
@@ -23,11 +28,18 @@ import es.upv.gnd.letslock.Fragments.PersonasFragment;
 import es.upv.gnd.letslock.Fragments.InicioFragment;
 import es.upv.gnd.letslock.Fragments.NotificacionesFragment;
 import es.upv.gnd.letslock.Fragments.PlanoFragment;
+import es.upv.gnd.letslock.bbdd.AdaptadorUsuarios;
+import es.upv.gnd.letslock.bbdd.AdaptadorUsuariosFirestoreUI;
+import es.upv.gnd.letslock.bbdd.Usuario;
 
 public class MainActivity extends AppCompatActivity {
 
     private ArrayList<Fragment> fragments;
     private BottomNavigationView navigation;
+
+    private RecyclerView recyclerView;
+    public AdaptadorUsuarios adaptador;
+    public static AdaptadorUsuariosFirestoreUI adaptador2;
 
 
     @Override
@@ -51,6 +63,8 @@ public class MainActivity extends AppCompatActivity {
         //Inicializamos la toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
 
 
 
