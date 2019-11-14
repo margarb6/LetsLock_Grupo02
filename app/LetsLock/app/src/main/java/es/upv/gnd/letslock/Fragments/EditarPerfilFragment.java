@@ -147,7 +147,7 @@ public class EditarPerfilFragment extends Fragment {
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 builder.setTitle("Confirmación");
-                builder.setMessage("¿Está seguro de cambiar su correo y nombre?");
+                builder.setMessage("¿Está seguro de cambiar su nombre, permisos y foto?");
                 builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
