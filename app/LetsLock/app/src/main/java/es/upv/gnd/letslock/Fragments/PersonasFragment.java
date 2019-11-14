@@ -10,13 +10,13 @@ import androidx.fragment.app.Fragment;
 
 import es.upv.gnd.letslock.R;
 
-public class PersonasFragments extends Fragment {
+public class PersonasFragment extends Fragment {
 
     View vista;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        vista = inflater.inflate(R.layout.fragment_acercade, container, false);
+        vista = inflater.inflate(R.layout.fragment_personas, container, false);
         return vista;
     }
 }
