@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">LetsLock</string>
+    <string name="enter_email">correo electronico</string>
+    <string name="enter_password">contraseña</string>
+    <string name="registrar">Registrarse</string>
+    <string name="iniciarSesion">Iniciar Sesion</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Fabio Hernández López</string>
+    <string name="nav_header_subtitle">fabioherlop@gmail.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Ajustes</string>
+
+    <string name="menu_inicio">Inicio</string>
+    <string name="menu_notificaciones">Notificaciones</string>
+    <string name="menu_plano">Plano</string>
+    <string name="menu_perfil">Perfil</string>
+    <string name="menu_nada"></string>
+    <string name="menu_acercade">Acerca de</string>
+    <string name="menu_cerrarsesion">Cerrar sesión</string>
+    <string name="cerrarSesion">Cerrar sesión</string>
+    <string name="fui_sign_in_with_email">Entra con tu correo</string>
+    <string name="fui_progress_dialog_signing_up">Creando cuenta...</string>
+    <string name="plano_casa">Mi casa</string>
+
+
+</resources>

@@ -19,7 +19,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 
-import es.upv.gnd.letslock.Fragments.PersonasFragments;
+import es.upv.gnd.letslock.Fragments.PersonasFragment;
 import es.upv.gnd.letslock.Fragments.InicioFragment;
 import es.upv.gnd.letslock.Fragments.NotificacionesFragment;
 import es.upv.gnd.letslock.Fragments.PlanoFragment;
@@ -126,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case R.id.menu_inferior_personas:
 
-                    fragSeleccionado = new PersonasFragments();
+                    fragSeleccionado = new PersonasFragment();
                     break;
             }
 
@@ -159,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
 
                 Log.i("aa", String.valueOf(navigation.getMenu().findItem(R.id.menu_inferior_notificaciones).setChecked(true)));
 
-            } else if (fragmentAnterior instanceof PersonasFragments) {
+            } else if (fragmentAnterior instanceof PersonasFragment) {
 
                 Log.i("aa", String.valueOf(navigation.getMenu().findItem(R.id.menu_inferior_personas).setChecked(true)));
             }
