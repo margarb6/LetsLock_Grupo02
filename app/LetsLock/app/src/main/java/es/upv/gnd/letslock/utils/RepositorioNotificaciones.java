@@ -9,5 +9,6 @@ public interface RepositorioNotificaciones {
     void borrar(int id); //Elimina el elemento con el id indicado
     int tamanyo(); //Devuelve el número de elementos
     void actualiza(int id, Notificacion notificacion); //Reemplaza un elemento
+    void vaciarNotificaciones(); // vacia la lista de notificaciones
 }
 
