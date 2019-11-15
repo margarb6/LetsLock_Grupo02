@@ -11,3 +11,4 @@ public class FotoTimbreActivity extends AppCompatActivity {
         setContentView(R.layout.activity_foto_timbre );
     }
 }
+

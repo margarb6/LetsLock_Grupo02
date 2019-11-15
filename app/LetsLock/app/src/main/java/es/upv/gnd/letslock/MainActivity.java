@@ -19,10 +19,15 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.core.Query;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import es.upv.gnd.letslock.Fragments.PersonasFragment;
 import es.upv.gnd.letslock.Fragments.InicioFragment;
@@ -41,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
     public AdaptadorUsuarios adaptador;
     public static AdaptadorUsuariosFirestoreUI adaptador2;
 
+    public ArrayList<String> listaUrls = new ArrayList<>();
+    public ArrayList<Long> listaTimestamps = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,8 +72,65 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 
+        // Notificaciones
 
 
+        // Reference for doorbell events from embedded device
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("logs");
+
+        ref.getDatabase().getReference().addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                Log.e("AAAA", "Se añadio algo:" + s);
+                //Log.e("COSAS A", "Info: " + dataSnapshot.getValue().toString());
+                Log.e("COSAS A Child", "Info: " + dataSnapshot.getChildrenCount());
+                Log.e("COSAS A Child", "Info: " + dataSnapshot.getKey());
+
+
+
+
+                for (DataSnapshot ds : dataSnapshot.getChildren()){
+                    String image = ds.child("image").getValue(String.class);
+                    long fecha = ds.child("timestamp").getValue(Long.class);
+                    listaUrls.add(image);
+                    listaTimestamps.add(fecha);
+                }
+
+                Log.e("Array imagenes changed:",listaUrls.toString());
+                Log.e("Array imagenes changed:",listaTimestamps.toString());
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+
+                for (DataSnapshot ds : dataSnapshot.getChildren()){
+                    String image = ds.child("image").getValue(String.class);
+                    long fecha = ds.child("timestamp").getValue(Long.class);
+                    listaUrls.add(image);
+                    listaTimestamps.add(fecha);
+                }
+
+                Log.e("Array imagenes changed:",listaUrls.toString());
+                Log.e("Array imagenes changed:",listaTimestamps.toString());
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
     }
 
@@ -116,13 +180,14 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+
     //Menú inferior, cambia de fragment cada vez que toque un icono
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-            Fragment fragSeleccionado= null;
+            Fragment fragSeleccionado = null;
 
             switch (item.getItemId()) {
 
@@ -154,12 +219,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
 
-        fragments.remove(fragments.size()-1);
+        fragments.remove(fragments.size() - 1);
 
         //Cuando hace click en volver hacia atras checkea el item anterior y establece ese fragment
-        if(!fragments.isEmpty()){
+        if (!fragments.isEmpty()) {
 
-            Fragment fragmentAnterior= fragments.get(fragments.size()-1);
+            Fragment fragmentAnterior = fragments.get(fragments.size() - 1);
 
             if (fragmentAnterior instanceof InicioFragment) {
 
@@ -180,8 +245,8 @@ public class MainActivity extends AppCompatActivity {
 
             super.onBackPressed();
 
-        //Si no hay item anterior cierra la aplicación
-        }else {
+            //Si no hay item anterior cierra la aplicación
+        } else {
 
             MainActivity.this.finishAffinity();
         }
