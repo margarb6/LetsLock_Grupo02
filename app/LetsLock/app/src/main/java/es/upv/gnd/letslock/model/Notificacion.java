@@ -5,6 +5,9 @@ import android.util.Log;
 import java.util.Map;
 
 public class Notificacion {
+
+
+
     private String nombre;
     private long fecha;
     private String descripcion;

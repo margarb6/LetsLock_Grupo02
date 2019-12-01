@@ -2,6 +2,8 @@ package es.upv.letslock.androidthings;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.Manifest;
 import android.app.Activity;
@@ -15,6 +17,7 @@ import android.os.HandlerThread;
 
 import android.util.Log;
 import android.view.KeyEvent;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 
@@ -28,6 +31,7 @@ import com.google.android.things.contrib.driver.button.ButtonInputDriver;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ServerValue;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -35,6 +39,7 @@ import com.google.firebase.storage.UploadTask;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * Doorbell activity that capture a picture from an Android Things
@@ -42,6 +47,8 @@ import java.util.Map;
  * Vision API.
  */
 public class TimbreActivity extends Activity {
+
+
     private static final String TAG = TimbreActivity.class.getSimpleName();
 
     private FirebaseDatabase mDatabase;
@@ -166,7 +173,22 @@ public class TimbreActivity extends Activity {
      * Upload image data to Firebase as a doorbell event.
      */
     private void onPictureTaken(final byte[] imageBytes) {
+
         if (imageBytes != null) {
+            String nombreFichero = UUID.randomUUID().toString();
+            subirBytes(imageBytes, "imagenes/"+nombreFichero);
+
+            final Bitmap bitmap = BitmapFactory.decodeByteArray(
+                    imageBytes, 0, imageBytes.length);
+            runOnUiThread(new Runnable() {
+                @Override public void run() {
+                    ImageView imageView = findViewById(R.id.imageView);
+                    imageView.setImageBitmap(bitmap);
+                }
+            });
+        }
+
+       /* if (imageBytes != null) {
             final DatabaseReference log = mDatabase.getReference("logs").push();
             //final StorageReference imageRef = mStorage.getReference().child("imagenes_timbre").child(log.getKey());
             final StorageReference imageRef = mStorage.getReference().child(log.getKey());
@@ -211,7 +233,7 @@ public class TimbreActivity extends Activity {
                     }
                 }
             });
-
+*/
 
         }
 
@@ -237,5 +259,34 @@ public class TimbreActivity extends Activity {
                 }
             }
         });
+    }
+
+
+    private void subirBytes(final byte[] bytes, String referencia) {
+        final StorageReference storageRef  = FirebaseStorage.getInstance().getReference();
+        final StorageReference ref = storageRef.child(referencia);
+        UploadTask uploadTask = ref.putBytes(bytes);
+        Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+            @Override public Task<Uri> then(@NonNull
+                                                    Task<UploadTask.TaskSnapshot> task) throws Exception {
+                if (!task.isSuccessful()) throw task.getException();
+                return ref.getDownloadUrl();
+            }
+        }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+            @Override public void onComplete(@NonNull Task<Uri> task) {
+                if (task.isSuccessful()) {
+                    Uri downloadUri = task.getResult();
+                    Log.e("Almacenamiento", "URL: " + downloadUri.toString());
+                    registrarImagen("Subida por R.P.", downloadUri.toString());
+                } else {
+                    Log.e("Almacenamiento", "ERROR: subiendo bytes");
+                }
+            }
+        });
+    }
+    static void registrarImagen(String titulo, String url) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        Imagen imagen = new Imagen(titulo, url);
+        db.collection("imagenes").document().set(imagen);
     }
 }
