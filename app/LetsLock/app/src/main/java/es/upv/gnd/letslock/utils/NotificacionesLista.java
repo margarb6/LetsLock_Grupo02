@@ -39,10 +39,6 @@ public class NotificacionesLista implements RepositorioNotificaciones {
         listaNotificaciones.set(id, notificacion);
     }
 
-    public void vaciarNotificaciones(){
-        listaNotificaciones.clear();
-    }
-
     public void anyadeEjemplos() {
         anyade(new Notificacion("Timbre", "Alguien ha llamado al timbre", 1));
         anyade(new Notificacion("Alerta", "La puerta no se ha cerrado correctamente", 2));
