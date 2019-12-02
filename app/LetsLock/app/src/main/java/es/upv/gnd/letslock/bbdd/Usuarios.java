@@ -40,11 +40,9 @@ public class Usuarios {
 
                         String nombre = task.getResult().getString("nombre");
                         boolean permisos = task.getResult().getBoolean("permisos");
-                        String Foto = task.getResult().getString("foto");
-                        String Tag = task.getResult().getString("tag");
-                        String id = task.getResult().getString("id");
+                        String pin = task.getResult().getString("pin");
 
-                        Usuario usuario= new Usuario(nombre,permisos,Foto,Tag, id);
+                        Usuario usuario= new Usuario(nombre,permisos, pin);
                         callback.getUsuariosCallback(usuario);
 
                     //Si no existe devolvemos uno vacío

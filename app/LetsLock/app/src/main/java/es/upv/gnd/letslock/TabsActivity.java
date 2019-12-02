@@ -138,14 +138,13 @@ public class TabsActivity extends AppCompatActivity {
             roundedDrawable.setCircular(true);
             ImageView a= findViewById(R.id.FotoEditar);
             a.setImageDrawable(roundedDrawable);
+            SharedPreferences prefs = getSharedPreferences("Foto_perfil", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putString("image", "" + foto);
+            editor.commit();
 
         }catch (IOException ioEx){
             ioEx.printStackTrace();
         }
-
-        SharedPreferences prefs = getSharedPreferences("Foto_perfil", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
-        editor.putString("image", "" + foto);
-        editor.commit();
     }
 }

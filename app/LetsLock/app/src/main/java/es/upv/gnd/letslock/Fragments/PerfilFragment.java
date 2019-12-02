@@ -1,7 +1,6 @@
 package es.upv.gnd.letslock.Fragments;
 
 import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -51,6 +50,7 @@ public class PerfilFragment extends Fragment {
         TextView telefono = vista.findViewById(R.id.telefono);
         TextView iden = vista.findViewById(R.id.iden);
         final TextView permisos = vista.findViewById(R.id.permisos);
+        final TextView pin= vista.findViewById(R.id.pin);
 
         //Establecemos a cada TextView el valor de firebase auth
         email.setText(usuario.getEmail());
@@ -101,9 +101,7 @@ public class PerfilFragment extends Fragment {
             }
         });
 
-
-
-        //Obtenemos el nombre y los permisos del usuario
+        //Obtenemos el nombre, los permisos del usuario y el pin de la bd.
         final Usuarios userBD = new Usuarios();
         userBD.getUsuario(new UsuariosCallback() {
 
@@ -111,6 +109,7 @@ public class PerfilFragment extends Fragment {
                 if (usuarioBD.isPermisos()) permisos.setText("Propietario de la casa");
                 else permisos.setText("Habitante");
                 nombre.setText(usuarioBD.getNombre());
+                pin.setText(usuarioBD.getPin());
             }
         });
         return vista;

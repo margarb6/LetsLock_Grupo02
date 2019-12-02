@@ -63,11 +63,6 @@ public class MainActivity extends AppCompatActivity {
         //Inicializamos la toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
-
-
-
     }
 
 
