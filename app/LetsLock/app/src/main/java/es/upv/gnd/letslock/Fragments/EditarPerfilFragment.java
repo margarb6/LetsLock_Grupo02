@@ -55,6 +55,7 @@ public class EditarPerfilFragment extends Fragment {
     //Variables globales
     private Uri foto;
     String id = "";
+    boolean permisos;
 
     //Inicializamos firebase auth y firestore
     FirebaseUser usuario = FirebaseAuth.getInstance().getCurrentUser();
@@ -73,16 +74,15 @@ public class EditarPerfilFragment extends Fragment {
         vista = inflater.inflate(R.layout.fragment_usuario_editar, container, false);
 
         final TextView nombre = vista.findViewById(R.id.nombre);
-        final RadioButton propietario = vista.findViewById(R.id.propietario);
-        final RadioButton habitante = vista.findViewById(R.id.habitante);
+        final TextView pin = vista.findViewById(R.id.pin);
 
-        //Establece los valores firestore en el TextView y el RadioButton
+        //Establece los valores firestore en los TextView
         userBD.getUsuario(new UsuariosCallback() {
             public void getUsuariosCallback(Usuario usuarioBD) {
                 nombre.setText(usuarioBD.getNombre());
-                id = usuarioBD.getId();
-                if (usuarioBD.isPermisos()) propietario.setChecked(true);
-                else habitante.setChecked(true);
+                id = usuario.getUid();
+                permisos= usuarioBD.isPermisos();
+                pin.setText(usuarioBD.getPin());
             }
         });
 
@@ -151,11 +151,7 @@ public class EditarPerfilFragment extends Fragment {
                 builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        boolean permisos = false;
-                        if (propietario.isChecked()) permisos = true;
-
-                        Usuario usuarioDefinitivo = new Usuario(nombre.getText().toString(), id, permisos);
-                        userBD.setUsuario(usuarioDefinitivo);
+                        userBD.setUsuario(new Usuario(nombre.getText().toString(), permisos, pin.getText().toString()));
                         subirFoto();
                     }
                 });

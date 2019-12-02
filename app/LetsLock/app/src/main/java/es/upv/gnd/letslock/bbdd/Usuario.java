@@ -4,43 +4,28 @@ public class Usuario {
 
     private String nombre;
     private boolean permisos;
-    private String Tag;
-    private String id;
+    private String pin;
 
-    public Usuario(String nombre, boolean permisos, String Foto, String Tag, String id) {
+    public Usuario(String nombre, boolean permisos, String pin) {
 
         this.nombre = nombre;
         this.permisos= permisos;
-        this.Tag= Tag;
-        this.id= id;
-    }
-
-    public Usuario(String nombre, String id, boolean permisos) {
-
-        this.nombre= nombre;
-        this.permisos= permisos;
-        this.Tag= "";
-        this.id= id;
+        this.pin= pin;
     }
 
     public Usuario(){
 
         this.nombre= "";
         this.permisos= false;
-        this.Tag= "";
-        this.id= "";
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
+        this.pin= "";
     }
 
     public String getNombre() {
         return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public boolean isPermisos() {
@@ -51,15 +36,11 @@ public class Usuario {
         this.permisos = permisos;
     }
 
-    public String getTag() {
-        return Tag;
+    public String getPin() {
+        return pin;
     }
 
-    public void setTag(String tag) {
-        Tag = tag;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setPin(String pin) {
+        this.pin = pin;
     }
 }
