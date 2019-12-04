@@ -17,11 +17,10 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
-import es.upv.gnd.letslock.DescargarFoto;
-import es.upv.gnd.letslock.bbdd.AdaptadorUsuariosFirestoreUI;
+import es.upv.gnd.letslock.adapters.AdaptadorUsuariosFirestoreUI;
 import es.upv.gnd.letslock.R;
-import es.upv.gnd.letslock.bbdd.AdaptadorUsuarios;
-import es.upv.gnd.letslock.bbdd.RepositorioUsuarios;
+import es.upv.gnd.letslock.adapters.AdaptadorUsuarios;
+import es.upv.gnd.letslock.utils.RepositorioUsuarios;
 import es.upv.gnd.letslock.bbdd.Usuario;
 
 public class PersonasFragment extends Fragment {
@@ -31,7 +30,6 @@ public class PersonasFragment extends Fragment {
     private RepositorioUsuarios usuarios;
     private RecyclerView recyclerView;
     public AdaptadorUsuarios adaptador = new AdaptadorUsuarios(usuarios);
-    //public static AdaptadorUsuariosFirestoreUI adaptador2;
     private FirestoreRecyclerAdapter<Usuario,AdaptadorUsuarios.ViewHolder> adaptador2;
     private CollectionReference usuarios_coleccion = FirebaseFirestore.getInstance().collection("usuarios");
 

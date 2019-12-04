@@ -17,7 +17,7 @@
 
     <string name="menu_inicio">Home</string>
     <string name="menu_notificaciones">Notifications</string>
-    <string name="menu_plano">House map</string>
+    <string name="menu_timbre">Door bell</string>
     <string name="menu_perfil">Profile</string>
     <string name="menu_personas">People</string>
     <string name="menu_ajustes">Settings</string>
