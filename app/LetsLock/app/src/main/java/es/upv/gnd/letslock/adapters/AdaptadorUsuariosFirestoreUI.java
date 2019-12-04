@@ -1,4 +1,4 @@
-package es.upv.gnd.letslock.bbdd;
+package es.upv.gnd.letslock.adapters;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,25 +10,22 @@ import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 
 import es.upv.gnd.letslock.R;
-import es.upv.gnd.letslock.bbdd.AdaptadorUsuarios;
+import es.upv.gnd.letslock.adapters.AdaptadorUsuarios;
 import es.upv.gnd.letslock.bbdd.Usuario;
 
-public class AdaptadorUsuariosFirestoreUI extends
-        FirestoreRecyclerAdapter<Usuario, AdaptadorUsuarios.ViewHolder> {
+public class AdaptadorUsuariosFirestoreUI extends  FirestoreRecyclerAdapter<Usuario, AdaptadorUsuarios.ViewHolder> {
+
     protected View.OnClickListener onClickListener;
 
     public AdaptadorUsuariosFirestoreUI(
             @NonNull FirestoreRecyclerOptions<Usuario> options) {
         super(options);
     }
-    @Override public AdaptadorUsuarios.ViewHolder onCreateViewHolder(
-            ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.elemento_lista, parent, false);
+    @Override public AdaptadorUsuarios.ViewHolder onCreateViewHolder( ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.elemento_lista, parent, false);
         return new AdaptadorUsuarios.ViewHolder(view);
     }
-    @Override protected void onBindViewHolder(@NonNull AdaptadorUsuarios
-            .ViewHolder holder, int position, @NonNull Usuario usuario) {
+    @Override protected void onBindViewHolder(@NonNull AdaptadorUsuarios.ViewHolder holder, int position, @NonNull Usuario usuario) {
         AdaptadorUsuarios.personalizaVista(holder, usuario);
         holder.itemView.setOnClickListener(onClickListener);
     }

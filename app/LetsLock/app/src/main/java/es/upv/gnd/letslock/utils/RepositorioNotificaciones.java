@@ -1,8 +1,10 @@
 package es.upv.gnd.letslock.utils;
 
-import es.upv.gnd.letslock.model.Notificacion;
+
+import es.upv.gnd.letslock.bbdd.Notificacion;
 
 public interface RepositorioNotificaciones {
+
     Notificacion elemento(int id); //Devuelve el elemento dado su id
     void anyade(Notificacion notificacion); //Añade el elemento indicado
     int nueva(); //Añade un elemento en blanco y devuelve su id

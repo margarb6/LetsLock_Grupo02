@@ -13,20 +13,18 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class Usuarios {
 
+    private static FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    private static FirebaseFirestore db = FirebaseFirestore.getInstance();
+
     //Establece en la base de datos el usuario
     static public void setUsuario(Usuario usuario) {
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("usuarios").document(user.getUid()).set(usuario);
     }
 
     //Obtiene el usuario de la base de datos
     static public void getUsuario(final UsuariosCallback callback) {
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("usuarios").document(user.getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
 
             @Override
@@ -40,11 +38,9 @@ public class Usuarios {
 
                         String nombre = task.getResult().getString("nombre");
                         boolean permisos = task.getResult().getBoolean("permisos");
-                        String Foto = task.getResult().getString("foto");
-                        String Tag = task.getResult().getString("tag");
-                        String id = task.getResult().getString("id");
+                        String pin = task.getResult().getString("pin");
 
-                        Usuario usuario= new Usuario(nombre,permisos,Foto,Tag, id);
+                        Usuario usuario= new Usuario(nombre,permisos, pin);
                         callback.getUsuariosCallback(usuario);
 
                     //Si no existe devolvemos uno vacío
