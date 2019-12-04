@@ -11,36 +11,29 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.auth.AuthUI;
-import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.core.Query;
 
 import java.util.ArrayList;
 
 import es.upv.gnd.letslock.Fragments.PersonasFragment;
 import es.upv.gnd.letslock.Fragments.InicioFragment;
 import es.upv.gnd.letslock.Fragments.NotificacionesFragment;
-import es.upv.gnd.letslock.Fragments.PlanoFragment;
-import es.upv.gnd.letslock.bbdd.AdaptadorUsuarios;
-import es.upv.gnd.letslock.bbdd.AdaptadorUsuariosFirestoreUI;
+import es.upv.gnd.letslock.Fragments.TimbreFragment;
+import es.upv.gnd.letslock.bbdd.Notificacion;
+import es.upv.gnd.letslock.bbdd.Notificaciones;
+import es.upv.gnd.letslock.bbdd.NotificacionesCallback;
 import es.upv.gnd.letslock.bbdd.Usuario;
+import es.upv.gnd.letslock.bbdd.Usuarios;
+import es.upv.gnd.letslock.bbdd.UsuariosCallback;
 
 public class MainActivity extends AppCompatActivity {
 
     private ArrayList<Fragment> fragments;
     private BottomNavigationView navigation;
-
-    private RecyclerView recyclerView;
-    public AdaptadorUsuarios adaptador;
-    public static AdaptadorUsuariosFirestoreUI adaptador2;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,9 +49,21 @@ public class MainActivity extends AppCompatActivity {
             fragments.add(new InicioFragment());
         }
 
-        //Creamos el eventListener que nos permite cambiar de fragment
         navigation = findViewById(R.id.BotomNavigationView);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        Usuarios userBD = new Usuarios();
+
+        userBD.getUsuario(new UsuariosCallback() {
+            public void getUsuariosCallback(Usuario usuarioBD) {
+
+                //Si no tiene permisos no puede ver el fragment
+                if(!usuarioBD.isPermisos()){
+                    navigation.getMenu().findItem(R.id.menu_inferior_personas).setVisible(false);
+                }
+
+                //Creamos el eventListener que nos permite cambiar de fragment
+                navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+            }
+        });
 
         //Inicializamos la toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -125,9 +130,9 @@ public class MainActivity extends AppCompatActivity {
 
                     fragSeleccionado = new InicioFragment();
                     break;
-                case R.id.menu_inferior_plano:
+                case R.id.menu_inferior_timbre:
 
-                    fragSeleccionado = new PlanoFragment();
+                    fragSeleccionado = new TimbreFragment();
                     break;
                 case R.id.menu_inferior_notificaciones:
 
@@ -160,9 +165,9 @@ public class MainActivity extends AppCompatActivity {
 
                 Log.i("aa", String.valueOf(navigation.getMenu().findItem(R.id.menu_inferior_inicio).setChecked(true)));
 
-            } else if (fragmentAnterior instanceof PlanoFragment) {
+            } else if (fragmentAnterior instanceof TimbreFragment) {
 
-                Log.i("aa", String.valueOf(navigation.getMenu().findItem(R.id.menu_inferior_plano).setChecked(true)));
+                Log.i("aa", String.valueOf(navigation.getMenu().findItem(R.id.menu_inferior_timbre).setChecked(true)));
 
             } else if (fragmentAnterior instanceof NotificacionesFragment) {
 

@@ -10,13 +10,13 @@ import androidx.fragment.app.Fragment;
 
 import es.upv.gnd.letslock.R;
 
-public class PlanoFragment extends Fragment {
+public class TimbreFragment extends Fragment {
 
     View vista;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        vista = inflater.inflate(R.layout.fragment_plano, container, false);
+        vista = inflater.inflate(R.layout.fragment_timbre, container, false);
         return vista;
     }
 }
