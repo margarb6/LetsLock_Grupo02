@@ -1,7 +1,5 @@
 package es.upv.gnd.letslock.adapters;
 
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +7,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
@@ -17,8 +14,8 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
-import es.upv.gnd.letslock.MainActivity;
 import es.upv.gnd.letslock.R;
 import es.upv.gnd.letslock.bbdd.Notificacion;
 
@@ -43,37 +40,65 @@ public class AdaptadorNotificacionesFirestoreUI extends FirestoreRecyclerAdapter
             tipo = itemView.findViewById(R.id.nombreNotificacion);
             foto = itemView.findViewById(R.id.iconoNotificacion);
             descripcion = itemView.findViewById(R.id.descripcionNotificacion);
-            hora= itemView.findViewById(R.id.fechaNotificacion);
+            hora = itemView.findViewById(R.id.fechaNotificacion);
         }
 
         // Personalizamos un ViewHolder a partir de un lugar
         public void personaliza(final Notificacion notificacion) {
 
-            tipo.setText(notificacion.getTipo());
+            Date fechaAct = new Date();
+            long actual = fechaAct.getTime() + 3600 * 1000;
 
-            //TODO pasar la hora al buen formato
+            for (int i = 1; i < 60; i++) {
+
+                if (actual - notificacion.getHora() <= 60 * 1000 * i && actual - notificacion.getHora() >= 60 * 1000 * (i - 1))
+                    hora.setText("Hace " + i + " min");
+            }
+
+            for (int i = 2; i < 25; i++) {
+
+                if (actual - notificacion.getHora() <= 3600 * 1000 * i && actual - notificacion.getHora() >= 3600 * 1000 * (i - 1)){
+                    int res= i-1;
+                    hora.setText("Hace " + res + "h");
+                }
+            }
+
+            if (actual - notificacion.getHora() > 1000 * 60 * 60 * 24 || notificacion.getHora() - actual > 0) {
+
+                Date fechaIngles = new Date(notificacion.getHora());
+                SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm     dd/MM/yyyy", new Locale("es", "ES"));
+
+                try {
+
+                    String fecha = dateFormat.format(fechaIngles);
+                    hora.setText(fecha);
+
+                } catch (Exception e) {
+                }
+            }
+
             switch (notificacion.getTipo()) {
 
                 case "Timbre":
-
+                    tipo.setText(notificacion.getTipo());
                     foto.setImageResource(R.drawable.timbre);
                     descripcion.setText("Alguien ha llamado al timbre");
                     break;
 
                 case "solicitudPin":
-
+                    tipo.setText("Solicitud pin");
                     descripcion.setText("Alguien ha enviado un pin para abrir la puerta");
                     foto.setImageResource(R.drawable.timbre);
                     break;
 
                 case "ErrorPin":
-
+                    tipo.setText("Error pin");
                     descripcion.setText("Alguien está intentando entrar a su casa");
                     foto.setImageResource(R.drawable.alerta);
                     break;
 
                 case "Puerta":
-
+                    tipo.setText(notificacion.getTipo());
                     descripcion.setText("Se ha abierto la puerta");
                     foto.setImageResource(R.drawable.timbre);
                     break;
