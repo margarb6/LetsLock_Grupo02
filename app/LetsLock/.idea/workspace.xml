@@ -7,25 +7,133 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f1fc0a5e-6a45-49db-9dc6-61c62e04684d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/bbdd/AdaptadorUsuarios.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/bbdd/AdaptadorUsuariosFirestoreUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/bbdd/RepositorioUsuarios.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/elemento_lista.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/FormularioActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-v24/imagen_animacion.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-v24/puerta_abierta.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-v24/puerta_cerrada.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/formulario_email.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/raw/puerta_animacion.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/transition/blink_anim.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/transition/bounce.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/transition/fadein.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/transition/fadeout.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/transition/lefttoright.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/transition/mixed_anim.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/transition/righttoleft.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/transition/rotate.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/transition/sample_anim.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/transition/zoomin.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/transition/zoomout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/codeStyles/Project 2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/codeStyles/Project 3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/modules 2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/modules 3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/vcs 2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/vcs 3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore 2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore 3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums 2.ser" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/gradle_models 2.ser" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle 2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle 3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default 2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default 3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_constraintlayout_constraintlayout_1_1_3_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_constraintlayout_constraintlayout_1_1_3_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_cursoradapter_cursoradapter_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_cursoradapter_cursoradapter_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_drawerlayout_drawerlayout_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_drawerlayout_drawerlayout_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_interpolator_interpolator_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_interpolator_interpolator_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_loader_loader_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_loader_loader_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_localbroadcastmanager_localbroadcastmanager_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_localbroadcastmanager_localbroadcastmanager_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_viewpager_viewpager_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_viewpager_viewpager_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_code_findbugs_jsr305_2_0_1_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules 2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules 3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations 2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations 3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs 2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs 3.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.gitignore 2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.gitignore 3" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/proguard-rules 2.pro" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/proguard-rules 3.pro" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/Fragments/PersonasFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/Fragments/PersonasFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings 2.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings 3.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../arduino/AsyncUDPClient_JSON_3/AsyncUDPClient_JSON_3 2.ino" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../arduino/AsyncUDPClient_JSON_3/AsyncUDPClient_JSON_3 3.ino" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../arduino/AsyncUDPClient_JSON_3/AsyncUDPClient_JSON_3 4.ino" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../arduino/AsyncUDPClient_JSON_3/AsyncUDPClient_JSON_3 5.ino" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/androidTest/java/es/upv/gnd/letslock/ExampleInstrumentedTest 2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/androidTest/java/es/upv/gnd/letslock/ExampleInstrumentedTest 3.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/LetsLock-web 2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/LetsLock-web 3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/ic_launcher-web 2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/ic_launcher-web 3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/AcercaDeActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/AcercaDeActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/Fragments/InicioFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/Fragments/InicioFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/Fragments/PreferenciasFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/Fragments/PreferenciasFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/PreferenciasActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/PreferenciasActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/logo_app-web 2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/logo_app-web 3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_inicio.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_inicio.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle 2.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle 3.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper 2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper 2.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper 3.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper 3.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew 2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew 2.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew 3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew 3.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../arduino/Hora_Servidor/Hora_Servidor 2.ino" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../arduino/Hora_Servidor/Hora_Servidor 3.ino" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../arduino/Medidor_Ultrasonico_UART/.gitignore 2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../arduino/Medidor_Ultrasonico_UART/.gitignore 3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../arduino/Medidor_Ultrasonico_UART/build 2.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../arduino/Medidor_Ultrasonico_UART/build 3.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../arduino/Medidor_Ultrasonico_UART/build 4.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../arduino/Medidor_Ultrasonico_UART/build 5.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../arduino/Medidor_Ultrasonico_UART/build 6.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../arduino/Medidor_Ultrasonico_UART/build 7.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../arduino/Medidor_Ultrasonico_UART/build 8.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../arduino/Medidor_Ultrasonico_UART/gradle 2.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../arduino/Medidor_Ultrasonico_UART/gradle 3.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../arduino/Medidor_Ultrasonico_UART/gradle 4.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../arduino/Medidor_Ultrasonico_UART/gradle 5.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../arduino/Medidor_Ultrasonico_UART/gradle 6.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../arduino/Medidor_Ultrasonico_UART/gradle 7.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../arduino/Medidor_Ultrasonico_UART/gradle 8.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../arduino/Medidor_Ultrasonico_UART/gradle/wrapper/gradle-wrapper 2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../arduino/Medidor_Ultrasonico_UART/gradle/wrapper/gradle-wrapper 2.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../arduino/Medidor_Ultrasonico_UART/gradle/wrapper/gradle-wrapper 3.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../arduino/Medidor_Ultrasonico_UART/gradle/wrapper/gradle-wrapper 3.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../arduino/Medidor_Ultrasonico_UART/gradlew 2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../arduino/Medidor_Ultrasonico_UART/gradlew 2.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../arduino/Medidor_Ultrasonico_UART/gradlew 3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../arduino/Medidor_Ultrasonico_UART/gradlew 3.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../arduino/Medidor_Ultrasonico_UART/gradlew 4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../arduino/Medidor_Ultrasonico_UART/gradlew 4.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../arduino/Medidor_Ultrasonico_UART/gradlew 5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../arduino/Medidor_Ultrasonico_UART/gradlew 5.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../arduino/Medidor_Ultrasonico_UART/gradlew 6" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../arduino/Medidor_Ultrasonico_UART/gradlew 6.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../arduino/Medidor_Ultrasonico_UART/gradlew 7" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../arduino/Medidor_Ultrasonico_UART/gradlew 7.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../arduino/Medidor_Ultrasonico_UART/gradlew 8" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../arduino/Medidor_Ultrasonico_UART/gradlew 8.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../arduino/Medidor_Ultrasonico_UART/local 2.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../arduino/Medidor_Ultrasonico_UART/local 3.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../arduino/Medidor_Ultrasonico_UART/local 4.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../arduino/Medidor_Ultrasonico_UART/settings 2.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../arduino/Medidor_Ultrasonico_UART/settings 3.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../arduino/Medidor_Ultrasonico_UART/settings 4.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../arduino/Medidor_Ultrasonico_UART/settings 5.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../arduino/Medidor_Ultrasonico_UART/settings 6.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../arduino/Medidor_Ultrasonico_UART/settings 7.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../arduino/Medidor_Ultrasonico_UART/settings 8.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../arduino/Medidor_ultrasonido_Arduino/Medidor_ultrasonido_Arduino 2.ino" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../arduino/Medidor_ultrasonido_Arduino/Medidor_ultrasonido_Arduino 3.ino" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../arduino/Rele_Puerta/Rele_Puerta 2.ino" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../arduino/Rele_Puerta/Rele_Puerta 3.ino" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../arduino/Rele_Puerta/Rele_Puerta 4.ino" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../arduino/Rele_Puerta/Rele_Puerta 5.ino" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/build/classes/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -39,7 +147,7 @@
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_2_XL_API_29" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="611f824a" />
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
@@ -50,72 +158,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/Fotos.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/model/Notificacion.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="50" column="40" selection-start-line="50" selection-start-column="40" selection-end-line="50" selection-end-column="40" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/bbdd/AdaptadorUsuarios.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="49" column="35" selection-start-line="49" selection-start-column="35" selection-end-line="49" selection-end-column="35" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#272#273#0" expanded="true" />
-                <element signature="e#303#304#0" expanded="true" />
-                <element signature="e#4562#4563#0" expanded="true" />
-                <element signature="e#4603#4604#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/bbdd/Usuario.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="373">
-              <caret line="26" selection-start-line="26" selection-end-line="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/DescargarFoto.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/bbdd/AdaptadorUsuariosFirestoreUI.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="245">
-              <caret line="34" column="35" selection-start-line="34" selection-start-column="35" selection-end-line="34" selection-end-column="35" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#975#976#0" expanded="true" />
-                <element signature="e#1016#1017#0" expanded="true" />
-                <element signature="e#1052#1053#0" expanded="true" />
-                <element signature="e#1120#1121#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/Fragments/PersonasFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-78">
-              <caret line="70" column="20" lean-forward="true" selection-start-line="70" selection-start-column="20" selection-end-line="70" selection-end-column="20" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="306">
+              <caret line="19" column="49" selection-start-line="19" selection-start-column="49" selection-end-line="19" selection-end-column="49" />
             </state>
           </provider>
         </entry>
@@ -123,8 +169,88 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="67" selection-start-line="67" selection-end-line="67" />
+            <state relative-caret-position="255">
+              <caret line="45" column="46" selection-start-line="45" selection-start-column="46" selection-end-line="45" selection-end-column="46" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/Fragments/InicioFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="189">
+              <caret line="48" column="39" selection-start-line="48" selection-start-column="39" selection-end-line="48" selection-end-column="39" />
+              <folding>
+                <element signature="e#1595#1897#0" expanded="true" />
+                <element signature="e#1896#1897#0" expanded="true" />
+                <element signature="e#1412#1413#0" expanded="true" />
+                <element signature="e#1480#1481#0" expanded="true" />
+                <element signature="e#1744#3379#0" expanded="true" />
+                <element signature="e#1901#3316#0" expanded="true" />
+                <element signature="e#2824#3176#0" expanded="true" />
+                <element signature="e#3175#3176#0" expanded="true" />
+                <element signature="e#3315#3316#0" expanded="true" />
+                <element signature="e#3378#3379#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/raw/puerta_animacion.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="8240" selection-start-column="8240" selection-end-column="8240" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_inicio.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="646">
+              <caret line="38" column="48" selection-start-line="38" selection-start-column="48" selection-end-line="38" selection-end-column="48" />
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer2" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/Fragments/PreferenciasFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="527">
+              <caret line="61" column="91" selection-start-line="60" selection-start-column="43" selection-end-line="61" selection-end-column="91" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/FormularioActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="510">
+              <caret line="37" column="46" selection-start-line="37" selection-start-column="46" selection-end-line="37" selection-end-column="46" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/formulario_email.xml">
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="714">
+              <caret line="42" column="44" selection-start-line="42" selection-start-column="44" selection-end-line="42" selection-end-column="44" />
+            </state>
+          </provider>
+          <provider selected="true" editor-type-id="android-designer2" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/PreferenciasActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="46" selection-start-line="46" selection-end-line="46" />
             </state>
           </provider>
         </entry>
@@ -136,6 +262,7 @@
       <list>
         <option value="layoutResourceFile_vertical" />
         <option value="Interface" />
+        <option value="layoutResourceFile" />
         <option value="Class" />
       </list>
     </option>
@@ -148,7 +275,6 @@
       <list>
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_personas.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/PersonasActivity.java" />
-        <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/Aplicacion.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/adapters/AdaptadorUsuariosFirestoreUI.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/adapters/AdaptadorUsuarios.java" />
@@ -159,10 +285,20 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/elemento_lista.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/bbdd/AdaptadorUsuarios.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/Fragments/PersonasFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/Fragments/PreferenciasFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/AcercaDeActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/FormularioActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/PreferenciasActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/formulario_email.xml" />
+        <option value="$PROJECT_DIR$/app/build.gradle" />
+        <option value="$PROJECT_DIR$/app/src/main/res/raw/lottie_rawRes" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_inicio.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/Fragments/InicioFragment.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="x" value="953" />
     <option name="width" value="974" />
     <option name="height" value="1047" />
@@ -173,9 +309,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="ProjectPane" />
-      <pane id="Scope" />
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -186,11 +319,6 @@
             <path>
               <item name="LetsLock" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="manifests" type="f94875db:AndroidManifestsGroupNode" />
-            </path>
-            <path>
-              <item name="LetsLock" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
             </path>
             <path>
@@ -198,20 +326,6 @@
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
               <item name="letslock" type="cbb59c9e:AndroidPsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LetsLock" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="letslock" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="adapters" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LetsLock" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="letslock" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="bbdd" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="LetsLock" type="1abcf292:AndroidViewProjectNode" />
@@ -227,23 +341,36 @@
             </path>
             <path>
               <item name="LetsLock" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
-              <item name="layout" type="ddeffd01:AndroidResFolderTypeNode" />
+              <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="Pixel_3_XL_API_29" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2019-11-23T12:07:18.887Z" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/raw" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.17" />
+    <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="es.upv.gnd.letslock" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\UNI\2A\PROYECTO\LetsLock_Grupo02\app\LetsLock\app\src\main\res\raw" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\UNI\2A\PROYECTO\LetsLock_Grupo02\app\LetsLock\app\src\main\res\drawable-v24" />
+      <recent name="C:\UNI\2A\PROYECTO\LetsLock_Grupo02\app\LetsLock\app\src\main\res\transition" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -338,15 +465,15 @@
     <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.21444201" />
-      <window_info id="Structure" order="2" side_tool="true" />
-      <window_info id="Build Variants" order="3" side_tool="true" />
-      <window_info id="Image Layers" order="4" />
-      <window_info id="Designer" order="5" />
-      <window_info id="Resources Explorer" order="6" />
-      <window_info id="Capture Tool" order="7" />
-      <window_info id="Favorites" order="8" side_tool="true" />
-      <window_info anchor="bottom" id="Run" order="0" />
+      <window_info id="Structure" order="1" side_tool="true" />
+      <window_info id="Build Variants" order="2" side_tool="true" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="Designer" order="4" />
+      <window_info id="Resources Explorer" order="5" />
+      <window_info id="Capture Tool" order="6" />
+      <window_info id="Favorites" order="7" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="8" visible="true" weight="0.23851204" />
+      <window_info anchor="bottom" id="Run" order="0" weight="0.32932165" />
       <window_info anchor="bottom" id="Logcat" order="1" />
       <window_info anchor="bottom" id="TODO" order="2" />
       <window_info anchor="bottom" id="Android Profiler" order="3" />
@@ -354,7 +481,8 @@
       <window_info anchor="bottom" id="Terminal" order="5" />
       <window_info anchor="bottom" id="Event Log" order="6" side_tool="true" weight="0.32932165" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Build" order="8" visible="true" weight="0.32932165" />
+      <window_info anchor="bottom" id="Build" order="8" weight="0.34245077" />
+      <window_info anchor="bottom" id="Find" order="9" weight="0.32936078" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" order="1" />
       <window_info anchor="right" id="Gradle" order="2" />
@@ -381,13 +509,6 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/font_certs.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/Fragments/PreferenciasFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_email_black_24dp.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -399,13 +520,7 @@
       <provider selected="true" editor-type-id="text-editor" />
       <provider editor-type-id="android-designer2" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/PersonasActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="55" selection-start-line="4" selection-start-column="55" selection-end-line="4" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/PersonasActivity.java" />
     <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/SplashActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -413,24 +528,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/PreferenciasActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/FotoTimbreActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="35" selection-start-line="35" selection-end-line="35" />
         </state>
       </provider>
     </entry>
@@ -455,13 +556,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/Aplicacion.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="73" selection-start-line="4" selection-start-column="73" selection-end-line="4" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/Aplicacion.java" />
     <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/bbdd/RepositorioUsuarios.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -476,60 +571,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="63" column="36" lean-forward="true" selection-start-line="63" selection-start-column="36" selection-end-line="63" selection-end-column="36" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-manifest" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/bbdd/AdaptadorUsuariosFirestoreUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="34" column="35" selection-start-line="34" selection-start-column="35" selection-end-line="34" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#975#976#0" expanded="true" />
-            <element signature="e#1016#1017#0" expanded="true" />
-            <element signature="e#1052#1053#0" expanded="true" />
-            <element signature="e#1120#1121#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="67" selection-start-line="67" selection-end-line="67" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/Fragments/PerfilFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="871">
           <caret line="110" column="45" lean-forward="true" selection-start-line="110" selection-start-column="45" selection-end-line="110" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/bbdd/AdaptadorUsuarios.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="49" column="35" selection-start-line="49" selection-start-column="35" selection-end-line="49" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#272#273#0" expanded="true" />
-            <element signature="e#303#304#0" expanded="true" />
-            <element signature="e#4562#4563#0" expanded="true" />
-            <element signature="e#4603#4604#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/bbdd/Usuario.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="373">
-          <caret line="26" selection-start-line="26" selection-end-line="26" />
         </state>
       </provider>
     </entry>
@@ -543,24 +588,160 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/Fotos.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
+        <state relative-caret-position="629">
           <caret line="50" column="40" selection-start-line="50" selection-start-column="40" selection-end-line="50" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/bbdd/AdaptadorUsuarios.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="49" column="35" selection-start-line="49" selection-start-column="35" selection-end-line="49" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/bbdd/Usuario.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/AcercaDeActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/DescargarFoto.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
-          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/bbdd/AdaptadorUsuariosFirestoreUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="34" column="35" selection-start-line="34" selection-start-column="35" selection-end-line="34" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/Fragments/PersonasFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-78">
-          <caret line="70" column="20" lean-forward="true" selection-start-line="70" selection-start-column="20" selection-end-line="70" selection-end-column="20" />
+        <state relative-caret-position="1003">
+          <caret line="81" selection-start-line="81" selection-end-line="81" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1258">
+          <caret line="74" selection-start-line="74" selection-end-line="74" selection-end-column="65" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-manifest" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/Fragments/PreferenciasFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="61" column="91" selection-start-line="60" selection-start-column="43" selection-end-line="61" selection-end-column="91" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/FormularioActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="37" column="46" selection-start-line="37" selection-start-column="46" selection-end-line="37" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/formulario_email.xml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="714">
+          <caret line="42" column="44" selection-start-line="42" selection-start-column="44" selection-end-line="42" selection-end-column="44" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/PreferenciasActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="46" selection-start-line="46" selection-end-line="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/model/Notificacion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="19" column="49" selection-start-line="19" selection-start-column="49" selection-end-line="19" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="45" column="46" selection-start-line="45" selection-start-column="46" selection-end-line="45" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="410">
+          <caret line="60" column="51" selection-start-line="60" selection-start-column="51" selection-end-line="60" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/raw/puerta_animacion.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="8240" selection-start-column="8240" selection-end-column="8240" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/raw/lottie_rawRes">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="8" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_inicio.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="38" column="48" selection-start-line="38" selection-start-column="48" selection-end-line="38" selection-end-column="48" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/Fragments/InicioFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="48" column="39" selection-start-line="48" selection-start-column="39" selection-end-line="48" selection-end-column="39" />
+          <folding>
+            <element signature="e#1595#1897#0" expanded="true" />
+            <element signature="e#1896#1897#0" expanded="true" />
+            <element signature="e#1412#1413#0" expanded="true" />
+            <element signature="e#1480#1481#0" expanded="true" />
+            <element signature="e#1744#3379#0" expanded="true" />
+            <element signature="e#1901#3316#0" expanded="true" />
+            <element signature="e#2824#3176#0" expanded="true" />
+            <element signature="e#3175#3176#0" expanded="true" />
+            <element signature="e#3315#3316#0" expanded="true" />
+            <element signature="e#3378#3379#0" expanded="true" />
           </folding>
         </state>
       </provider>
