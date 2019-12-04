@@ -1,4 +1,6 @@
-package es.upv.gnd.letslock.bbdd;
+package es.upv.gnd.letslock.utils;
+
+import es.upv.gnd.letslock.bbdd.Usuario;
 
 public interface RepositorioUsuarios {
         Usuario elemento(int id); //Devuelve el elemento dado su id

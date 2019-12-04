@@ -1,22 +1,18 @@
 package es.upv.gnd.letslock.Fragments;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,7 +26,6 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -71,7 +66,7 @@ public class EditarPerfilFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        vista = inflater.inflate(R.layout.fragment_usuario_editar, container, false);
+        vista = inflater.inflate(R.layout.fragment_perfil_editar, container, false);
 
         final TextView nombre = vista.findViewById(R.id.nombre);
         final TextView pin = vista.findViewById(R.id.pin);
@@ -151,8 +146,13 @@ public class EditarPerfilFragment extends Fragment {
                 builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        userBD.setUsuario(new Usuario(nombre.getText().toString(), permisos, pin.getText().toString()));
-                        subirFoto();
+
+                        if(pin.getText().length()<4)Toast.makeText(getContext(),"Inserte un mínimo de 4 digitos", Toast.LENGTH_LONG).show();
+                        if(nombre.getText().length()== 0)Toast.makeText(getContext(),"Inserte un nombre", Toast.LENGTH_LONG).show();
+                        else{
+                            subirFoto();
+                            userBD.setUsuario(new Usuario(nombre.getText().toString(), permisos, pin.getText().toString()));
+                        }
                     }
                 });
                 builder.setNegativeButton("Rechazar", new DialogInterface.OnClickListener() {
