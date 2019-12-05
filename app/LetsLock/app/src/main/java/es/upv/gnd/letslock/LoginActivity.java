@@ -27,7 +27,11 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
+import es.upv.gnd.letslock.bbdd.Casa;
+import es.upv.gnd.letslock.bbdd.Casas;
+import es.upv.gnd.letslock.bbdd.CasasCallback;
 import es.upv.gnd.letslock.bbdd.Usuario;
 import es.upv.gnd.letslock.bbdd.Usuarios;
 import es.upv.gnd.letslock.bbdd.UsuariosCallback;
@@ -47,13 +51,18 @@ public class LoginActivity extends Activity {
 
     private void login() {
 
+        boolean anonimo= true;
+
         //Si está logueado
         if (usuario != null) {
 
             List<? extends UserInfo> infos = usuario.getProviderData();
+
             for (UserInfo ui : infos) {
 
                 if (!ui.getProviderId().equals("firebase")) {
+
+                    anonimo= false;
 
                     switch (ui.getProviderId()) {
 
@@ -70,8 +79,9 @@ public class LoginActivity extends Activity {
                     }
                 }
             }
+            if(anonimo) cambioActivity("como usuario anónimo");
 
-            //Si no crea la interfaz de login
+        //Si no crea la interfaz de login
         } else {
 
             startActivityForResult(AuthUI.getInstance()
@@ -83,6 +93,7 @@ public class LoginActivity extends Activity {
                             new AuthUI.IdpConfig.GoogleBuilder().build(),
                             new AuthUI.IdpConfig.AnonymousBuilder().build(),
                             new AuthUI.IdpConfig.PhoneBuilder().build())).build(), RC_SIGN_IN);
+
         }
     }
 
@@ -93,7 +104,7 @@ public class LoginActivity extends Activity {
 
             entrar();
 
-            //Si no envía un correo de verificación
+        //Si no envía un correo de verificación
         } else {
 
             usuario.sendEmailVerification();
@@ -104,29 +115,31 @@ public class LoginActivity extends Activity {
     public void entrar() {
 
         final Usuarios userBD = new Usuarios();
+        final Casas casaBD= new Casas();
 
         //Buscamos si existe ese usuario en la base de datos
-        db.collection("usuarios").document(usuario.getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+        userBD.getUsuario(new UsuariosCallback() {
+            public void getUsuariosCallback(Usuario usuarioBD) {
 
-                if (task.isSuccessful()) {
+                Random rand= new Random();
+                String nombre = usuario.getDisplayName();
 
-                    String nombre = usuario.getDisplayName();
-                    String tel = usuario.getPhoneNumber();
-                    if (nombre == null) nombre = "";
-                    if (tel == null) tel = "";
+                //Si no existe lo creamos
+                if(usuarioBD.getPin().equals("") && usuarioBD.getNombre().equals("")) userBD.setUsuario(new Usuario(nombre, false, String.format("%04d", rand.nextInt(10000))));
+                else nombre= usuarioBD.getNombre();
+                casaBD.setCasa(usuario.getUid());
 
-                    //Si no existe y no esta logueándose como anónimo lo creamos
-                    if (!task.getResult().exists() && (!nombre.isEmpty() || !tel.isEmpty()))  userBD.setUsuario(new Usuario(nombre, false, "1234A"));
-
-                    Toast.makeText(LoginActivity.this, "Has iniciado sesion " + nombre, Toast.LENGTH_LONG).show();
-                    Intent i = new Intent(LoginActivity.this, SplashActivity.class);
-                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(i);
-                }
+                cambioActivity(nombre);
             }
         });
+    }
+
+    void  cambioActivity(String nombre){
+
+        Toast.makeText(LoginActivity.this, "Has iniciado sesion " + nombre, Toast.LENGTH_LONG).show();
+        Intent i = new Intent(LoginActivity.this, SplashActivity.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(i);
     }
 
     @Override

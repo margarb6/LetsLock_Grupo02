@@ -13,20 +13,18 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class Usuarios {
 
+    private static FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    private static FirebaseFirestore db = FirebaseFirestore.getInstance();
+
     //Establece en la base de datos el usuario
     static public void setUsuario(Usuario usuario) {
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("usuarios").document(user.getUid()).set(usuario);
     }
 
     //Obtiene el usuario de la base de datos
     static public void getUsuario(final UsuariosCallback callback) {
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("usuarios").document(user.getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
 
             @Override
