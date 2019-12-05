@@ -7,19 +7,37 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+
     <ImageView
-        android:id="@+id/candado"
-        android:layout_width="396dp"
-        android:layout_height="393dp"
+        android:id="@+id/puerta"
+        android:layout_width="260dp"
+        android:layout_height="347dp"
         android:layout_marginStart="48dp"
         android:layout_marginEnd="48dp"
         android:layout_marginBottom="128dp"
-        android:src="@drawable/candado_app"
+        android:src="@drawable/imagen_animacion"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.156" />
+
+    <com.airbnb.lottie.LottieAnimationView
+
+        android:id="@+id/animation_view"
+        android:layout_width="415dp"
+        android:layout_height="435dp"
+
+        android:layout_alignParentTop="true"
+
+        android:layout_alignParentEnd="true"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_rawRes="@raw/puerta_animacion"/>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
