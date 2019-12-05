@@ -55,6 +55,7 @@ public class InicioFragment extends Fragment {
             @Override
             public void onAnimationEnd(Animator animation) {
                 lottieAnimationView.pauseAnimation();
+                
             }
 
             @Override
