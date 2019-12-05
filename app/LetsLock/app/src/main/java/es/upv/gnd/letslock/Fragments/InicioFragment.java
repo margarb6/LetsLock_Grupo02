@@ -45,20 +45,7 @@ public class InicioFragment extends Fragment {
         imageView = vista.findViewById(R.id.puerta);
         lottieAnimationView = vista.findViewById(R.id.animation_view);
         lottieAnimationView.setSpeed((float) 0.5);
-<<<<<<< HEAD
-        lottieAnimationView.addValueCallback(
-                new KeyPath("Door frame", "Rectangle 2"),
-                LottieProperty.COLOR_FILTER,
-                new SimpleLottieValueCallback<ColorFilter>() {
-                    @Override
-                    public ColorFilter getValue(LottieFrameInfo<ColorFilter> frameInfo) {
-                        return new PorterDuffColorFilter(Color.CYAN, PorterDuff.Mode.SRC_ATOP);
-                    }
-                }
-        );
-=======
 
->>>>>>> fabio
         lottieAnimationView.addAnimatorListener(new Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animation) {

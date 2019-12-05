@@ -56,26 +56,26 @@ public class AdaptadorNotificacionesFirestoreUI extends FirestoreRecyclerAdapter
 
                 case "Timbre":
 
-                    foto.setImageResource(R.drawable.timbre);
+                    foto.setImageResource(R.drawable.notificacion_timbre);
                     descripcion.setText("Alguien ha llamado al timbre");
                     break;
 
                 case "solicitudPin":
 
                     descripcion.setText("Alguien ha enviado un pin para abrir la puerta");
-                    foto.setImageResource(R.drawable.timbre);
+                    foto.setImageResource(R.drawable.notificacion_solicitar_ping);
                     break;
 
                 case "ErrorPin":
 
                     descripcion.setText("Alguien está intentando entrar a su casa");
-                    foto.setImageResource(R.drawable.alerta);
+                    foto.setImageResource(R.drawable.notificacion_error_ping);
                     break;
 
                 case "Puerta":
 
                     descripcion.setText("Se ha abierto la puerta");
-                    foto.setImageResource(R.drawable.timbre);
+                    foto.setImageResource(R.drawable.notificacion_puerta_abierta);
                     break;
             }
         }
