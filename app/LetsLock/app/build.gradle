@@ -53,5 +53,15 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment:$nav_version"
     implementation "androidx.navigation:navigation-ui:$nav_version"
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    implementation project(':comun')
+=======
+    //animacion
+    implementation "com.airbnb.android:lottie:3.3.0"
+>>>>>>> develop
+
+>>>>>>> parent of 258b50f... Enviar codigo
 }
 apply plugin: 'com.google.gms.google-services'
