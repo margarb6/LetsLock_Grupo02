@@ -57,21 +57,11 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment:$nav_version"
     implementation "androidx.navigation:navigation-ui:$nav_version"
 
-
     implementation project(':comun')
 
     //animacion
     implementation "com.airbnb.android:lottie:3.3.0"
 
-    implementation project(':comun')
-
-    //animacion
-    implementation "com.airbnb.android:lottie:3.3.0"
-
-    //correo
-    implementation files('libs/activation.jar')
-    implementation files('libs/additionnal.jar')
-    implementation files('libs/mail.jar')
 
     //timbre
     implementation 'com.firebaseui:firebase-ui-firestore:6.1.0'

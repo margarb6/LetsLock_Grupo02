@@ -58,7 +58,7 @@ public class TimbreFragment extends Fragment {
                 no.setVisibility(View.INVISIBLE);
 
             }
-        },10000);
+        },30000);
 
 
         return vista;
