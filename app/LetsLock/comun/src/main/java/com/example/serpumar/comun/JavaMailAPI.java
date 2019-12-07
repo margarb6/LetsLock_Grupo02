@@ -1,4 +1,4 @@
-package es.upv.gnd.letslock;
+package com.example.serpumar.comun;
 
 import android.app.ProgressDialog;
 import android.content.Context;
