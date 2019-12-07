@@ -7,22 +7,21 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+
     <ImageView
-        android:id="@+id/candado"
-        android:layout_width="396dp"
-        android:layout_height="393dp"
+        android:id="@+id/puerta"
+        android:layout_width="260dp"
+        android:layout_height="347dp"
         android:layout_marginStart="48dp"
         android:layout_marginEnd="48dp"
         android:layout_marginBottom="128dp"
-        android:src="@drawable/candado_app"
+        android:src="@drawable/imagen_animacion"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-<<<<<<< HEAD
-        app:layout_constraintVertical_bias="0.0" />
-=======
         app:layout_constraintVertical_bias="0.156" />
 
     <com.airbnb.lottie.LottieAnimationView
@@ -31,15 +30,80 @@
         android:layout_width="415dp"
         android:layout_height="435dp"
 
-        android:layout_alignParentTop="true"
-
-        android:layout_alignParentEnd="true"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:lottie_rawRes="@raw/puerta_animacion"/>
+        app:lottie_rawRes="@raw/puerta_animacion" />
 
+    <com.airbnb.lottie.LottieAnimationView
 
->>>>>>> parent of 258b50f... Enviar codigo
+        android:id="@+id/animation_view2"
+        android:layout_width="415dp"
+        android:layout_height="435dp"
+
+        android:layout_marginTop="296dp"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_rawRes="@raw/enviar_animacion" />
+
+    <Button
+        android:id="@+id/b_enviar"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="Enviar codigo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/animation_view" />
+
+    <TextView
+        android:id="@+id/codigo_y_correo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="186dp"
+        android:layout_marginEnd="186dp"
+        android:layout_marginBottom="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/correo_input"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="email"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/b_enviar" />
+
+    <Button
+        android:id="@+id/boton_enviar"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="8dp"
+        android:text="enviar"
+        app:layout_constraintEnd_toStartOf="@+id/boton_cancelar"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/correo_input" />
+
+    <Button
+        android:id="@+id/boton_cancelar"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="100dp"
+        android:text="cancelar"
+        app:layout_constraintBottom_toBottomOf="@+id/boton_enviar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/boton_enviar"
+        app:layout_constraintTop_toTopOf="@+id/boton_enviar" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

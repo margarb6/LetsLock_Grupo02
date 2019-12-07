@@ -32,6 +32,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth:19.1.0'
     implementation 'com.google.android.material:material:1.2.0-alpha01'
     implementation 'androidx.multidex:multidex:2.0.1'
+    implementation 'com.firebaseui:firebase-ui-firestore:4.2.0'
+
 
 
     implementation 'com.google.firebase:firebase-firestore:21.2.1'
@@ -40,6 +42,8 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+
 
     //dependencia necesaria para firebase
     implementation 'com.firebaseui:firebase-ui-auth:4.3.1'
@@ -54,6 +58,7 @@ dependencies {
     implementation "androidx.navigation:navigation-ui:$nav_version"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
     implementation project(':comun')
@@ -63,5 +68,19 @@ dependencies {
 >>>>>>> develop
 
 >>>>>>> parent of 258b50f... Enviar codigo
+=======
+
+    implementation project(':comun')
+
+    //animacion
+    implementation "com.airbnb.android:lottie:3.3.0"
+
+    //correo
+    implementation files('libs/activation.jar')
+    implementation files('libs/additionnal.jar')
+    implementation files('libs/mail.jar')
+
+
+>>>>>>> develop
 }
 apply plugin: 'com.google.gms.google-services'
