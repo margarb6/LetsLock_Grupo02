@@ -3,7 +3,6 @@ package com.example.serpumar.comun;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.widget.Toast;
 import java.util.Properties;
@@ -14,8 +13,6 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-
-import es.upv.gnd.letslock.Fragments.InicioFragment;
 
 public class JavaMailAPI extends AsyncTask<Void,Void,Void>  {
 
@@ -55,10 +52,17 @@ public class JavaMailAPI extends AsyncTask<Void,Void,Void>  {
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
         //Dismiss progress dialog when message successfully send
+<<<<<<< HEAD
         // mProgressDialog.dismiss();
 
         //Show success toast
         // Toast.makeText(mContext,"Message Sent",Toast.LENGTH_SHORT).show();
+=======
+        //mProgressDialog.dismiss();
+
+        //Show success toast
+        //Toast.makeText(mContext,"Message Sent",Toast.LENGTH_SHORT).show();
+>>>>>>> fabio
     }
 
     @Override

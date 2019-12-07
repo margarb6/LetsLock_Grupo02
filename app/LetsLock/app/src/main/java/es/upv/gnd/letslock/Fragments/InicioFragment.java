@@ -75,6 +75,7 @@ public class InicioFragment extends Fragment {
                         correo.setVisibility(View.INVISIBLE);
                         lottieAnimationView2.setVisibility(View.VISIBLE);
                         enviarCorreo();
+
                         lottieAnimationView2.playAnimation();
                     }
                 },0);
@@ -124,14 +125,6 @@ public class InicioFragment extends Fragment {
                 enviar.setVisibility(View.VISIBLE);
                 codigo_y_correo.setText(mensaje_confirmacion);
 
-
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        codigo_y_correo.setText("");
-
-                    }
-                },120000);
             }
 
             @Override
@@ -231,6 +224,13 @@ public class InicioFragment extends Fragment {
         JavaMailAPI javaMailAPI = new JavaMailAPI(getContext(), listaCorreos
                 ,asunto,mensaje);
         javaMailAPI.execute();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                codigo_y_correo.setText("");
+
+            }
+        },120000);
 
        /* Intent intent = new Intent(Intent.ACTION_SEND);
         intent.putExtra(Intent.EXTRA_EMAIL, correos);
