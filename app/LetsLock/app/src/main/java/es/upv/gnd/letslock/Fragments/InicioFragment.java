@@ -30,6 +30,7 @@ import com.airbnb.lottie.LottieProperty;
 import com.airbnb.lottie.model.KeyPath;
 import com.airbnb.lottie.value.LottieFrameInfo;
 import com.airbnb.lottie.value.SimpleLottieValueCallback;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Random;
 
@@ -44,6 +45,7 @@ public class InicioFragment extends Fragment {
     boolean image1Displaying = true;
     Toast toast;
     LottieAnimationView lottieAnimationView;
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
     LottieAnimationView lottieAnimationView2;
     Button enviar;
     TextView codigo_y_correo;
@@ -52,6 +54,7 @@ public class InicioFragment extends Fragment {
     static EditText correo;
     Button boton_enviar;
     Button boton_cancelar;
+
 
     @SuppressLint("ClickableViewAccessibility")
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -62,6 +65,10 @@ public class InicioFragment extends Fragment {
         imageView = vista.findViewById(R.id.puerta);
         lottieAnimationView = vista.findViewById(R.id.animation_view);
         lottieAnimationView.setSpeed((float) 0.5);
+        lottieAnimationView.addValueCallback(
+                new KeyPath("Door frame", "Rectangle 2"),
+                LottieProperty.COLOR_FILTER,
+                new SimpleLottieValueCallback<ColorFilter>() {
         lottieAnimationView2 = vista.findViewById(R.id.animation_view2);
         enviar = vista.findViewById(R.id.b_enviar);
         lottieAnimationView2.setVisibility(View.INVISIBLE);
@@ -88,6 +95,8 @@ public class InicioFragment extends Fragment {
                         enviarCorreo();
                         lottieAnimationView2.playAnimation();
                     }
+                }
+        );
                 },0);
             }
         });
@@ -189,6 +198,8 @@ public class InicioFragment extends Fragment {
                        if (image1Displaying){
                            toast.makeText(getActivity(), "Abriendo puerta", Toast.LENGTH_SHORT).show();
                            imageView.setImageResource(R.drawable.imagen_animacion);
+                           db.collection("Datos").document("Puerta").update("puerta", true);
+
                            lottieAnimationView.playAnimation();
                            image1Displaying = false;
                        }else{
@@ -208,6 +219,7 @@ public class InicioFragment extends Fragment {
                            });
                            valueAnimator.start();
                            toast.makeText(getActivity(), "Cerrando puerta", Toast.LENGTH_SHORT).show();
+                           db.collection("Datos").document("Puerta").update("puerta", false);
                            image1Displaying = true;
                        }
 

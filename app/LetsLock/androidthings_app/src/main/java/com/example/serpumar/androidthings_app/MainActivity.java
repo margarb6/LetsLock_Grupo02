@@ -1,6 +1,7 @@
 package com.example.serpumar.androidthings_app;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 
@@ -26,7 +27,10 @@ import com.example.serpumar.comun.Imagen;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 
 import com.google.android.things.contrib.driver.button.ButtonInputDriver;
 import com.google.firebase.storage.FirebaseStorage;
@@ -70,9 +74,12 @@ public class MainActivity extends Activity {
     private ArduinoUart uart = new ArduinoUart("UART0", 9600);
     final String TAG = "Respuesta";
     private static final int INTERVALO = 30000; // Intervalo (ms)
+    private static final int INTERVALO_TAG = 1000; // Intervalo (ms)
     private Handler handler = new Handler(); // Handler
     public Button upload;
 
+    public String tag;
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     //Timbre
     private ButtonInputDriver mButtonInputDriver;
@@ -91,14 +98,11 @@ public class MainActivity extends Activity {
 
         Log.i("Prueba", "Lista de UART disponibles: " + ArduinoUart.disponibles());
 
-        try {
-            handler.post(runnable); // 3. Llamamos al handler
-            Log.d("Prueba", "Llega aqui?");
-        } catch (Exception e) {
-            Log.e(TAG, "Error en PeripheralIO API", e);
-        }
+        update();
 
-        // upload = findViewById(R.id.button);
+        comprobarPin();
+
+        upload = findViewById(R.id.button);
         upload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -118,6 +122,14 @@ public class MainActivity extends Activity {
         mCamera = DoorbellCamera.getInstance();
         mCamera.initializeCamera(this, mCameraHandler, mOnImageAvailableListener);
 
+        try {
+            handler.post(runnableRFID);
+            handler.post(runnable); // 3. Llamamos al handler
+            Log.d("Prueba","Llega aqui?");
+        } catch (Exception e) {
+            Log.e(TAG, "Error en PeripheralIO API", e);
+        }
+
     }
 
 
@@ -128,10 +140,25 @@ public class MainActivity extends Activity {
                 Log.d(TAG, "Recibido de Arduino de DISTANCIA: " + distancia);
                 String presencia = getPresencia();
                 Log.d(TAG, "Recibido de Arduino de PRESENCIA: " + presencia);
-                String tag = "2345";
                 dato = new Datos(distancia, presencia, tag);
                 Log.d("Datos recibidos: ", dato.getDistancia() + dato.getPresencia() + dato.getTag());
                 handler.postDelayed(runnable, INTERVALO);
+                // 5. Programamos siguiente llamada dentro de INTERVALO ms
+            } catch (Exception e) {
+                Log.e(TAG, "Error al recibir Datos", e);
+            }
+        }
+    };
+
+    private Runnable runnableRFID = new Runnable() {
+        @Override public void run() {
+            try {
+                Log.d(TAG, "Llega a RFID??");
+                tag = getEtiquetasRFID();
+                if(!tag.equals("")) {
+                    enviarDatosFirestoreTag(tag);
+                }
+                handler.postDelayed(runnableRFID, INTERVALO_TAG);
                 // 5. Programamos siguiente llamada dentro de INTERVALO ms
             } catch (Exception e) {
                 Log.e(TAG, "Error al recibir Datos", e);
@@ -143,7 +170,7 @@ public class MainActivity extends Activity {
     public String getDistancia() {
         uart.escribir("D");
         try {
-            Thread.sleep(5000);
+            Thread.sleep(3000);
         } catch (InterruptedException e) {
             Log.w(TAG, "Error en sleep()", e);
         }
@@ -165,7 +192,7 @@ public class MainActivity extends Activity {
     public String getEtiquetasRFID() {
         uart.escribir("G");
         try {
-            Thread.sleep(5000);
+            Thread.sleep(3000);
         } catch (InterruptedException e) {
             Log.w(TAG, "Error en sleep()", e);
         }
@@ -177,12 +204,23 @@ public class MainActivity extends Activity {
     public void abrirPuerta() {
         uart.escribir("A");
         try {
-            Thread.sleep(5000);
+            Thread.sleep(3000);
         } catch (InterruptedException e) {
             Log.w(TAG, "Error en sleep()", e);
         }
-        String s = uart.leer();
-        Log.d(TAG, "Recibido de Arduino de AbrirPuerta: " + s);
+        //String s = uart.leer();
+        //Log.d(TAG, "Recibido de Arduino de AbrirPuerta: " + s);
+    }
+
+    public void cerrarPuerta() {
+        uart.escribir("C");
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            Log.w(TAG, "Error en sleep()", e);
+        }
+        //String s = uart.leer();
+        //Log.d(TAG, "Recibido de Arduino de CerrarPuerta: " + s);
     }
 
     public void abrirPuertaRFID() {
@@ -203,8 +241,8 @@ public class MainActivity extends Activity {
     }
 
     public void enviarDatosFirestore(Datos dato) {
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("Datos").document("Datos").set(dato);
+        db.collection("Datos").document("Datos").update("distancia",dato.getDistancia());
+        db.collection("Datos").document("Datos").update("presencia",dato.getPresencia());
 
         //db.collection("Datos").document("Datos").update("tag","12345");
     }
@@ -300,6 +338,37 @@ public class MainActivity extends Activity {
     }
 
 
+
+
+
+    public void enviarDatosFirestoreTag(String tag) {
+        db.collection("Datos").document("Datos").update("tag",tag);
+    }
+
+    private void update() {
+        db.collection("Datos").document("Puerta").addSnapshotListener(new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+                //user = documentSnapshot.toObject(User.class);
+                //user.setUid(mAuth.getUid());
+                if(documentSnapshot.getBoolean("puerta")) {
+                    abrirPuerta();
+                    Log.d(TAG, "Puerta abierta");
+                } else if(!documentSnapshot.getBoolean("puerta")) {
+                    cerrarPuerta();
+                    Log.d(TAG, "Puerta cerrada");
+
+                }
+            }
+        });
+    }
+
+    public void comprobarPin() { //Se llama cuando pulsas el boton de enviar
+        // String pin = coger texto del TextView
+        String pin;
+        String pr = db.collection("usuarios").getId();
+        Log.d("Pin", pr);
+    }
 
 
 }
