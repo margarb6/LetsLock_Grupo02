@@ -21,7 +21,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import com.chaos.view.PinView;
 import com.example.serpumar.comun.Datos;
 import com.example.serpumar.comun.Imagen;
 import com.google.android.gms.tasks.Continuation;
