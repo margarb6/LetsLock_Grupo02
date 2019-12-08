@@ -26,7 +26,7 @@ public class Casas {
 
         final Casas casaBD = new Casas();
 
-        casaBD.getCasa(new CasasCallback() {
+        casaBD.getCasa(context, new CasasCallback() {
             @Override
             public void getCasasCallback(Casa casa) {
 
@@ -39,7 +39,10 @@ public class Casas {
     }
 
     //Obtiene el usuario de la base de datos
-    static public void getCasa(final CasasCallback callback) {
+    static public void getCasa(Context context, final CasasCallback callback) {
+
+        SharedPreferences prefs = context.getSharedPreferences("Usuario", Context.MODE_PRIVATE);
+        if (prefs.contains("idCasa")) idCasa = prefs.getString("idCasa", "");
 
         db.collection("casa").document(idCasa).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
 

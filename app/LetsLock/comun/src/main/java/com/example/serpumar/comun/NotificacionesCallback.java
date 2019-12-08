@@ -1,4 +1,4 @@
-package es.upv.gnd.letslock.bbdd;
+package com.example.serpumar.comun;
 
 import java.util.ArrayList;
 

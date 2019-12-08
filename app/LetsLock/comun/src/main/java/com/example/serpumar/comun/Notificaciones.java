@@ -1,4 +1,4 @@
-package es.upv.gnd.letslock.bbdd;
+package com.example.serpumar.comun;
 
 import android.util.Log;
 
@@ -17,7 +17,6 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 
 public class Notificaciones {
