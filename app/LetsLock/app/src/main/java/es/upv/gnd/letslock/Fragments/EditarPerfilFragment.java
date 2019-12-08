@@ -31,6 +31,8 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import org.w3c.dom.Text;
+
 import java.io.File;
 import java.io.IOException;
 
@@ -147,12 +149,15 @@ public class EditarPerfilFragment extends Fragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
-                        if(pin.getText().length()<4)Toast.makeText(getContext(),"Inserte un mínimo de 4 digitos", Toast.LENGTH_LONG).show();
-                        if(nombre.getText().length()== 0)Toast.makeText(getContext(),"Inserte un nombre", Toast.LENGTH_LONG).show();
-                        else{
+                        String texto="";
+                        if(pin.getText().length()<4) texto= "Inserte un mínimo de 4 digitos";
+                        if(nombre.getText().length()== 0) texto = (texto.isEmpty() ?  "Inserte un nombre": "Inserte un mínimo de 4 digitos y un nombre");
+                        if(texto.isEmpty()){
                             subirFoto();
                             userBD.setUsuario(new Usuario(nombre.getText().toString(), permisos, pin.getText().toString()));
+                            startActivity(new Intent(getContext(), TabsActivity.class));
                         }
+                        else Toast.makeText(getContext(),texto,Toast.LENGTH_LONG).show();
                     }
                 });
                 builder.setNegativeButton("Rechazar", new DialogInterface.OnClickListener() {
