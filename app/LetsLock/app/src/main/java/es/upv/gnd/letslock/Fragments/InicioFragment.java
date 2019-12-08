@@ -3,15 +3,8 @@ package es.upv.gnd.letslock.Fragments;
 import android.animation.Animator;
 import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
-import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.ColorFilter;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffColorFilter;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -34,8 +27,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Random;
 
-import es.upv.gnd.letslock.JavaMailAPI;
-import es.upv.gnd.letslock.PreferenciasActivity;
+import com.example.serpumar.comun.JavaMailAPI;
+
 import es.upv.gnd.letslock.R;
 
 public class InicioFragment extends Fragment {
@@ -93,6 +86,7 @@ public class InicioFragment extends Fragment {
                         correo.setVisibility(View.INVISIBLE);
                         lottieAnimationView2.setVisibility(View.VISIBLE);
                         enviarCorreo();
+
                         lottieAnimationView2.playAnimation();
                     }
                 }
@@ -144,14 +138,6 @@ public class InicioFragment extends Fragment {
                 enviar.setVisibility(View.VISIBLE);
                 codigo_y_correo.setText(mensaje_confirmacion);
 
-
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        codigo_y_correo.setText("");
-
-                    }
-                },120000);
             }
 
             @Override
@@ -254,6 +240,13 @@ public class InicioFragment extends Fragment {
         JavaMailAPI javaMailAPI = new JavaMailAPI(getContext(), listaCorreos
                 ,asunto,mensaje);
         javaMailAPI.execute();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                codigo_y_correo.setText("");
+
+            }
+        },120000);
 
        /* Intent intent = new Intent(Intent.ACTION_SEND);
         intent.putExtra(Intent.EXTRA_EMAIL, correos);

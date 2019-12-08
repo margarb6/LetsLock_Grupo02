@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -15,15 +16,19 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
+import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+//import com.chaos.view.PinView;
 import com.example.serpumar.comun.Datos;
 import com.example.serpumar.comun.Imagen;
+import com.goodiebag.pinview.Pinview;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -38,8 +43,6 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 
-
-
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.Timer;
@@ -47,6 +50,8 @@ import java.util.TimerTask;
 import java.util.UUID;
 
 import es.upv.gnd.letslock.androidthings.R;
+
+import static androidx.constraintlayout.widget.Constraints.TAG;
 
 /**
  * Skeleton of an Android Things activity.
@@ -67,7 +72,7 @@ import es.upv.gnd.letslock.androidthings.R;
  *
  * @see <a href="https://github.com/androidthings/contrib-drivers#readme">https://github.com/androidthings/contrib-drivers#readme</a>
  */
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
 
 
     public Datos dato;
@@ -90,6 +95,12 @@ public class MainActivity extends Activity {
     private HandlerThread mCameraThread;
     private Handler temporizadorHandler = new Handler();
 
+    String pinPropietario = "";
+
+    Pinview pinview;
+    private int count = 0;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -100,13 +111,13 @@ public class MainActivity extends Activity {
 
         update();
 
-        comprobarPin();
+        pinview = findViewById(R.id.pinview);
 
-        upload = findViewById(R.id.button);
-        upload.setOnClickListener(new View.OnClickListener() {
+        pinview.setPinViewEventListener(new Pinview.PinViewEventListener() {
             @Override
-            public void onClick(View v) {
-                enviarDatosFirestore(dato);
+            public void onDataEntered(Pinview pinview, boolean fromUser) {
+                Toast.makeText(MainActivity.this, pinview.getValue(), Toast.LENGTH_SHORT).show();
+                comprobarPin(pinview.getValue());
             }
         });
 
@@ -122,19 +133,30 @@ public class MainActivity extends Activity {
         mCamera = DoorbellCamera.getInstance();
         mCamera.initializeCamera(this, mCameraHandler, mOnImageAvailableListener);
 
-        try {
+        /*try {
             handler.post(runnableRFID);
             handler.post(runnable); // 3. Llamamos al handler
             Log.d("Prueba","Llega aqui?");
         } catch (Exception e) {
             Log.e(TAG, "Error en PeripheralIO API", e);
-        }
+        }*/
+
+        //enterPin();
+        Button btnSolicitarPin = findViewById(R.id.btnSolicitarCodigo);
+        btnSolicitarPin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, AccesoActivity.class);
+                startActivity(i);
+            }
+        });
 
     }
 
 
     private Runnable runnable = new Runnable() {
-        @Override public void run() {
+        @Override
+        public void run() {
             try {
                 String distancia = getDistancia();
                 Log.d(TAG, "Recibido de Arduino de DISTANCIA: " + distancia);
@@ -151,11 +173,12 @@ public class MainActivity extends Activity {
     };
 
     private Runnable runnableRFID = new Runnable() {
-        @Override public void run() {
+        @Override
+        public void run() {
             try {
                 Log.d(TAG, "Llega a RFID??");
                 tag = getEtiquetasRFID();
-                if(!tag.equals("")) {
+                if (!tag.equals("")) {
                     enviarDatosFirestoreTag(tag);
                 }
                 handler.postDelayed(runnableRFID, INTERVALO_TAG);
@@ -233,7 +256,7 @@ public class MainActivity extends Activity {
             Log.w(TAG, "Error en sleep()", e);
         }
         Log.d(TAG, "EtiquetaRFID: " + tag);
-        if(tag.equals(" 04 2A C1 5A 51 59 80 ")) { //Etiqueta 3
+        if (tag.equals(" 04 2A C1 5A 51 59 80 ")) { //Etiqueta 3
             abrirPuerta();
         } else {
             Log.d(TAG, "Este usuario no existe");
@@ -241,8 +264,8 @@ public class MainActivity extends Activity {
     }
 
     public void enviarDatosFirestore(Datos dato) {
-        db.collection("Datos").document("Datos").update("distancia",dato.getDistancia());
-        db.collection("Datos").document("Datos").update("presencia",dato.getPresencia());
+        db.collection("Datos").document("Datos").update("distancia", dato.getDistancia());
+        db.collection("Datos").document("Datos").update("presencia", dato.getPresencia());
 
         //db.collection("Datos").document("Datos").update("tag","12345");
     }
@@ -274,12 +297,12 @@ public class MainActivity extends Activity {
     }
 
 
-
     static void registrarImagen(String titulo, String url) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         Imagen imagen = new Imagen(titulo, url);
         db.collection("imagenes_timbre").document().set(imagen);
     }
+
     /* private Runnable tomaFoto = new Runnable() {
          @Override public void run() {
              mCamera.takePicture();
@@ -290,11 +313,13 @@ public class MainActivity extends Activity {
     private ImageReader.OnImageAvailableListener
             mOnImageAvailableListener =
             new ImageReader.OnImageAvailableListener() {
-                @Override public void onImageAvailable(ImageReader reader) {
+                @Override
+                public void onImageAvailable(ImageReader reader) {
                     Image image = reader.acquireLatestImage();
                     ByteBuffer imageBuf = image.getPlanes()[0].getBuffer();
                     final byte[] imageBytes = new byte[imageBuf.remaining()];
-                    imageBuf.get(imageBytes); image.close();
+                    imageBuf.get(imageBytes);
+                    image.close();
                     onPictureTaken(imageBytes);
                 }
             };
@@ -302,7 +327,7 @@ public class MainActivity extends Activity {
     private void onPictureTaken(final byte[] imageBytes) {
         if (imageBytes != null) {
             String nombreFichero = UUID.randomUUID().toString();
-            subirBytes(imageBytes, "imagenes_timbre/"+nombreFichero);
+            subirBytes(imageBytes, "imagenes_timbre/" + nombreFichero);
 
             final Bitmap bitmap = BitmapFactory.decodeByteArray(
                     imageBytes, 0, imageBytes.length);
@@ -314,18 +339,21 @@ public class MainActivity extends Activity {
             });*/
         }
     }
+
     private void subirBytes(final byte[] bytes, String referencia) {
-        final StorageReference storageRef  = FirebaseStorage.getInstance().getReference();
+        final StorageReference storageRef = FirebaseStorage.getInstance().getReference();
         final StorageReference ref = storageRef.child(referencia);
         UploadTask uploadTask = ref.putBytes(bytes);
         Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
-            @Override public Task<Uri> then(@NonNull
-                                                    Task<UploadTask.TaskSnapshot> task) throws Exception {
+            @Override
+            public Task<Uri> then(@NonNull
+                                          Task<UploadTask.TaskSnapshot> task) throws Exception {
                 if (!task.isSuccessful()) throw task.getException();
                 return ref.getDownloadUrl();
             }
         }).addOnCompleteListener(new OnCompleteListener<Uri>() {
-            @Override public void onComplete(@NonNull Task<Uri> task) {
+            @Override
+            public void onComplete(@NonNull Task<Uri> task) {
                 if (task.isSuccessful()) {
                     Uri downloadUri = task.getResult();
                     Log.e("Almacenamiento", "URL: " + downloadUri.toString());
@@ -338,11 +366,8 @@ public class MainActivity extends Activity {
     }
 
 
-
-
-
     public void enviarDatosFirestoreTag(String tag) {
-        db.collection("Datos").document("Datos").update("tag",tag);
+        db.collection("Datos").document("Datos").update("tag", tag);
     }
 
     private void update() {
@@ -351,24 +376,54 @@ public class MainActivity extends Activity {
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
                 //user = documentSnapshot.toObject(User.class);
                 //user.setUid(mAuth.getUid());
-                if(documentSnapshot.getBoolean("puerta")) {
+                if (documentSnapshot.getBoolean("puerta")) {
                     abrirPuerta();
-                    Log.d(TAG, "Puerta abierta");
-                } else if(!documentSnapshot.getBoolean("puerta")) {
+                    Log.d("Puerta", "Puerta abierta");
+                } else if (!documentSnapshot.getBoolean("puerta")) {
                     cerrarPuerta();
-                    Log.d(TAG, "Puerta cerrada");
+                    Log.d("Puerta", "Puerta cerrada");
 
                 }
             }
         });
     }
 
-    public void comprobarPin() { //Se llama cuando pulsas el boton de enviar
-        // String pin = coger texto del TextView
-        String pin;
-        String pr = db.collection("usuarios").getId();
-        Log.d("Pin", pr);
-    }
+    public void comprobarPin(final String pin) {
+        db.collection("Datos").document("Puerta").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
 
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+
+                //Si consigue leer en Firestore
+                if (task.isSuccessful()) {
+
+                    String codigo = task.getResult().getString("pin");
+
+
+                    Log.d("Pin", codigo);
+                    if (pin.equals(codigo)) {
+                        db.collection("Datos").document("Puerta").update("puerta", true);
+                        Toast.makeText(MainActivity.this, "PIN CORRECTO, DESBLOQUEANDO PUERTA", Toast.LENGTH_SHORT).show();
+                        try {
+                            Thread.sleep(5000);
+                        } catch (InterruptedException e) {
+                            Log.w(TAG, "Error en sleep()", e);
+                        }
+                        db.collection("Datos").document("Puerta").update("puerta", false);
+                        count = 0;
+                    } else {
+                        if (count == 3) {
+                            Toast.makeText(MainActivity.this, "PIN INCORRECTO, intentos: " + count, Toast.LENGTH_SHORT).show();
+                            count = 0;
+                        } else {
+                            count++;
+                            Toast.makeText(MainActivity.this, "PIN INCORRECTO, intentos: " + count, Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }
+            }
+        });
+
+    }
 
 }
