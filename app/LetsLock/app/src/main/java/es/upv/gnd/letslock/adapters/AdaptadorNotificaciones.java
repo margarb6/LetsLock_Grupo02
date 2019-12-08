@@ -1,6 +1,5 @@
 package es.upv.gnd.letslock.adapters;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +11,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.serpumar.comun.Notificacion;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -20,7 +21,6 @@ import java.util.Locale;
 import es.upv.gnd.letslock.Fragments.InicioFragment;
 import es.upv.gnd.letslock.Fragments.TimbreFragment;
 import es.upv.gnd.letslock.R;
-import es.upv.gnd.letslock.bbdd.Notificacion;
 
 import static es.upv.gnd.letslock.MainActivity.fragments;
 import static es.upv.gnd.letslock.MainActivity.navigation;

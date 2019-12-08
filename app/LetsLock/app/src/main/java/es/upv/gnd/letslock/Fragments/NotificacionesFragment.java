@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +16,9 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.serpumar.comun.Notificacion;
+import com.example.serpumar.comun.Notificaciones;
+import com.example.serpumar.comun.NotificacionesCallback;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -25,9 +27,6 @@ import java.util.ArrayList;
 import es.upv.gnd.letslock.R;
 import es.upv.gnd.letslock.adapters.AdaptadorNotificaciones;
 import es.upv.gnd.letslock.adapters.DeleteAdaptador;
-import es.upv.gnd.letslock.bbdd.Notificacion;
-import es.upv.gnd.letslock.bbdd.Notificaciones;
-import es.upv.gnd.letslock.bbdd.NotificacionesCallback;
 
 public class NotificacionesFragment extends Fragment implements DeleteAdaptador.RecyclerItemTouchHelperListener {
 

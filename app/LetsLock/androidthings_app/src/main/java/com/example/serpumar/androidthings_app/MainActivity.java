@@ -2,9 +2,14 @@ package com.example.serpumar.androidthings_app;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.res.ResourcesCompat;
 
 import android.app.Activity;
+import android.app.Notification;
+import android.app.PendingIntent;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -23,12 +28,16 @@ import android.widget.ImageView;
 
 import com.example.serpumar.comun.Datos;
 import com.example.serpumar.comun.Imagen;
+import com.example.serpumar.comun.Notificacion;
+import com.example.serpumar.comun.Notificaciones;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import com.google.android.things.contrib.driver.button.ButtonInputDriver;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -38,11 +47,15 @@ import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.UUID;
 
 import es.upv.gnd.letslock.androidthings.R;
+
+import static com.example.serpumar.comun.NotificationActivity.CHANNEL_1_ID;
 
 /**
  * Skeleton of an Android Things activity.
@@ -73,7 +86,6 @@ public class MainActivity extends Activity {
     private Handler handler = new Handler(); // Handler
     public Button upload;
 
-
     //Timbre
     private ButtonInputDriver mButtonInputDriver;
 
@@ -83,10 +95,15 @@ public class MainActivity extends Activity {
     private HandlerThread mCameraThread;
     private Handler temporizadorHandler = new Handler();
 
+    private NotificationManagerCompat notificationManager;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        notificationManager = NotificationManagerCompat.from(this);
 
 
         Log.i("Prueba", "Lista de UART disponibles: " + ArduinoUart.disponibles());
@@ -98,7 +115,7 @@ public class MainActivity extends Activity {
             Log.e(TAG, "Error en PeripheralIO API", e);
         }
 
-        // upload = findViewById(R.id.button);
+         upload = findViewById(R.id.button);
         upload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -292,14 +309,45 @@ public class MainActivity extends Activity {
                     Uri downloadUri = task.getResult();
                     Log.e("Almacenamiento", "URL: " + downloadUri.toString());
                     registrarImagen("Subida por R.P.", downloadUri.toString());
-                } else {
-                    Log.e("Almacenamiento", "ERROR: subiendo bytes");
+
+                    final String idCasa = "0";
+
+                    FirebaseFirestore.getInstance().collection(idCasa).document("0").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+
+                        @Override
+                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+
+                            if (task.isSuccessful()) {
+
+                                ArrayList<String> idUsuario = (ArrayList<String>) task.getResult().get("idUsuarios");
+
+                                Notificaciones notificacionesBD = new Notificaciones();
+                                notificacionesBD.setNotificaciones(new Notificacion(UUID.randomUUID().toString(),"tipo", new Date().getTime(),idCasa, idUsuario ,0));
+
+                                //Intent resultIntent = new Intent(getApplicationContext(), .class);
+                                //PendingIntent resultPendingIntent = PendingIntent.getActivity(this, 1, resultIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+
+                                Notification notification = new NotificationCompat.Builder(getApplicationContext(),CHANNEL_1_ID)
+                                        .setSmallIcon(R.drawable.notificacion_timbre)
+                                        .setContentTitle("Timbre")
+                                        .setContentText("Han llamdo al timbre")
+                                        .setPriority(NotificationCompat.PRIORITY_HIGH)
+                                        .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+                                        .setAutoCancel(true)
+                                        //.setContentIntent(resultPendingIntent)
+                                        .build();
+
+                                notificationManager.notify(1,notification);
+                            }
+
+                             else {
+                                Log.e("Almacenamiento", "ERROR: subiendo bytes");
+                            }
+
+                        }
+                    });
                 }
             }
         });
     }
-
-
-
-
 }
