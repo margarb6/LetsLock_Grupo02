@@ -145,26 +145,26 @@ public class AdaptadorNotificaciones extends RecyclerView.Adapter<AdaptadorNotif
 
                 case "timbre":
                     tipo.setText("Timbre");
-                    foto.setImageResource(R.drawable.timbre);
+                    foto.setImageResource(R.drawable.notificacion_timbre);
                     descripcion.setText("Alguien ha llamado al timbre");
                     break;
 
                 case "solicitudPin":
-                    tipo.setText("Solicitud pin");
-                    descripcion.setText("Alguien ha enviado un pin para abrir la puerta");
-                    foto.setImageResource(R.drawable.timbre);
+                    tipo.setText("Pin solicitado");
+                    descripcion.setText("Alguien ha solicitado un pin para abrir la puerta");
+                    foto.setImageResource(R.drawable.notificacion_solicitar_ping);
                     break;
 
                 case "errorPin":
-                    tipo.setText("Error pin");
+                    tipo.setText("Pin incorrecto");
                     descripcion.setText("Alguien está intentando entrar a su casa");
-                    foto.setImageResource(R.drawable.alerta);
+                    foto.setImageResource(R.drawable.notificacion_error_ping);
                     break;
 
                 case "llamanPuerta":
                     tipo.setText("Puerta");
                     descripcion.setText("Se ha abierto la puerta");
-                    foto.setImageResource(R.drawable.timbre);
+                    foto.setImageResource(R.drawable.notificacion_puerta_abierta);
                     break;
             }
         }

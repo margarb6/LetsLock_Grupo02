@@ -43,7 +43,7 @@ public class Notificaciones {
                         ArrayList<String> idUsuario = (ArrayList<String>) docs.get(i).get("idUsuarios");
                         for (int j = 0; j < idUsuario.size(); j++) {
 
-                            if (idUsuario.get(i).equals(user.getUid()))
+                            if (idUsuario.get(j).equals(user.getUid()))
                                 idCasa = docs.get(i).getId();
                         }
                     }
@@ -77,10 +77,10 @@ public class Notificaciones {
 
                 for (int i = 0; i < docs.size(); i++) {
 
-                    if (docs.get(i).getString("idCasa").equals(idCasa)){
+                    if (docs.get(i).getString("idCasa").equals(idCasa)) {
 
-                        ArrayList<String> usuarios= (ArrayList<String>) docs.get(i).get("idUsuarios");
-                        notificaciones.add(new Notificacion(docs.get(i).getId(), docs.get(i).getString("tipo"), docs.get(i).getLong("hora"), idCasa, usuarios,i));
+                        ArrayList<String> usuarios = (ArrayList<String>) docs.get(i).get("idUsuarios");
+                        notificaciones.add(new Notificacion(docs.get(i).getId(), docs.get(i).getString("tipo"), docs.get(i).getLong("hora"), idCasa, usuarios, i));
                     }
                 }
 
@@ -92,11 +92,11 @@ public class Notificaciones {
 
     static public void setNotificaciones(Notificacion notificacion) {
 
-        HashMap<String, Object> hMap= new HashMap<>();
-        hMap.put("hora",notificacion.getHora());
-        hMap.put("idCasa",notificacion.getIdCasa());
-        hMap.put("idUsuarios",notificacion.getIdUsuarios());
-        hMap.put("tipo",notificacion.getTipo());
+        HashMap<String, Object> hMap = new HashMap<>();
+        hMap.put("hora", notificacion.getHora());
+        hMap.put("idCasa", notificacion.getIdCasa());
+        hMap.put("idUsuarios", notificacion.getIdUsuarios());
+        hMap.put("tipo", notificacion.getTipo());
 
         db.collection("notificaciones").document(notificacion.getId()).set(hMap);
     }
