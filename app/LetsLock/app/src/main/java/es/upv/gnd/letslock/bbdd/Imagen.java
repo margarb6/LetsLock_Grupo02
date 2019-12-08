@@ -1,4 +1,4 @@
-package com.example.serpumar.comun;
+package es.upv.gnd.letslock.bbdd;
 
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -15,16 +15,17 @@ public class Imagen {
         this.tiempo = new Date().getTime();
     }
 
+    public String getUrl() {
+        return url;
+    }
+
     public String getTitulo() {
+
         return titulo;
     }
 
     public void setTitulo(String titulo) {
         this.titulo = titulo;
-    }
-
-    public String getUrl() {
-        return url;
     }
 
     public void setUrl(String url) {
@@ -44,4 +45,5 @@ public class Imagen {
         Imagen imagen = new Imagen(titulo, url);
         db.collection("imagenes_timbre").document().set(imagen);
     }
+
 }

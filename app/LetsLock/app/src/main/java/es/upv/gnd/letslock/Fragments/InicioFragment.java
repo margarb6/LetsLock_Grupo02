@@ -3,15 +3,8 @@ package es.upv.gnd.letslock.Fragments;
 import android.animation.Animator;
 import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
-import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.ColorFilter;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffColorFilter;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -26,15 +19,11 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.airbnb.lottie.LottieAnimationView;
-import com.airbnb.lottie.LottieProperty;
-import com.airbnb.lottie.model.KeyPath;
-import com.airbnb.lottie.value.LottieFrameInfo;
-import com.airbnb.lottie.value.SimpleLottieValueCallback;
 
 import java.util.Random;
 
-import es.upv.gnd.letslock.JavaMailAPI;
-import es.upv.gnd.letslock.PreferenciasActivity;
+import com.example.serpumar.comun.JavaMailAPI;
+
 import es.upv.gnd.letslock.R;
 
 public class InicioFragment extends Fragment {
@@ -86,7 +75,7 @@ public class InicioFragment extends Fragment {
                         correo.setVisibility(View.INVISIBLE);
                         lottieAnimationView2.setVisibility(View.VISIBLE);
                         enviarCorreo();
-                        lottieAnimationView2.playAnimation();
+
                     }
                 },0);
             }
@@ -135,14 +124,6 @@ public class InicioFragment extends Fragment {
                 enviar.setVisibility(View.VISIBLE);
                 codigo_y_correo.setText(mensaje_confirmacion);
 
-
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        codigo_y_correo.setText("");
-
-                    }
-                },120000);
             }
 
             @Override
@@ -230,18 +211,32 @@ public class InicioFragment extends Fragment {
     }
 
     public String enviarCorreo() {
-        //super.enviarCorreo();
-        String listaCorreos = correo.getText().toString().trim();
-        String [] correos = listaCorreos.split(",");
-        //fabio@gmail.com, david@gmail.com
-        String asunto = "Letslock: codigo de acceso";
-        int codigo_enviado = randomCode(codigo);
-        mensaje_confirmacion = "El codigo "+codigo_enviado+ " ha sido enviado a "+listaCorreos;
-        String mensaje = "Tu codigo de entrada es "+codigo_enviado;
+        if (correo.getText().toString().isEmpty()) {
+            Toast.makeText(getContext(), "Escribe un correo valido", Toast.LENGTH_SHORT).show();
+            lottieAnimationView2.setVisibility(View.INVISIBLE);
+            enviar.setVisibility(View.VISIBLE);
+        }else {
+            //super.enviarCorreo();
+            String listaCorreos = correo.getText().toString().trim();
+            //String [] correos = listaCorreos.split(",");
+            //fabio@gmail.com, david@gmail.com
+            String asunto = "Letslock: codigo de acceso";
+            int codigo_enviado = randomCode(codigo);
+            mensaje_confirmacion = "El codigo "+codigo_enviado+ " ha sido enviado a "+listaCorreos;
+            String mensaje = "Tu codigo de entrada es "+codigo_enviado;
 
-        JavaMailAPI javaMailAPI = new JavaMailAPI(getContext(), listaCorreos
-                ,asunto,mensaje);
-        javaMailAPI.execute();
+            JavaMailAPI javaMailAPI = new JavaMailAPI(getContext(), listaCorreos
+                    ,asunto,mensaje);
+            javaMailAPI.execute();
+            lottieAnimationView2.playAnimation();
+
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    codigo_y_correo.setText("");
+
+                }
+            },120000);
 
        /* Intent intent = new Intent(Intent.ACTION_SEND);
         intent.putExtra(Intent.EXTRA_EMAIL, correos);
@@ -250,6 +245,8 @@ public class InicioFragment extends Fragment {
 
         intent.setType("message/rfc822");
         startActivity(Intent.createChooser(intent,"Elige una forma"));*/
+
+        }
 
         return mensaje_confirmacion;
     }

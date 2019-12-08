@@ -32,8 +32,8 @@ import es.upv.gnd.letslock.bbdd.UsuariosCallback;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ArrayList<Fragment> fragments;
-    private BottomNavigationView navigation;
+    public static ArrayList<Fragment> fragments;
+    public static BottomNavigationView navigation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
