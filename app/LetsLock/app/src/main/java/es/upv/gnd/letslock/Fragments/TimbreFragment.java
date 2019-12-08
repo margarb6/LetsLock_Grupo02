@@ -1,6 +1,6 @@
 package es.upv.gnd.letslock.Fragments;
 
-import android.graphics.BitmapFactory;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -15,6 +15,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import es.upv.gnd.letslock.HistorialTimbreActivity;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -49,6 +50,7 @@ public class TimbreFragment extends Fragment {
     ImageView imagen;
     Button si;
     Button no;
+    Button historial;
 
     String TAG = "MARTA";
     private StorageReference storageRef;
@@ -62,11 +64,20 @@ public class TimbreFragment extends Fragment {
         imagen = vista.findViewById(R.id.imagen_timbre);
         si = vista.findViewById(R.id.timbre_boton_si);
         no = vista.findViewById(R.id.timbre_boton_no);
+        historial = vista.findViewById(R.id.boton_historial);
 
         nadie_llama.setVisibility(View.INVISIBLE);
         pregunta.setVisibility(View.VISIBLE);
         si.setVisibility(View.VISIBLE);
         no.setVisibility(View.VISIBLE);
+
+        historial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(), HistorialTimbreActivity.class);
+                startActivity(i);
+            }
+        });
 
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -78,7 +89,7 @@ public class TimbreFragment extends Fragment {
                 no.setVisibility(View.INVISIBLE);
 
             }
-        }, 10000);
+        },30000);
 
         storageRef = FirebaseStorage.getInstance().getReference();
 
