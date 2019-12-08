@@ -2,6 +2,7 @@ package com.example.serpumar.comun;
 
 import android.content.Context;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.Random;
 
@@ -22,17 +23,20 @@ public class Correo {
 
     public String enviarCorreo(Context context, EditText correo) {
         //super.enviarCorreo();
-        String listaCorreos = correo.getText().toString().trim();
-        String [] correos = listaCorreos.split(",");
-        //fabio@gmail.com, david@gmail.com
-        String asunto = "Letslock: codigo de acceso";
-        int codigo_enviado = randomCode(codigo);
-        mensaje_confirmacion = "El codigo "+codigo_enviado+ " ha sido enviado a "+listaCorreos;
-        String mensaje = "Tu codigo de entrada es "+codigo_enviado;
+        if (correo.getText().toString().isEmpty()){
+            Toast.makeText(context, "Inserte un correo valido", Toast.LENGTH_SHORT).show();
+        }else{
+            String listaCorreos = correo.getText().toString().trim();
+            String [] correos = listaCorreos.split(",");
+            //fabio@gmail.com, david@gmail.com
+            String asunto = "Letslock: codigo de acceso";
+            int codigo_enviado = randomCode(codigo);
+            mensaje_confirmacion = "El codigo "+codigo_enviado+ " ha sido enviado a "+listaCorreos;
+            String mensaje = "Tu codigo de entrada es "+codigo_enviado;
 
-        JavaMailAPI javaMailAPI = new JavaMailAPI(context, listaCorreos
-                ,asunto,mensaje);
-        javaMailAPI.execute();
+            JavaMailAPI javaMailAPI = new JavaMailAPI(context, listaCorreos
+                    ,asunto,mensaje);
+            javaMailAPI.execute();
 
        /* Intent intent = new Intent(Intent.ACTION_SEND);
         intent.putExtra(Intent.EXTRA_EMAIL, correos);
@@ -41,6 +45,8 @@ public class Correo {
 
         intent.setType("message/rfc822");
         startActivity(Intent.createChooser(intent,"Elige una forma"));*/
+        }
+
 
         return mensaje_confirmacion;
     }

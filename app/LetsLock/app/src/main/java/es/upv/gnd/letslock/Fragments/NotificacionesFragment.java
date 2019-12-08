@@ -70,6 +70,7 @@ public class NotificacionesFragment extends Fragment implements DeleteAdaptador.
         } else {
             onclick(puerta, "llamanPuerta");
             onclick(solicitudPin, "solicitudPin");
+
         }
 
         onclick(timbre, "timbre");
@@ -78,7 +79,6 @@ public class NotificacionesFragment extends Fragment implements DeleteAdaptador.
         notificacionesBD.getNotificaciones(new NotificacionesCallback() {
             @Override
             public void getNotificacionesCallback(ArrayList<Notificacion> notificaciones) {
-
                 filtrar(notificaciones);
             }
         });
@@ -93,7 +93,7 @@ public class NotificacionesFragment extends Fragment implements DeleteAdaptador.
 
             for (String usuario : notificaciones.get(i).getIdUsuarios()) {
 
-                if (usuario.equals(FirebaseAuth.getInstance().getUid())) {
+                if (usuario.equals(FirebaseAuth.getInstance().getCurrentUser().getUid())) {
 
                     if (!permisos) {
 
@@ -127,7 +127,7 @@ public class NotificacionesFragment extends Fragment implements DeleteAdaptador.
             adaptador.removeItem(viewHolder.getAdapterPosition());
             recuperarNotificacionBorrada(viewHolder, notificacionBorrada, deletedIntex);
 
-            notificacionBorrada.getIdUsuarios().remove(FirebaseAuth.getInstance().getUid());
+            notificacionBorrada.getIdUsuarios().remove(FirebaseAuth.getInstance().getCurrentUser().getUid());
             notificacionesBD.setNotificaciones(notificacionBorrada);
         }
     }
@@ -139,7 +139,7 @@ public class NotificacionesFragment extends Fragment implements DeleteAdaptador.
             @Override
             public void onClick(View v) {
                 adaptador.restoreItem(notificacionBorrada, deletedIntex);
-                notificacionBorrada.getIdUsuarios().add(FirebaseAuth.getInstance().getUid());
+                notificacionBorrada.getIdUsuarios().add(FirebaseAuth.getInstance().getCurrentUser().getUid());
                 notificacionesBD.setNotificaciones(notificacionBorrada);
             }
         });
