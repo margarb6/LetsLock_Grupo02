@@ -52,17 +52,17 @@ public class JavaMailAPI extends AsyncTask<Void,Void,Void>  {
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
         //Dismiss progress dialog when message successfully send
-<<<<<<< HEAD
+
         // mProgressDialog.dismiss();
 
         //Show success toast
         // Toast.makeText(mContext,"Message Sent",Toast.LENGTH_SHORT).show();
-=======
+
         //mProgressDialog.dismiss();
 
         //Show success toast
         //Toast.makeText(mContext,"Message Sent",Toast.LENGTH_SHORT).show();
->>>>>>> fabio
+
     }
 
     @Override

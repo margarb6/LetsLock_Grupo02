@@ -76,7 +76,6 @@ public class InicioFragment extends Fragment {
                         lottieAnimationView2.setVisibility(View.VISIBLE);
                         enviarCorreo();
 
-                        lottieAnimationView2.playAnimation();
                     }
                 },0);
             }
@@ -212,25 +211,32 @@ public class InicioFragment extends Fragment {
     }
 
     public String enviarCorreo() {
-        //super.enviarCorreo();
-        String listaCorreos = correo.getText().toString().trim();
-        String [] correos = listaCorreos.split(",");
-        //fabio@gmail.com, david@gmail.com
-        String asunto = "Letslock: codigo de acceso";
-        int codigo_enviado = randomCode(codigo);
-        mensaje_confirmacion = "El codigo "+codigo_enviado+ " ha sido enviado a "+listaCorreos;
-        String mensaje = "Tu codigo de entrada es "+codigo_enviado;
+        if (correo.getText().toString().isEmpty()) {
+            Toast.makeText(getContext(), "Escribe un correo valido", Toast.LENGTH_SHORT).show();
+            lottieAnimationView2.setVisibility(View.INVISIBLE);
+            enviar.setVisibility(View.VISIBLE);
+        }else {
+            //super.enviarCorreo();
+            String listaCorreos = correo.getText().toString().trim();
+            //String [] correos = listaCorreos.split(",");
+            //fabio@gmail.com, david@gmail.com
+            String asunto = "Letslock: codigo de acceso";
+            int codigo_enviado = randomCode(codigo);
+            mensaje_confirmacion = "El codigo "+codigo_enviado+ " ha sido enviado a "+listaCorreos;
+            String mensaje = "Tu codigo de entrada es "+codigo_enviado;
 
-        JavaMailAPI javaMailAPI = new JavaMailAPI(getContext(), listaCorreos
-                ,asunto,mensaje);
-        javaMailAPI.execute();
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                codigo_y_correo.setText("");
+            JavaMailAPI javaMailAPI = new JavaMailAPI(getContext(), listaCorreos
+                    ,asunto,mensaje);
+            javaMailAPI.execute();
+            lottieAnimationView2.playAnimation();
 
-            }
-        },120000);
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    codigo_y_correo.setText("");
+
+                }
+            },120000);
 
        /* Intent intent = new Intent(Intent.ACTION_SEND);
         intent.putExtra(Intent.EXTRA_EMAIL, correos);
@@ -239,6 +245,8 @@ public class InicioFragment extends Fragment {
 
         intent.setType("message/rfc822");
         startActivity(Intent.createChooser(intent,"Elige una forma"));*/
+
+        }
 
         return mensaje_confirmacion;
     }

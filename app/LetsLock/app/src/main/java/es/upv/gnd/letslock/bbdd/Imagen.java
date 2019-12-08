@@ -43,7 +43,7 @@ public class Imagen {
     public static void registrarImagen(String titulo, String url) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         Imagen imagen = new Imagen(titulo, url);
-        db.collection("imagenes").document().set(imagen);
+        db.collection("imagenes_timbre").document().set(imagen);
     }
 
 }
