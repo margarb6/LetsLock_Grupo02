@@ -12,6 +12,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.airbnb.lottie.LottieAnimationView;
+
 import es.upv.gnd.letslock.HistorialTimbreActivity;
 import es.upv.gnd.letslock.R;
 
@@ -23,6 +25,7 @@ public class TimbreFragment extends Fragment {
     Button si;
     Button no;
     Button historial;
+    LottieAnimationView lottieAnimationView;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -34,11 +37,14 @@ public class TimbreFragment extends Fragment {
         si = vista.findViewById(R.id.timbre_boton_si);
         no = vista.findViewById(R.id.timbre_boton_no);
         historial = vista.findViewById(R.id.boton_historial);
+        lottieAnimationView = vista.findViewById(R.id.animation_view3);
+        lottieAnimationView.setVisibility(View.INVISIBLE);
 
         nadie_llama.setVisibility(View.INVISIBLE);
         pregunta.setVisibility(View.VISIBLE);
         si.setVisibility(View.VISIBLE);
         no.setVisibility(View.VISIBLE);
+        nadie_llama.setText("Nadie ha llamado en los ultimos 5 minutos");
 
         historial.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,7 +64,7 @@ public class TimbreFragment extends Fragment {
                 no.setVisibility(View.INVISIBLE);
 
             }
-        },30000);
+        },3000);
 
 
         return vista;
