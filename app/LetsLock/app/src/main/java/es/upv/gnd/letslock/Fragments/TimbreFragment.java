@@ -38,6 +38,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Date;
 
 import es.upv.gnd.letslock.R;
 
@@ -90,10 +91,7 @@ public class TimbreFragment extends Fragment {
                 @Override
                 public void run() {
 
-                    nadie_llama.setVisibility(View.VISIBLE);
-                    pregunta.setVisibility(View.INVISIBLE);
-                    si.setVisibility(View.INVISIBLE);
-                    no.setVisibility(View.INVISIBLE);
+        storageRef = FirebaseStorage.getInstance().getReference();
 
                 }
             }, 30000);
@@ -136,15 +134,20 @@ public class TimbreFragment extends Fragment {
 
     private URL ultimaFoto(QuerySnapshot qs) {
 
-        long tiempo = 1000000000;
+        long tiempo = 0;
         long cincoMin = 5 * 60 * 1000;
+        long actualLong = System.currentTimeMillis();
+
         URL url = null;
         DocumentSnapshot ds = null;
         for (DocumentSnapshot docS : qs.getDocuments()) {
             if (docS.getLong("tiempo") > tiempo) {
                 tiempo = docS.getLong("tiempo");
                 ds = docS;
-                if ((System.currentTimeMillis() - docS.getLong("tiempo")) < cincoMin) {
+                Log.e("MARTA","Tengo la foto mas actual");
+                if (( actualLong- tiempo) < cincoMin) {
+                    Log.e("MARTA","Tengo una foto de hace menos de  5 mins");
+
                     try {
                         url = new URL(ds.getString("url"));
                         Log.e("URL", ds.getString("url"));
@@ -152,8 +155,6 @@ public class TimbreFragment extends Fragment {
                         e.printStackTrace();
                     }
                 }
-
-
             }
         }
 

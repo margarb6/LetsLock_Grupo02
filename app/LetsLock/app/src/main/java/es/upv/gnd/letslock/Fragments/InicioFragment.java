@@ -3,9 +3,7 @@ package es.upv.gnd.letslock.Fragments;
 import android.animation.Animator;
 import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
-import android.app.Notification;
-import android.content.Context;
-import android.content.SharedPreferences;
+import android.graphics.ColorFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -24,6 +22,11 @@ import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 
 import com.airbnb.lottie.LottieAnimationView;
+import com.airbnb.lottie.LottieProperty;
+import com.airbnb.lottie.model.KeyPath;
+import com.airbnb.lottie.value.LottieFrameInfo;
+import com.airbnb.lottie.value.SimpleLottieValueCallback;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Date;
 import java.util.Random;
@@ -48,6 +51,7 @@ public class InicioFragment extends Fragment {
     boolean image1Displaying = true;
     Toast toast;
     LottieAnimationView lottieAnimationView;
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
     LottieAnimationView lottieAnimationView2;
     Button enviar;
     TextView codigo_y_correo;
@@ -57,9 +61,6 @@ public class InicioFragment extends Fragment {
     Button boton_enviar;
     Button boton_cancelar;
 
-    private boolean anonimo = false;
-    private String idCasa;
-    private NotificationManagerCompat notificationManager;
 
     @SuppressLint("ClickableViewAccessibility")
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -70,7 +71,19 @@ public class InicioFragment extends Fragment {
 
         if(!anonimo){
 
-            vista = inflater.inflate(R.layout.fragment_inicio, container, false);
+        imageView = vista.findViewById(R.id.puerta);
+        lottieAnimationView = vista.findViewById(R.id.animation_view);
+
+        lottieAnimationView2 = vista.findViewById(R.id.animation_view2);
+        enviar = vista.findViewById(R.id.b_enviar);
+        lottieAnimationView2.setVisibility(View.INVISIBLE);
+        codigo_y_correo = vista.findViewById(R.id.codigo_y_correo);
+        correo = vista.findViewById(R.id.correo_input);
+        correo.setVisibility(View.INVISIBLE);
+        boton_enviar = vista. findViewById(R.id.boton_enviar);
+        boton_enviar.setVisibility(View.INVISIBLE);
+        boton_cancelar = vista. findViewById(R.id.boton_cancelar);
+        boton_cancelar.setVisibility(View.INVISIBLE);
 
             NotificationActivity notificationActivity= new NotificationActivity();
             notificationActivity.createNotificationChannels(getContext());
@@ -90,9 +103,15 @@ public class InicioFragment extends Fragment {
             boton_cancelar = vista. findViewById(R.id.boton_cancelar);
             boton_cancelar.setVisibility(View.INVISIBLE);
 
-            boton_enviar.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+                    }
+
+
+                },0);
+            }
+        });
+        boton_cancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
                     new Handler().postDelayed(new Runnable() {
                         @Override
@@ -182,8 +201,22 @@ public class InicioFragment extends Fragment {
 
                 }
 
-                @Override
-                public void onAnimationRepeat(Animator animation) {
+               new Handler().postDelayed(new Runnable() {
+                   @Override
+                   public void run() {
+                       if (image1Displaying){
+                           toast.makeText(getActivity(), "Abriendo puerta", Toast.LENGTH_SHORT).show();
+                           imageView.setImageResource(R.drawable.imagen_animacion);
+                           db.collection("Datos").document("Puerta").update("puerta", true);
+
+                           lottieAnimationView.playAnimation();
+                           image1Displaying = false;
+                       }else{
+                           imageView.setImageResource(R.drawable.imagen_animacion);
+                           float progress = lottieAnimationView.getProgress();
+                           int duration = 3100;
+                           ValueAnimator valueAnimator = ValueAnimator.ofFloat(-progress,0 )
+                                   .setDuration(duration);
 
                 }
             });
@@ -192,20 +225,12 @@ public class InicioFragment extends Fragment {
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
 
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            if (image1Displaying){
-                                toast.makeText(getActivity(), "Abriendo puerta", Toast.LENGTH_SHORT).show();
-                                imageView.setImageResource(R.drawable.imagen_animacion);
-                                lottieAnimationView.playAnimation();
-                                image1Displaying = false;
-                            }else{
-                                imageView.setImageResource(R.drawable.imagen_animacion);
-                                float progress = lottieAnimationView.getProgress();
-                                int duration = 3100;
-                                ValueAnimator valueAnimator = ValueAnimator.ofFloat(-progress,0 )
-                                        .setDuration(duration);
+                           });
+                           valueAnimator.start();
+                           toast.makeText(getActivity(), "Cerrando puerta", Toast.LENGTH_SHORT).show();
+                           db.collection("Datos").document("Puerta").update("puerta", false);
+                           image1Displaying = true;
+                       }
 
                                 valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
                                     @Override

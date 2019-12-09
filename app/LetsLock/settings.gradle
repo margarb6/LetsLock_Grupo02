@@ -1,2 +1,2 @@
-include ':app', ':androidthings_app', ':comun'
+include ':app', ':androidthings_app', ':comun', ':androidthings_datos'
 rootProject.name='LetsLock'
