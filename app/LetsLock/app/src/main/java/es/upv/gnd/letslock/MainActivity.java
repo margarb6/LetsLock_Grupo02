@@ -1,6 +1,8 @@
 package es.upv.gnd.letslock;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -32,11 +34,16 @@ public class MainActivity extends AppCompatActivity {
     public static ArrayList<Fragment> fragments;
     public static BottomNavigationView navigation;
 
+    private boolean anonimo = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        SharedPreferences prefs = getSharedPreferences("Usuario", Context.MODE_PRIVATE);
+        if (prefs.contains("anonimo")) anonimo = prefs.getBoolean("anonimo", false);
 
         if (savedInstanceState == null) {
 
@@ -53,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
             public void getUsuariosCallback(Usuario usuarioBD) {
 
                 //Si no tiene permisos no puede ver el fragment
-                if(!usuarioBD.isPermisos()){
+                if (!usuarioBD.isPermisos() || anonimo) {
                     navigation.getMenu().findItem(R.id.menu_inferior_personas).setVisible(false);
                 }
 
@@ -98,7 +105,16 @@ public class MainActivity extends AppCompatActivity {
 
             case R.id.nav_perfil:
 
-                Intent intent = new Intent(this, TabsActivity.class);
+                Intent intent;
+                if (!anonimo) {
+
+                    intent = new Intent(this, TabsActivity.class);
+
+                }else{
+
+                    intent = new Intent(this, AnonimoActivity.class);
+                }
+
                 startActivity(intent);
                 break;
 
@@ -119,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-            Fragment fragSeleccionado= null;
+            Fragment fragSeleccionado = null;
 
             switch (item.getItemId()) {
 
@@ -151,12 +167,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
 
-        fragments.remove(fragments.size()-1);
+        fragments.remove(fragments.size() - 1);
 
         //Cuando hace click en volver hacia atras checkea el item anterior y establece ese fragment
-        if(!fragments.isEmpty()){
+        if (!fragments.isEmpty()) {
 
-            Fragment fragmentAnterior= fragments.get(fragments.size()-1);
+            Fragment fragmentAnterior = fragments.get(fragments.size() - 1);
 
             if (fragmentAnterior instanceof InicioFragment) {
 
@@ -177,8 +193,8 @@ public class MainActivity extends AppCompatActivity {
 
             super.onBackPressed();
 
-        //Si no hay item anterior cierra la aplicación
-        }else {
+            //Si no hay item anterior cierra la aplicación
+        } else {
 
             MainActivity.this.finishAffinity();
         }

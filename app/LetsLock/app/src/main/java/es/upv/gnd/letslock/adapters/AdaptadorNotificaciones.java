@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.serpumar.comun.Notificacion;
+import es.upv.gnd.letslock.bbdd.Notificacion;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -68,23 +68,33 @@ public class AdaptadorNotificaciones extends RecyclerView.Adapter<AdaptadorNotif
 
             notificaciones.add(notificacion);
             notifyItemInserted(position);
+
+            for (int i = 0; i <notificaciones.size(); i++) {
+                for (int j = 1; j < notificaciones.size(); j++) {
+                    if (notificaciones.get(j - 1).getPosition() > notificaciones.get(j).getPosition()) {
+
+                        Notificacion temporal = notificaciones.get(j - 1);
+                        notificaciones.set(j -1, notificaciones.get(j));
+                        notificaciones.set(j, temporal);
+                        notifyItemMoved(j, j-1);
+                    }
+                }
+            }
         }
         else{
 
             notificaciones.add(position, notificacion);
             notifyItemInserted(position);
 
-            ArrayList<Integer> pos= new ArrayList<>();
-            for (Notificacion not : notificaciones){
+            for (int i = 0; i <notificaciones.size(); i++) {
+                for (int j = 1; j < notificaciones.size(); j++) {
+                    if (notificaciones.get(j - 1).getPosition() > notificaciones.get(j).getPosition()) {
 
-                pos.add(not.getPosition());
-            }
-
-            for (int i=0; i<notificaciones.size(); i++){
-
-                for (int posicion : pos){
-
-                    if(posicion<i) notifyItemChanged(posicion);
+                        Notificacion temporal = notificaciones.get(j);
+                        notificaciones.set(j -1, notificaciones.get(j));
+                        notificaciones.set(j, temporal);
+                        notifyItemMoved(j, j-1);
+                    }
                 }
             }
         }
@@ -150,8 +160,8 @@ public class AdaptadorNotificaciones extends RecyclerView.Adapter<AdaptadorNotif
                     break;
 
                 case "solicitudPin":
-                    tipo.setText("Pin solicitado");
-                    descripcion.setText("Alguien ha solicitado un pin para abrir la puerta");
+                    tipo.setText("Pin enviado");
+                    descripcion.setText("Alguien ha enviado un pin para abrir la puerta");
                     foto.setImageResource(R.drawable.notificacion_solicitar_ping);
                     break;
 

@@ -53,6 +53,9 @@ public class LoginActivity extends Activity {
 
     private void login() {
 
+        SharedPreferences prefs = getSharedPreferences("Usuario", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+
         boolean anonimo = true;
 
         //Si está logueado
@@ -65,6 +68,8 @@ public class LoginActivity extends Activity {
                 if (!ui.getProviderId().equals("firebase")) {
 
                     anonimo = false;
+                    editor.putBoolean("anonimo",false);
+                    editor.commit();
 
                     switch (ui.getProviderId()) {
 
@@ -81,7 +86,12 @@ public class LoginActivity extends Activity {
                     }
                 }
             }
-            if (anonimo) cambioActivity("como usuario anónimo");
+            if (anonimo){
+
+                cambioActivity("como usuario anónimo");
+                editor.putBoolean("anonimo",anonimo);
+                editor.commit();
+            }
 
             //Si no crea la interfaz de login
         } else {
