@@ -1,6 +1,9 @@
 package es.upv.gnd.letslock.Fragments;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -16,15 +19,12 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import es.upv.gnd.letslock.HistorialTimbreActivity;
+
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -32,7 +32,6 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.database.ValueEventListener;
 
 
 import java.io.File;
@@ -55,69 +54,79 @@ public class TimbreFragment extends Fragment {
     String TAG = "MARTA";
     private StorageReference storageRef;
 
+    private boolean anonimo = false;
+
+
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        vista = inflater.inflate(R.layout.fragment_timbre, container, false);
+        SharedPreferences prefs = getActivity().getSharedPreferences("Usuario", Context.MODE_PRIVATE);
+        if (prefs.contains("anonimo")) anonimo = prefs.getBoolean("anonimo", false);
 
-        nadie_llama = vista.findViewById(R.id.nadie_llama);
-        pregunta = vista.findViewById(R.id.timbre_pregunta);
-        imagen = vista.findViewById(R.id.imagen_timbre);
-        si = vista.findViewById(R.id.timbre_boton_si);
-        no = vista.findViewById(R.id.timbre_boton_no);
-        historial = vista.findViewById(R.id.boton_historial);
+        if (!anonimo) {
 
-        nadie_llama.setVisibility(View.INVISIBLE);
-        pregunta.setVisibility(View.VISIBLE);
-        si.setVisibility(View.VISIBLE);
-        no.setVisibility(View.VISIBLE);
+            vista = inflater.inflate(R.layout.fragment_timbre, container, false);
 
-        historial.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getActivity(), HistorialTimbreActivity.class);
-                startActivity(i);
-            }
-        });
+            nadie_llama = vista.findViewById(R.id.nadie_llama);
+            pregunta = vista.findViewById(R.id.timbre_pregunta);
+            imagen = vista.findViewById(R.id.imagen_timbre);
+            si = vista.findViewById(R.id.timbre_boton_si);
+            no = vista.findViewById(R.id.timbre_boton_no);
+            historial = vista.findViewById(R.id.boton_historial);
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
+            nadie_llama.setVisibility(View.INVISIBLE);
+            pregunta.setVisibility(View.VISIBLE);
+            si.setVisibility(View.VISIBLE);
+            no.setVisibility(View.VISIBLE);
 
-                nadie_llama.setVisibility(View.VISIBLE);
-                pregunta.setVisibility(View.INVISIBLE);
-                si.setVisibility(View.INVISIBLE);
-                no.setVisibility(View.INVISIBLE);
+            historial.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i = new Intent(getActivity(), HistorialTimbreActivity.class);
+                    startActivity(i);
+                }
+            });
 
-            }
-        },30000);
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
 
-        storageRef = FirebaseStorage.getInstance().getReference();
+                    nadie_llama.setVisibility(View.VISIBLE);
+                    pregunta.setVisibility(View.INVISIBLE);
+                    si.setVisibility(View.INVISIBLE);
+                    no.setVisibility(View.INVISIBLE);
+
+                }
+            }, 30000);
+
+            storageRef = FirebaseStorage.getInstance().getReference();
 
 
-        FirebaseFirestore ff = FirebaseFirestore.getInstance();
+            FirebaseFirestore ff = FirebaseFirestore.getInstance();
 
-        ff.collection("imagenes_timbre").get()
-                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                    @Override
-                    public void onSuccess(QuerySnapshot documentSnapshots) {
-                        if (documentSnapshots.isEmpty()) {
-                            Log.d(TAG, "onSuccess: LIST EMPTY");
-                            return;
-                        }  else if (ultimaFoto(documentSnapshots) != null){
-                            // Convert the whole Query Snapshot to a list
-                            // of objects directly! No need to fetch each
-                            // document.
+            ff.collection("imagenes_timbre").get()
+                    .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                        @Override
+                        public void onSuccess(QuerySnapshot documentSnapshots) {
+                            if (documentSnapshots.isEmpty()) {
+                                Log.d(TAG, "onSuccess: LIST EMPTY");
+                                return;
+                            } else if (ultimaFoto(documentSnapshots) != null) {
+                                // Convert the whole Query Snapshot to a list
+                                // of objects directly! No need to fetch each
+                                // document.
 
-                            Log.d(TAG, "onSuccess: " + documentSnapshots.getDocuments().toString());
-                            Glide.with(getContext())
-                                    .load(ultimaFoto(documentSnapshots))
-                                    .into(imagen);
+                                Log.d(TAG, "onSuccess: " + documentSnapshots.getDocuments().toString());
+                                Glide.with(getContext())
+                                        .load(ultimaFoto(documentSnapshots))
+                                        .into(imagen);
+                            } else {
+                                imagen.setImageResource(R.drawable.applogo);
+                            }
                         }
-                        else{
-                            imagen.setImageResource(R.drawable.applogo);
-                        }
-                    }
-                });
+                    });
+        } else {
+            vista = inflater.inflate(R.layout.fragment_anonimo, container, false);
+        }
 
         //bajarFichero();
         return vista;

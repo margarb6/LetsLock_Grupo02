@@ -1,61 +1,40 @@
 package com.example.serpumar.androidthings_app;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
-import androidx.core.content.res.ResourcesCompat;
 
 import android.app.Activity;
-import android.app.Notification;
-import android.app.PendingIntent;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.media.Image;
 import android.media.ImageReader;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 
 import com.example.serpumar.comun.Datos;
 import com.example.serpumar.comun.Imagen;
-import com.example.serpumar.comun.Notificacion;
-import com.example.serpumar.comun.Notificaciones;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import com.google.android.things.contrib.driver.button.ButtonInputDriver;
-import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 
-
-
 import java.io.IOException;
 import java.nio.ByteBuffer;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Timer;
-import java.util.TimerTask;
 import java.util.UUID;
 
 import es.upv.gnd.letslock.androidthings.R;
-
-import static com.example.serpumar.comun.NotificationActivity.CHANNEL_1_ID;
 
 /**
  * Skeleton of an Android Things activity.
@@ -115,7 +94,7 @@ public class MainActivity extends Activity {
             Log.e(TAG, "Error en PeripheralIO API", e);
         }
 
-         upload = findViewById(R.id.button);
+        upload = findViewById(R.id.button);
         upload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -139,7 +118,8 @@ public class MainActivity extends Activity {
 
 
     private Runnable runnable = new Runnable() {
-        @Override public void run() {
+        @Override
+        public void run() {
             try {
                 String distancia = getDistancia();
                 Log.d(TAG, "Recibido de Arduino de DISTANCIA: " + distancia);
@@ -212,7 +192,7 @@ public class MainActivity extends Activity {
             Log.w(TAG, "Error en sleep()", e);
         }
         Log.d(TAG, "EtiquetaRFID: " + tag);
-        if(tag.equals(" 04 2A C1 5A 51 59 80 ")) { //Etiqueta 3
+        if (tag.equals(" 04 2A C1 5A 51 59 80 ")) { //Etiqueta 3
             abrirPuerta();
         } else {
             Log.d(TAG, "Este usuario no existe");
@@ -253,12 +233,12 @@ public class MainActivity extends Activity {
     }
 
 
-
     static void registrarImagen(String titulo, String url) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         Imagen imagen = new Imagen(titulo, url);
         db.collection("imagenes_timbre").document().set(imagen);
     }
+
     /* private Runnable tomaFoto = new Runnable() {
          @Override public void run() {
              mCamera.takePicture();
@@ -269,11 +249,13 @@ public class MainActivity extends Activity {
     private ImageReader.OnImageAvailableListener
             mOnImageAvailableListener =
             new ImageReader.OnImageAvailableListener() {
-                @Override public void onImageAvailable(ImageReader reader) {
+                @Override
+                public void onImageAvailable(ImageReader reader) {
                     Image image = reader.acquireLatestImage();
                     ByteBuffer imageBuf = image.getPlanes()[0].getBuffer();
                     final byte[] imageBytes = new byte[imageBuf.remaining()];
-                    imageBuf.get(imageBytes); image.close();
+                    imageBuf.get(imageBytes);
+                    image.close();
                     onPictureTaken(imageBytes);
                 }
             };
@@ -281,7 +263,7 @@ public class MainActivity extends Activity {
     private void onPictureTaken(final byte[] imageBytes) {
         if (imageBytes != null) {
             String nombreFichero = UUID.randomUUID().toString();
-            subirBytes(imageBytes, "imagenes_timbre/"+nombreFichero);
+            subirBytes(imageBytes, "imagenes_timbre/" + nombreFichero);
 
             final Bitmap bitmap = BitmapFactory.decodeByteArray(
                     imageBytes, 0, imageBytes.length);
@@ -293,59 +275,51 @@ public class MainActivity extends Activity {
             });*/
         }
     }
+
     private void subirBytes(final byte[] bytes, String referencia) {
-        final StorageReference storageRef  = FirebaseStorage.getInstance().getReference();
+        final StorageReference storageRef = FirebaseStorage.getInstance().getReference();
         final StorageReference ref = storageRef.child(referencia);
         UploadTask uploadTask = ref.putBytes(bytes);
         Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
-            @Override public Task<Uri> then(@NonNull
-                                                    Task<UploadTask.TaskSnapshot> task) throws Exception {
+            @Override
+            public Task<Uri> then(@NonNull
+                                          Task<UploadTask.TaskSnapshot> task) throws Exception {
                 if (!task.isSuccessful()) throw task.getException();
                 return ref.getDownloadUrl();
             }
         }).addOnCompleteListener(new OnCompleteListener<Uri>() {
-            @Override public void onComplete(@NonNull Task<Uri> task) {
+            @Override
+            public void onComplete(@NonNull Task<Uri> task) {
                 if (task.isSuccessful()) {
                     Uri downloadUri = task.getResult();
                     Log.e("Almacenamiento", "URL: " + downloadUri.toString());
                     registrarImagen("Subida por R.P.", downloadUri.toString());
 
-                    final String idCasa = "0";
+                   /* final String idCasa = "0";
 
-                    FirebaseFirestore.getInstance().collection(idCasa).document("0").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    FirebaseFirestore.getInstance().collection("casa").document(idCasa).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
 
                         @Override
                         public void onComplete(@NonNull Task<DocumentSnapshot> task) {
 
                             if (task.isSuccessful()) {
 
-                                ArrayList<String> idUsuario = (ArrayList<String>) task.getResult().get("idUsuarios");
+                                if (task.getResult().exists()) {
 
-                                Notificaciones notificacionesBD = new Notificaciones();
-                                notificacionesBD.setNotificaciones(new Notificacion(UUID.randomUUID().toString(),"tipo", new Date().getTime(),idCasa, idUsuario ,0));
+                                    ArrayList<String> idUsuario = (ArrayList<String>) task.getResult().get("idUsuarios");
 
-                                //Intent resultIntent = new Intent(getApplicationContext(), .class);
-                                //PendingIntent resultPendingIntent = PendingIntent.getActivity(this, 1, resultIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+                                    Notificaciones notificacionesBD = new Notificaciones();
+                                    notificacionesBD.setNotificaciones(new Notificacion(UUID.randomUUID().toString(), "timbre", new Date().getTime() + 3600 * 1000, idCasa, idUsuario, 0));
 
-                                Notification notification = new NotificationCompat.Builder(getApplicationContext(),CHANNEL_1_ID)
-                                        .setSmallIcon(R.drawable.notificacion_timbre)
-                                        .setContentTitle("Timbre")
-                                        .setContentText("Han llamdo al timbre")
-                                        .setPriority(NotificationCompat.PRIORITY_HIGH)
-                                        .setCategory(NotificationCompat.CATEGORY_MESSAGE)
-                                        .setAutoCancel(true)
-                                        //.setContentIntent(resultPendingIntent)
-                                        .build();
-
-                                notificationManager.notify(1,notification);
-                            }
-
-                             else {
+                                }
+                            } else {
                                 Log.e("Almacenamiento", "ERROR: subiendo bytes");
                             }
-
                         }
-                    });
+                    });*/
+                }
+                else {
+                    Log.e("Almacenamiento", "ERROR: subiendo bytes");
                 }
             }
         });
