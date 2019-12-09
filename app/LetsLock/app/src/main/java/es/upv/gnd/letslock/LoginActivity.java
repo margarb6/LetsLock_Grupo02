@@ -153,8 +153,6 @@ public class LoginActivity extends Activity {
                 editor.putBoolean("permisos", usuarioBD.isPermisos());
                 editor.commit();
 
-
-
                 casaBD.setCasa(usuario.getUid(), getApplicationContext());
 
 
