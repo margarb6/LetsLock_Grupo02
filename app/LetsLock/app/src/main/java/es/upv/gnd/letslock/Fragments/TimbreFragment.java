@@ -54,6 +54,8 @@ public class TimbreFragment extends Fragment {
     Button no;
     Button historial;
     LottieAnimationView lottieAnimationView;
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+
 
     String TAG = "MARTA";
     private StorageReference storageRef;
@@ -76,11 +78,28 @@ public class TimbreFragment extends Fragment {
             si = vista.findViewById(R.id.timbre_boton_si);
             no = vista.findViewById(R.id.timbre_boton_no);
             historial = vista.findViewById(R.id.boton_historial);
+            lottieAnimationView = vista.findViewById(R.id.animation_view3);
+
 
             nadie_llama.setVisibility(View.INVISIBLE);
             pregunta.setVisibility(View.VISIBLE);
             si.setVisibility(View.VISIBLE);
             no.setVisibility(View.VISIBLE);
+            lottieAnimationView.setVisibility(View.INVISIBLE);
+
+            si.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    db.collection("Datos").document("Puerta").update("puerta",true);
+                }
+            });
+
+            no.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    db.collection("Datos").document("Puerta").update("puerta",false);
+                }
+            });
 
             historial.setOnClickListener(new View.OnClickListener() {
                 @Override

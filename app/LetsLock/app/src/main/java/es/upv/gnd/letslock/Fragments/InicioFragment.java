@@ -6,7 +6,6 @@ import android.annotation.SuppressLint;
 import android.app.Notification;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.ColorFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -25,18 +24,14 @@ import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 
 import com.airbnb.lottie.LottieAnimationView;
-import com.airbnb.lottie.LottieProperty;
-import com.airbnb.lottie.model.KeyPath;
-import com.airbnb.lottie.value.LottieFrameInfo;
-import com.airbnb.lottie.value.SimpleLottieValueCallback;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Date;
 import java.util.Random;
 import java.util.UUID;
 
-import com.example.serpumar.comun.JavaMailAPI;
 
+import es.upv.gnd.letslock.JavaMailAPI;
 import es.upv.gnd.letslock.bbdd.Notificacion;
 import es.upv.gnd.letslock.bbdd.Notificaciones;
 

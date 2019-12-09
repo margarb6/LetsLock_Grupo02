@@ -54,11 +54,11 @@ public class AnonimoActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Log.d("Login", "linkWithCredential:success");
+                            Log.d("Login", "linkWithCredental:success");
                             FirebaseUser user = task.getResult().getUser();
                             Usuarios userBD = new Usuarios();
                             Random rand = new Random();
-                            userBD.setUsuario(new Usuario(user.getDisplayName(), false, String.format("%04d", rand.nextInt(10000))));
+                            userBD.setUsuario(new Usuario(user.getDisplayName(), false, String.format("%04d", rand.nextInt(10000)),user.getPhotoUrl().toString()));
                             SharedPreferences prefs = getSharedPreferences("Usuario", Context.MODE_PRIVATE);
                             SharedPreferences.Editor editor = prefs.edit();
                             editor.putBoolean("anonimo", false);
