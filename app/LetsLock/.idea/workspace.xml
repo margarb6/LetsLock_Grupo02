@@ -15,21 +15,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="47b73147-f260-423e-ae5a-8dc3659b8aaf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/androidthings_app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/androidthings_app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/androidthings_app/src/main/java/com/example/serpumar/androidthings_app/BoardDefaults.java" beforeDir="false" afterPath="$PROJECT_DIR$/androidthings_datos/src/main/java/com/example/serpumar/androidthings_datos/BoardDefaults.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/androidthings_app/src/main/java/com/example/serpumar/androidthings_app/DoorbellCamera.java" beforeDir="false" afterPath="$PROJECT_DIR$/androidthings_datos/src/main/java/com/example/serpumar/androidthings_datos/DoorbellCamera.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/androidthings_app/src/main/java/com/example/serpumar/androidthings_app/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/androidthings_app/src/main/java/com/example/serpumar/androidthings_app/MainActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/Fragments/InicioFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/Fragments/InicioFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/adapters/AdaptadorNotificacionesFirestoreUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/adapters/AdaptadorNotificacionesFirestoreUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/bbdd/Notificacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/bbdd/Notificacion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/bbdd/Notificaciones.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/bbdd/Notificaciones.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/bbdd/NotificacionesCallback.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/bbdd/NotificacionesCallback.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comun/src/main/java/com/example/serpumar/comun/Correo.java" beforeDir="false" afterPath="$PROJECT_DIR$/comun/src/main/java/com/example/serpumar/comun/Correo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comun/src/main/java/com/example/serpumar/comun/JavaMailAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/comun/src/main/java/com/example/serpumar/comun/JavaMailAPI.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -40,7 +30,7 @@
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="192.168.0.105:5555" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="192.168.0.109:5555" />
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
@@ -74,10 +64,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/androidthings_datos/src/main/java/com/example/serpumar/androidthings_datos/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="475">
+            <state relative-caret-position="1928">
               <caret line="129" column="42" selection-start-line="129" selection-start-column="42" selection-end-line="129" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -90,6 +80,33 @@
                 <element signature="e#11425#11935#0" expanded="true" />
                 <element signature="e#11934#11935#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/comun/src/main/java/com/example/serpumar/comun/JavaMailAPI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-650">
+              <caret line="64" selection-start-line="64" selection-end-line="64" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/comun/src/main/java/com/example/serpumar/comun/Datos.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="31" column="19" selection-start-line="31" selection-start-column="19" selection-end-line="31" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/comun/src/main/java/com/example/serpumar/comun/Correo.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="38" column="22" selection-start-line="38" selection-start-column="22" selection-end-line="38" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -112,11 +129,44 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/bbdd/Notificaciones.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/Fragments/InicioFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+            <state relative-caret-position="209">
+              <caret line="273" lean-forward="true" selection-start-line="273" selection-end-line="273" />
+              <folding>
+                <element signature="e#3804#4531#0" expanded="true" />
+                <element signature="e#3952#4495#0" expanded="true" />
+                <element signature="e#4494#4495#0" expanded="true" />
+                <element signature="e#4530#4531#0" expanded="true" />
+                <element signature="e#4580#5182#0" expanded="true" />
+                <element signature="e#4728#5146#0" expanded="true" />
+                <element signature="e#5145#5146#0" expanded="true" />
+                <element signature="e#5181#5182#0" expanded="true" />
+                <element signature="e#5224#5820#0" expanded="true" />
+                <element signature="e#5372#5784#0" expanded="true" />
+                <element signature="e#5783#5784#0" expanded="true" />
+                <element signature="e#5819#5820#0" expanded="true" />
+                <element signature="e#7227#9107#0" expanded="true" />
+                <element signature="e#7397#9035#0" expanded="true" />
+                <element signature="e#8356#8733#0" expanded="true" />
+                <element signature="e#8732#8733#0" expanded="true" />
+                <element signature="e#9034#9035#0" expanded="true" />
+                <element signature="e#9106#9107#0" expanded="true" />
+                <element signature="e#10484#10644#0" expanded="true" />
+                <element signature="e#10643#10644#0" expanded="true" />
+                <element signature="e#11317#11720#0" expanded="true" />
+                <element signature="e#11719#11720#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/androidthings_app/src/main/java/com/example/serpumar/androidthings_app/MainActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-828">
+              <caret line="90" column="10" selection-start-line="90" selection-start-column="10" selection-end-line="90" selection-end-column="10" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -125,10 +175,13 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/Fragments/InicioFragment.java">
+        <entry file="file://$PROJECT_DIR$/androidthings_app/src/main/java/com/example/serpumar/androidthings_app/AccesoActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1410">
-              <caret line="124" selection-start-line="124" selection-end-line="124" />
+            <state relative-caret-position="51">
+              <caret line="83" column="35" selection-start-line="83" selection-start-column="35" selection-end-line="83" selection-end-column="35" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -174,9 +227,7 @@
         <option value="$PROJECT_DIR$/comun/src/main/java/com/example/serpumar/comun/ArduinoUart.java" />
         <option value="$PROJECT_DIR$/androidthings_app/src/main/java/com/example/serpumar/androidthings_app/ArduinoUart.java" />
         <option value="$PROJECT_DIR$/comun/src/main/java/com/example/serpumar/comun/Datos.java" />
-        <option value="$PROJECT_DIR$/comun/src/main/java/com/example/serpumar/comun/JavaMailAPI.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/bbdd/Notificaciones.java" />
-        <option value="$PROJECT_DIR$/comun/src/main/java/com/example/serpumar/comun/Correo.java" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/androidthings_app/build.gradle" />
         <option value="$PROJECT_DIR$/build.gradle" />
@@ -192,13 +243,15 @@
         <option value="$PROJECT_DIR$/androidthings_datos/src/main/java/com/example/serpumar/androidthings_datos/ArduinoUart.java" />
         <option value="$PROJECT_DIR$/androidthings_datos/google-services.json" />
         <option value="$PROJECT_DIR$/androidthings_app/src/main/res/layout/activity_main.xml" />
-        <option value="$PROJECT_DIR$/androidthings_app/src/main/java/com/example/serpumar/androidthings_app/MainActivity.java" />
         <option value="$PROJECT_DIR$/comun/src/main/java/com/example/serpumar/comun/Notificacion.java" />
         <option value="$PROJECT_DIR$/comun/src/main/java/com/example/serpumar/comun/Notificaciones.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/Fragments/InicioFragment.java" />
         <option value="$PROJECT_DIR$/comun/build.gradle" />
         <option value="$PROJECT_DIR$/androidthings_datos/build.gradle" />
         <option value="$PROJECT_DIR$/androidthings_datos/src/main/java/com/example/serpumar/androidthings_datos/MainActivity.java" />
+        <option value="$PROJECT_DIR$/comun/src/main/java/com/example/serpumar/comun/JavaMailAPI.java" />
+        <option value="$PROJECT_DIR$/comun/src/main/java/com/example/serpumar/comun/Correo.java" />
+        <option value="$PROJECT_DIR$/androidthings_app/src/main/java/com/example/serpumar/androidthings_app/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/Fragments/InicioFragment.java" />
       </list>
     </option>
   </component>
@@ -242,8 +295,8 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="192.168.0.105:5555" />
-    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2019-12-09T09:35:16.215Z" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="Pixel_2_API_29" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2019-12-09T10:50:38.019Z" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/androidthings_datos" />
@@ -262,8 +315,8 @@
       <recent name="$PROJECT_DIR$/androidthings_app/src/main/res" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/androidthings_datos" />
       <recent name="$PROJECT_DIR$/comun" />
+      <recent name="$PROJECT_DIR$/androidthings_datos" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -278,7 +331,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Android App.androidthings_datos">
+  <component name="RunManager" selected="Android App.app">
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -461,6 +514,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="720" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
       <window_info id="Capture Tool" order="1" />
@@ -520,13 +574,6 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/app/build/generated/res/google-services/debug/values/values 2.xml" />
-    <entry file="file://$PROJECT_DIR$/comun/src/main/java/com/example/serpumar/comun/Datos.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="31" column="19" selection-start-line="31" selection-start-column="19" selection-end-line="31" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -550,13 +597,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="97">
           <caret line="25" column="29" lean-forward="true" selection-start-line="25" selection-start-column="29" selection-end-line="25" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/comun/src/main/java/com/example/serpumar/comun/Correo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="43" selection-start-line="43" selection-end-line="43" />
         </state>
       </provider>
     </entry>
@@ -607,16 +647,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
           <caret line="23" column="8" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/androidthings_app/src/main/java/com/example/serpumar/androidthings_app/AccesoActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1320">
-          <caret line="115" selection-start-line="115" selection-end-line="115" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -700,32 +730,10 @@
       </provider>
       <provider editor-type-id="android-manifest" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/comun/src/main/java/com/example/serpumar/comun/JavaMailAPI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-95" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/androidthings_app/src/main/java/com/example/serpumar/androidthings_app/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1028">
-          <caret line="182" selection-start-line="182" selection-end-line="182" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/androidthings_datos/src/main/java/com/example/serpumar/androidthings_datos/DoorbellCamera.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1750">
           <caret line="138" column="7" selection-start-line="138" selection-start-column="7" selection-end-line="138" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/Fragments/InicioFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1410">
-          <caret line="124" selection-start-line="124" selection-end-line="124" />
         </state>
       </provider>
     </entry>
@@ -776,7 +784,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/androidthings_datos/src/main/java/com/example/serpumar/androidthings_datos/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
+        <state relative-caret-position="1928">
           <caret line="129" column="42" selection-start-line="129" selection-start-column="42" selection-end-line="129" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -788,6 +796,78 @@
             <element signature="e#8128#8129#0" expanded="true" />
             <element signature="e#11425#11935#0" expanded="true" />
             <element signature="e#11934#11935#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/comun/src/main/java/com/example/serpumar/comun/JavaMailAPI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-650">
+          <caret line="64" selection-start-line="64" selection-end-line="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/comun/src/main/java/com/example/serpumar/comun/Datos.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="31" column="19" selection-start-line="31" selection-start-column="19" selection-end-line="31" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/comun/src/main/java/com/example/serpumar/comun/Correo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="38" column="22" selection-start-line="38" selection-start-column="22" selection-end-line="38" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/androidthings_app/src/main/java/com/example/serpumar/androidthings_app/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-828">
+          <caret line="90" column="10" selection-start-line="90" selection-start-column="10" selection-end-line="90" selection-end-column="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/androidthings_app/src/main/java/com/example/serpumar/androidthings_app/AccesoActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="83" column="35" selection-start-line="83" selection-start-column="35" selection-end-line="83" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/Fragments/InicioFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="273" lean-forward="true" selection-start-line="273" selection-end-line="273" />
+          <folding>
+            <element signature="e#3804#4531#0" expanded="true" />
+            <element signature="e#3952#4495#0" expanded="true" />
+            <element signature="e#4494#4495#0" expanded="true" />
+            <element signature="e#4530#4531#0" expanded="true" />
+            <element signature="e#4580#5182#0" expanded="true" />
+            <element signature="e#4728#5146#0" expanded="true" />
+            <element signature="e#5145#5146#0" expanded="true" />
+            <element signature="e#5181#5182#0" expanded="true" />
+            <element signature="e#5224#5820#0" expanded="true" />
+            <element signature="e#5372#5784#0" expanded="true" />
+            <element signature="e#5783#5784#0" expanded="true" />
+            <element signature="e#5819#5820#0" expanded="true" />
+            <element signature="e#7227#9107#0" expanded="true" />
+            <element signature="e#7397#9035#0" expanded="true" />
+            <element signature="e#8356#8733#0" expanded="true" />
+            <element signature="e#8732#8733#0" expanded="true" />
+            <element signature="e#9034#9035#0" expanded="true" />
+            <element signature="e#9106#9107#0" expanded="true" />
+            <element signature="e#10484#10644#0" expanded="true" />
+            <element signature="e#10643#10644#0" expanded="true" />
+            <element signature="e#11317#11720#0" expanded="true" />
+            <element signature="e#11719#11720#0" expanded="true" />
           </folding>
         </state>
       </provider>

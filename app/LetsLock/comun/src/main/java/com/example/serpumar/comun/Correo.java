@@ -25,6 +25,8 @@ public class Correo {
         //super.enviarCorreo();
         if (correo.getText().toString().isEmpty()){
             Toast.makeText(context, "Inserte un correo valido", Toast.LENGTH_SHORT).show();
+            return String.valueOf("0");
+
         }else{
             String listaCorreos = correo.getText().toString().trim();
             String [] correos = listaCorreos.split(",");
@@ -37,6 +39,8 @@ public class Correo {
             JavaMailAPI javaMailAPI = new JavaMailAPI(context, listaCorreos
                     ,asunto,mensaje);
             javaMailAPI.execute();
+            return String.valueOf(codigo_enviado);
+
 
        /* Intent intent = new Intent(Intent.ACTION_SEND);
         intent.putExtra(Intent.EXTRA_EMAIL, correos);
@@ -48,6 +52,5 @@ public class Correo {
         }
 
 
-        return String.valueOf(codigo_enviado);
     }
 }

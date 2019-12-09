@@ -3,6 +3,9 @@ package es.upv.gnd.letslock.Fragments;
 import android.animation.Animator;
 import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
+import android.app.Notification;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.ColorFilter;
 import android.os.Bundle;
 import android.os.Handler;
@@ -33,6 +36,7 @@ import java.util.Random;
 import java.util.UUID;
 
 import com.example.serpumar.comun.JavaMailAPI;
+
 import es.upv.gnd.letslock.bbdd.Notificacion;
 import es.upv.gnd.letslock.bbdd.Notificaciones;
 
@@ -61,6 +65,10 @@ public class InicioFragment extends Fragment {
     Button boton_enviar;
     Button boton_cancelar;
 
+    private boolean anonimo = false;
+    private String idCasa;
+    private NotificationManagerCompat notificationManager;
+
 
     @SuppressLint("ClickableViewAccessibility")
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -71,19 +79,7 @@ public class InicioFragment extends Fragment {
 
         if(!anonimo){
 
-        imageView = vista.findViewById(R.id.puerta);
-        lottieAnimationView = vista.findViewById(R.id.animation_view);
-
-        lottieAnimationView2 = vista.findViewById(R.id.animation_view2);
-        enviar = vista.findViewById(R.id.b_enviar);
-        lottieAnimationView2.setVisibility(View.INVISIBLE);
-        codigo_y_correo = vista.findViewById(R.id.codigo_y_correo);
-        correo = vista.findViewById(R.id.correo_input);
-        correo.setVisibility(View.INVISIBLE);
-        boton_enviar = vista. findViewById(R.id.boton_enviar);
-        boton_enviar.setVisibility(View.INVISIBLE);
-        boton_cancelar = vista. findViewById(R.id.boton_cancelar);
-        boton_cancelar.setVisibility(View.INVISIBLE);
+            vista = inflater.inflate(R.layout.fragment_inicio, container, false);
 
             NotificationActivity notificationActivity= new NotificationActivity();
             notificationActivity.createNotificationChannels(getContext());
@@ -103,15 +99,9 @@ public class InicioFragment extends Fragment {
             boton_cancelar = vista. findViewById(R.id.boton_cancelar);
             boton_cancelar.setVisibility(View.INVISIBLE);
 
-                    }
-
-
-                },0);
-            }
-        });
-        boton_cancelar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+            boton_enviar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
                     new Handler().postDelayed(new Runnable() {
                         @Override
@@ -201,22 +191,8 @@ public class InicioFragment extends Fragment {
 
                 }
 
-               new Handler().postDelayed(new Runnable() {
-                   @Override
-                   public void run() {
-                       if (image1Displaying){
-                           toast.makeText(getActivity(), "Abriendo puerta", Toast.LENGTH_SHORT).show();
-                           imageView.setImageResource(R.drawable.imagen_animacion);
-                           db.collection("Datos").document("Puerta").update("puerta", true);
-
-                           lottieAnimationView.playAnimation();
-                           image1Displaying = false;
-                       }else{
-                           imageView.setImageResource(R.drawable.imagen_animacion);
-                           float progress = lottieAnimationView.getProgress();
-                           int duration = 3100;
-                           ValueAnimator valueAnimator = ValueAnimator.ofFloat(-progress,0 )
-                                   .setDuration(duration);
+                @Override
+                public void onAnimationRepeat(Animator animation) {
 
                 }
             });
@@ -225,12 +201,22 @@ public class InicioFragment extends Fragment {
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
 
-                           });
-                           valueAnimator.start();
-                           toast.makeText(getActivity(), "Cerrando puerta", Toast.LENGTH_SHORT).show();
-                           db.collection("Datos").document("Puerta").update("puerta", false);
-                           image1Displaying = true;
-                       }
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (image1Displaying){
+
+                                toast.makeText(getActivity(), "Abriendo puerta", Toast.LENGTH_SHORT).show();
+                                imageView.setImageResource(R.drawable.imagen_animacion);
+                                db.collection("Datos").document("Puerta").update("puerta",true);
+                                lottieAnimationView.playAnimation();
+                                image1Displaying = false;
+                            }else{
+                                imageView.setImageResource(R.drawable.imagen_animacion);
+                                float progress = lottieAnimationView.getProgress();
+                                int duration = 3100;
+                                ValueAnimator valueAnimator = ValueAnimator.ofFloat(-progress,0 )
+                                        .setDuration(duration);
 
                                 valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
                                     @Override
@@ -241,6 +227,8 @@ public class InicioFragment extends Fragment {
 
                                 });
                                 valueAnimator.start();
+                                db.collection("Datos").document("Puerta").update("puerta",false);
+
                                 toast.makeText(getActivity(), "Cerrando puerta", Toast.LENGTH_SHORT).show();
                                 image1Displaying = true;
                             }
@@ -282,6 +270,7 @@ public class InicioFragment extends Fragment {
             int codigo_enviado = randomCode(codigo);
             mensaje_confirmacion = "El codigo "+codigo_enviado+ " ha sido enviado a "+listaCorreos;
             String mensaje = "Tu codigo de entrada es "+codigo_enviado;
+            db.collection("Datos").document("Puerta").update("pinInvitado",String.valueOf(codigo_enviado));
 
             JavaMailAPI javaMailAPI = new JavaMailAPI(getContext(), listaCorreos
                     ,asunto,mensaje);
@@ -329,6 +318,4 @@ public class InicioFragment extends Fragment {
         }
 
         return mensaje_confirmacion;
-    }
-
-}
+    }        }
