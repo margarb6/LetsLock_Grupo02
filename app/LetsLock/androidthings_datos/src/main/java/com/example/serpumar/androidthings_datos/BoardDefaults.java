@@ -1,4 +1,4 @@
-package com.example.serpumar.androidthings_app;
+package com.example.serpumar.androidthings_datos;
 
 import android.os.Build;
 

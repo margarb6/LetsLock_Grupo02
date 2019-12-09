@@ -13,7 +13,7 @@ public class Notificacion {
 
     public Notificacion(String id, String tipo, long hora, String idCasa, ArrayList<String> idUsuarios, int position) {
 
-        this.id= id;
+        this.id = id;
         this.tipo = tipo;
         this.hora = hora;
         this.idCasa = idCasa;
