@@ -3,17 +3,21 @@ package es.upv.gnd.letslock.bbdd;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.HashMap;
 
 public class Notificaciones {
 
@@ -33,12 +37,13 @@ public class Notificaciones {
 
                     ArrayList<DocumentSnapshot> docs = (ArrayList<DocumentSnapshot>) task.getResult().getDocuments();
 
-                    for (int i=0; i< docs.size(); i++){
+                    for (int i = 0; i < docs.size(); i++) {
 
                         ArrayList<String> idUsuario = (ArrayList<String>) docs.get(i).get("idUsuarios");
-                        for (int j=0; j< idUsuario.size(); j++){
+                        for (int j = 0; j < idUsuario.size(); j++) {
 
-                            if(idUsuario.get(i).equals(user.getUid())) idCasa= docs.get(i).getId();
+                            if (idUsuario.get(j).equals(user.getUid()))
+                                idCasa = docs.get(i).getId();
                         }
                     }
 
@@ -52,33 +57,46 @@ public class Notificaciones {
         });
     }
 
-    private static void not(final NotificacionesCallback callback){
+    private static void not(final NotificacionesCallback callback) {
 
-        db.collection("notificaciones").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-
+        Query query = db.collection("notificaciones").orderBy("hora", Query.Direction.DESCENDING);
+        query.addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+            public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
 
-                //Si consigue leer en Firestore
-                if (task.isSuccessful()) {
+                if (e != null) {
 
-                    ArrayList<Notificacion> notificaciones = new ArrayList<>();
+                    Log.e("Firestore", "Error al leer", e);
 
-                    ArrayList<DocumentSnapshot> docs = (ArrayList<DocumentSnapshot>) task.getResult().getDocuments();
-
-                    for (int i=0; i< docs.size(); i++){
-
-                        if(docs.get(i).getString("idCasa").equals(idCasa)) notificaciones.add(new Notificacion(docs.get(i).getString("tipo"), docs.get(i).getLong("hora"), idCasa));
-                    }
-
-                    callback.getNotificacionesCallback(notificaciones);
-
-                } else {
-
-                    Log.e("Firestore", "Error al leer", task.getException());
+                    return;
                 }
+
+                ArrayList<Notificacion> notificaciones = new ArrayList<>();
+                ArrayList<DocumentSnapshot> docs = (ArrayList<DocumentSnapshot>) queryDocumentSnapshots.getDocuments();
+
+                for (int i = 0; i < docs.size(); i++) {
+
+                    if (docs.get(i).getString("idCasa").equals(idCasa)) {
+
+                        ArrayList<String> usuarios = (ArrayList<String>) docs.get(i).get("idUsuarios");
+                        notificaciones.add(new Notificacion(docs.get(i).getId(), docs.get(i).getString("tipo"), docs.get(i).getLong("hora"), idCasa, usuarios, i));
+                    }
+                }
+
+                callback.getNotificacionesCallback(notificaciones);
+
             }
         });
+    }
 
+    static public void setNotificaciones(Notificacion notificacion) {
+
+        HashMap<String, Object> hMap = new HashMap<>();
+        hMap.put("hora", notificacion.getHora());
+        hMap.put("idCasa", notificacion.getIdCasa());
+        hMap.put("idUsuarios", notificacion.getIdUsuarios());
+        hMap.put("tipo", notificacion.getTipo());
+
+        db.collection("notificaciones").document(notificacion.getId()).set(hMap);
     }
 }

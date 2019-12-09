@@ -3,6 +3,7 @@ package es.upv.gnd.letslock.Fragments;
 import android.animation.Animator;
 import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
+import android.graphics.ColorFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -57,11 +58,7 @@ public class InicioFragment extends Fragment {
 
         imageView = vista.findViewById(R.id.puerta);
         lottieAnimationView = vista.findViewById(R.id.animation_view);
-        lottieAnimationView.setSpeed((float) 0.5);
-        lottieAnimationView.addValueCallback(
-                new KeyPath("Door frame", "Rectangle 2"),
-                LottieProperty.COLOR_FILTER,
-                new SimpleLottieValueCallback<ColorFilter>() {
+
         lottieAnimationView2 = vista.findViewById(R.id.animation_view2);
         enviar = vista.findViewById(R.id.b_enviar);
         lottieAnimationView2.setVisibility(View.INVISIBLE);
@@ -89,8 +86,8 @@ public class InicioFragment extends Fragment {
 
                         lottieAnimationView2.playAnimation();
                     }
-                }
-        );
+
+
                 },0);
             }
         });

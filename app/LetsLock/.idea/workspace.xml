@@ -15,42 +15,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="47b73147-f260-423e-ae5a-8dc3659b8aaf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/HistorialTimbreActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/adapters/AdaptadorImagenes.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/bbdd/GlideModule.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/bbdd/Imagen.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/elemento_timbre.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/historial_timbre.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/comun/src/main/java/com/example/serpumar/comun/Correo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_constraintlayout_constraintlayout_1_1_3_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_constraintlayout_constraintlayout_1_1_3_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_cursoradapter_cursoradapter_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_cursoradapter_cursoradapter_1_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_customview_customview_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_customview_customview_1_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_drawerlayout_drawerlayout_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_drawerlayout_drawerlayout_1_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_interpolator_interpolator_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_interpolator_interpolator_1_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_loader_loader_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_loader_loader_1_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_localbroadcastmanager_localbroadcastmanager_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_localbroadcastmanager_localbroadcastmanager_1_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_viewpager_viewpager_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_viewpager_viewpager_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/androidthings_app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/androidthings_app/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/androidthings_app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/androidthings_app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/androidthings_app/src/main/java/com/example/serpumar/androidthings_app/BoardDefaults.java" beforeDir="false" afterPath="$PROJECT_DIR$/androidthings_datos/src/main/java/com/example/serpumar/androidthings_datos/BoardDefaults.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/androidthings_app/src/main/java/com/example/serpumar/androidthings_app/DoorbellCamera.java" beforeDir="false" afterPath="$PROJECT_DIR$/androidthings_datos/src/main/java/com/example/serpumar/androidthings_datos/DoorbellCamera.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/androidthings_app/src/main/java/com/example/serpumar/androidthings_app/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/androidthings_app/src/main/java/com/example/serpumar/androidthings_app/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/androidthings_app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/androidthings_app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/androidthings_app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/androidthings_app/src/main/res/values/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/androidthings_app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/androidthings_app/src/main/res/values/styles.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/libs/activation.jar" beforeDir="false" afterPath="$PROJECT_DIR$/comun/libs/activation.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/libs/additionnal.jar" beforeDir="false" afterPath="$PROJECT_DIR$/comun/libs/additionnal.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/libs/mail.jar" beforeDir="false" afterPath="$PROJECT_DIR$/comun/libs/mail.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/Fragments/InicioFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/Fragments/InicioFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/Fragments/TimbreFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/Fragments/TimbreFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/JavaMailAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/comun/src/main/java/com/example/serpumar/comun/JavaMailAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/comun/src/main/java/com/example/serpumar/comun/Utils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_timbre.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_timbre.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/comun/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/comun/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/adapters/AdaptadorNotificacionesFirestoreUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/adapters/AdaptadorNotificacionesFirestoreUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/bbdd/Notificacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/bbdd/Notificacion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/bbdd/Notificaciones.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/bbdd/Notificaciones.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/bbdd/NotificacionesCallback.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/bbdd/NotificacionesCallback.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -61,7 +40,7 @@
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="192.168.0.109:5555" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="192.168.0.105:5555" />
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
@@ -95,79 +74,72 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/build.gradle">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="23" column="8" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/androidthings_app/src/main/res/layout/activity_main.xml">
-          <provider editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="8" selection-start-line="11" selection-start-column="8" selection-end-line="12" selection-end-column="37" />
-            </state>
-          </provider>
-          <provider selected="true" editor-type-id="android-designer2" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/androidthings_app/src/main/AndroidManifest.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="63" selection-start-line="14" selection-start-column="63" selection-end-line="14" selection-end-column="63" />
-            </state>
-          </provider>
-          <provider editor-type-id="android-manifest" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/androidthings_app/src/main/java/com/example/serpumar/androidthings_app/MainActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="346" column="21" selection-start-line="346" selection-start-column="21" selection-end-line="346" selection-end-column="21" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#3647#3952#0" expanded="true" />
-                <element signature="e#3951#3952#0" expanded="true" />
-                <element signature="e#4960#5710#0" expanded="true" />
-                <element signature="e#5709#5710#0" expanded="true" />
-                <element signature="e#5749#6279#0" expanded="true" />
-                <element signature="e#6278#6279#0" expanded="true" />
-                <element signature="e#13355#15180#0" expanded="true" />
-                <element signature="e#15179#15180#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/androidthings_app/src/main/java/com/example/serpumar/androidthings_app/AccesoActivity.java">
+        <entry file="file://$PROJECT_DIR$/androidthings_datos/src/main/java/com/example/serpumar/androidthings_datos/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="648">
-              <caret line="115" selection-start-line="115" selection-end-line="115" />
+            <state relative-caret-position="475">
+              <caret line="129" column="42" selection-start-line="129" selection-start-column="42" selection-end-line="129" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2085#2309#0" expanded="true" />
-                <element signature="e#2308#2309#0" expanded="true" />
-                <element signature="e#2408#4478#0" expanded="true" />
-                <element signature="e#4477#4478#0" expanded="true" />
+                <element signature="e#3629#4387#0" expanded="true" />
+                <element signature="e#4386#4387#0" expanded="true" />
+                <element signature="e#4426#4965#0" expanded="true" />
+                <element signature="e#4964#4965#0" expanded="true" />
+                <element signature="e#7484#8129#0" expanded="true" />
+                <element signature="e#8128#8129#0" expanded="true" />
+                <element signature="e#11425#11935#0" expanded="true" />
+                <element signature="e#11934#11935#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/androidthings_app/src/main/res/layout/activity_solicitaracceso.xml">
+        <entry file="file://$PROJECT_DIR$/androidthings_datos/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="31" column="43" selection-start-line="31" selection-start-column="43" selection-end-line="31" selection-end-column="43" />
+            <state relative-caret-position="224">
+              <caret line="40" column="59" selection-start-line="40" selection-start-column="59" selection-end-line="40" selection-end-column="59" />
             </state>
           </provider>
-          <provider editor-type-id="android-designer2" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/bbdd/Notificacion.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/bbdd/Notificaciones.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="189">
+              <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/Fragments/InicioFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1410">
+              <caret line="124" selection-start-line="124" selection-end-line="124" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/bbdd/NotificacionesCallback.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
@@ -203,8 +175,6 @@
         <option value="$PROJECT_DIR$/androidthings_app/src/main/java/com/example/serpumar/androidthings_app/ArduinoUart.java" />
         <option value="$PROJECT_DIR$/comun/src/main/java/com/example/serpumar/comun/Datos.java" />
         <option value="$PROJECT_DIR$/comun/src/main/java/com/example/serpumar/comun/JavaMailAPI.java" />
-        <option value="$PROJECT_DIR$/comun/build.gradle" />
-        <option value="$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/Fragments/InicioFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/bbdd/Notificaciones.java" />
         <option value="$PROJECT_DIR$/comun/src/main/java/com/example/serpumar/comun/Correo.java" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
@@ -214,30 +184,37 @@
         <option value="$PROJECT_DIR$/androidthings_app/src/main/res/drawable/keyboard_button_bg.xml" />
         <option value="$PROJECT_DIR$/androidthings_app/src/main/res/drawable/keyboard_divider.xml" />
         <option value="$PROJECT_DIR$/androidthings_app/src/main/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/androidthings_app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/androidthings_app/src/main/java/com/example/serpumar/androidthings_app/KeyboardView.java" />
-        <option value="$PROJECT_DIR$/androidthings_app/src/main/res/layout/activity_main.xml" />
         <option value="$PROJECT_DIR$/androidthings_app/src/main/res/layout/activity_solicitaracceso.xml" />
-        <option value="$PROJECT_DIR$/androidthings_app/src/main/java/com/example/serpumar/androidthings_app/MainActivity.java" />
         <option value="$PROJECT_DIR$/androidthings_app/src/main/java/com/example/serpumar/androidthings_app/AccesoActivity.java" />
+        <option value="$PROJECT_DIR$/androidthings_app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/androidthings_datos/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/androidthings_datos/src/main/java/com/example/serpumar/androidthings_datos/ArduinoUart.java" />
+        <option value="$PROJECT_DIR$/androidthings_datos/google-services.json" />
+        <option value="$PROJECT_DIR$/androidthings_app/src/main/res/layout/activity_main.xml" />
+        <option value="$PROJECT_DIR$/androidthings_app/src/main/java/com/example/serpumar/androidthings_app/MainActivity.java" />
+        <option value="$PROJECT_DIR$/comun/src/main/java/com/example/serpumar/comun/Notificacion.java" />
+        <option value="$PROJECT_DIR$/comun/src/main/java/com/example/serpumar/comun/Notificaciones.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/Fragments/InicioFragment.java" />
+        <option value="$PROJECT_DIR$/comun/build.gradle" />
+        <option value="$PROJECT_DIR$/androidthings_datos/build.gradle" />
+        <option value="$PROJECT_DIR$/androidthings_datos/src/main/java/com/example/serpumar/androidthings_datos/MainActivity.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="268" />
+  <component name="ProjectFrameBounds">
     <option name="y" value="23" />
-    <option name="width" value="1012" />
+    <option name="width" value="1280" />
     <option name="height" value="720" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
   </component>
   <component name="ProjectView">
-    <navigator proportions="" version="1">
+    <navigator currentView="ProjectPane" proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -248,118 +225,45 @@
             <path>
               <item name="LetsLock" type="b2602c69:ProjectViewProjectNode" />
               <item name="LetsLock" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="androidthings_app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="LetsLock" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LetsLock" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="androidthings_app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="build" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LetsLock" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LetsLock" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="androidthings_app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="build" type="462c0819:PsiDirectoryNode" />
-              <item name="generated" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LetsLock" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LetsLock" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="androidthings_app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="build" type="462c0819:PsiDirectoryNode" />
-              <item name="generated" type="462c0819:PsiDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LetsLock" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LetsLock" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="androidthings_app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="build" type="462c0819:PsiDirectoryNode" />
-              <item name="generated" type="462c0819:PsiDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
-              <item name="google-services" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LetsLock" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LetsLock" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="androidthings_app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="build" type="462c0819:PsiDirectoryNode" />
-              <item name="generated" type="462c0819:PsiDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
-              <item name="google-services" type="462c0819:PsiDirectoryNode" />
-              <item name="debug" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LetsLock" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LetsLock" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="androidthings_app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="build" type="462c0819:PsiDirectoryNode" />
-              <item name="generated" type="462c0819:PsiDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
-              <item name="google-services" type="462c0819:PsiDirectoryNode" />
-              <item name="debug" type="462c0819:PsiDirectoryNode" />
-              <item name="values" type="462c0819:PsiDirectoryNode" />
+              <item name="androidthings_datos" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
             </path>
             <path>
               <item name="LetsLock" type="b2602c69:ProjectViewProjectNode" />
               <item name="LetsLock" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="comun" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="LetsLock" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LetsLock" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="comun" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="build" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="AndroidView">
-        <subPane>
-          <expand>
-            <path>
-              <item name="LetsLock" type="1abcf292:AndroidViewProjectNode" />
-              <item name="androidthings_app" type="feadf853:AndroidModuleNode" />
-            </path>
-            <path>
-              <item name="LetsLock" type="1abcf292:AndroidViewProjectNode" />
-              <item name="androidthings_app" type="feadf853:AndroidModuleNode" />
-              <item name="manifests" type="f94875db:AndroidManifestsGroupNode" />
-            </path>
-            <path>
-              <item name="LetsLock" type="1abcf292:AndroidViewProjectNode" />
-              <item name="androidthings_app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-            </path>
-            <path>
-              <item name="LetsLock" type="1abcf292:AndroidViewProjectNode" />
-              <item name="androidthings_app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="androidthings_app" type="cbb59c9e:AndroidPsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="Pixel_2_API_29" />
-    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2019-12-07T19:22:00.536Z" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="192.168.0.105:5555" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2019-12-09T09:35:16.215Z" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/androidthings_app/src/main/res" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/androidthings_datos" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.example.serpumar.comun" />
+      <recent name="com.example.serpumar.androidthings_datos" />
+      <recent name="com.example.serpumar.androidthings_app" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/androidthings_datos" />
+      <recent name="$PROJECT_DIR$/androidthings_datos/src/main/java/com/example/serpumar/androidthings_datos" />
       <recent name="$PROJECT_DIR$/androidthings_app/src/main/res" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/androidthings_datos" />
+      <recent name="$PROJECT_DIR$/comun" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -374,7 +278,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Android App.androidthings_app">
+  <component name="RunManager" selected="Android App.androidthings_datos">
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -384,6 +288,59 @@
     </configuration>
     <configuration name="androidthings_app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
       <module name="androidthings_app" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="androidthings_datos" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
+      <module name="androidthings_datos" />
       <option name="DEPLOY" value="true" />
       <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
       <option name="DEPLOY_AS_INSTANT" value="false" />
@@ -503,57 +460,62 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1280" height="720" extended-state="6" />
-    <editor active="true" />
+    <frame x="0" y="23" width="1280" height="720" extended-state="0" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
       <window_info id="Capture Tool" order="1" />
-      <window_info content_ui="combo" id="Project" order="2" sideWeight="0.49881235" visible="true" weight="0.2003231" />
+      <window_info content_ui="combo" id="Project" order="2" sideWeight="0.49881235" visible="true" weight="0.22859451" />
       <window_info id="Structure" order="3" side_tool="true" />
       <window_info id="Build Variants" order="4" sideWeight="0.5011876" side_tool="true" weight="0.17609046" />
       <window_info id="Image Layers" order="5" />
       <window_info id="Designer" order="6" />
       <window_info id="Resources Explorer" order="7" />
       <window_info id="Favorites" order="8" side_tool="true" />
-      <window_info anchor="bottom" id="Logcat" order="0" weight="0.22770701" />
+      <window_info anchor="bottom" id="Logcat" order="0" weight="0.37738854" />
       <window_info anchor="bottom" id="TODO" order="1" />
-      <window_info anchor="bottom" id="Android Profiler" order="2" />
+      <window_info anchor="bottom" id="Android Profiler" order="2" weight="0.32961783" />
       <window_info anchor="bottom" id="Debug" order="3" />
-      <window_info anchor="bottom" id="Run" order="4" sideWeight="0.49946752" weight="0.50159234" />
-      <window_info anchor="bottom" id="Event Log" order="5" sideWeight="0.503212" side_tool="true" weight="0.19792746" />
+      <window_info active="true" anchor="bottom" id="Run" order="4" sideWeight="0.49946752" visible="true" weight="0.41082802" />
+      <window_info anchor="bottom" id="Event Log" order="5" sideWeight="0.503212" side_tool="true" weight="0.19745223" />
       <window_info anchor="bottom" id="Version Control" order="6" weight="0.32961783" />
-      <window_info anchor="bottom" id="Build" order="7" sideWeight="0.496788" weight="0.2022293" />
+      <window_info anchor="bottom" id="Build" order="7" sideWeight="0.496788" weight="0.33598727" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32961783" />
+      <window_info anchor="bottom" id="Find" order="9" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" order="1" />
       <window_info anchor="right" id="Gradle" order="2" weight="0.32869378" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info anchor="right" id="Palette&#9;" order="4" />
       <window_info anchor="right" id="Preview" order="5" />
+      <window_info anchor="right" id="Assistant" order="6" weight="0.32956383" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.32956383" />
-      <window_info id="Structure" order="1" side_tool="true" />
-      <window_info id="Image Layers" order="2" />
-      <window_info id="Designer" order="3" />
-      <window_info id="Build Variants" order="4" side_tool="true" />
-      <window_info id="Resources Explorer" order="5" />
-      <window_info id="Capture Tool" order="6" />
-      <window_info id="Favorites" order="7" side_tool="true" />
-      <window_info id="Captures" order="8" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Version Control" order="0" />
-      <window_info anchor="bottom" id="TODO" order="1" />
-      <window_info anchor="bottom" id="Android Profiler" order="2" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Logcat" order="3" />
-      <window_info anchor="bottom" id="Terminal" order="4" />
-      <window_info anchor="bottom" id="Event Log" order="5" sideWeight="0.50080776" side_tool="true" visible="true" weight="0.32961783" />
-      <window_info anchor="bottom" id="Build" order="6" sideWeight="0.49919224" visible="true" weight="0.32961783" />
-      <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
-      <window_info anchor="right" id="Capture Analysis" order="1" />
-      <window_info anchor="right" id="Gradle" order="2" />
-      <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info anchor="right" id="Assistant" order="4" weight="0.32956383" />
+      <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
+      <window_info id="Capture Tool" order="1" />
+      <window_info active="true" content_ui="combo" id="Project" order="2" sideWeight="0.49881235" visible="true" weight="0.3739903" />
+      <window_info id="Structure" order="3" side_tool="true" />
+      <window_info id="Build Variants" order="4" sideWeight="0.5011876" side_tool="true" weight="0.17609046" />
+      <window_info id="Image Layers" order="5" />
+      <window_info id="Designer" order="6" />
+      <window_info id="Resources Explorer" order="7" />
+      <window_info id="Favorites" order="8" side_tool="true" />
+      <window_info anchor="bottom" id="Find" order="0" />
+      <window_info anchor="bottom" id="Logcat" order="1" weight="0.64490443" />
+      <window_info anchor="bottom" id="TODO" order="2" />
+      <window_info anchor="bottom" id="Android Profiler" order="3" weight="0.32961783" />
+      <window_info anchor="bottom" id="Debug" order="4" />
+      <window_info anchor="bottom" id="Run" order="5" sideWeight="0.49946752" weight="0.50159234" />
+      <window_info anchor="bottom" id="Event Log" order="6" sideWeight="0.503212" side_tool="true" weight="0.19792746" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32961783" />
+      <window_info anchor="bottom" id="Build" order="8" sideWeight="0.496788" weight="0.33598727" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.32961783" />
+      <window_info anchor="right" id="Assistant" order="0" weight="0.32956383" />
+      <window_info anchor="right" id="Device File Explorer" order="1" side_tool="true" />
+      <window_info anchor="right" id="Capture Analysis" order="2" />
+      <window_info anchor="right" id="Gradle" order="3" weight="0.32869378" />
+      <window_info anchor="right" id="Theme Preview" order="4" />
       <window_info anchor="right" id="Palette&#9;" order="5" />
+      <window_info anchor="right" id="Preview" order="6" />
     </layout-to-restore>
   </component>
   <component name="editorHistoryManager">
@@ -572,16 +534,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/androidthings_app/src/main/java/com/example/serpumar/androidthings_app/ArduinoUart.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="26" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/bbdd/AdaptadorUsuariosFirestoreUI.java" />
     <entry file="file://$PROJECT_DIR$/app/build/generated/res/google-services/debug/values/values.xml" />
     <entry file="file://$PROJECT_DIR$/androidthings_app/src/main/java/com/example/serpumar/androidthings_app/MainActivity 2.java" />
@@ -591,23 +543,9 @@
     <entry file="file://$PROJECT_DIR$/androidthings_app/build/generated/res/google-services/debug/values/values.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/comun/src/main/java/com/example/serpumar/comun/JavaMailAPI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="900">
-          <caret line="71" column="38" selection-start-line="71" selection-start-column="38" selection-end-line="71" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/elemento_timbre 2.xml" />
     <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/bbdd/Imagen 2.java" />
     <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/Fragments/InicioFragment 3.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/Fragments/InicioFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1994">
-          <caret line="34" column="13" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="97">
@@ -622,20 +560,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/comun/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="40" selection-start-line="40" selection-end-line="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/bbdd/Notificaciones.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="25" column="30" selection-start-line="25" selection-start-column="30" selection-end-line="25" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/bbdd/Usuarios.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="705">
@@ -647,13 +571,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/androidthings_app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="505">
-          <caret line="51" selection-start-line="51" selection-end-line="51" />
         </state>
       </provider>
     </entry>
@@ -685,17 +602,68 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/androidthings_app/src/main/java/com/example/serpumar/androidthings_app/KeyboardView.java">
+    <entry file="file://$PROJECT_DIR$/androidthings_app/src/main/java/com/example/serpumar/androidthings_app/KeyboardView.java" />
+    <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-184">
-          <caret line="41" selection-start-line="41" selection-end-line="41" />
+        <state relative-caret-position="345">
+          <caret line="23" column="8" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/androidthings_app/src/main/java/com/example/serpumar/androidthings_app/AccesoActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1320">
+          <caret line="115" selection-start-line="115" selection-end-line="115" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2778#2779#0" expanded="true" />
-            <element signature="e#2826#2827#0" expanded="true" />
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/comun/src/main/java/com/example/serpumar/comun/JavaMailAPI 2.java" />
+    <entry file="file://$PROJECT_DIR$/androidthings_app/src/main/res/layout/activity_solicitaracceso 2.xml" />
+    <entry file="file://$PROJECT_DIR$/androidthings_app/src/main/res/drawable-v24/ic_launcher_foreground 2.xml" />
+    <entry file="file://$PROJECT_DIR$/androidthings_datos/src/main/java/com/example/serpumar/androidthings_datos/ArduinoUart.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/androidthings_app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" selection-end-line="22" selection-end-column="11" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-manifest" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/androidthings_app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="37" selection-start-line="1" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/androidthings_app/google-services.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-221" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/androidthings_datos/src/main/res/layout/activity_main.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/androidthings_datos/src/main/java/com/example/serpumar/androidthings_datos/BoardDefaults.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/androidthings_app/src/main/res/layout/activity_solicitaracceso.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="31" column="43" selection-start-line="31" selection-start-column="43" selection-end-line="31" selection-end-column="43" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/androidthings_app/src/main/res/layout/activity_main.xml">
       <provider editor-type-id="text-editor">
@@ -705,57 +673,121 @@
       </provider>
       <provider selected="true" editor-type-id="android-designer2" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
+    <entry file="file://$PROJECT_DIR$/androidthings_datos/src/main/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="8" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/androidthings_app/src/main/res/layout/activity_solicitaracceso.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="31" column="43" selection-start-line="31" selection-start-column="43" selection-end-line="31" selection-end-column="43" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/androidthings_app/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="63" selection-start-line="14" selection-start-column="63" selection-end-line="14" selection-end-column="63" />
+        <state relative-caret-position="255">
+          <caret line="17" column="18" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="18" />
+          <folding>
+            <element signature="e#196#214#0" expanded="true" />
+          </folding>
         </state>
       </provider>
       <provider editor-type-id="android-manifest" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/androidthings_app/src/main/java/com/example/serpumar/androidthings_app/MainActivity.java">
+    <entry file="file://$PROJECT_DIR$/androidthings_app/src/main/java/com/example/serpumar/androidthings_app/ArduinoUart.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="346" column="21" selection-start-line="346" selection-start-column="21" selection-end-line="346" selection-end-column="21" />
+        <state relative-caret-position="-408">
+          <caret line="12" column="26" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3647#3952#0" expanded="true" />
-            <element signature="e#3951#3952#0" expanded="true" />
-            <element signature="e#4960#5710#0" expanded="true" />
-            <element signature="e#5709#5710#0" expanded="true" />
-            <element signature="e#5749#6279#0" expanded="true" />
-            <element signature="e#6278#6279#0" expanded="true" />
-            <element signature="e#13355#15180#0" expanded="true" />
-            <element signature="e#15179#15180#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/androidthings_app/src/main/java/com/example/serpumar/androidthings_app/AccesoActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="648">
-          <caret line="115" selection-start-line="115" selection-end-line="115" />
+        <state relative-caret-position="-323" />
+      </provider>
+      <provider editor-type-id="android-manifest" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/comun/src/main/java/com/example/serpumar/comun/JavaMailAPI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-95" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/androidthings_app/src/main/java/com/example/serpumar/androidthings_app/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1028">
+          <caret line="182" selection-start-line="182" selection-end-line="182" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2085#2309#0" expanded="true" />
-            <element signature="e#2308#2309#0" expanded="true" />
-            <element signature="e#2408#4478#0" expanded="true" />
-            <element signature="e#4477#4478#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/androidthings_datos/src/main/java/com/example/serpumar/androidthings_datos/DoorbellCamera.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1750">
+          <caret line="138" column="7" selection-start-line="138" selection-start-column="7" selection-end-line="138" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/Fragments/InicioFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1410">
+          <caret line="124" selection-start-line="124" selection-end-line="124" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/bbdd/Notificaciones.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/bbdd/NotificacionesCallback.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/bbdd/Notificacion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/androidthings_datos/google-services.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1335">
+          <caret line="89" column="67" selection-start-line="89" selection-start-column="67" selection-end-line="89" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/comun/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="30" selection-start-line="30" selection-end-line="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/androidthings_datos/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="40" column="59" selection-start-line="40" selection-start-column="59" selection-end-line="40" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/androidthings_datos/src/main/java/com/example/serpumar/androidthings_datos/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="129" column="42" selection-start-line="129" selection-start-column="42" selection-end-line="129" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3629#4387#0" expanded="true" />
+            <element signature="e#4386#4387#0" expanded="true" />
+            <element signature="e#4426#4965#0" expanded="true" />
+            <element signature="e#4964#4965#0" expanded="true" />
+            <element signature="e#7484#8129#0" expanded="true" />
+            <element signature="e#8128#8129#0" expanded="true" />
+            <element signature="e#11425#11935#0" expanded="true" />
+            <element signature="e#11934#11935#0" expanded="true" />
           </folding>
         </state>
       </provider>
