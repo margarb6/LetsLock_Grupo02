@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +16,9 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import es.upv.gnd.letslock.bbdd.Notificacion;
+import es.upv.gnd.letslock.bbdd.Notificaciones;
+import es.upv.gnd.letslock.bbdd.NotificacionesCallback;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -25,9 +27,6 @@ import java.util.ArrayList;
 import es.upv.gnd.letslock.R;
 import es.upv.gnd.letslock.adapters.AdaptadorNotificaciones;
 import es.upv.gnd.letslock.adapters.DeleteAdaptador;
-import es.upv.gnd.letslock.bbdd.Notificacion;
-import es.upv.gnd.letslock.bbdd.Notificaciones;
-import es.upv.gnd.letslock.bbdd.NotificacionesCallback;
 
 public class NotificacionesFragment extends Fragment implements DeleteAdaptador.RecyclerItemTouchHelperListener {
 
@@ -36,12 +35,13 @@ public class NotificacionesFragment extends Fragment implements DeleteAdaptador.
     private AdaptadorNotificaciones adaptador;
     private Notificaciones notificacionesBD = new Notificaciones();
 
-    public static CheckBox timbre;
-    public static CheckBox puerta;
-    public static CheckBox solicitudPin;
-    public static CheckBox errorPin;
+    private CheckBox timbre;
+    private CheckBox puerta;
+    private CheckBox solicitudPin;
+    private CheckBox errorPin;
 
     private boolean permisos = false;
+    private boolean anonimo = false;
     private ArrayList<Notificacion> notDefinitivas = new ArrayList<>();
 
     private ArrayList<Notificacion> notTimbre = new ArrayList<>();
@@ -52,36 +52,45 @@ public class NotificacionesFragment extends Fragment implements DeleteAdaptador.
 
     public View onCreateView(@NonNull final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        vista = inflater.inflate(R.layout.fragment_notificaciones, container, false);
-
-        recyclerView = vista.findViewById(R.id.recyclerId);
-
-        timbre = vista.findViewById(R.id.timbreCheck);
-        errorPin = vista.findViewById(R.id.errorPinCheck);
-        puerta = vista.findViewById(R.id.puertaCheck);
-        solicitudPin = vista.findViewById(R.id.solicitudPinCheck);
-
         SharedPreferences prefs = getActivity().getSharedPreferences("Usuario", Context.MODE_PRIVATE);
-        if (prefs.contains("permisos")) permisos = prefs.getBoolean("permisos", false);
+        if (prefs.contains("anonimo")) anonimo = prefs.getBoolean("anonimo", false);
 
-        if (!permisos) {
-            puerta.setVisibility(View.INVISIBLE);
-            solicitudPin.setVisibility(View.INVISIBLE);
-        } else {
-            onclick(puerta, "llamanPuerta");
-            onclick(solicitudPin, "solicitudPin");
+        if(!anonimo){
 
-        }
+            vista = inflater.inflate(R.layout.fragment_notificaciones, container, false);
 
-        onclick(timbre, "timbre");
-        onclick(errorPin, "errorPin");
+            recyclerView = vista.findViewById(R.id.recyclerId);
 
-        notificacionesBD.getNotificaciones(new NotificacionesCallback() {
-            @Override
-            public void getNotificacionesCallback(ArrayList<Notificacion> notificaciones) {
-                filtrar(notificaciones);
+            timbre = vista.findViewById(R.id.timbreCheck);
+            errorPin = vista.findViewById(R.id.errorPinCheck);
+            puerta = vista.findViewById(R.id.puertaCheck);
+            solicitudPin = vista.findViewById(R.id.solicitudPinCheck);
+
+            if (prefs.contains("permisos")) permisos = prefs.getBoolean("permisos", false);
+
+            if (!permisos) {
+                puerta.setVisibility(View.INVISIBLE);
+                solicitudPin.setVisibility(View.INVISIBLE);
+            } else {
+                onclick(puerta, "llamanPuerta");
+                onclick(solicitudPin, "solicitudPin");
+
             }
-        });
+
+            onclick(timbre, "timbre");
+            onclick(errorPin, "errorPin");
+
+            notificacionesBD.getNotificaciones(new NotificacionesCallback() {
+                @Override
+                public void getNotificacionesCallback(ArrayList<Notificacion> notificaciones) {
+                    filtrar(notificaciones);
+                }
+            });
+        }
+        else {
+
+            vista = inflater.inflate(R.layout.fragment_anonimo, container, false);
+        }
 
         return vista;
     }
@@ -89,7 +98,9 @@ public class NotificacionesFragment extends Fragment implements DeleteAdaptador.
     public void filtrar(ArrayList<Notificacion> notificaciones) {
 
         notDefinitivas.clear();
+
         for (int i = 0; i < notificaciones.size(); i++) {
+
 
             for (String usuario : notificaciones.get(i).getIdUsuarios()) {
 
@@ -102,6 +113,7 @@ public class NotificacionesFragment extends Fragment implements DeleteAdaptador.
                             notDefinitivas.add(notificaciones.get(i));
                         }
                     } else {
+
                         notificaciones.get(i).setPosition(notDefinitivas.size());
                         notDefinitivas.add(notificaciones.get(i));
                     }
@@ -129,6 +141,10 @@ public class NotificacionesFragment extends Fragment implements DeleteAdaptador.
 
             notificacionBorrada.getIdUsuarios().remove(FirebaseAuth.getInstance().getCurrentUser().getUid());
             notificacionesBD.setNotificaciones(notificacionBorrada);
+            timbre.setChecked(true);
+            errorPin.setChecked(true);
+            puerta.setChecked(true);
+            solicitudPin.setChecked(true);
         }
     }
 
@@ -153,75 +169,76 @@ public class NotificacionesFragment extends Fragment implements DeleteAdaptador.
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
-                for (int i = 0; i < notDefinitivas.size(); i++) {
+                if (!isChecked) {
 
-                    if (tipo.equals(notDefinitivas.get(i).getTipo())) {
+                    for (int i= notDefinitivas.size()-1; i >=0 ; i--) {
 
-                        switch (tipo) {
+                        if (tipo.equals(notDefinitivas.get(i).getTipo())) {
 
-                            case "timbre":
+                            switch (tipo) {
 
-                                notTimbre.add(notDefinitivas.get(i));
-                                adaptador.removeItem(i);
-                                break;
+                                case "timbre":
 
-                            case "solicitudPin":
+                                    notTimbre.add(notDefinitivas.get(i));
+                                    adaptador.removeItem(i);
+                                    break;
 
-                                notSolicitud.add(notDefinitivas.get(i));
-                                adaptador.removeItem(i);
-                                break;
+                                case "solicitudPin":
 
-                            case "errorPin":
+                                    notSolicitud.add(notDefinitivas.get(i));
+                                    adaptador.removeItem(i);
+                                    break;
 
-                                notError.add(notDefinitivas.get(i));
-                                adaptador.removeItem(i);
-                                break;
+                                case "errorPin":
 
-                            case "llamanPuerta":
+                                    notError.add(notDefinitivas.get(i));
+                                    adaptador.removeItem(i);
+                                    break;
 
-                                notPuerta.add(notDefinitivas.get(i));
-                                adaptador.removeItem(i);
-                                break;
+                                case "llamanPuerta":
+
+                                    notPuerta.add(notDefinitivas.get(i));
+                                    adaptador.removeItem(i);
+                                    break;
+                            }
                         }
                     }
-                }
-
-                if (isChecked) {
+                }else {
 
                     switch (tipo) {
 
                         case "timbre":
 
-                            for (Notificacion not : notTimbre) {
+                            for (int i= notTimbre.size()-1; i >=0 ; i--) {
 
-                                adaptador.restoreItem(not, not.getPosition());
+                                adaptador.restoreItem(notTimbre.get(i), notTimbre.get(i).getPosition());
                             }
                             notTimbre.clear();
                             break;
 
                         case "solicitudPin":
 
-                            for (Notificacion not : notSolicitud) {
+                            for (int i= notSolicitud.size()-1; i >=0 ; i--) {
 
-                                adaptador.restoreItem(not, not.getPosition());
+                                adaptador.restoreItem(notSolicitud.get(i), notSolicitud.get(i).getPosition());
                             }
                             notSolicitud.clear();
                             break;
 
                         case "errorPin":
 
-                            for (Notificacion not : notError) {
+                            for (int i= notError.size()-1; i >=0 ; i--) {
 
-                                adaptador.restoreItem(not, not.getPosition());
+                                adaptador.restoreItem(notError.get(i), notError.get(i).getPosition());
                             }
                             notError.clear();
                             break;
 
                         case "llamanPuerta":
 
-                            for (Notificacion not : notPuerta) {
+                            for (int i= notPuerta.size()-1; i >=0 ; i--) {
 
-                                adaptador.restoreItem(not, not.getPosition());
+                                adaptador.restoreItem(notPuerta.get(i), notPuerta.get(i).getPosition());
                             }
                             notPuerta.clear();
                             break;

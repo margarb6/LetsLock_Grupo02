@@ -48,6 +48,6 @@ public class Correo {
         }
 
 
-        return mensaje_confirmacion;
+        return String.valueOf(codigo_enviado);
     }
 }

@@ -34,6 +34,7 @@ dependencies {
     implementation 'androidx.multidex:multidex:2.0.1'
     implementation 'com.firebaseui:firebase-ui-firestore:4.2.0'
 
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.10.0'
 
     implementation 'com.google.firebase:firebase-firestore:21.2.1'
     implementation 'com.google.firebase:firebase-storage:19.1.0'
@@ -51,7 +52,7 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui:2.1.0'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
     implementation 'com.android.support:preference-v7:29.+'
-
+    implementation  'com.google.firebase:firebase-database:19.2.0'
 
     // Java
     implementation "androidx.navigation:navigation-fragment:$nav_version"
@@ -61,7 +62,6 @@ dependencies {
 
     //animacion
     implementation "com.airbnb.android:lottie:3.3.0"
-
 
     //timbre
     implementation 'com.firebaseui:firebase-ui-firestore:6.1.0'
