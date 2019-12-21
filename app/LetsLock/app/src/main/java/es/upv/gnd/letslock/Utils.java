@@ -1,4 +1,4 @@
-package com.example.serpumar.comun;
+package es.upv.gnd.letslock;
 
 public class Utils {
 

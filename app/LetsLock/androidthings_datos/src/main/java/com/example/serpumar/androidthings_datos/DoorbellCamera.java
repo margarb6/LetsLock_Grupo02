@@ -1,4 +1,4 @@
-package com.example.serpumar.androidthings_app;
+package com.example.serpumar.androidthings_datos;
 
 
 import android.content.Context;
@@ -14,7 +14,6 @@ import android.hardware.camera2.TotalCaptureResult;
 import android.hardware.camera2.params.StreamConfigurationMap;
 import android.media.ImageReader;
 import android.os.Handler;
-import android.os.HandlerThread;
 import android.util.Log;
 import android.util.Size;
 
@@ -26,6 +25,7 @@ import static android.content.Context.CAMERA_SERVICE;
  * Helper class to deal with methods to deal with images from the camera.
  */
 public class DoorbellCamera {
+
     private static final String TAG = DoorbellCamera.class.getSimpleName();
 
     private static final int IMAGE_WIDTH = 320;

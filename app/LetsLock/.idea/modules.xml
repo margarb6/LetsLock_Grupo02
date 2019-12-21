@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/LetsLock.iml" filepath="$PROJECT_DIR$/LetsLock.iml" />
       <module fileurl="file://$PROJECT_DIR$/androidthings_app/androidthings_app.iml" filepath="$PROJECT_DIR$/androidthings_app/androidthings_app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/androidthings_datos/androidthings_datos.iml" filepath="$PROJECT_DIR$/androidthings_datos/androidthings_datos.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/comun/comun.iml" filepath="$PROJECT_DIR$/comun/comun.iml" />
     </modules>

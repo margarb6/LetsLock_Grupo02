@@ -49,7 +49,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layoutABorrar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:background="#53C4D8"
             android:visibility="visible">
 

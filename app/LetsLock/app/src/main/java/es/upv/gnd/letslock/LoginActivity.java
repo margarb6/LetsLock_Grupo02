@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
@@ -53,6 +54,9 @@ public class LoginActivity extends Activity {
 
     private void login() {
 
+        SharedPreferences prefs = getSharedPreferences("Usuario", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+
         boolean anonimo = true;
 
         //Si está logueado
@@ -65,6 +69,8 @@ public class LoginActivity extends Activity {
                 if (!ui.getProviderId().equals("firebase")) {
 
                     anonimo = false;
+                    editor.putBoolean("anonimo",false);
+                    editor.commit();
 
                     switch (ui.getProviderId()) {
 
@@ -81,7 +87,12 @@ public class LoginActivity extends Activity {
                     }
                 }
             }
-            if (anonimo) cambioActivity("como usuario anónimo");
+            if (anonimo){
+
+                cambioActivity("como usuario anónimo");
+                editor.putBoolean("anonimo",anonimo);
+                editor.commit();
+            }
 
             //Si no crea la interfaz de login
         } else {
@@ -131,13 +142,20 @@ public class LoginActivity extends Activity {
                 editor.putString("idCasa", "0");
 
                 //Si no existe lo creamos
-                if (usuarioBD.getPin().equals("") && usuarioBD.getNombre().equals("")) userBD.setUsuario(new Usuario(nombre, false, String.format("%04d", rand.nextInt(10000))));
+                if (usuarioBD.getPin().equals("") && usuarioBD.getNombre().equals("")) {
+
+                    String fotoURL = String.valueOf(usuario.getPhotoUrl());
+                    userBD.setUsuario(new Usuario(nombre, false, String.format("%04d", rand.nextInt(10000)), fotoURL));
+                }
+
                 else nombre = usuarioBD.getNombre();
 
                 editor.putBoolean("permisos", usuarioBD.isPermisos());
                 editor.commit();
 
                 casaBD.setCasa(usuario.getUid(), getApplicationContext());
+
+
 
                 cambioActivity(nombre);
             }

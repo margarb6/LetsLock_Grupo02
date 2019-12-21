@@ -1,5 +1,7 @@
 package es.upv.gnd.letslock;
 
+import android.app.Activity;
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -16,12 +18,22 @@ import java.net.URL;
 public class DescargarFoto extends AsyncTask<String, Void, Bitmap> {
 
     private Fragment fragment;
+    Activity c;
     private  int id;
 
     public DescargarFoto(Fragment fragment, int id){
 
         this.fragment= fragment;
         this.id= id;
+    }
+
+    public DescargarFoto(int foto_lista) {
+        id = foto_lista;
+    }
+
+    public DescargarFoto(Activity c, int foto_lista) {
+        this.c = c;
+        id = foto_lista;
     }
 
     @Override
@@ -46,7 +58,7 @@ public class DescargarFoto extends AsyncTask<String, Void, Bitmap> {
         }
     }
 
-    private Bitmap descargarImagen(String imageHttpAddress) {
+    public Bitmap descargarImagen(String imageHttpAddress) {
 
         Bitmap imagen = null;
 

@@ -13,7 +13,7 @@ import es.upv.gnd.letslock.R;
 import es.upv.gnd.letslock.adapters.AdaptadorUsuarios;
 import es.upv.gnd.letslock.bbdd.Usuario;
 
-public class AdaptadorUsuariosFirestoreUI extends  FirestoreRecyclerAdapter<Usuario, AdaptadorUsuarios.ViewHolder> {
+public class AdaptadorUsuariosFirestoreUI extends  FirestoreRecyclerAdapter<Usuario, AdaptadorUsuarios.UsuariosViewHolder> {
 
     protected View.OnClickListener onClickListener;
 
@@ -21,11 +21,11 @@ public class AdaptadorUsuariosFirestoreUI extends  FirestoreRecyclerAdapter<Usua
             @NonNull FirestoreRecyclerOptions<Usuario> options) {
         super(options);
     }
-    @Override public AdaptadorUsuarios.ViewHolder onCreateViewHolder( ViewGroup parent, int viewType) {
+    @Override public AdaptadorUsuarios.UsuariosViewHolder onCreateViewHolder( ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.elemento_lista, parent, false);
-        return new AdaptadorUsuarios.ViewHolder(view);
+        return new AdaptadorUsuarios.UsuariosViewHolder(view);
     }
-    @Override protected void onBindViewHolder(@NonNull AdaptadorUsuarios.ViewHolder holder, int position, @NonNull Usuario usuario) {
+    @Override protected void onBindViewHolder(@NonNull AdaptadorUsuarios.UsuariosViewHolder holder, int position, @NonNull Usuario usuario) {
         AdaptadorUsuarios.personalizaVista(holder, usuario);
         holder.itemView.setOnClickListener(onClickListener);
     }

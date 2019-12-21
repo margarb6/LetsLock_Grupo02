@@ -3,13 +3,20 @@ package es.upv.gnd.letslock.bbdd;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
 
 public class Usuarios {
 
@@ -39,8 +46,9 @@ public class Usuarios {
                         String nombre = task.getResult().getString("nombre");
                         boolean permisos = task.getResult().getBoolean("permisos");
                         String pin = task.getResult().getString("pin");
+                        String fotoUrl = task.getResult().getString("fotoUrl");
 
-                        Usuario usuario= new Usuario(nombre,permisos, pin);
+                        Usuario usuario= new Usuario(nombre,permisos, pin, fotoUrl);
                         callback.getUsuariosCallback(usuario);
 
                     //Si no existe devolvemos uno vacío
@@ -56,4 +64,65 @@ public class Usuarios {
             }
         });
     }
+
+   /* static public void getUsuarios(final UsuariosCallback callback) {
+
+        db.collection("usuarios").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+
+                //Si consigue leer en Firestore
+                if (task.isSuccessful()) {
+
+                    ArrayList<DocumentSnapshot> docs = (ArrayList<DocumentSnapshot>) task.getResult().getDocuments();
+
+                    for (int i = 0; i < docs.size(); i++) {
+
+                        ArrayList<String> idUsuario = (ArrayList<String>) docs.get(i).get("idUsuarios");
+
+                    }
+
+                    not(callback);
+
+                } else {
+
+                    Log.e("Firestore", "Error al leer", task.getException());
+                }
+            }
+        });
+    }
+
+    private static void not(final NotificacionesCallback callback) {
+
+        Query query = db.collection("notificaciones").orderBy("hora", Query.Direction.DESCENDING);
+        query.addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
+
+                if (e != null) {
+
+                    Log.e("Firestore", "Error al leer", e);
+
+                    return;
+                }
+
+                ArrayList<Usuario> usuarios = new ArrayList<>();
+                ArrayList<DocumentSnapshot> docs = (ArrayList<DocumentSnapshot>) queryDocumentSnapshots.getDocuments();
+
+                for (int i = 0; i < docs.size(); i++) {
+
+                        ArrayList<String> usuarios = (ArrayList<String>) docs.get(i).get("idUsuarios");
+
+                    }
+                }
+
+                callback.
+
+
+        });
+    }*/
+
+
+
 }

@@ -1,10 +1,9 @@
-package com.example.serpumar.comun;
-
+package es.upv.gnd.letslock;
 
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
-import android.widget.Toast;
+
 import java.util.Properties;
 import javax.mail.Message;
 import javax.mail.MessagingException;
