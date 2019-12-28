@@ -51,6 +51,7 @@ public class DoorbellCamera {
     }
 
     public static DoorbellCamera getInstance() {
+
         return InstanceHolder.mCamera;
     }
 

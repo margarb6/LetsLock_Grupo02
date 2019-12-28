@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 <<<<<<< HEAD
     <list default="true" id="b41df258-9649-4511-822b-9c66e74cd8ba" name="Default Changelist" comment="">
@@ -203,6 +204,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
 >>>>>>> Stashed changes
+=======
+    <list default="true" id="65398d6c-af44-480a-b68d-6714132ce57d" name="Default Changelist" comment="" />
+>>>>>>> Stashed changes
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -212,6 +216,7 @@
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< HEAD
   <component name="ExecutionTargetManager" SELECTED_TARGET="611f824a" />
@@ -239,6 +244,15 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
+=======
+  <component name="ExecutionTargetManager" SELECTED_TARGET="Emulador" />
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$/app">
+          <activation />
+        </task>
+>>>>>>> Stashed changes
         <projects_view />
       </state>
     </system>
@@ -250,6 +264,7 @@
 <<<<<<< Updated upstream
 <<<<<<< HEAD
       <file pinned="false" current-in-tab="true">
+<<<<<<< Updated upstream
 <<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/utils/NotificacionesLista.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -258,6 +273,55 @@
               <folding>
                 <element signature="e#1069#1070#0" expanded="true" />
                 <element signature="e#1103#1104#0" expanded="true" />
+=======
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/AnonimoActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="29" column="13" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/LoginActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1904">
+              <caret line="148" selection-start-line="148" selection-end-line="148" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/bbdd/Notificacion.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="19" column="37" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
+              <folding>
+                <element signature="e#590#591#0" expanded="true" />
+                <element signature="e#615#616#0" expanded="true" />
+                <element signature="e#651#652#0" expanded="true" />
+                <element signature="e#679#680#0" expanded="true" />
+                <element signature="e#710#711#0" expanded="true" />
+                <element signature="e#737#738#0" expanded="true" />
+                <element signature="e#777#778#0" expanded="true" />
+                <element signature="e#809#810#0" expanded="true" />
+                <element signature="e#838#839#0" expanded="true" />
+                <element signature="e#865#866#0" expanded="true" />
+                <element signature="e#903#904#0" expanded="true" />
+                <element signature="e#935#936#0" expanded="true" />
+                <element signature="e#968#969#0" expanded="true" />
+                <element signature="e#997#998#0" expanded="true" />
+                <element signature="e#1041#1042#0" expanded="true" />
+                <element signature="e#1077#1078#0" expanded="true" />
+                <element signature="e#1125#1126#0" expanded="true" />
+                <element signature="e#1158#1159#0" expanded="true" />
+                <element signature="e#1221#1222#0" expanded="true" />
+                <element signature="e#1265#1266#0" expanded="true" />
+                <element signature="e#1297#1298#0" expanded="true" />
+                <element signature="e#1328#1329#0" expanded="true" />
+                <element signature="e#1373#1374#0" expanded="true" />
+                <element signature="e#1413#1414#0" expanded="true" />
+>>>>>>> Stashed changes
               </folding>
             </state>
           </provider>
@@ -301,6 +365,7 @@
       </file>
       <file pinned="false" current-in-tab="false">
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 <<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/build.gradle">
@@ -317,11 +382,18 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1071">
               <caret line="63" column="33" selection-start-line="63" selection-start-column="33" selection-end-line="63" selection-end-column="33" />
+=======
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/SplashActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+>>>>>>> Stashed changes
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< Updated upstream
         <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/Fragments/NotificacionesFragment.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="185">
@@ -331,11 +403,18 @@
                 <element signature="e#3385#3698#0" expanded="true" />
                 <element signature="e#3697#3698#0" expanded="true" />
               </folding>
+=======
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/NotificationActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+>>>>>>> Stashed changes
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< Updated upstream
         <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/model/Notificacion.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="289">
@@ -370,11 +449,27 @@
                 <element signature="e#2421#2422#0" expanded="true" />
               </folding>
 >>>>>>> develop
+=======
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/MainActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="57" lean-forward="true" selection-start-line="57" selection-end-line="57" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/Fragments/TimbreFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-952">
+              <caret line="44" column="13" selection-start-line="44" selection-start-column="13" selection-end-line="44" selection-end-column="13" />
+>>>>>>> Stashed changes
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+<<<<<<< Updated upstream
 <<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/MainActivity.java">
 =======
@@ -528,12 +623,19 @@
           <provider editor-type-id="text-editor">
             <state relative-caret-position="714">
               <caret line="42" column="44" selection-start-line="42" selection-start-column="44" selection-end-line="42" selection-end-column="44" />
+=======
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/Fragments/PerfilFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="38" column="13" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="13" />
+>>>>>>> Stashed changes
             </state>
           </provider>
           <provider selected="true" editor-type-id="android-designer2" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< Updated upstream
         <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/PreferenciasActivity.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="408">
@@ -565,6 +667,12 @@
               <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
 >>>>>>> Stashed changes
 >>>>>>> develop
+=======
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/adapters/AdaptadorNotificaciones.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
+>>>>>>> Stashed changes
             </state>
           </provider>
         </entry>
@@ -818,6 +926,7 @@
       <pane id="PackagesPane" />
       <pane id="ProjectPane" />
       <pane id="Scope" />
+<<<<<<< Updated upstream
 =======
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
@@ -836,6 +945,67 @@
 =======
 >>>>>>> develop
 >>>>>>> develop
+=======
+      <pane id="PackagesPane" />
+      <pane id="AndroidView">
+        <subPane>
+          <expand>
+            <path>
+              <item name="LetsLock" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+            </path>
+            <path>
+              <item name="LetsLock" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+            </path>
+            <path>
+              <item name="LetsLock" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="letslock" type="cbb59c9e:AndroidPsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="LetsLock" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="letslock" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="adapters" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="LetsLock" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="letslock" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="bbdd" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="LetsLock" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="letslock" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="Fragments" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="LetsLock" type="1abcf292:AndroidViewProjectNode" />
+              <item name="comun" type="feadf853:AndroidModuleNode" />
+            </path>
+            <path>
+              <item name="LetsLock" type="1abcf292:AndroidViewProjectNode" />
+              <item name="comun" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+            </path>
+            <path>
+              <item name="LetsLock" type="1abcf292:AndroidViewProjectNode" />
+              <item name="comun" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="comun" type="cbb59c9e:AndroidPsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+>>>>>>> Stashed changes
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -954,11 +1124,15 @@
   </component>
   <component name="ToolWindowManager">
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 <<<<<<< Updated upstream
 <<<<<<< HEAD
 <<<<<<< HEAD
     <frame x="-7" y="0" width="974" height="1047" extended-state="0" />
+=======
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+>>>>>>> Stashed changes
     <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
@@ -1117,6 +1291,7 @@
     </option>
   </component>
   <component name="editorHistoryManager">
+<<<<<<< Updated upstream
 <<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/LoginActivity.java" />
 <<<<<<< HEAD
@@ -1239,6 +1414,13 @@
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties">
+=======
+    <entry file="file://$PROJECT_DIR$/androidthings_app/src/main/java/com/example/serpumar/androidthings_app/MainActivity 2.java" />
+    <entry file="file://$PROJECT_DIR$/comun/build/intermediates/packaged_res/debug/values/values 5.xml" />
+    <entry file="file://$PROJECT_DIR$/comun/build/intermediates/packaged_res/debug/values/values.xml" />
+    <entry file="file://$PROJECT_DIR$/androidthings_app/build/generated/res/google-services/debug/values/values 2.xml" />
+    <entry file="file://$PROJECT_DIR$/androidthings_app/build/generated/res/google-services/debug/values/values.xml">
+>>>>>>> Stashed changes
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/build.gradle">
@@ -1427,7 +1609,12 @@
         </state>
       </provider>
     </entry>
+<<<<<<< Updated upstream
     <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/adapters/AdaptadorNotificacion.java">
+=======
+    <entry file="file://$PROJECT_DIR$/androidthings_app/src/main/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest" />
+>>>>>>> Stashed changes
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="24" column="35" selection-start-line="24" selection-start-column="35" selection-end-line="24" selection-end-column="35" />
@@ -1448,6 +1635,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< Updated upstream
     <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/Aplicacion.java" />
     <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/bbdd/RepositorioUsuarios.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1455,6 +1643,11 @@
           <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
         </state>
       </provider>
+=======
+    <entry file="file://$PROJECT_DIR$/androidthings_datos/src/main/res/layout/activity_main.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor" />
+>>>>>>> Stashed changes
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/bbdd/Usuarios.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1463,22 +1656,36 @@
         </state>
       </provider>
     </entry>
+<<<<<<< Updated upstream
     <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/Fragments/PerfilFragment.java">
+=======
+    <entry file="file://$PROJECT_DIR$/androidthings_app/src/main/res/layout/activity_solicitaracceso.xml">
+      <provider editor-type-id="android-designer2" />
+>>>>>>> Stashed changes
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="871">
           <caret line="110" column="45" lean-forward="true" selection-start-line="110" selection-start-column="45" selection-end-line="110" selection-end-column="45" />
         </state>
       </provider>
     </entry>
+<<<<<<< Updated upstream
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/elemento_lista.xml">
+=======
+    <entry file="file://$PROJECT_DIR$/androidthings_app/src/main/res/layout/activity_main.xml">
+      <provider selected="true" editor-type-id="android-designer2" />
+>>>>>>> Stashed changes
       <provider editor-type-id="text-editor">
         <state relative-caret-position="408">
           <caret line="24" column="49" lean-forward="true" selection-start-line="24" selection-start-column="49" selection-end-line="24" selection-end-column="49" />
         </state>
       </provider>
-      <provider selected="true" editor-type-id="android-designer2" />
     </entry>
+<<<<<<< Updated upstream
     <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/Fotos.java">
+=======
+    <entry file="file://$PROJECT_DIR$/androidthings_datos/src/main/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest" />
+>>>>>>> Stashed changes
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="629">
           <caret line="50" column="40" selection-start-line="50" selection-start-column="40" selection-end-line="50" selection-end-column="40" />
@@ -1537,12 +1744,12 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1258">
           <caret line="74" selection-start-line="74" selection-end-line="74" selection-end-column="65" />
         </state>
       </provider>
-      <provider editor-type-id="android-manifest" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/Fragments/PreferenciasFragment.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1576,6 +1783,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< Updated upstream
     <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/model/Notificacion.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -1657,12 +1865,16 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/LoginActivity.java">
+=======
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/bbdd/NotificacionesCallback.java">
+>>>>>>> Stashed changes
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1921">
           <caret line="140" column="20" lean-forward="true" selection-start-line="140" selection-start-column="20" selection-end-line="140" selection-end-column="20" />
         </state>
       </provider>
     </entry>
+<<<<<<< Updated upstream
     <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/bbdd/Usuario.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-328">
@@ -1678,6 +1890,10 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/utils/NotificacionesLista.java">
+=======
+    <entry file="file://$PROJECT_DIR$/androidthings_datos/google-services.json" />
+    <entry file="file://$PROJECT_DIR$/comun/build.gradle">
+>>>>>>> Stashed changes
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="182">
           <caret line="26" column="46" lean-forward="true" selection-start-line="26" selection-start-column="46" selection-end-line="26" selection-end-column="46" />
@@ -1737,6 +1953,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< Updated upstream
     <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/Fragments/NotificacionesFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="185">
@@ -1745,10 +1962,26 @@
             <element signature="imports" expanded="true" />
             <element signature="e#3385#3698#0" expanded="true" />
             <element signature="e#3697#3698#0" expanded="true" />
+=======
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/adapters/AdaptadorNotificaciones.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/bbdd/Notificaciones.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-786">
+          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+>>>>>>> Stashed changes
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< Updated upstream
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_notificaciones.xml">
       <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor" />
@@ -1832,5 +2065,89 @@
 >>>>>>> Stashed changes
     </layout>
 >>>>>>> develop
+=======
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/Fragments/InicioFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1105">
+          <caret line="46" column="13" selection-start-line="46" selection-start-column="13" selection-end-line="46" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/bbdd/Notificacion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="37" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
+          <folding>
+            <element signature="e#590#591#0" expanded="true" />
+            <element signature="e#615#616#0" expanded="true" />
+            <element signature="e#651#652#0" expanded="true" />
+            <element signature="e#679#680#0" expanded="true" />
+            <element signature="e#710#711#0" expanded="true" />
+            <element signature="e#737#738#0" expanded="true" />
+            <element signature="e#777#778#0" expanded="true" />
+            <element signature="e#809#810#0" expanded="true" />
+            <element signature="e#838#839#0" expanded="true" />
+            <element signature="e#865#866#0" expanded="true" />
+            <element signature="e#903#904#0" expanded="true" />
+            <element signature="e#935#936#0" expanded="true" />
+            <element signature="e#968#969#0" expanded="true" />
+            <element signature="e#997#998#0" expanded="true" />
+            <element signature="e#1041#1042#0" expanded="true" />
+            <element signature="e#1077#1078#0" expanded="true" />
+            <element signature="e#1125#1126#0" expanded="true" />
+            <element signature="e#1158#1159#0" expanded="true" />
+            <element signature="e#1221#1222#0" expanded="true" />
+            <element signature="e#1265#1266#0" expanded="true" />
+            <element signature="e#1297#1298#0" expanded="true" />
+            <element signature="e#1328#1329#0" expanded="true" />
+            <element signature="e#1373#1374#0" expanded="true" />
+            <element signature="e#1413#1414#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/SplashActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/NotificationActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="57" lean-forward="true" selection-start-line="57" selection-end-line="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/Fragments/TimbreFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-952">
+          <caret line="44" column="13" selection-start-line="44" selection-start-column="13" selection-end-line="44" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/Fragments/PerfilFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="38" column="13" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/AnonimoActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="29" column="13" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+>>>>>>> Stashed changes
   </component>
 </project>
