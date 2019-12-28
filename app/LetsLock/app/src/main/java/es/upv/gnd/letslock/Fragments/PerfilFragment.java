@@ -1,5 +1,7 @@
 package es.upv.gnd.letslock.Fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
@@ -114,6 +116,8 @@ public class PerfilFragment extends Fragment {
         });
         return vista;
     }
+
+
 }
 
 

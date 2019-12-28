@@ -18,6 +18,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.airbnb.lottie.LottieAnimationView;
+
 import es.upv.gnd.letslock.HistorialTimbreActivity;
 
 import com.bumptech.glide.Glide;
@@ -38,6 +40,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Date;
 
 import es.upv.gnd.letslock.R;
 
@@ -50,6 +53,9 @@ public class TimbreFragment extends Fragment {
     Button si;
     Button no;
     Button historial;
+    LottieAnimationView lottieAnimationView;
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+
 
     String TAG = "MARTA";
     private StorageReference storageRef;
@@ -72,11 +78,28 @@ public class TimbreFragment extends Fragment {
             si = vista.findViewById(R.id.timbre_boton_si);
             no = vista.findViewById(R.id.timbre_boton_no);
             historial = vista.findViewById(R.id.boton_historial);
+            lottieAnimationView = vista.findViewById(R.id.animation_view3);
+
 
             nadie_llama.setVisibility(View.INVISIBLE);
             pregunta.setVisibility(View.VISIBLE);
             si.setVisibility(View.VISIBLE);
             no.setVisibility(View.VISIBLE);
+            lottieAnimationView.setVisibility(View.INVISIBLE);
+
+            si.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    db.collection("Datos").document("Puerta").update("puerta",true);
+                }
+            });
+
+            no.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    db.collection("Datos").document("Puerta").update("puerta",false);
+                }
+            });
 
             historial.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -90,10 +113,7 @@ public class TimbreFragment extends Fragment {
                 @Override
                 public void run() {
 
-                    nadie_llama.setVisibility(View.VISIBLE);
-                    pregunta.setVisibility(View.INVISIBLE);
-                    si.setVisibility(View.INVISIBLE);
-                    no.setVisibility(View.INVISIBLE);
+        storageRef = FirebaseStorage.getInstance().getReference();
 
                 }
             }, 30000);
@@ -136,15 +156,20 @@ public class TimbreFragment extends Fragment {
 
     private URL ultimaFoto(QuerySnapshot qs) {
 
-        long tiempo = 1000000000;
+        long tiempo = 0;
         long cincoMin = 5 * 60 * 1000;
+        long actualLong = System.currentTimeMillis();
+
         URL url = null;
         DocumentSnapshot ds = null;
         for (DocumentSnapshot docS : qs.getDocuments()) {
             if (docS.getLong("tiempo") > tiempo) {
                 tiempo = docS.getLong("tiempo");
                 ds = docS;
-                if ((System.currentTimeMillis() - docS.getLong("tiempo")) < cincoMin) {
+                Log.e("MARTA","Tengo la foto mas actual");
+                if (( actualLong- tiempo) < cincoMin) {
+                    Log.e("MARTA","Tengo una foto de hace menos de  5 mins");
+
                     try {
                         url = new URL(ds.getString("url"));
                         Log.e("URL", ds.getString("url"));
@@ -152,8 +177,6 @@ public class TimbreFragment extends Fragment {
                         e.printStackTrace();
                     }
                 }
-
-
             }
         }
 

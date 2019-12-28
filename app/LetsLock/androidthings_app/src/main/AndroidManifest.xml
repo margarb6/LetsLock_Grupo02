@@ -3,9 +3,10 @@
     package="es.upv.gnd.letslock.androidthings">
     <uses-permission android:name="com.google.android.things.permission.MANAGE_INPUT_DRIVERS"/>
     <uses-permission android:name="com.google.android.things.permission.USE_PERIPHERAL_IO"/>
-    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.CAMERA"/>
 
-    <application android:label="@string/app_name">
+    <application android:label="@string/app_name"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <uses-library android:name="com.google.android.things" />
 
         <activity android:name="com.example.serpumar.androidthings_app.MainActivity">
@@ -15,6 +16,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.example.serpumar.androidthings_app.AccesoActivity"/>
 
     </application>
 

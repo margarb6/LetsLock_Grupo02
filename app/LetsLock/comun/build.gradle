@@ -37,10 +37,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore:21.3.0'
 
 
-    //correo
-    implementation files('libs/activation.jar')
-    implementation files('libs/additionnal.jar')
-    implementation files('libs/mail.jar')
+
 
 
 }

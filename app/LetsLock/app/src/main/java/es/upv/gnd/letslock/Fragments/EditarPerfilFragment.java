@@ -53,6 +53,7 @@ public class EditarPerfilFragment extends Fragment {
     private Uri foto;
     String id = "";
     boolean permisos;
+    String fotoUrl;
 
     //Inicializamos firebase auth y firestore
     FirebaseUser usuario = FirebaseAuth.getInstance().getCurrentUser();
@@ -80,6 +81,7 @@ public class EditarPerfilFragment extends Fragment {
                 id = usuario.getUid();
                 permisos= usuarioBD.isPermisos();
                 pin.setText(usuarioBD.getPin());
+                fotoUrl = usuarioBD.getFotoUrl();
             }
         });
 
@@ -154,7 +156,7 @@ public class EditarPerfilFragment extends Fragment {
                         if(nombre.getText().length()== 0) texto = (texto.isEmpty() ?  "Inserte un nombre": "Inserte un mínimo de 4 digitos y un nombre");
                         if(texto.isEmpty()){
                             subirFoto();
-                            userBD.setUsuario(new Usuario(nombre.getText().toString(), permisos, pin.getText().toString()));
+                            userBD.setUsuario(new Usuario(nombre.getText().toString(), permisos, pin.getText().toString(), fotoUrl));
                             startActivity(new Intent(getContext(), TabsActivity.class));
                         }
                         else Toast.makeText(getContext(),texto,Toast.LENGTH_LONG).show();

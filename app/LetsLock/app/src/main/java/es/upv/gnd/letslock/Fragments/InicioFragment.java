@@ -24,12 +24,14 @@ import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 
 import com.airbnb.lottie.LottieAnimationView;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Date;
 import java.util.Random;
 import java.util.UUID;
 
-import com.example.serpumar.comun.JavaMailAPI;
+
+import es.upv.gnd.letslock.JavaMailAPI;
 import es.upv.gnd.letslock.bbdd.Notificacion;
 import es.upv.gnd.letslock.bbdd.Notificaciones;
 
@@ -48,6 +50,7 @@ public class InicioFragment extends Fragment {
     boolean image1Displaying = true;
     Toast toast;
     LottieAnimationView lottieAnimationView;
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
     LottieAnimationView lottieAnimationView2;
     Button enviar;
     TextView codigo_y_correo;
@@ -60,6 +63,7 @@ public class InicioFragment extends Fragment {
     private boolean anonimo = false;
     private String idCasa;
     private NotificationManagerCompat notificationManager;
+
 
     @SuppressLint("ClickableViewAccessibility")
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -196,8 +200,10 @@ public class InicioFragment extends Fragment {
                         @Override
                         public void run() {
                             if (image1Displaying){
+
                                 toast.makeText(getActivity(), "Abriendo puerta", Toast.LENGTH_SHORT).show();
                                 imageView.setImageResource(R.drawable.imagen_animacion);
+                                db.collection("Datos").document("Puerta").update("puerta",true);
                                 lottieAnimationView.playAnimation();
                                 image1Displaying = false;
                             }else{
@@ -216,6 +222,8 @@ public class InicioFragment extends Fragment {
 
                                 });
                                 valueAnimator.start();
+                                db.collection("Datos").document("Puerta").update("puerta",false);
+
                                 toast.makeText(getActivity(), "Cerrando puerta", Toast.LENGTH_SHORT).show();
                                 image1Displaying = true;
                             }
@@ -257,6 +265,7 @@ public class InicioFragment extends Fragment {
             int codigo_enviado = randomCode(codigo);
             mensaje_confirmacion = "El codigo "+codigo_enviado+ " ha sido enviado a "+listaCorreos;
             String mensaje = "Tu codigo de entrada es "+codigo_enviado;
+            db.collection("Datos").document("Puerta").update("pinInvitado",String.valueOf(codigo_enviado));
 
             JavaMailAPI javaMailAPI = new JavaMailAPI(getContext(), listaCorreos
                     ,asunto,mensaje);
@@ -304,6 +313,4 @@ public class InicioFragment extends Fragment {
         }
 
         return mensaje_confirmacion;
-    }
-
-}
+    }        }

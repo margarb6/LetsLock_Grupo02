@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
@@ -141,13 +142,20 @@ public class LoginActivity extends Activity {
                 editor.putString("idCasa", "0");
 
                 //Si no existe lo creamos
-                if (usuarioBD.getPin().equals("") && usuarioBD.getNombre().equals("")) userBD.setUsuario(new Usuario(nombre, false, String.format("%04d", rand.nextInt(10000))));
+                if (usuarioBD.getPin().equals("") && usuarioBD.getNombre().equals("")) {
+
+                    String fotoURL = String.valueOf(usuario.getPhotoUrl());
+                    userBD.setUsuario(new Usuario(nombre, false, String.format("%04d", rand.nextInt(10000)), fotoURL));
+                }
+
                 else nombre = usuarioBD.getNombre();
 
                 editor.putBoolean("permisos", usuarioBD.isPermisos());
                 editor.commit();
 
                 casaBD.setCasa(usuario.getUid(), getApplicationContext());
+
+
 
                 cambioActivity(nombre);
             }

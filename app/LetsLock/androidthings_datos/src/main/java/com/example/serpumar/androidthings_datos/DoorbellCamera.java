@@ -1,4 +1,4 @@
-package com.example.serpumar.androidthings_app;
+package com.example.serpumar.androidthings_datos;
 
 
 import android.content.Context;
@@ -14,7 +14,6 @@ import android.hardware.camera2.TotalCaptureResult;
 import android.hardware.camera2.params.StreamConfigurationMap;
 import android.media.ImageReader;
 import android.os.Handler;
-import android.os.HandlerThread;
 import android.util.Log;
 import android.util.Size;
 
