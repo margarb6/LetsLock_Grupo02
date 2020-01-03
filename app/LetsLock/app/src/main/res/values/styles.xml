@@ -1,19 +1,68 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-    </style>
 
-    <style name="AppTheme.NoActionBar">
+    </style>
+    <style name="LightTheme" parent="AppTheme">
+        <!-- Customize your theme here. -->
+
+        <item name="colorPrimary">#29acc3</item>
+        <item name="colorPrimaryDark">#1d7b8c</item>
+        <item name="colorAccent">#29acc3</item>
+        <item name="android:colorBackground">#ffffff</item>
+        <item name="btnColor">#BBBBBB</item>
+        <item name="navBackground">#ffffff</item>
+
+
+
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+
+    </style>
+    <style name="DarkTheme" parent="AppTheme">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#29acc3</item>
+        <item name="colorPrimaryDark">#228FA2</item>
+        <item name="colorAccent">#29acc3</item>
+        <item name="android:colorBackground">#3C3C3C</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="btnColor">#228FA2</item>
+        <item name="navBackground">#3C3C3C</item>
+
+
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="DarkThemePreferences" parent="AppTheme">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#29acc3</item>
+        <item name="colorPrimaryDark">#228FA2</item>
+        <item name="android:textColorSecondary">#ffffff</item>
+        <item name="android:colorBackground">#3C3C3C</item>
+        <item name="android:textColor">#DFDFDF</item>
+        <item name="btnColor">#228FA2</item>
+        <item name="navBackground">#3C3C3C</item>
+
+
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+
+    <style name="LightTheme.NoActionBar" >
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="DarkTheme.NoActionBar" >
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.DayNight.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 

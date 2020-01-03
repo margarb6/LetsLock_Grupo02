@@ -25,7 +25,7 @@
 
         <com.airbnb.lottie.LottieAnimationView
 
-            android:id="@+id/animation_view"
+            android:id="@+id/animacion_tema"
             android:layout_width="415dp"
             android:layout_height="435dp"
 
@@ -53,7 +53,9 @@
             android:text="Enviar codigo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/animation_view" />
+            app:layout_constraintTop_toBottomOf="@+id/animation_view"
+            android:background="?attr/btnColor"
+            />
 
         <TextView
             android:id="@+id/codigo_y_correo"
@@ -89,7 +91,9 @@
             app:layout_constraintEnd_toStartOf="@+id/boton_cancelar"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/correo_input" />
+            app:layout_constraintTop_toBottomOf="@+id/correo_input"
+            android:background="?attr/btnColor"
+            />
 
         <Button
             android:id="@+id/boton_cancelar"
@@ -102,7 +106,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/boton_enviar"
-            app:layout_constraintTop_toTopOf="@+id/boton_enviar" />
+            app:layout_constraintTop_toTopOf="@+id/boton_enviar"
+            android:background="?attr/btnColor"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
