@@ -31,5 +31,7 @@
     <string name="localizacion">localizacion</string>
     <string name="email">email</string>
 
+    <string name="modo_noche">modo_noche</string>
+
 
 </resources>
