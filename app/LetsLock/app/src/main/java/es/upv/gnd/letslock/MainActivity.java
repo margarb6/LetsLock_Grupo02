@@ -25,6 +25,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 
+import es.upv.gnd.letslock.Fragments.ChatFragment;
 import es.upv.gnd.letslock.Fragments.PersonasFragment;
 import es.upv.gnd.letslock.Fragments.InicioFragment;
 import es.upv.gnd.letslock.Fragments.NotificacionesFragment;
@@ -194,6 +195,10 @@ public class MainActivity extends AppCompatActivity {
 
                     fragSeleccionado = new PersonasFragment();
                     break;
+                case R.id.menu_inferior_chat:
+
+                    fragSeleccionado = new ChatFragment();
+                    break;
             }
 
             FragmentManager manager = getSupportFragmentManager();
@@ -228,6 +233,10 @@ public class MainActivity extends AppCompatActivity {
             } else if (fragmentAnterior instanceof PersonasFragment) {
 
                 Log.i("aa", String.valueOf(navigation.getMenu().findItem(R.id.menu_inferior_personas).setChecked(true)));
+
+            } else if (fragmentAnterior instanceof PersonasFragment) {
+
+                Log.i("aa", String.valueOf(navigation.getMenu().findItem(R.id.menu_inferior_chat).setChecked(true)));
             }
 
             super.onBackPressed();

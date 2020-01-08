@@ -78,7 +78,7 @@
         <item name="colorControlNormal">@color/colorPrimaryDark</item>
         <item name="colorControlActivated">@color/colorAccent</item>
         <item name="colorControlHighlight">@color/colorPrimary</item>
-        <item name="android:windowBackground">@drawable/imagen_fondo6</item>
+        <item name="android:windowBackground">@drawable/imagen_fondo</item>
 
         <!-- o reemplaza por drawable-->
     </style>
@@ -98,5 +98,10 @@
         <item name="android:layout_gravity">center</item>
         <item name="android:padding">24dp</item>
 
+    </style>
+
+    <style name="AppTheme.PopUp">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowCloseOnTouchOutside">true</item>
     </style>
 </resources>

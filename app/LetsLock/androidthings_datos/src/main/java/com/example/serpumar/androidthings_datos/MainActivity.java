@@ -33,6 +33,11 @@ import com.google.firebase.storage.UploadTask;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.UUID;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
+
+import static java.util.concurrent.TimeUnit.SECONDS;
 
 
 /**
@@ -104,14 +109,21 @@ public class MainActivity extends Activity {
         mCamera.initializeCamera(this, mCameraHandler, mOnImageAvailableListener);
 
 
+        final ScheduledExecutorService scheduler =
+                Executors.newScheduledThreadPool(1);
 
-        try {
+        final ScheduledFuture<?> runnableHandle =
+                scheduler.scheduleAtFixedRate(runnable, 0, 30, SECONDS);
+        final ScheduledFuture<?> runnableRFIDHandle =
+                scheduler.scheduleAtFixedRate(runnableRFID, 0, 30, SECONDS);
+
+        /* try {
             handler.post(runnableRFID);
             handler.post(runnable); // 3. Llamamos al handler
             Log.d("Prueba","Llega aqui?");
         } catch (Exception e) {
             Log.e(TAG, "Error en PeripheralIO API", e);
-        }
+        }*/
 
 
     }
