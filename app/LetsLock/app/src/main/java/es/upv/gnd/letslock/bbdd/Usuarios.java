@@ -41,20 +41,20 @@ public class Usuarios {
                 if (task.isSuccessful()) {
 
                     //Si existe el usuario que queremos obtener lo devolvemos mediante un callback(Es asíncrono)
-                    if(task.getResult().exists()){
+                    if (task.getResult().exists()) {
 
                         String nombre = task.getResult().getString("nombre");
                         boolean permisos = task.getResult().getBoolean("permisos");
                         String pin = task.getResult().getString("pin");
                         String fotoUrl = task.getResult().getString("fotoUrl");
 
-                        Usuario usuario= new Usuario(nombre,permisos, pin, fotoUrl);
+                        Usuario usuario = new Usuario(nombre, permisos, pin, fotoUrl);
                         callback.getUsuariosCallback(usuario);
 
-                    //Si no existe devolvemos uno vacío
-                    }else{
+                        //Si no existe devolvemos uno vacío
+                    } else {
 
-                        Usuario usuario= new Usuario();
+                        Usuario usuario = new Usuario();
                         callback.getUsuariosCallback(usuario);
                     }
                 } else {
@@ -65,7 +65,7 @@ public class Usuarios {
         });
     }
 
-   /* static public void getUsuarios(final UsuariosCallback callback) {
+    static public void getUsuarios(final UsuariosCallback callback) {
 
         db.collection("usuarios").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
 
@@ -76,14 +76,14 @@ public class Usuarios {
                 if (task.isSuccessful()) {
 
                     ArrayList<DocumentSnapshot> docs = (ArrayList<DocumentSnapshot>) task.getResult().getDocuments();
+                    ArrayList<String> idUsuario = new ArrayList<>();
 
                     for (int i = 0; i < docs.size(); i++) {
 
-                        ArrayList<String> idUsuario = (ArrayList<String>) docs.get(i).get("idUsuarios");
-
+                        idUsuario.add(docs.get(i).getId());
                     }
 
-                    not(callback);
+                    callback.getAllUsuariosCallback(idUsuario);
 
                 } else {
 
@@ -92,37 +92,4 @@ public class Usuarios {
             }
         });
     }
-
-    private static void not(final NotificacionesCallback callback) {
-
-        Query query = db.collection("notificaciones").orderBy("hora", Query.Direction.DESCENDING);
-        query.addSnapshotListener(new EventListener<QuerySnapshot>() {
-            @Override
-            public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
-
-                if (e != null) {
-
-                    Log.e("Firestore", "Error al leer", e);
-
-                    return;
-                }
-
-                ArrayList<Usuario> usuarios = new ArrayList<>();
-                ArrayList<DocumentSnapshot> docs = (ArrayList<DocumentSnapshot>) queryDocumentSnapshots.getDocuments();
-
-                for (int i = 0; i < docs.size(); i++) {
-
-                        ArrayList<String> usuarios = (ArrayList<String>) docs.get(i).get("idUsuarios");
-
-                    }
-                }
-
-                callback.
-
-
-        });
-    }*/
-
-
-
 }

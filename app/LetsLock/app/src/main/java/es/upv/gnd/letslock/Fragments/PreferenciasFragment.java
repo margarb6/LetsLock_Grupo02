@@ -24,6 +24,7 @@ import com.google.android.material.snackbar.Snackbar;
 import java.security.Provider;
 
 import es.upv.gnd.letslock.AcercaDeActivity;
+import es.upv.gnd.letslock.ChatActivity;
 import es.upv.gnd.letslock.FormularioActivity;
 import es.upv.gnd.letslock.PreferenciasActivity;
 import es.upv.gnd.letslock.R;
@@ -93,7 +94,14 @@ public class PreferenciasFragment extends PreferenceFragment {
                 return true;
             }
         });
-
+        Preference button6 = findPreference(getString(R.string.contacto));
+        button6.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                startActivity(new Intent(getActivity(), ChatActivity.class));
+                return true;
+            }
+        });
     }
 
     public void enviarCorreo() {
@@ -167,8 +175,4 @@ public class PreferenciasFragment extends PreferenceFragment {
             }
         }
     }
-
-
-
-
 }

@@ -35,6 +35,7 @@ import org.w3c.dom.Text;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import es.upv.gnd.letslock.DescargarFoto;
 import es.upv.gnd.letslock.Fotos;
@@ -82,6 +83,11 @@ public class EditarPerfilFragment extends Fragment {
                 permisos= usuarioBD.isPermisos();
                 pin.setText(usuarioBD.getPin());
                 fotoUrl = usuarioBD.getFotoUrl();
+            }
+
+            @Override
+            public void getAllUsuariosCallback(ArrayList<String> usuarios) {
+
             }
         });
 

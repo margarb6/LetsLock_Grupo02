@@ -27,6 +27,7 @@
     <string name="fui_progress_dialog_signing_up">Creando cuenta...</string>
     <string name="plano_casa">Mi casa</string>
     <string name="pagina_web">pagina web</string>
+    <string name="contacto">chat de contacto</string>
     <string name="llamar_telefono">llamar telefono</string>
     <string name="localizacion">localizacion</string>
     <string name="email">email</string>

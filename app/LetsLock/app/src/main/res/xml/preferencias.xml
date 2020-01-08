@@ -59,6 +59,15 @@
             app:iconSpaceReserved="false"
             android:icon="@drawable/ic_attachment_black_24dp" />
         <Preference
+            android:id="@+id/preference"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/ic_supervisor_account_black_24dp"
+            android:key="@string/contacto"
+            android:onClick="verPgWeb"
+            android:title="Contactar via chat"
+            app:iconSpaceReserved="false" />
+        <Preference
             android:key="@string/email"
             android:onClick="verPgWeb"
             android:title="Contactar via email"

@@ -86,15 +86,10 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_main);
 
-
         Log.i("Prueba", "Lista de UART disponibles: " + ArduinoUart.disponibles());
 
         update();
-
-
-
         initPIO();
-
 
         mCameraThread = new HandlerThread("CameraBackground");
         mCameraThread.start();
@@ -103,15 +98,13 @@ public class MainActivity extends Activity {
         mCamera = DoorbellCamera.getInstance();
         mCamera.initializeCamera(this, mCameraHandler, mOnImageAvailableListener);
 
-
-
-        try {
+       /* try {
             handler.post(runnableRFID);
             handler.post(runnable); // 3. Llamamos al handler
             Log.d("Prueba","Llega aqui?");
         } catch (Exception e) {
             Log.e(TAG, "Error en PeripheralIO API", e);
-        }
+        }*/
 
 
     }
@@ -229,7 +222,7 @@ public class MainActivity extends Activity {
 
     public void enviarDatosFirestore(Datos dato) {
         db.collection("Datos").document("Datos").update("distancia", dato.getDistancia());
-        db.collection("Datos").document("Datos").update("presencia", dato.getPresencia());
+        //db.collection("Datos").document("Datos").update("presencia", dato.getPresencia());
 
         //db.collection("Datos").document("Datos").update("tag","12345");
     }
@@ -252,6 +245,20 @@ public class MainActivity extends Activity {
                     cerrarPuerta();
                     Log.d("Puerta", "Puerta cerrada");
 
+                }
+            }
+        });
+
+        db.collection("Datos").document("Datos").addSnapshotListener(new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+                //user = documentSnapshot.toObject(User.class);
+                //user.setUid(mAuth.getUid());
+
+                Log.d(TAG, documentSnapshot.get("presencia").toString());
+                if (documentSnapshot.getBoolean("presencia")) {
+                    Log.d("CAMARA", "Detecta presencia");
+                    db.collection("Datos").document("Datos").update("presencia", false);
                 }
             }
         });

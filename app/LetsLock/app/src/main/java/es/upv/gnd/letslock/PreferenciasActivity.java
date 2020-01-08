@@ -34,15 +34,12 @@ public class PreferenciasActivity extends Activity {
     static public EditText edit_asunto;
     static public EditText edit_mensaje;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getFragmentManager().beginTransaction()
                 .replace(android.R.id.content, new PreferenciasFragment())
                 .commit();
-
     }
 
     public void mostrarPreferencias(){
@@ -57,7 +54,4 @@ public class PreferenciasActivity extends Activity {
         Intent i = new Intent(this, AcercaDeActivity.class);
         startActivity(i);
     }
-
-
-
 }

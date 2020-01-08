@@ -67,6 +67,11 @@ public class MainActivity extends AppCompatActivity {
                 //Creamos el eventListener que nos permite cambiar de fragment
                 navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
             }
+
+            @Override
+            public void getAllUsuariosCallback(ArrayList<String> usuarios) {
+
+            }
         });
 
         //Inicializamos la toolbar

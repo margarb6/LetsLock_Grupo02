@@ -23,6 +23,7 @@ import com.airbnb.lottie.LottieAnimationView;
 import es.upv.gnd.letslock.HistorialTimbreActivity;
 
 import com.bumptech.glide.Glide;
+import com.example.serpumar.comun.Datos;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -36,6 +37,14 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 
+import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
+import org.eclipse.paho.client.mqttv3.MqttCallback;
+import org.eclipse.paho.client.mqttv3.MqttClient;
+import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
+import org.eclipse.paho.client.mqttv3.MqttException;
+import org.eclipse.paho.client.mqttv3.MqttMessage;
+import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -44,7 +53,12 @@ import java.util.Date;
 
 import es.upv.gnd.letslock.R;
 
-public class TimbreFragment extends Fragment {
+import static com.example.serpumar.comun.Mqtt.broker;
+import static com.example.serpumar.comun.Mqtt.clientId;
+import static com.example.serpumar.comun.Mqtt.qos;
+import static com.example.serpumar.comun.Mqtt.topicRoot;
+
+public class TimbreFragment extends Fragment implements MqttCallback {
 
     View vista;
     TextView nadie_llama;
@@ -55,9 +69,11 @@ public class TimbreFragment extends Fragment {
     Button historial;
     LottieAnimationView lottieAnimationView;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private MqttClient client;
+    private boolean valorMQTT = false;
 
 
-    String TAG = "MARTA";
+    String TAG = "PILOTES";
     private StorageReference storageRef;
 
     private boolean anonimo = false;
@@ -80,6 +96,35 @@ public class TimbreFragment extends Fragment {
             historial = vista.findViewById(R.id.boton_historial);
             lottieAnimationView = vista.findViewById(R.id.animation_view3);
 
+            try {
+                client = new MqttClient(broker, clientId, new MemoryPersistence());
+                MqttConnectOptions connOpts = new MqttConnectOptions();
+                connOpts.setCleanSession(true);
+                connOpts.setKeepAliveInterval(60);
+                connOpts.setWill(topicRoot + "WillTopic", "App conectada".getBytes(), qos, false);
+                client.connect(connOpts);
+
+            } catch (MqttException e) {
+                Log.e(TAG, "Error al conectar.", e);
+            }
+
+            try {
+                Log.i(TAG, "Suscrito a " + topicRoot + "presencia");
+                client.subscribe(topicRoot + "presencia", qos);
+                client.setCallback(this);
+
+            } catch (MqttException e) {
+                Log.e(TAG, "Error al suscribir.", e);
+            }
+
+            Button bSonnoff = vista.findViewById(R.id.sonoff);
+            bSonnoff.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    cambiarValor();
+                }
+            });
 
             nadie_llama.setVisibility(View.INVISIBLE);
             pregunta.setVisibility(View.VISIBLE);
@@ -90,14 +135,14 @@ public class TimbreFragment extends Fragment {
             si.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    db.collection("Datos").document("Puerta").update("puerta",true);
+                    db.collection("Datos").document("Puerta").update("puerta", true);
                 }
             });
 
             no.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    db.collection("Datos").document("Puerta").update("puerta",false);
+                    db.collection("Datos").document("Puerta").update("puerta", false);
                 }
             });
 
@@ -109,41 +154,51 @@ public class TimbreFragment extends Fragment {
                 }
             });
 
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
+            new
 
-        storageRef = FirebaseStorage.getInstance().getReference();
+                    Handler().
 
-                }
-            }, 30000);
+                    postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
 
-            storageRef = FirebaseStorage.getInstance().getReference();
+                            storageRef = FirebaseStorage.getInstance().getReference();
+
+                        }
+                    }, 30000);
+
+            storageRef = FirebaseStorage.getInstance().
+
+                    getReference();
 
 
             FirebaseFirestore ff = FirebaseFirestore.getInstance();
 
-            ff.collection("imagenes_timbre").get()
-                    .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                        @Override
-                        public void onSuccess(QuerySnapshot documentSnapshots) {
-                            if (documentSnapshots.isEmpty()) {
-                                Log.d(TAG, "onSuccess: LIST EMPTY");
-                                return;
-                            } else if (ultimaFoto(documentSnapshots) != null) {
-                                // Convert the whole Query Snapshot to a list
-                                // of objects directly! No need to fetch each
-                                // document.
+            ff.collection("imagenes_timbre").
 
-                                Log.d(TAG, "onSuccess: " + documentSnapshots.getDocuments().toString());
-                                Glide.with(getContext())
-                                        .load(ultimaFoto(documentSnapshots))
-                                        .into(imagen);
-                            } else {
-                                imagen.setImageResource(R.drawable.applogo);
-                            }
-                        }
-                    });
+                    get()
+                    .
+
+                            addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                                @Override
+                                public void onSuccess(QuerySnapshot documentSnapshots) {
+                                    if (documentSnapshots.isEmpty()) {
+                                        Log.d(TAG, "onSuccess: LIST EMPTY");
+                                        return;
+                                    } else if (ultimaFoto(documentSnapshots) != null) {
+                                        // Convert the whole Query Snapshot to a list
+                                        // of objects directly! No need to fetch each
+                                        // document.
+
+                                        Log.d(TAG, "onSuccess: " + documentSnapshots.getDocuments().toString());
+                                        Glide.with(getContext())
+                                                .load(ultimaFoto(documentSnapshots))
+                                                .into(imagen);
+                                    } else {
+                                        imagen.setImageResource(R.drawable.applogo);
+                                    }
+                                }
+                            });
         } else {
             vista = inflater.inflate(R.layout.fragment_anonimo, container, false);
         }
@@ -152,7 +207,30 @@ public class TimbreFragment extends Fragment {
         return vista;
     }
 
-    //(System.currentTimeMillis()+5*60*1000) < docS.getLong("tiempo") && docS.getLong("tiempo" )>(System.currentTimeMillis()-5*60*10000)
+    private void cambiarValor() {
+
+        try {
+
+            String mess;
+            if (!valorMQTT) {
+                mess = "ON";
+                valorMQTT = true;
+            } else {
+
+                valorMQTT = false;
+                mess = "OFF";
+            }
+
+            Log.i(TAG, "Publicando mensaje: " + mess);
+            MqttMessage message = new MqttMessage(mess.getBytes());
+            message.setQos(qos);
+            message.setRetained(false);
+            client.publish(topicRoot + "cmnd/POWER", message);
+
+        } catch (MqttException e) {
+            Log.e(TAG, "Error al publicar.", e);
+        }
+    }
 
     private URL ultimaFoto(QuerySnapshot qs) {
 
@@ -166,9 +244,9 @@ public class TimbreFragment extends Fragment {
             if (docS.getLong("tiempo") > tiempo) {
                 tiempo = docS.getLong("tiempo");
                 ds = docS;
-                Log.e("MARTA","Tengo la foto mas actual");
-                if (( actualLong- tiempo) < cincoMin) {
-                    Log.e("MARTA","Tengo una foto de hace menos de  5 mins");
+                Log.e("MARTA", "Tengo la foto mas actual");
+                if ((actualLong - tiempo) < cincoMin) {
+                    Log.e("MARTA", "Tengo una foto de hace menos de  5 mins");
 
                     try {
                         url = new URL(ds.getString("url"));
@@ -180,9 +258,7 @@ public class TimbreFragment extends Fragment {
             }
         }
 
-
         return url;
-
     }
 
     private void bajarFichero() {
@@ -208,5 +284,36 @@ public class TimbreFragment extends Fragment {
                 Log.e("Almacenamiento", "ERROR: bajando fichero");
             }
         });
+
+        new Runnable() {
+            @Override
+            public void run() {
+                //client.set
+            }
+        }.run();
+    }
+
+    @Override
+    public void connectionLost(Throwable cause) {
+
+        Log.d(TAG, "Conexión perdida");
+    }
+
+    @Override
+    public void messageArrived(String topic, MqttMessage message) throws Exception {
+
+        String payload = new String(message.getPayload());
+        Log.d(TAG, "Recibiendo: " + topic + "->" + payload);
+
+        if (payload.equals("presencia")) {
+
+            db.collection("Datos").document("Datos").update("presencia", true);
+        }
+    }
+
+    @Override
+    public void deliveryComplete(IMqttDeliveryToken token) {
+
+        Log.d(TAG, "Entrega completa");
     }
 }
