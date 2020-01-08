@@ -15,6 +15,7 @@ import android.widget.MediaController;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.graphics.drawable.RoundedBitmapDrawable;
 import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
@@ -35,7 +36,9 @@ public class TabsActivity extends AppCompatActivity {
     //Request code de las fotos
     final static int RESULTADO_GALERIA = 2;
     final static int RESULTADO_FOTO = 3;
-
+    static {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 

@@ -17,4 +17,8 @@
         android:id="@+id/menu_inferior_personas"
         android:icon="@drawable/ic_people_black_24dp"
         android:title="@string/menu_personas" />
+    <item
+        android:id="@+id/menu_inferior_chat"
+        android:icon="@drawable/ic_chat"
+        android:title="@string/menu_chat" />
 </menu>

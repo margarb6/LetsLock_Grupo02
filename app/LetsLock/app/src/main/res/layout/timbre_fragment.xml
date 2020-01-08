@@ -16,7 +16,9 @@
             android:text="Historial timbre"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="?attr/btnColor"
+            />
 
         <ImageView
             android:id="@+id/imagen_timbre"
@@ -49,7 +51,9 @@
             app:layout_constraintEnd_toStartOf="@+id/timbre_boton_no"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/timbre_boton_no" />
+            app:layout_constraintTop_toTopOf="@+id/timbre_boton_no"
+            android:background="?attr/btnColor"
+            />
 
         <Button
             android:id="@+id/timbre_boton_no"
@@ -62,7 +66,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/timbre_boton_si"
-            app:layout_constraintTop_toBottomOf="@+id/timbre_pregunta" />
+            app:layout_constraintTop_toBottomOf="@+id/timbre_pregunta"
+            android:background="?attr/btnColor"
+            />
 
         <TextView
             android:id="@+id/nadie_llama"

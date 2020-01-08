@@ -18,6 +18,7 @@
     <string name="menu_notificaciones">Notificaciones</string>
     <string name="menu_timbre">Timbre</string>
     <string name="menu_perfil">Perfil</string>
+    <string name="menu_chat">Chat</string>
     <string name="menu_ajustes">Ajustes</string>
     <string name="menu_acercade">Acerca de</string>
     <string name="menu_personas">Personas</string>
@@ -31,6 +32,8 @@
     <string name="llamar_telefono">llamar telefono</string>
     <string name="localizacion">localizacion</string>
     <string name="email">email</string>
+
+    <string name="modo_noche">modo_noche</string>
 
 
 </resources>

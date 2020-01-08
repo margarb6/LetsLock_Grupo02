@@ -3,16 +3,20 @@ package es.upv.gnd.letslock;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.preference.SwitchPreference;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.preference.PreferenceManager;
 
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -21,6 +25,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 
+import es.upv.gnd.letslock.Fragments.ChatFragment;
 import es.upv.gnd.letslock.Fragments.PersonasFragment;
 import es.upv.gnd.letslock.Fragments.InicioFragment;
 import es.upv.gnd.letslock.Fragments.NotificacionesFragment;
@@ -36,12 +41,15 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean anonimo = false;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
+        changeTheme();
+
+        setContentView(R.layout.activity_main);
         SharedPreferences prefs = getSharedPreferences("Usuario", Context.MODE_PRIVATE);
         if (prefs.contains("anonimo")) anonimo = prefs.getBoolean("anonimo", false);
 
@@ -54,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         navigation = findViewById(R.id.BotomNavigationView);
+
         Usuarios userBD = new Usuarios();
 
         userBD.getUsuario(new UsuariosCallback() {
@@ -78,6 +87,37 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
     }
+
+    public void changeTheme() {
+
+        // configuracion inicial
+        SharedPreferences preferenciaNoche = PreferenceManager.getDefaultSharedPreferences(this);
+
+        boolean estaModoNoche = preferenciaNoche.getBoolean("modo_noche", true);
+
+
+        if (estaModoNoche) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
+
+
+        // leo configuracion y cambio de tema
+        int currentNightMode = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+        Log.e("QUÉ TEMA MAIN","TEMA:"+ currentNightMode);
+        switch (currentNightMode) {
+            case Configuration.UI_MODE_NIGHT_NO:
+                // Night mode is not active, we're in day time
+                setTheme(R.style.LightTheme);
+                break;
+            case Configuration.UI_MODE_NIGHT_YES:
+                // Night mode is active, we're at night!
+                setTheme(R.style.DarkTheme);
+                break;
+        }
+    }
+
 
 
     //Inicializa el menu
@@ -115,7 +155,7 @@ public class MainActivity extends AppCompatActivity {
 
                     intent = new Intent(this, TabsActivity.class);
 
-                }else{
+                } else {
 
                     intent = new Intent(this, AnonimoActivity.class);
                 }
@@ -160,6 +200,10 @@ public class MainActivity extends AppCompatActivity {
 
                     fragSeleccionado = new PersonasFragment();
                     break;
+                case R.id.menu_inferior_chat:
+
+                    fragSeleccionado = new ChatFragment();
+                    break;
             }
 
             FragmentManager manager = getSupportFragmentManager();
@@ -194,6 +238,10 @@ public class MainActivity extends AppCompatActivity {
             } else if (fragmentAnterior instanceof PersonasFragment) {
 
                 Log.i("aa", String.valueOf(navigation.getMenu().findItem(R.id.menu_inferior_personas).setChecked(true)));
+
+            } else if (fragmentAnterior instanceof PersonasFragment) {
+
+                Log.i("aa", String.valueOf(navigation.getMenu().findItem(R.id.menu_inferior_chat).setChecked(true)));
             }
 
             super.onBackPressed();
@@ -203,5 +251,7 @@ public class MainActivity extends AppCompatActivity {
 
             MainActivity.this.finishAffinity();
         }
+
     }
+
 }

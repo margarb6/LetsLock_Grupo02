@@ -2,22 +2,33 @@ package es.upv.gnd.letslock.Fragments;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.Application;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.provider.CallLog;
 import android.telecom.Call;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.preference.EditTextPreference;
+
+import android.preference.SwitchPreference;
 
 import com.google.android.material.snackbar.Snackbar;
 
@@ -26,6 +37,7 @@ import java.security.Provider;
 import es.upv.gnd.letslock.AcercaDeActivity;
 import es.upv.gnd.letslock.ChatActivity;
 import es.upv.gnd.letslock.FormularioActivity;
+import es.upv.gnd.letslock.MainActivity;
 import es.upv.gnd.letslock.PreferenciasActivity;
 import es.upv.gnd.letslock.R;
 import io.grpc.CallOptions;
@@ -33,7 +45,50 @@ import io.grpc.internal.BackoffPolicy;
 
 import static android.provider.CallLog.*;
 
+
 public class PreferenciasFragment extends PreferenceFragment {
+
+    public static class PrefsFragment extends PreferenceFragment {
+        @Override
+        public void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            final Context context = getActivity();
+            addPreferencesFromResource(R.xml.preferencias);
+            SwitchPreference dayNightSwitch = (SwitchPreference) findPreference(getString(R.string.modo_noche));
+            dayNightSwitch.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+
+                    boolean activado = (boolean) newValue;
+
+                    if (!activado) {
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
+                    } else {
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                    }
+
+                    getActivity().finish();
+                    startActivity(new Intent(getActivity(), PreferenciasActivity.class));
+
+                    return true;
+                }
+            });
+        }
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+            View view = super.onCreateView(inflater, container, savedInstanceState);
+            if(AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES){
+                int myColor = Color.parseColor("#3C3C3C");
+                view.setBackgroundColor(myColor);
+
+            }else{
+                int myColor = Color.parseColor("#FFFFFF");
+                view.setBackgroundColor(myColor);
+            }
+            return view;
+        }
+    }
 
     private View vista;
     private static final int SOLICITUD_PERMISO_ACTION_CALL = 0;
@@ -41,10 +96,16 @@ public class PreferenciasFragment extends PreferenceFragment {
     private EditText edit_nombre;
     private EditText edit_asunto;
     private EditText edit_mensaje;
+    public static SharedPreferences mTheme;
 
-    @Override public void onCreate(Bundle savedInstanceState) {
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.preferencias);
+
+        getFragmentManager().beginTransaction()
+                .replace(android.R.id.content, new PrefsFragment())
+                .commit();
 
         Preference button = findPreference(getString(R.string.acerca_de));
         button.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
@@ -80,7 +141,7 @@ public class PreferenciasFragment extends PreferenceFragment {
         button4.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
-             llamar();
+                llamar();
                 return true;
             }
         });
@@ -106,7 +167,7 @@ public class PreferenciasFragment extends PreferenceFragment {
 
     public void enviarCorreo() {
         String listaCorreos = PreferenciasActivity.edit_nombre.getText().toString();
-        String [] correos = listaCorreos.split(",");
+        String[] correos = listaCorreos.split(",");
         //fabio@gmail.com, david@gmail.com
         String asunto = PreferenciasActivity.edit_asunto.getText().toString();
         String mensaje = PreferenciasActivity.edit_mensaje.getText().toString();
@@ -117,19 +178,18 @@ public class PreferenciasFragment extends PreferenceFragment {
         intent.putExtra(Intent.EXTRA_TEXT, mensaje);
 
         intent.setType("message/rfc822");
-        startActivity(Intent.createChooser(intent,"Elige una forma"));
+        startActivity(Intent.createChooser(intent, "Elige una forma"));
     }
 
 
     private void llamar() {
-        if(ContextCompat.checkSelfPermission(getActivity(),Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(getActivity(),new String[]{Manifest.permission.CALL_PHONE}, SOLICITUD_PERMISO_ACTION_CALL);
-        }else{
+        if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CALL_PHONE}, SOLICITUD_PERMISO_ACTION_CALL);
+        } else {
             String dial = "tel:664410457";
-            startActivity(new Intent(Intent.ACTION_CALL,Uri.parse(dial)));
+            startActivity(new Intent(Intent.ACTION_CALL, Uri.parse(dial)));
         }
     }
-
     /*void llamar() {
         if (PackageManager.PERMISSION_GRANTED == ActivityCompat.checkSelfPermission(getActivity(),
                 Manifest.permission.CALL_PHONE)) {
@@ -164,10 +224,11 @@ public class PreferenciasFragment extends PreferenceFragment {
         }
     }*/
 
-    @Override public void onRequestPermissionsResult(int requestCode,
-                                                     String[] permissions, int[] grantResults) {
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String[] permissions, int[] grantResults) {
         if (requestCode == SOLICITUD_PERMISO_ACTION_CALL) {
-            if (grantResults.length== 1 &&
+            if (grantResults.length == 1 &&
                     grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 llamar();
             } else {

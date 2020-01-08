@@ -49,6 +49,7 @@
             android:id="@+id/b_enviar"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
+            android:background="?attr/btnColor"
             android:text="Enviar codigo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -88,7 +89,9 @@
             app:layout_constraintEnd_toStartOf="@+id/boton_cancelar"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/correo_input" />
+            app:layout_constraintTop_toBottomOf="@+id/correo_input"
+            android:background="?attr/btnColor"
+            />
 
         <Button
             android:id="@+id/boton_cancelar"
@@ -101,7 +104,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/boton_enviar"
-            app:layout_constraintTop_toTopOf="@+id/boton_enviar" />
+            app:layout_constraintTop_toTopOf="@+id/boton_enviar"
+            android:background="?attr/btnColor"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
