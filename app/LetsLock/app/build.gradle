@@ -75,12 +75,15 @@ dependencies {
 
 
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+<<<<<<< Updated upstream
 
     //correo
     implementation files('libs/activation.jar')
     implementation files('libs/additionnal.jar')
     implementation files('libs/mail.jar')
 
+=======
+>>>>>>> Stashed changes
 }
 
 apply plugin: 'com.google.gms.google-services'

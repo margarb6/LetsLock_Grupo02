@@ -40,6 +40,7 @@ public class PersonasFragment extends Fragment {
        /* adaptador2 = new FirestoreRecyclerAdapter<Usuario, AdaptadorUsuarios.UsuariosViewHolder>(opciones) {
 
             View view;
+            
 
             @Override
             protected void onBindViewHolder(@NonNull AdaptadorUsuarios.UsuariosViewHolder viewHolder, int i, @NonNull Usuario usuario) {

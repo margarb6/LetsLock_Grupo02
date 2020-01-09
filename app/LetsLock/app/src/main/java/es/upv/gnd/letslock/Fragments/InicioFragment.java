@@ -267,10 +267,10 @@ public class InicioFragment extends Fragment {
             String mensaje = "Tu codigo de entrada es "+codigo_enviado;
             db.collection("Datos").document("Puerta").update("pinInvitado",String.valueOf(codigo_enviado));
 
-            JavaMailAPI javaMailAPI = new JavaMailAPI(getContext(), listaCorreos
+           /* JavaMailAPI javaMailAPI = new JavaMailAPI(getContext(), listaCorreos
                     ,asunto,mensaje);
             javaMailAPI.execute();
-            lottieAnimationView2.playAnimation();
+            lottieAnimationView2.playAnimation();*/
 
             new Handler().postDelayed(new Runnable() {
                 @Override
