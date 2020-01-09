@@ -2,6 +2,7 @@ package es.upv.gnd.letslock.adapters;
 
 import android.content.Context;
 import android.text.format.DateUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import com.bumptech.glide.Glide;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 
+import es.upv.gnd.letslock.HistorialTimbreActivity;
 import es.upv.gnd.letslock.R;
 import es.upv.gnd.letslock.bbdd.Imagen;
 
@@ -26,6 +28,7 @@ public class AdaptadorImagenes extends
                              @NonNull FirestoreRecyclerOptions<Imagen> options) {
         super(options);
         this.context = context.getApplicationContext();
+
     }
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public final ImageView imagen;
@@ -41,7 +44,7 @@ public class AdaptadorImagenes extends
     @Override public AdaptadorImagenes.ViewHolder onCreateViewHolder(
             ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.elemento_lista, parent, false);
+                .inflate(R.layout.elemento_timbre, parent, false);
         return new AdaptadorImagenes.ViewHolder(view);
     }
     @Override protected void onBindViewHolder(@NonNull AdaptadorImagenes

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
@@ -31,7 +32,11 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import org.w3c.dom.Text;
+
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 import es.upv.gnd.letslock.DescargarFoto;
@@ -51,6 +56,7 @@ public class EditarPerfilFragment extends Fragment {
     private Uri foto;
     String id = "";
     boolean permisos;
+    String fotoUrl;
 
     //Inicializamos firebase auth y firestore
     FirebaseUser usuario = FirebaseAuth.getInstance().getCurrentUser();
@@ -78,6 +84,7 @@ public class EditarPerfilFragment extends Fragment {
                 id = usuario.getUid();
                 permisos= usuarioBD.isPermisos();
                 pin.setText(usuarioBD.getPin());
+                fotoUrl = usuarioBD.getFotoUrl();
             }
         });
 
@@ -147,12 +154,15 @@ public class EditarPerfilFragment extends Fragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
-                        if(pin.getText().length()<4)Toast.makeText(getContext(),"Inserte un mínimo de 4 digitos", Toast.LENGTH_LONG).show();
-                        if(nombre.getText().length()== 0)Toast.makeText(getContext(),"Inserte un nombre", Toast.LENGTH_LONG).show();
-                        else{
+                        String texto="";
+                        if(pin.getText().length()<4) texto= "Inserte un mínimo de 4 digitos";
+                        if(nombre.getText().length()== 0) texto = (texto.isEmpty() ?  "Inserte un nombre": "Inserte un mínimo de 4 digitos y un nombre");
+                        if(texto.isEmpty()){
                             subirFoto();
-                            userBD.setUsuario(new Usuario(nombre.getText().toString(), permisos, pin.getText().toString()));
+                            userBD.setUsuario(new Usuario(nombre.getText().toString(), permisos, pin.getText().toString(), fotoUrl));
+                            startActivity(new Intent(getContext(), TabsActivity.class));
                         }
+                        else Toast.makeText(getContext(),texto,Toast.LENGTH_LONG).show();
                     }
                 });
                 builder.setNegativeButton("Rechazar", new DialogInterface.OnClickListener() {
@@ -170,7 +180,7 @@ public class EditarPerfilFragment extends Fragment {
 
         //Buscamos el fichero y subimos la nueva foto
         SharedPreferences prefs = getActivity().getSharedPreferences("Foto_perfil", Context.MODE_PRIVATE);
-        if (prefs.contains("image")) foto = Uri.parse(prefs.getString("image", "null"));
+        if (prefs.contains("image")) foto = comprimirFoto(Uri.parse(prefs.getString("image", "null"))); //foto = comprimirFoto(Uri.parse(prefs.getString("image", "null"))); //foto = Uri.parse(prefs.getString("image", "null"));
         StorageReference ficheroRef = storageRef.child("Fotos_perfil/" + usuario.getUid());
         if (foto != null) {
             ficheroRef.putFile(foto).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -188,5 +198,36 @@ public class EditarPerfilFragment extends Fragment {
                 }
             });
         }
+    }
+
+    public Uri comprimirFoto(Uri uri) {
+
+        //ImageDecoder.Source source = ImageDecoder.createSource(this.getContext().getContentResolver(), uri);
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inSampleSize = 2;
+        Bitmap bitmap = null;
+        File file = null;
+
+        try {
+            file = File.createTempFile("compressed", ".jpg");
+            ByteArrayOutputStream out = new ByteArrayOutputStream();
+            bitmap = BitmapFactory.decodeStream(getActivity().getContentResolver().openInputStream(uri),null, options);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 50, out);
+            //compressed = BitmapFactory.decodeStream(new ByteArrayInputStream(out.toByteArray()));
+            FileOutputStream fileout = new FileOutputStream(file);
+            fileout.write(out.toByteArray());
+            fileout.flush();
+            fileout.close();
+
+            Uri uriFinal = Uri.fromFile(file);
+            Log.d("Uri", "Uri final: " + uriFinal);
+            return uriFinal;
+
+
+        } catch (Exception e) {
+            Log.e("Error","Error al comprimir");
+        }
+
+        return uri;
     }
 }

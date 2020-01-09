@@ -1,5 +1,7 @@
 package es.upv.gnd.letslock.bbdd;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -14,35 +16,35 @@ import java.util.ArrayList;
 public class Casas {
 
     private static FirebaseFirestore db = FirebaseFirestore.getInstance();
+    static String idCasa;
 
     //Establece en la base de datos la casa del usuario
-    static public void setCasa(final String idUsuario) {
+    static public void setCasa(final String idUsuario, Context context) {
+
+        SharedPreferences prefs = context.getSharedPreferences("Usuario", Context.MODE_PRIVATE);
+        if (prefs.contains("idCasa")) idCasa = prefs.getString("idCasa", "");
 
         final Casas casaBD = new Casas();
 
-        casaBD.getCasa(new CasasCallback() {
+        casaBD.getCasa(context, new CasasCallback() {
             @Override
             public void getCasasCallback(Casa casa) {
 
-                boolean contiene = false;
                 ArrayList<String> ids = casa.getIdUsuarios();
+                if(!ids.contains(idUsuario)) ids.add(idUsuario);
 
-                for (String id : ids) {
-
-                    if (id.equals(idUsuario)) contiene = true;
-                }
-
-                if (!contiene) ids.add(idUsuario);
-
-                db.collection("casa").document("0").set(new Casa(ids));
+                db.collection("casa").document(idCasa).set(new Casa(ids));
             }
         });
     }
 
     //Obtiene el usuario de la base de datos
-    static public void getCasa(final CasasCallback callback) {
+    static public void getCasa(Context context, final CasasCallback callback) {
 
-        db.collection("casa").document("0").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+        SharedPreferences prefs = context.getSharedPreferences("Usuario", Context.MODE_PRIVATE);
+        if (prefs.contains("idCasa")) idCasa = prefs.getString("idCasa", "");
+
+        db.collection("casa").document(idCasa).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
 
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {

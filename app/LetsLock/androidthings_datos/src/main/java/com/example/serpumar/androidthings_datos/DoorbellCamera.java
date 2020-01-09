@@ -25,6 +25,7 @@ import static android.content.Context.CAMERA_SERVICE;
  * Helper class to deal with methods to deal with images from the camera.
  */
 public class DoorbellCamera {
+
     private static final String TAG = DoorbellCamera.class.getSimpleName();
 
     private static final int IMAGE_WIDTH = 320;

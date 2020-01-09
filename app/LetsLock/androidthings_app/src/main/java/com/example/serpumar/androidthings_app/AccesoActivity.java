@@ -13,7 +13,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.serpumar.comun.Correo;
 import com.goodiebag.pinview.Pinview;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -31,7 +30,6 @@ import static androidx.constraintlayout.widget.Constraints.TAG;
 
 public class AccesoActivity extends Activity {
     private String correo = "";
-    Correo stringCorreo = new Correo();
     EditText correoText;
     EditText pinText;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();

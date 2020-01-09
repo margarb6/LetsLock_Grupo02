@@ -1,7 +1,10 @@
 package es.upv.gnd.letslock;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
@@ -51,7 +54,10 @@ public class LoginActivity extends Activity {
 
     private void login() {
 
-        boolean anonimo= true;
+        SharedPreferences prefs = getSharedPreferences("Usuario", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+
+        boolean anonimo = true;
 
         //Si está logueado
         if (usuario != null) {
@@ -62,7 +68,9 @@ public class LoginActivity extends Activity {
 
                 if (!ui.getProviderId().equals("firebase")) {
 
-                    anonimo= false;
+                    anonimo = false;
+                    editor.putBoolean("anonimo",false);
+                    editor.commit();
 
                     switch (ui.getProviderId()) {
 
@@ -79,9 +87,14 @@ public class LoginActivity extends Activity {
                     }
                 }
             }
-            if(anonimo) cambioActivity("como usuario anónimo");
+            if (anonimo){
 
-        //Si no crea la interfaz de login
+                cambioActivity("como usuario anónimo");
+                editor.putBoolean("anonimo",anonimo);
+                editor.commit();
+            }
+
+            //Si no crea la interfaz de login
         } else {
 
             startActivityForResult(AuthUI.getInstance()
@@ -104,7 +117,7 @@ public class LoginActivity extends Activity {
 
             entrar();
 
-        //Si no envía un correo de verificación
+            //Si no envía un correo de verificación
         } else {
 
             usuario.sendEmailVerification();
@@ -115,26 +128,41 @@ public class LoginActivity extends Activity {
     public void entrar() {
 
         final Usuarios userBD = new Usuarios();
-        final Casas casaBD= new Casas();
+        final Casas casaBD = new Casas();
 
         //Buscamos si existe ese usuario en la base de datos
         userBD.getUsuario(new UsuariosCallback() {
-            public void getUsuariosCallback(Usuario usuarioBD) {
+            public void getUsuariosCallback(final Usuario usuarioBD) {
 
-                Random rand= new Random();
+                Random rand = new Random();
                 String nombre = usuario.getDisplayName();
 
+                SharedPreferences prefs = getSharedPreferences("Usuario", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = prefs.edit();
+                editor.putString("idCasa", "0");
+
                 //Si no existe lo creamos
-                if(usuarioBD.getPin().equals("") && usuarioBD.getNombre().equals("")) userBD.setUsuario(new Usuario(nombre, false, String.format("%04d", rand.nextInt(10000))));
-                else nombre= usuarioBD.getNombre();
-                casaBD.setCasa(usuario.getUid());
+                if (usuarioBD.getPin().equals("") && usuarioBD.getNombre().equals("")) {
+
+                    String fotoURL = String.valueOf(usuario.getPhotoUrl());
+                    userBD.setUsuario(new Usuario(nombre, false, String.format("%04d", rand.nextInt(10000)), fotoURL));
+                }
+
+                else nombre = usuarioBD.getNombre();
+
+                editor.putBoolean("permisos", usuarioBD.isPermisos());
+                editor.commit();
+
+                casaBD.setCasa(usuario.getUid(), getApplicationContext());
+
+
 
                 cambioActivity(nombre);
             }
         });
     }
 
-    void  cambioActivity(String nombre){
+    void cambioActivity(String nombre) {
 
         Toast.makeText(LoginActivity.this, "Has iniciado sesion " + nombre, Toast.LENGTH_LONG).show();
         Intent i = new Intent(LoginActivity.this, SplashActivity.class);

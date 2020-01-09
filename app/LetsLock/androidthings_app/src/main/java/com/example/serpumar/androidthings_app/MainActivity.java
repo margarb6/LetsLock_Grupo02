@@ -2,6 +2,7 @@ package com.example.serpumar.androidthings_app;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationManagerCompat;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -86,6 +87,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //notificationManager = NotificationManagerCompat.from(this);
 
 
         Log.i("Prueba", "Lista de UART disponibles: " + ArduinoUart.disponibles());
