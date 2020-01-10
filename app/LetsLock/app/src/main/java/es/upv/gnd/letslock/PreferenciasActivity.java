@@ -49,7 +49,7 @@ public class PreferenciasActivity extends Activity {
     }
 
     public void lanzarAcercaDe(View view) {
-        Intent i = new Intent(this, AcercaDeActivity.class);
+        Intent i = new Intent(this, VideosActivity.class);
         startActivity(i);
     }
 

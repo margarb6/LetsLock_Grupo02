@@ -204,6 +204,24 @@ public class InicioFragment extends Fragment {
                                 toast.makeText(getActivity(), "Abriendo puerta", Toast.LENGTH_SHORT).show();
                                 imageView.setImageResource(R.drawable.imagen_animacion);
                                 db.collection("Datos").document("Puerta").update("puerta",true);
+                                Notification notification = new NotificationCompat.Builder(getContext(),CHANNEL_1_ID)
+                                        .setSmallIcon(R.drawable.ic_notifications_active_black_24dp)
+                                        .setContentTitle("Puerta abierta")
+                                        .setContentText("Alguien ha abierto la puerta")
+                                        .setPriority(NotificationCompat.PRIORITY_HIGH)
+                                        .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+                                        .setAutoCancel(true)
+                                        .build();
+                                notificationManager.notify(1,notification);
+                                Casas casaBD= new Casas();
+                                casaBD.getCasa(getContext(), new CasasCallback() {
+                                    @Override
+                                    public void getCasasCallback(Casa casa) {
+
+                                        Notificaciones notificacionesBD = new Notificaciones();
+                                        notificacionesBD.setNotificaciones(new Notificacion(UUID.randomUUID().toString(), "llamanPuerta", new Date().getTime() + 3600 * 1000, idCasa, casa.getIdUsuarios(), 0));
+                                    }
+                                });
                                 lottieAnimationView.playAnimation();
                                 image1Displaying = false;
                             }else{
@@ -267,10 +285,10 @@ public class InicioFragment extends Fragment {
             String mensaje = "Tu codigo de entrada es "+codigo_enviado;
             db.collection("Datos").document("Puerta").update("pinInvitado",String.valueOf(codigo_enviado));
 
-           /* JavaMailAPI javaMailAPI = new JavaMailAPI(getContext(), listaCorreos
+            JavaMailAPI javaMailAPI = new JavaMailAPI(getContext(), listaCorreos
                     ,asunto,mensaje);
             javaMailAPI.execute();
-            lottieAnimationView2.playAnimation();*/
+            lottieAnimationView2.playAnimation();
 
             new Handler().postDelayed(new Runnable() {
                 @Override
@@ -313,4 +331,5 @@ public class InicioFragment extends Fragment {
         }
 
         return mensaje_confirmacion;
-    }        }
+    }
+}

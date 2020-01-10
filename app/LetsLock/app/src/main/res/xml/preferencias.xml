@@ -5,13 +5,14 @@
     android:key="preferencias_principal">
 
     <PreferenceCategory android:title="General">
-        <CheckBoxPreference
+        <SwitchPreference
+            android:defaultValue="false"
             android:forceDarkAllowed="true"
             android:icon="@drawable/ic_music_note_black_24dp"
-            android:key="musica"
+            android:key="@string/musica"
             android:summary="Se reproduce música de fondo"
             android:title="Reproducir música"
-            app:iconSpaceReserved="false" />
+            app:iconSpaceReserved="true" />
         <SwitchPreference
             android:defaultValue="false"
             android:icon="@drawable/ic_moon"
@@ -19,7 +20,7 @@
             android:summary="Activar modo noche"
             android:title="Modo noche"
             app:iconSpaceReserved="true" />
-        <EditTextPreference
+        EditTextPreference
             android:defaultValue="4"
             android:icon="@drawable/ic_filter_frames_black_24dp"
             android:inputType="number"
@@ -28,11 +29,12 @@
             android:title="Número de Fragmentos"
             app:iconSpaceReserved="false" />
     </PreferenceCategory>
-    <PreferenceCategory android:title="Notificaiones">
-        <CheckBoxPreference
+    <PreferenceCategory android:title="Notificaciones">
+        <SwitchPreference
             android:icon="@drawable/ic_notifications_active_black_24dp"
-            android:key="activar"
-            android:title="Activar notificaiones"
+            android:key="@string/buzonn"
+            android:title="Buzon inteligente"
+            android:summary="Activar el servicio y notificaciones del buzon"
             app:iconSpaceReserved="false" />
         <EditTextPreference
             android:defaultValue="6"
@@ -83,8 +85,9 @@
             android:icon="@drawable/ic_info_black_24dp"
             android:key="@string/acerca_de"
             android:onClick="lanzarAcercaDe"
-            android:title="Acerca de"
-            app:iconSpaceReserved="false" />
+            android:title="Tutoriales"
+            app:iconSpaceReserved="false"
+            />
     </PreferenceCategory>
 </PreferenceScreen>
 

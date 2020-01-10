@@ -1,5 +1,6 @@
 package es.upv.gnd.letslock;
 
+import android.app.Notification;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -14,6 +15,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.preference.PreferenceManager;
@@ -22,36 +25,108 @@ import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.UUID;
 
 import es.upv.gnd.letslock.Fragments.ChatFragment;
 import es.upv.gnd.letslock.Fragments.PersonasFragment;
 import es.upv.gnd.letslock.Fragments.InicioFragment;
 import es.upv.gnd.letslock.Fragments.NotificacionesFragment;
 import es.upv.gnd.letslock.Fragments.TimbreFragment;
+import es.upv.gnd.letslock.bbdd.Casa;
+import es.upv.gnd.letslock.bbdd.Casas;
+import es.upv.gnd.letslock.bbdd.CasasCallback;
+import es.upv.gnd.letslock.bbdd.Notificacion;
+import es.upv.gnd.letslock.bbdd.Notificaciones;
 import es.upv.gnd.letslock.bbdd.Usuario;
 import es.upv.gnd.letslock.bbdd.Usuarios;
 import es.upv.gnd.letslock.bbdd.UsuariosCallback;
+
+import static es.upv.gnd.letslock.NotificationActivity.CHANNEL_1_ID;
 
 public class MainActivity extends AppCompatActivity {
 
     public static ArrayList<Fragment> fragments;
     public static BottomNavigationView navigation;
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private String idCasa;
+    private double distancia;
+    private NotificationManagerCompat notificationManager;
+    int contador;
 
     private boolean anonimo = false;
 
+   public void recibirCarta() {
+        Log.d("BUZON","funciona");
+
+        db.collection("Datos").document("Datos").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(task.isSuccessful()) {
+                    distancia = task.getResult().getDouble("distancia");
+                    if (distancia < 10 && contador == 0) {
+                        Log.d("BUZON","funciona");
+                        contador = 1;
+                        Notification notification = new NotificationCompat.Builder(getApplicationContext(), CHANNEL_1_ID)
+                                .setSmallIcon(R.drawable.ic_notifications_active_black_24dp)
+                                .setContentTitle("Buzon")
+                                .setContentText("Alguien ha dejado una carta")
+                                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                                .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+                                .setAutoCancel(true)
+                                .build();
+                        notificationManager.notify(1, notification);
+
+                        Casas casaBD = new Casas();
+                        casaBD.getCasa(getApplicationContext(), new CasasCallback() {
+                            @Override
+                            public void getCasasCallback(Casa casa) {
+
+                                Notificaciones notificacionesBD = new Notificaciones();
+                                notificacionesBD.setNotificaciones(new Notificacion(UUID.randomUUID().toString(), "buzon", new Date().getTime() + 3600 * 1000, idCasa , casa.getIdUsuarios(), 0));
+                          Log.d("CASA","funciona?"+idCasa);
+                            }
+                        });
+
+                    //nombreT.setText(name);
+                   // Log.d("DISTANCIA", distancia.toString());
+                }
+                    if(distancia>10) {
+                        contador = 0;
+                    }
+            }
+        }
+
+    });
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
 
+
+//recibirCarta();
+        NotificationActivity notificationActivity= new NotificationActivity();
+        notificationActivity.createNotificationChannels(getApplicationContext());
+        notificationManager = NotificationManagerCompat.from(getApplicationContext());
+
+        SharedPreferences prefs = getApplication().getSharedPreferences("Usuario", Context.MODE_PRIVATE);
+        if (prefs.contains("anonimo")) anonimo = prefs.getBoolean("anonimo", false);
+        if (prefs.contains("idCasa")) idCasa = prefs.getString("idCasa", "");
+
+        recibirCarta();
+
+
         changeTheme();
 
         setContentView(R.layout.activity_main);
-        SharedPreferences prefs = getSharedPreferences("Usuario", Context.MODE_PRIVATE);
-        if (prefs.contains("anonimo")) anonimo = prefs.getBoolean("anonimo", false);
+        /*SharedPreferences prefs = getSharedPreferences("Usuario", Context.MODE_PRIVATE);
+        if (prefs.contains("anonimo")) anonimo = prefs.getBoolean("anonimo", false);*/
 
         if (savedInstanceState == null) {
 

@@ -67,7 +67,7 @@ public class NotificacionesFragment extends Fragment implements DeleteAdaptador.
             errorPin = vista.findViewById(R.id.errorPinCheck);
             puerta = vista.findViewById(R.id.puertaCheck);
             solicitudPin = vista.findViewById(R.id.solicitudPinCheck);
-           // buzon = vista.findViewById(R.id.);
+            buzon = vista.findViewById(R.id.buzonCheck);
 
             if (prefs.contains("permisos")) permisos = prefs.getBoolean("permisos", false);
 
@@ -82,6 +82,7 @@ public class NotificacionesFragment extends Fragment implements DeleteAdaptador.
 
             onclick(timbre, "timbre");
             onclick(errorPin, "errorPin");
+            onclick(buzon, "buzon");
 
             notificacionesBD.getNotificaciones(new NotificacionesCallback() {
                 @Override
@@ -111,7 +112,7 @@ public class NotificacionesFragment extends Fragment implements DeleteAdaptador.
 
                     if (!permisos) {
 
-                        if (notificaciones.get(i).getTipo().equals("errorPin") || notificaciones.get(i).getTipo().equals("timbre")) {
+                        if (notificaciones.get(i).getTipo().equals("errorPin") || notificaciones.get(i).getTipo().equals("timbre" ) || notificaciones.get(i).getTipo().equals("buzon")) {
                             notificaciones.get(i).setPosition(notDefinitivas.size());
                             notDefinitivas.add(notificaciones.get(i));
                         }
@@ -148,6 +149,7 @@ public class NotificacionesFragment extends Fragment implements DeleteAdaptador.
             errorPin.setChecked(true);
             puerta.setChecked(true);
             solicitudPin.setChecked(true);
+            buzon.setChecked(true);
         }
     }
 
@@ -203,6 +205,11 @@ public class NotificacionesFragment extends Fragment implements DeleteAdaptador.
                                     notPuerta.add(notDefinitivas.get(i));
                                     adaptador.removeItem(i);
                                     break;
+
+                                case "buzon":
+                                    notBuzon.add(notDefinitivas.get(i));
+                                    adaptador.removeItem(i);
+                                    break;
                             }
                         }
                     }
@@ -244,6 +251,15 @@ public class NotificacionesFragment extends Fragment implements DeleteAdaptador.
                                 adaptador.restoreItem(notPuerta.get(i), notPuerta.get(i).getPosition());
                             }
                             notPuerta.clear();
+                            break;
+
+                        case "buzon":
+
+                            for (int i= notBuzon.size()-1; i >=0 ; i--) {
+
+                                adaptador.restoreItem(notBuzon.get(i), notBuzon.get(i).getPosition());
+                            }
+                            notBuzon.clear();
                             break;
                     }
                 }

@@ -171,11 +171,19 @@ public class AdaptadorNotificaciones extends RecyclerView.Adapter<AdaptadorNotif
                     foto.setImageResource(R.drawable.notificacion_error_ping);
                     break;
 
+                case "buzon":
+                    tipo.setText("Buzon");
+                    descripcion.setText("Alguien ha dejado una carta");
+                    foto.setImageResource(R.drawable.notificacion_mail);
+                    break;
+
                 case "llamanPuerta":
                     tipo.setText("Puerta");
                     descripcion.setText("Se ha abierto la puerta");
                     foto.setImageResource(R.drawable.notificacion_puerta_abierta);
                     break;
+
+
             }
         }
 
@@ -203,6 +211,13 @@ public class AdaptadorNotificaciones extends RecyclerView.Adapter<AdaptadorNotif
                             navigation.getMenu().findItem(R.id.menu_inferior_inicio).setChecked(true);
                             fragments.add(new InicioFragment());
                             break;
+
+                        /*case "buzon":
+
+                            manager.beginTransaction().replace(R.id.fragmentUtilizado, new InicioFragment()).addToBackStack(null).commit();
+                            navigation.getMenu().findItem(R.id.menu_inferior_inicio).setChecked(true);
+                            fragments.add(new InicioFragment());
+                            break; */
                     }
                 }
             });

@@ -11,7 +11,7 @@
     <string name="nav_header_subtitle">fabioherlop@gmail.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Ajustes</string>
-    <string name="acerca_de">Acerca_de la aplicación</string>
+    <string name="acerca_de">Videos informativos del funcionamiento de la app</string>
 
 
     <string name="menu_inicio">Inicio</string>
@@ -31,6 +31,8 @@
     <string name="llamar_telefono">llamar telefono</string>
     <string name="localizacion">localizacion</string>
     <string name="email">email</string>
+    <string name="musica">musica</string>
+    <string name="buzonn">buzon</string>
 
     <string name="modo_noche">modo_noche</string>
 
