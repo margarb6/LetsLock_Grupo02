@@ -40,7 +40,7 @@ public class AnonimoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.anonimo_login);
 
-        correo = findViewById(R.id.correoAnonimo);
+        /*correo = findViewById(R.id.correoAnonimo);
         password = findViewById(R.id.passwordAnonimo);
         registrarse = findViewById(R.id.Registrarse);
 
@@ -82,5 +82,6 @@ public class AnonimoActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         super.onBackPressed();
+    }*/
     }
 }
