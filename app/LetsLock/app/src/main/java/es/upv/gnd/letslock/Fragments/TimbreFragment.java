@@ -1,5 +1,6 @@
 package es.upv.gnd.letslock.Fragments;
 
+import android.app.Notification;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -16,6 +17,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 
 import com.airbnb.lottie.LottieAnimationView;
@@ -50,8 +53,17 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Date;
+import java.util.UUID;
 
+import es.upv.gnd.letslock.NotificationActivity;
 import es.upv.gnd.letslock.R;
+import es.upv.gnd.letslock.bbdd.Casa;
+import es.upv.gnd.letslock.bbdd.Casas;
+import es.upv.gnd.letslock.bbdd.CasasCallback;
+import es.upv.gnd.letslock.bbdd.Notificacion;
+import es.upv.gnd.letslock.bbdd.Notificaciones;
+
+import static es.upv.gnd.letslock.NotificationActivity.CHANNEL_1_ID;
 
 import static com.example.serpumar.comun.Mqtt.broker;
 import static com.example.serpumar.comun.Mqtt.clientId;
@@ -74,6 +86,8 @@ public class TimbreFragment extends Fragment {
     private StorageReference storageRef;
 
     private boolean anonimo = false;
+    private String idCasa;
+    private NotificationManagerCompat notificationManager;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -84,6 +98,12 @@ public class TimbreFragment extends Fragment {
         if (!anonimo) {
 
             vista = inflater.inflate(R.layout.fragment_timbre, container, false);
+
+
+            NotificationActivity notificationActivity= new NotificationActivity();
+            notificationActivity.createNotificationChannels(getContext());
+
+            notificationManager = NotificationManagerCompat.from(getContext());
 
             nadie_llama = vista.findViewById(R.id.nadie_llama);
             pregunta = vista.findViewById(R.id.timbre_pregunta);
@@ -102,7 +122,25 @@ public class TimbreFragment extends Fragment {
             si.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    db.collection("Datos").document("Puerta").update("puerta", true);
+                    db.collection("Datos").document("Puerta").update("puerta",true);
+                    Notification notification = new NotificationCompat.Builder(getContext(),CHANNEL_1_ID)
+                            .setSmallIcon(R.drawable.ic_notifications_active_black_24dp)
+                            .setContentTitle("Puerta abierta")
+                            .setContentText("Alguien ha abierto la puerta")
+                            .setPriority(NotificationCompat.PRIORITY_HIGH)
+                            .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+                            .setAutoCancel(true)
+                            .build();
+                    notificationManager.notify(1,notification);
+                    Casas casaBD= new Casas();
+                    casaBD.getCasa(getContext(), new CasasCallback() {
+                        @Override
+                        public void getCasasCallback(Casa casa) {
+
+                            Notificaciones notificacionesBD = new Notificaciones();
+                            notificacionesBD.setNotificaciones(new Notificacion(UUID.randomUUID().toString(), "llamanPuerta", new Date().getTime() + 3600 * 1000, idCasa, casa.getIdUsuarios(), 0));
+                        }
+                    });
                 }
             });
 

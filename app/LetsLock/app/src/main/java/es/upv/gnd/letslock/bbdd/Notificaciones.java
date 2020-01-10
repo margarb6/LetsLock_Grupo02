@@ -45,6 +45,7 @@ public class Notificaciones {
 
                             if (idUsuario.get(j).equals(user.getUid()))
                                 idCasa = docs.get(i).getId();
+
                         }
                     }
 
@@ -74,7 +75,7 @@ public class Notificaciones {
 
                 ArrayList<Notificacion> notificaciones = new ArrayList<>();
                 ArrayList<DocumentSnapshot> docs = (ArrayList<DocumentSnapshot>) queryDocumentSnapshots.getDocuments();
-
+                Log.d("ID","id:"+idCasa);
                 for (int i = 0; i < docs.size(); i++) {
 
                     if (Objects.equals(docs.get(i).getString("idCasa"), idCasa)) {
