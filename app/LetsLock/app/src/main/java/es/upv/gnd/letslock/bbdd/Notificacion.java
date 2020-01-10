@@ -1,23 +1,32 @@
 package es.upv.gnd.letslock.bbdd;
 
+import java.util.ArrayList;
+
 public class Notificacion {
 
+    private String id;
     private String tipo;
     private long hora;
     private String idCasa;
+    private ArrayList<String> idUsuarios;
+    private int position;
 
-    public Notificacion(String tipo, long hora, String idCasa) {
+    public Notificacion(String id, String tipo, long hora, String idCasa, ArrayList<String> idUsuarios, int position) {
 
+        this.id = id;
         this.tipo = tipo;
         this.hora = hora;
         this.idCasa = idCasa;
+        this.idUsuarios = idUsuarios;
+        this.position = position;
     }
 
-    public Notificacion(){
+    public String getId() {
+        return id;
+    }
 
-        this.tipo= "";
-        this.hora= 0;
-        this.idCasa= "";
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getTipo() {
@@ -42,5 +51,21 @@ public class Notificacion {
 
     public void setIdCasa(String idCasa) {
         this.idCasa = idCasa;
+    }
+
+    public ArrayList<String> getIdUsuarios() {
+        return idUsuarios;
+    }
+
+    public void setIdUsuarios(ArrayList<String> idUsuarios) {
+        this.idUsuarios = idUsuarios;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
     }
 }

@@ -3,13 +3,20 @@ package es.upv.gnd.letslock.bbdd;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
 
 public class Usuarios {
 
@@ -34,19 +41,20 @@ public class Usuarios {
                 if (task.isSuccessful()) {
 
                     //Si existe el usuario que queremos obtener lo devolvemos mediante un callback(Es asíncrono)
-                    if(task.getResult().exists()){
+                    if (task.getResult().exists()) {
 
                         String nombre = task.getResult().getString("nombre");
                         boolean permisos = task.getResult().getBoolean("permisos");
                         String pin = task.getResult().getString("pin");
+                        String fotoUrl = task.getResult().getString("fotoUrl");
 
-                        Usuario usuario= new Usuario(nombre,permisos, pin);
+                        Usuario usuario = new Usuario(nombre, permisos, pin, fotoUrl);
                         callback.getUsuariosCallback(usuario);
 
-                    //Si no existe devolvemos uno vacío
-                    }else{
+                        //Si no existe devolvemos uno vacío
+                    } else {
 
-                        Usuario usuario= new Usuario();
+                        Usuario usuario = new Usuario();
                         callback.getUsuariosCallback(usuario);
                     }
                 } else {
@@ -56,4 +64,43 @@ public class Usuarios {
             }
         });
     }
+
+    static public void getIdUsuarios(final UsuariosCallback callback) {
+
+
+        db.collection("usuarios").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+
+                //Si consigue leer en Firestore
+                if (task.isSuccessful()) {
+
+                    ArrayList<DocumentSnapshot> docs = (ArrayList<DocumentSnapshot>) task.getResult().getDocuments();
+                    ArrayList<String> idUsuario = new ArrayList<>();
+                    ArrayList<Usuario> usuarios= new ArrayList<>();
+
+
+                    for (int i = 0; i < docs.size(); i++) {
+
+                        idUsuario.add(docs.get(i).getId());
+
+                        String nombre = docs.get(i).getString("nombre");
+                        boolean permisos = docs.get(i).getBoolean("permisos");
+                        String pin = docs.get(i).getString("pin");
+                        String fotoUrl = docs.get(i).getString("fotoUrl");
+
+                        usuarios.add(new Usuario(nombre, permisos, pin, fotoUrl));
+                    }
+
+                    callback.getAllUsuariosCallback(idUsuario, usuarios);
+
+                } else {
+
+                    Log.e("Firestore", "Error al leer", task.getException());
+                }
+            }
+        });
+    }
+
 }
