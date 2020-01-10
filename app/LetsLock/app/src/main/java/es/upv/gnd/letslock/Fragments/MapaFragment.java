@@ -266,7 +266,7 @@ public class MapaFragment extends Fragment {
 
     public void solicitarPermiso(final String permiso, String justificacion, final int requestCode, final Activity actividad) {
 
-        new AlertDialog.Builder(actividad).setTitle("Solicitud de MartaG")
+        new AlertDialog.Builder(actividad).setTitle("Solicitud de LetsLock")
                 .setMessage(justificacion)
                 .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {

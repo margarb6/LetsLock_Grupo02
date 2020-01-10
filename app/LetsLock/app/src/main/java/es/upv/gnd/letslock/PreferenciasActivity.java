@@ -32,7 +32,7 @@ public class PreferenciasActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //changePreferencesTheme();
+        changePreferencesTheme();
         getFragmentManager().beginTransaction()
                 .replace(android.R.id.content, new PreferenciasFragment())
                 .commit();

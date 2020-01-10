@@ -66,26 +66,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         navigation = findViewById(R.id.BotomNavigationView);
-
-        Usuarios userBD = new Usuarios();
-
-        userBD.getUsuario(new UsuariosCallback() {
-            public void getUsuariosCallback(Usuario usuarioBD) {
-
-                //Si no tiene permisos no puede ver el fragment
-                if (!usuarioBD.isPermisos() || anonimo) {
-                    navigation.getMenu().findItem(R.id.menu_inferior_personas).setVisible(false);
-                }
-
-                //Creamos el eventListener que nos permite cambiar de fragment
-                navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-            }
-
-            @Override
-            public void getAllUsuariosCallback(ArrayList<String> idUsuarios, ArrayList<Usuario> usuario) {
-
-            }
-        });
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         //Inicializamos la toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -170,7 +151,7 @@ public class MainActivity extends AppCompatActivity {
 
             case R.id.nav_ajustes:
 
-                Intent intent2 = new Intent(this, ChatActivity.class);
+                Intent intent2 = new Intent(this, PreferenciasActivity.class);
                 startActivity(intent2);
                 break;
         }
@@ -203,10 +184,6 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.menu_inferior_mapa:
 
                     fragSeleccionado = new MapaFragment();
-                    break;
-                case R.id.menu_inferior_personas:
-
-                    fragSeleccionado = new PersonasFragment();
                     break;
                 case R.id.menu_inferior_chat:
 
@@ -247,10 +224,6 @@ public class MainActivity extends AppCompatActivity {
 
                 Log.i("aa", String.valueOf(navigation.getMenu().findItem(R.id.menu_inferior_mapa).setChecked(true)));
 
-            } else if (fragmentAnterior instanceof PersonasFragment) {
-
-                Log.i("aa", String.valueOf(navigation.getMenu().findItem(R.id.menu_inferior_personas).setChecked(true)));
-
             } else if (fragmentAnterior instanceof ChatFragment) {
 
                 Log.i("aa", String.valueOf(navigation.getMenu().findItem(R.id.menu_inferior_chat).setChecked(true)));
@@ -265,6 +238,4 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
-
-
 }

@@ -48,7 +48,7 @@ import static android.provider.CallLog.*;
 
 public class PreferenciasFragment extends PreferenceFragment {
 
-    public static class PrefsFragment extends PreferenceFragment {
+    /*public static class PrefsFragment extends PreferenceFragment {
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
@@ -88,7 +88,7 @@ public class PreferenciasFragment extends PreferenceFragment {
             }
             return view;
         }
-    }
+    }*/
 
     private View vista;
     private static final int SOLICITUD_PERMISO_ACTION_CALL = 0;
@@ -103,9 +103,9 @@ public class PreferenciasFragment extends PreferenceFragment {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.preferencias);
 
-        getFragmentManager().beginTransaction()
+        /*getFragmentManager().beginTransaction()
                 .replace(android.R.id.content, new PrefsFragment())
-                .commit();
+                .commit();*/
 
         Preference button = findPreference(getString(R.string.acerca_de));
         button.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
