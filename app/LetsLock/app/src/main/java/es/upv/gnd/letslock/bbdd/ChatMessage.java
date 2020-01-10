@@ -1,4 +1,4 @@
-package es.upv.gnd.letslock;
+package es.upv.gnd.letslock.bbdd;
 
 import android.widget.ImageView;
 

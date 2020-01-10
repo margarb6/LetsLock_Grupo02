@@ -16,7 +16,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.ArrayList;
+import es.upv.gnd.letslock.bbdd.ChatMessage;
 
 import static android.view.View.VISIBLE;
 
@@ -43,6 +43,13 @@ public class ChatActivity extends AppCompatActivity {
                 final String texto = input.getText().toString().toLowerCase();
                 FirebaseDatabase.getInstance().getReference("chatBot").push().setValue(new ChatMessage(input.getText().toString(), FirebaseAuth.getInstance().getCurrentUser().getUid(), FirebaseAuth.getInstance().getCurrentUser().getDisplayName()));
                 input.setText("");
+
+                listOfMessage.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        listOfMessage.setSelection(adapter.getCount() - 1);
+                    }
+                });
 
                 final Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
@@ -103,7 +110,7 @@ public class ChatActivity extends AppCompatActivity {
 
     private void displayChatMessage() {
 
-        adapter = new FirebaseListAdapter<ChatMessage>(this, ChatMessage.class, R.layout.list_items, FirebaseDatabase.getInstance().getReference("chatBot")) {
+        adapter = new FirebaseListAdapter<ChatMessage>(this, ChatMessage.class, R.layout.list_items2, FirebaseDatabase.getInstance().getReference("chatBot")) {
             @Override
             protected void populateView(View v, ChatMessage model, int position) {
 
@@ -115,13 +122,15 @@ public class ChatActivity extends AppCompatActivity {
                 messageFoto = v.findViewById(R.id.imageView3);
                 mymessage = v.findViewById(R.id.my_message_body);
 
+                mymessage.setVisibility(View.GONE);
+                messageFoto.setVisibility(View.GONE);
+                messageText.setVisibility(View.GONE);
+                messageUser.setVisibility(View.GONE);
+
                 if (model.getMessageUser().equals(usuario.getUid()) && !model.getNameUser().equals("Bot")) {
 
                     mymessage.setText(model.getMessageText());
                     mymessage.setVisibility(VISIBLE);
-                    messageFoto.setVisibility(View.GONE);
-                    messageText.setVisibility(View.GONE);
-                    messageUser.setVisibility(View.GONE);
 
                 } else if (model.getNameUser().equals("Bot") && model.getMessageUser().equals(usuario.getUid())) {
 
@@ -134,7 +143,6 @@ public class ChatActivity extends AppCompatActivity {
                     messageText.setVisibility(VISIBLE);
                     messageUser.setVisibility(VISIBLE);
                     messageFoto.setVisibility(VISIBLE);
-                    mymessage.setVisibility(View.GONE);
                 }
             }
         };

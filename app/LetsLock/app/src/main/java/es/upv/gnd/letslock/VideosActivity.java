@@ -28,16 +28,14 @@ public class VideosActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        videos.add( new Videos("<iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/embed/yYibaCr7D8E\" frameborder=\"0\" allowfullscreen></iframe>") );
-        videos.add( new Videos("<iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/embed/c-Q3-lgyzGw\" frameborder=\"0\" allowfullscreen></iframe>") );
-        videos.add( new Videos("<iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/embed/veqZbM2OYP8\" frameborder=\"0\" allowfullscreen></iframe>") );
-        videos.add( new Videos("<iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/embed/tN_XPuIhbF8\" frameborder=\"0\" allowfullscreen></iframe>") );
+        videos.add(new Videos("<iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/embed/yYibaCr7D8E\" frameborder=\"0\" allowfullscreen></iframe>"));
+        videos.add(new Videos("<iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/embed/c-Q3-lgyzGw\" frameborder=\"0\" allowfullscreen></iframe>"));
+        videos.add(new Videos("<iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/embed/veqZbM2OYP8\" frameborder=\"0\" allowfullscreen></iframe>"));
+        videos.add(new Videos("<iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/embed/tN_XPuIhbF8\" frameborder=\"0\" allowfullscreen></iframe>"));
 
         AdaptadorVideos adaptadorVideos = new AdaptadorVideos(videos);
 
         recyclerView.setAdapter(adaptadorVideos);
 
     }
-
-
 }

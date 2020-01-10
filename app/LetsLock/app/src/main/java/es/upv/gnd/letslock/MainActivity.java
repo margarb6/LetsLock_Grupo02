@@ -60,12 +60,12 @@ public class MainActivity extends AppCompatActivity {
     private double distancia;
     private NotificationManagerCompat notificationManager;
     int contador;
+    private static final int SOLICITUD_PERMISO_FINE_LOCATION = 0;
 
     private boolean anonimo = false;
 
    public void recibirCarta() {
         Log.d("BUZON","funciona");
-    private static final int SOLICITUD_PERMISO_FINE_LOCATION = 0;
 
         db.collection("Datos").document("Datos").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
