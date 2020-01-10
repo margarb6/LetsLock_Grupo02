@@ -35,11 +35,22 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 
+import org.eclipse.paho.client.mqttv3.MqttClient;
+import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
+import org.eclipse.paho.client.mqttv3.MqttException;
+import org.eclipse.paho.client.mqttv3.MqttMessage;
+import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
+
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.UUID;
 
 import es.upv.gnd.letslock.androidthings.R;
+
+import static com.example.serpumar.comun.Mqtt.broker;
+import static com.example.serpumar.comun.Mqtt.clientId;
+import static com.example.serpumar.comun.Mqtt.qos;
+import static com.example.serpumar.comun.Mqtt.topicRoot;
 
 /**
  * Skeleton of an Android Things activity.
@@ -74,14 +85,13 @@ public class MainActivity extends AppCompatActivity {
     public String tag;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-
-
     String pinPropietario = "";
 
     Pinview pinview;
     private int count = 0;
     Button camera;
-
+    private MqttClient client;
+    private boolean valorMQTT = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,20 +123,55 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        try {
+            client = new MqttClient(broker, clientId, new MemoryPersistence());
+            MqttConnectOptions connOpts = new MqttConnectOptions();
+            connOpts.setCleanSession(true);
+            connOpts.setKeepAliveInterval(60);
+            connOpts.setWill(topicRoot + "WillTopic", "App conectada".getBytes(), qos, false);
+            client.connect(connOpts);
+
+            String mess= "OFF";
+            MqttMessage message = new MqttMessage(mess.getBytes());
+            message.setQos(qos);
+            message.setRetained(false);
+            client.publish(topicRoot + "cmnd/POWER", message);
+
+        } catch (MqttException e) {
+            Log.e(TAG, "Error al conectar.", e);
+        }
+
+        Button timbre = findViewById(R.id.llamarTimbre);
+        timbre.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                try {
+
+                    String mess;
+                    if (!valorMQTT) {
+                        mess = "ON";
+                        valorMQTT = true;
+                    } else {
+
+                        valorMQTT = false;
+                        mess = "OFF";
+                    }
+
+                    Log.i(TAG, "Publicando mensaje: " + mess);
+                    MqttMessage message = new MqttMessage(mess.getBytes());
+                    message.setQos(qos);
+                    message.setRetained(false);
+                    client.publish(topicRoot + "cmnd/POWER", message);
+                    Toast.makeText(getApplicationContext(),"SONOFF en estado: " + mess, Toast.LENGTH_LONG).show();
+
+                } catch (MqttException e) {
+                    Log.e(TAG, "Error al publicar.", e);
+                }
+            }
+        });
     }
 
-    public void enviarDatosFirestore(Datos dato) {
-        db.collection("Datos").document("Datos").update("distancia", dato.getDistancia());
-        db.collection("Datos").document("Datos").update("presencia", dato.getPresencia());
-
-        //db.collection("Datos").document("Datos").update("tag","12345");
-    }
-
-
-
-    public void enviarDatosFirestoreTag(String tag) {
-        db.collection("Datos").document("Datos").update("tag", tag);
-    }
 
     /*private void update() {
         db.collection("Datos").document("Puerta").addSnapshotListener(new EventListener<DocumentSnapshot>() {

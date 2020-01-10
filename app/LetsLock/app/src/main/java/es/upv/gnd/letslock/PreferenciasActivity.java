@@ -28,7 +28,6 @@ public class PreferenciasActivity extends Activity {
     static public EditText edit_mensaje;
     static public SharedPreferences onOffModoNoche;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +36,6 @@ public class PreferenciasActivity extends Activity {
         getFragmentManager().beginTransaction()
                 .replace(android.R.id.content, new PreferenciasFragment())
                 .commit();
-
     }
 
     public void mostrarPreferencias() {
@@ -63,7 +61,7 @@ public class PreferenciasActivity extends Activity {
     public void changePreferencesTheme() {
         SharedPreferences preferenciaNoche = androidx.preference.PreferenceManager.getDefaultSharedPreferences(this);
 
-        boolean estaModoNoche = preferenciaNoche.getBoolean("modo_noche", true);
+        boolean estaModoNoche = preferenciaNoche.getBoolean("modo_noche", false);
 
         if (estaModoNoche) {
             setTheme(R.style.DarkThemePreferences);

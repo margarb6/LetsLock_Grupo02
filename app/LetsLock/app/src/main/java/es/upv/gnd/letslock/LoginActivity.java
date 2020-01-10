@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -14,6 +15,7 @@ import androidx.annotation.NonNull;
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.ErrorCodes;
 import com.firebase.ui.auth.IdpResponse;
+import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
@@ -28,6 +30,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -69,7 +72,7 @@ public class LoginActivity extends Activity {
                 if (!ui.getProviderId().equals("firebase")) {
 
                     anonimo = false;
-                    editor.putBoolean("anonimo",false);
+                    editor.putBoolean("anonimo", false);
                     editor.commit();
 
                     switch (ui.getProviderId()) {
@@ -87,10 +90,10 @@ public class LoginActivity extends Activity {
                     }
                 }
             }
-            if (anonimo){
+            if (anonimo) {
 
                 cambioActivity("como usuario anónimo");
-                editor.putBoolean("anonimo",anonimo);
+                editor.putBoolean("anonimo", anonimo);
                 editor.commit();
             }
 
@@ -98,14 +101,15 @@ public class LoginActivity extends Activity {
         } else {
 
             startActivityForResult(AuthUI.getInstance()
-                    .createSignInIntentBuilder()
-                    .setLogo(R.drawable.applogonombre)
-                    .setTheme(R.style.FirebaseUITema)
-                    .setAvailableProviders(Arrays.asList(
-                            new AuthUI.IdpConfig.EmailBuilder().setAllowNewAccounts(true).build(),
-                            new AuthUI.IdpConfig.GoogleBuilder().build(),
-                            new AuthUI.IdpConfig.AnonymousBuilder().build(),
-                            new AuthUI.IdpConfig.PhoneBuilder().build())).build(), RC_SIGN_IN);
+                            .createSignInIntentBuilder()
+                            .setLogo(R.drawable.applogonombre)
+                            .setTheme(R.style.FirebaseUITema)
+                            .setAvailableProviders(Arrays.asList(
+                                    new AuthUI.IdpConfig.EmailBuilder().setAllowNewAccounts(true).build(),
+                                    new AuthUI.IdpConfig.GoogleBuilder().build(),
+                                    new AuthUI.IdpConfig.AnonymousBuilder().build(),
+                                    new AuthUI.IdpConfig.PhoneBuilder().build())).build(),
+                    RC_SIGN_IN);
 
         }
     }
@@ -146,18 +150,31 @@ public class LoginActivity extends Activity {
 
                     String fotoURL = String.valueOf(usuario.getPhotoUrl());
                     userBD.setUsuario(new Usuario(nombre, false, String.format("%04d", rand.nextInt(10000)), fotoURL));
-                }
-
-                else nombre = usuarioBD.getNombre();
+                } else nombre = usuarioBD.getNombre();
 
                 editor.putBoolean("permisos", usuarioBD.isPermisos());
                 editor.commit();
 
-                casaBD.setCasa(usuario.getUid(), getApplicationContext());
-
+                casaBD.getCasa(getApplicationContext(), new CasasCallback() {
+                    @Override
+                    public void getCasasCallback(Casa casa) {
+                        LatLng ceroCero = new LatLng(0.0, 0.0);
+                        Log.e("Objeto", " " + casa.toString());
+                        /*if (casa.getLocalizacion().latitude == ceroCero.latitude && casa.getLocalizacion().longitude == ceroCero.longitude) { // latitud y longitud
+                            casaBD.setCasa(usuario.getUid(), getApplicationContext(), ceroCero);
+                        } else {*/
+                            casaBD.setCasa(usuario.getUid(), getApplicationContext(), casa.getLocalizacion());
+                        //}
+                    }
+                });
 
 
                 cambioActivity(nombre);
+            }
+
+            @Override
+            public void getAllUsuariosCallback(ArrayList<String> idUsuarios, ArrayList<Usuario> usuario) {
+
             }
         });
     }

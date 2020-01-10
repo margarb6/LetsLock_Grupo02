@@ -4,12 +4,14 @@ import android.app.Notification;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.preference.SwitchPreference;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -33,6 +35,7 @@ import java.util.Date;
 import java.util.UUID;
 
 import es.upv.gnd.letslock.Fragments.ChatFragment;
+import es.upv.gnd.letslock.Fragments.MapaFragment;
 import es.upv.gnd.letslock.Fragments.PersonasFragment;
 import es.upv.gnd.letslock.Fragments.InicioFragment;
 import es.upv.gnd.letslock.Fragments.NotificacionesFragment;
@@ -62,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
    public void recibirCarta() {
         Log.d("BUZON","funciona");
+    private static final int SOLICITUD_PERMISO_FINE_LOCATION = 0;
 
         db.collection("Datos").document("Datos").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
@@ -137,21 +141,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         navigation = findViewById(R.id.BotomNavigationView);
-
-        Usuarios userBD = new Usuarios();
-
-        userBD.getUsuario(new UsuariosCallback() {
-            public void getUsuariosCallback(Usuario usuarioBD) {
-
-                //Si no tiene permisos no puede ver el fragment
-                if (!usuarioBD.isPermisos() || anonimo) {
-                    navigation.getMenu().findItem(R.id.menu_inferior_personas).setVisible(false);
-                }
-
-                //Creamos el eventListener que nos permite cambiar de fragment
-                navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-            }
-        });
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         //Inicializamos la toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -163,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
         // configuracion inicial
         SharedPreferences preferenciaNoche = PreferenceManager.getDefaultSharedPreferences(this);
 
-        boolean estaModoNoche = preferenciaNoche.getBoolean("modo_noche", true);
+        boolean estaModoNoche = preferenciaNoche.getBoolean("modo_noche", false);
 
 
         if (estaModoNoche) {
@@ -266,9 +256,9 @@ public class MainActivity extends AppCompatActivity {
 
                     fragSeleccionado = new NotificacionesFragment();
                     break;
-                case R.id.menu_inferior_personas:
+                case R.id.menu_inferior_mapa:
 
-                    fragSeleccionado = new PersonasFragment();
+                    fragSeleccionado = new MapaFragment();
                     break;
                 case R.id.menu_inferior_chat:
 
@@ -305,11 +295,11 @@ public class MainActivity extends AppCompatActivity {
 
                 Log.i("aa", String.valueOf(navigation.getMenu().findItem(R.id.menu_inferior_notificaciones).setChecked(true)));
 
-            } else if (fragmentAnterior instanceof PersonasFragment) {
+            } else if (fragmentAnterior instanceof MapaFragment) {
 
-                Log.i("aa", String.valueOf(navigation.getMenu().findItem(R.id.menu_inferior_personas).setChecked(true)));
+                Log.i("aa", String.valueOf(navigation.getMenu().findItem(R.id.menu_inferior_mapa).setChecked(true)));
 
-            } else if (fragmentAnterior instanceof PersonasFragment) {
+            } else if (fragmentAnterior instanceof ChatFragment) {
 
                 Log.i("aa", String.valueOf(navigation.getMenu().findItem(R.id.menu_inferior_chat).setChecked(true)));
             }
@@ -323,5 +313,4 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
-
 }

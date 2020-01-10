@@ -1,8 +1,5 @@
 package com.example.serpumar.comun;
 
-import android.util.Log;
-
-
 public class Datos {
 
     private String distancia;

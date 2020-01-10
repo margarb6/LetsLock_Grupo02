@@ -22,12 +22,15 @@
     <string name="menu_ajustes">Ajustes</string>
     <string name="menu_acercade">Acerca de</string>
     <string name="menu_personas">Personas</string>
+    <string name="menu_mapa">Map</string>
+
     <string name="menu_cerrarsesion">Cerrar sesión</string>
     <string name="cerrarSesion">Cerrar sesión</string>
     <string name="fui_sign_in_with_email">Entra con tu correo</string>
     <string name="fui_progress_dialog_signing_up">Creando cuenta...</string>
     <string name="plano_casa">Mi casa</string>
     <string name="pagina_web">pagina web</string>
+    <string name="contacto">chat de contacto</string>
     <string name="llamar_telefono">llamar telefono</string>
     <string name="localizacion">localizacion</string>
     <string name="email">email</string>

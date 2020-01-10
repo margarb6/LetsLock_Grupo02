@@ -28,6 +28,7 @@ import com.google.firebase.storage.StorageReference;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import es.upv.gnd.letslock.DescargarFoto;
@@ -97,7 +98,7 @@ public class PerfilFragment extends Fragment {
             @Override
             public void onFailure(@NonNull Exception exception) {
                 if (usuario.getPhotoUrl()!=null){
-                    DescargarFoto fotoDes= new DescargarFoto(PerfilFragment.this,R.id.FotoPerfil);
+                    DescargarFoto fotoDes= new DescargarFoto(PerfilFragment.this.getActivity(),R.id.FotoPerfil);
                     fotoDes.execute(usuario.getPhotoUrl().toString());
                 }
             }
@@ -112,6 +113,11 @@ public class PerfilFragment extends Fragment {
                 else permisos.setText("Habitante");
                 nombre.setText(usuarioBD.getNombre());
                 pin.setText(usuarioBD.getPin());
+            }
+
+            @Override
+            public void getAllUsuariosCallback(ArrayList<String> idUsuarios, ArrayList<Usuario> usuario) {
+
             }
         });
         return vista;

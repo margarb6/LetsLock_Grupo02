@@ -17,6 +17,7 @@ import es.upv.gnd.letslock.PreferenciasActivity;
 import es.upv.gnd.letslock.R;
 
 public abstract class PrefsFragment extends PreferenceFragment {
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,4 +57,5 @@ public abstract class PrefsFragment extends PreferenceFragment {
         }
         return view;
     }
+
 }

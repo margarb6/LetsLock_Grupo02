@@ -48,6 +48,7 @@ import java.util.Date;
 import java.util.UUID;
 
 import es.upv.gnd.letslock.AcercaDeActivity;
+import es.upv.gnd.letslock.ChatActivity;
 import es.upv.gnd.letslock.BuzonActivity;
 import es.upv.gnd.letslock.FormularioActivity;
 import es.upv.gnd.letslock.MainActivity;
@@ -138,6 +139,9 @@ public class PreferenciasFragment extends PreferenceFragment {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.preferencias);
 
+        /*getFragmentManager().beginTransaction()
+                .replace(android.R.id.content, new PrefsFragment())
+                .commit();*/
         NotificationActivity notificationActivity= new NotificationActivity();
         notificationActivity.createNotificationChannels(getContext());
         notificationManager = NotificationManagerCompat.from(getContext());
@@ -276,7 +280,14 @@ public class PreferenciasFragment extends PreferenceFragment {
                 return true;
             }
         });
-
+        Preference button6 = findPreference(getString(R.string.contacto));
+        button6.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                startActivity(new Intent(getActivity(), ChatActivity.class));
+                return true;
+            }
+        });
     }
 
     public void ponerMusica () {
@@ -417,6 +428,4 @@ public class PreferenciasFragment extends PreferenceFragment {
             }
         }
     }
-
-
 }
