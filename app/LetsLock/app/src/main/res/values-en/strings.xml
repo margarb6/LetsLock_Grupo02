@@ -20,6 +20,8 @@
     <string name="menu_timbre">Door bell</string>
     <string name="menu_perfil">Profile</string>
     <string name="menu_personas">People</string>
+    <string name="menu_mapa">Map</string>
+
     <string name="menu_ajustes">Settings</string>
     <string name="menu_acercade">About</string>
     <string name="menu_cerrarsesion">Log out</string>

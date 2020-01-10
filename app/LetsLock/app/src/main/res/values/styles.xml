@@ -14,6 +14,7 @@
         <item name="android:colorBackground">#ffffff</item>
         <item name="btnColor">#BBBBBB</item>
         <item name="navBackground">#ffffff</item>
+        <item name="colorBackground">#ffffff</item>
 
 
 
@@ -30,6 +31,7 @@
         <item name="android:textColor">#ffffff</item>
         <item name="btnColor">#228FA2</item>
         <item name="navBackground">#3C3C3C</item>
+        <item name="colorBackground">#3C3C3C</item>
 
 
         <item name="windowActionBar">false</item>
@@ -42,6 +44,8 @@
         <item name="colorPrimaryDark">#228FA2</item>
         <item name="android:textColorSecondary">#ffffff</item>
         <item name="android:colorBackground">#3C3C3C</item>
+        <item name="colorBackground">#3C3C3C</item>
+
         <item name="android:textColor">#DFDFDF</item>
         <item name="btnColor">#228FA2</item>
         <item name="navBackground">#3C3C3C</item>
@@ -60,7 +64,6 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
-
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.DayNight.ActionBar" />
 

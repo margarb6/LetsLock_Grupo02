@@ -63,7 +63,7 @@ public class PreferenciasActivity extends Activity {
     public void changePreferencesTheme() {
         SharedPreferences preferenciaNoche = androidx.preference.PreferenceManager.getDefaultSharedPreferences(this);
 
-        boolean estaModoNoche = preferenciaNoche.getBoolean("modo_noche", true);
+        boolean estaModoNoche = preferenciaNoche.getBoolean("modo_noche", false);
 
         if (estaModoNoche) {
             setTheme(R.style.DarkThemePreferences);

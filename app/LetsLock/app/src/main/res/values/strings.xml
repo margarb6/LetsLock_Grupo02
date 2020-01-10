@@ -21,6 +21,8 @@
     <string name="menu_ajustes">Ajustes</string>
     <string name="menu_acercade">Acerca de</string>
     <string name="menu_personas">Personas</string>
+    <string name="menu_mapa">Map</string>
+
     <string name="menu_cerrarsesion">Cerrar sesión</string>
     <string name="cerrarSesion">Cerrar sesión</string>
     <string name="fui_sign_in_with_email">Entra con tu correo</string>

@@ -3,12 +3,14 @@ package es.upv.gnd.letslock;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.preference.SwitchPreference;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,6 +27,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 
+import es.upv.gnd.letslock.Fragments.MapaFragment;
 import es.upv.gnd.letslock.Fragments.PersonasFragment;
 import es.upv.gnd.letslock.Fragments.InicioFragment;
 import es.upv.gnd.letslock.Fragments.NotificacionesFragment;
@@ -40,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean anonimo = false;
 
+    private static final int SOLICITUD_PERMISO_FINE_LOCATION = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
         // configuracion inicial
         SharedPreferences preferenciaNoche = PreferenceManager.getDefaultSharedPreferences(this);
 
-        boolean estaModoNoche = preferenciaNoche.getBoolean("modo_noche", true);
+        boolean estaModoNoche = preferenciaNoche.getBoolean("modo_noche", false);
 
 
         if (estaModoNoche) {
@@ -190,6 +194,10 @@ public class MainActivity extends AppCompatActivity {
 
                     fragSeleccionado = new NotificacionesFragment();
                     break;
+                case R.id.menu_inferior_mapa:
+
+                    fragSeleccionado = new MapaFragment();
+                    break;
                 case R.id.menu_inferior_personas:
 
                     fragSeleccionado = new PersonasFragment();
@@ -225,6 +233,10 @@ public class MainActivity extends AppCompatActivity {
 
                 Log.i("aa", String.valueOf(navigation.getMenu().findItem(R.id.menu_inferior_notificaciones).setChecked(true)));
 
+            } else if (fragmentAnterior instanceof MapaFragment) {
+
+                Log.i("aa", String.valueOf(navigation.getMenu().findItem(R.id.menu_inferior_mapa).setChecked(true)));
+
             } else if (fragmentAnterior instanceof PersonasFragment) {
 
                 Log.i("aa", String.valueOf(navigation.getMenu().findItem(R.id.menu_inferior_personas).setChecked(true)));
@@ -239,5 +251,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
 
 }
