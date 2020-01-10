@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/pop_chat"
+    android:backgroundTint="#7EFFFFFF"
     android:orientation="vertical">
 
     <ImageView
@@ -33,11 +34,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cambiar permisos"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/permisos"
-        android:visibility="invisible" />
+        app:layout_constraintTop_toBottomOf="@+id/permisos" />
 
     <TextView
         android:id="@+id/permisos"

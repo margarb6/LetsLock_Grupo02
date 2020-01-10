@@ -39,6 +39,7 @@ public class NotificacionesFragment extends Fragment implements DeleteAdaptador.
     private CheckBox puerta;
     private CheckBox solicitudPin;
     private CheckBox errorPin;
+    private CheckBox buzon;
 
     private boolean permisos = false;
     private boolean anonimo = false;
@@ -48,6 +49,7 @@ public class NotificacionesFragment extends Fragment implements DeleteAdaptador.
     private ArrayList<Notificacion> notError = new ArrayList<>();
     private ArrayList<Notificacion> notPuerta = new ArrayList<>();
     private ArrayList<Notificacion> notSolicitud = new ArrayList<>();
+    private ArrayList<Notificacion> notBuzon = new ArrayList<>();
 
 
     public View onCreateView(@NonNull final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -65,6 +67,7 @@ public class NotificacionesFragment extends Fragment implements DeleteAdaptador.
             errorPin = vista.findViewById(R.id.errorPinCheck);
             puerta = vista.findViewById(R.id.puertaCheck);
             solicitudPin = vista.findViewById(R.id.solicitudPinCheck);
+           // buzon = vista.findViewById(R.id.);
 
             if (prefs.contains("permisos")) permisos = prefs.getBoolean("permisos", false);
 

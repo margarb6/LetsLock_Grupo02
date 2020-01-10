@@ -18,6 +18,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Objects;
 
 public class Notificaciones {
 
@@ -76,7 +77,7 @@ public class Notificaciones {
 
                 for (int i = 0; i < docs.size(); i++) {
 
-                    if (docs.get(i).getString("idCasa").equals(idCasa)) {
+                    if (Objects.equals(docs.get(i).getString("idCasa"), idCasa)) {
 
                         ArrayList<String> usuarios = (ArrayList<String>) docs.get(i).get("idUsuarios");
                         notificaciones.add(new Notificacion(docs.get(i).getId(), docs.get(i).getString("tipo"), docs.get(i).getLong("hora"), idCasa, usuarios, i));

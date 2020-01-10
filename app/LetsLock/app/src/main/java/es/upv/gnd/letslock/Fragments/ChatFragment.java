@@ -51,7 +51,7 @@ public class ChatFragment extends Fragment {
     FloatingActionButton fab;
     final FirebaseUser usuario = FirebaseAuth.getInstance().getCurrentUser();
     private boolean anonimo = false;
-
+    private ListView listOfMessage;
 
     @Nullable
     @Override
@@ -64,6 +64,8 @@ public class ChatFragment extends Fragment {
 
             vista = inflater.inflate(R.layout.fragment_chat, container, false);
 
+            listOfMessage = vista.findViewById(R.id.list_of_message);
+
             fab = vista.findViewById(R.id.fab);
             fab.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -72,6 +74,12 @@ public class ChatFragment extends Fragment {
                     Log.d("Chat", input.getText().toString());
                     FirebaseDatabase.getInstance().getReference("chat").push().setValue(new ChatMessage(input.getText().toString(), FirebaseAuth.getInstance().getCurrentUser().getUid(), FirebaseAuth.getInstance().getCurrentUser().getDisplayName()));
                     input.setText("");
+                    listOfMessage.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            listOfMessage.setSelection(adapter.getCount() - 1);
+                        }
+                    });
                 }
             });
 
@@ -99,36 +107,35 @@ public class ChatFragment extends Fragment {
     private void displayChatMessage() {
 
 
-        ListView listOfMessage = vista.findViewById(R.id.list_of_message);
         adapter = new FirebaseListAdapter<ChatMessage>(getActivity(), ChatMessage.class, R.layout.list_items, FirebaseDatabase.getInstance().getReference("chat")) {
             @Override
             protected void populateView(View v, ChatMessage model, int position) {
 
+                TextView messageText, messageUser, myMessage;
+                myMessage = v.findViewById(R.id.my_message_body);
+                messageText = v.findViewById(R.id.message_body);
+                messageUser = v.findViewById(R.id.name);
+
+
                 if(model.getMessageUser().equals(usuario.getUid())) {
 
-                    TextView messageText;
-                    messageText = v.findViewById(R.id.my_message_body);
-
-                    messageText.setText(model.getMessageText());
-                    messageText.setVisibility(VISIBLE);
+                    myMessage.setText(model.getMessageText());
+                    myMessage.setVisibility(VISIBLE);
+                    messageText.setVisibility(View.GONE);
+                    messageUser.setVisibility(View.GONE);
 
                 } else {
 
 
-                    TextView messageText, messageUser, messageTime;
                     final String user = model.getMessageUser();
 
-                    messageText = v.findViewById(R.id.message_body);
-                    messageUser = v.findViewById(R.id.name);
-                    //messageTime = v.findViewById(R.id.message_time);
-                    //messageFoto = v.findViewById(R.id.avatar_pop);
 
                     messageText.setText(model.getMessageText());
                     messageUser.setText(model.getNameUser());
-                    //messageTime.setText(DateFormat.format("dd-MM-yyyy (HH:mm:ss)", model.getMessageTime()));
 
                     messageText.setVisibility(VISIBLE);
                     messageUser.setVisibility(VISIBLE);
+                    myMessage.setVisibility(View.GONE);
 
 
                     messageUser.setOnClickListener(new View.OnClickListener(){

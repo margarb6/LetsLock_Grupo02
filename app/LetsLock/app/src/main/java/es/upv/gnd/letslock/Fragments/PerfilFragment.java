@@ -97,7 +97,7 @@ public class PerfilFragment extends Fragment {
             @Override
             public void onFailure(@NonNull Exception exception) {
                 if (usuario.getPhotoUrl()!=null){
-                    DescargarFoto fotoDes= new DescargarFoto(PerfilFragment.this,R.id.FotoPerfil);
+                    DescargarFoto fotoDes= new DescargarFoto(PerfilFragment.this.getActivity(),R.id.FotoPerfil);
                     fotoDes.execute(usuario.getPhotoUrl().toString());
                 }
             }
