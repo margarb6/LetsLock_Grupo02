@@ -1,7 +1,6 @@
 package es.upv.gnd.letslock.adapters;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -64,19 +63,23 @@ public class AdaptadorPersonas extends FirestoreRecyclerAdapter<Usuario, Adaptad
     @Override
     protected void onBindViewHolder(@NonNull final AdaptadorPersonas.PersonasViewHolder holder, final int position, @NonNull final Usuario usuario) {
 
-        if (usuarios.size() != ids.size()) usuarios.add(usuario);
-
         Usuarios usuariosBD = new Usuarios();
-        usuariosBD.getUsuarios(new UsuariosCallback() {
+        usuariosBD.getIdUsuarios(new UsuariosCallback() {
             @Override
             public void getUsuariosCallback(Usuario usuario) {
 
             }
 
             @Override
-            public void getAllUsuariosCallback(ArrayList<String> idUsuarios) {
+            public void getAllUsuariosCallback(ArrayList<String> idUsuarios, ArrayList<Usuario> usuario) {
 
                 ids = idUsuarios;
+                usuarios= usuario;
+
+                Glide.with(context).load(usuarios.get(position).getFotoUrl())
+                        .placeholder(R.drawable.applogo)
+                        .circleCrop()
+                        .into(holder.foto);
             }
         });
 
@@ -86,11 +89,6 @@ public class AdaptadorPersonas extends FirestoreRecyclerAdapter<Usuario, Adaptad
         if (usuario.isPermisos()) {
             holder.permiso.setText("Permiso de propietario");
         }
-
-        Glide.with(context).load(usuario.getFotoUrl())
-                .placeholder(R.drawable.applogo)
-                .circleCrop()
-                .into(holder.foto);
 
         onclick(holder, position);
     }

@@ -116,7 +116,7 @@ public class PerfilFragment extends Fragment {
             }
 
             @Override
-            public void getAllUsuariosCallback(ArrayList<String> usuarios) {
+            public void getAllUsuariosCallback(ArrayList<String> idUsuarios, ArrayList<Usuario> usuario) {
 
             }
         });

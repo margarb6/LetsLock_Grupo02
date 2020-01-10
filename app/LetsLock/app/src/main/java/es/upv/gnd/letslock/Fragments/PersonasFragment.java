@@ -45,7 +45,6 @@ public class PersonasFragment extends Fragment {
         recyclerView = vista.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(adaptador);
-
     }
 
     @Override

@@ -160,7 +160,7 @@ public class LoginActivity extends Activity {
             }
 
             @Override
-            public void getAllUsuariosCallback(ArrayList<String> usuarios) {
+            public void getAllUsuariosCallback(ArrayList<String> idUsuarios, ArrayList<Usuario> usuario) {
 
             }
         });

@@ -65,7 +65,8 @@ public class Usuarios {
         });
     }
 
-    static public void getUsuarios(final UsuariosCallback callback) {
+    static public void getIdUsuarios(final UsuariosCallback callback) {
+
 
         db.collection("usuarios").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
 
@@ -77,13 +78,22 @@ public class Usuarios {
 
                     ArrayList<DocumentSnapshot> docs = (ArrayList<DocumentSnapshot>) task.getResult().getDocuments();
                     ArrayList<String> idUsuario = new ArrayList<>();
+                    ArrayList<Usuario> usuarios= new ArrayList<>();
+
 
                     for (int i = 0; i < docs.size(); i++) {
 
                         idUsuario.add(docs.get(i).getId());
+
+                        String nombre = docs.get(i).getString("nombre");
+                        boolean permisos = docs.get(i).getBoolean("permisos");
+                        String pin = docs.get(i).getString("pin");
+                        String fotoUrl = docs.get(i).getString("fotoUrl");
+
+                        usuarios.add(new Usuario(nombre, permisos, pin, fotoUrl));
                     }
 
-                    callback.getAllUsuariosCallback(idUsuario);
+                    callback.getAllUsuariosCallback(idUsuario, usuarios);
 
                 } else {
 
@@ -92,4 +102,5 @@ public class Usuarios {
             }
         });
     }
+
 }

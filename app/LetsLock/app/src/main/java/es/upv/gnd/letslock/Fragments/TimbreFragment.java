@@ -58,7 +58,7 @@ import static com.example.serpumar.comun.Mqtt.clientId;
 import static com.example.serpumar.comun.Mqtt.qos;
 import static com.example.serpumar.comun.Mqtt.topicRoot;
 
-public class TimbreFragment extends Fragment implements MqttCallback {
+public class TimbreFragment extends Fragment {
 
     View vista;
     TextView nadie_llama;
@@ -69,9 +69,6 @@ public class TimbreFragment extends Fragment implements MqttCallback {
     Button historial;
     LottieAnimationView lottieAnimationView;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private MqttClient client;
-    private boolean valorMQTT = false;
-
 
     String TAG = "PILOTES";
     private StorageReference storageRef;
@@ -95,36 +92,6 @@ public class TimbreFragment extends Fragment implements MqttCallback {
             no = vista.findViewById(R.id.timbre_boton_no);
             historial = vista.findViewById(R.id.boton_historial);
             lottieAnimationView = vista.findViewById(R.id.animation_view3);
-
-            try {
-                client = new MqttClient(broker, clientId, new MemoryPersistence());
-                MqttConnectOptions connOpts = new MqttConnectOptions();
-                connOpts.setCleanSession(true);
-                connOpts.setKeepAliveInterval(60);
-                connOpts.setWill(topicRoot + "WillTopic", "App conectada".getBytes(), qos, false);
-                client.connect(connOpts);
-
-            } catch (MqttException e) {
-                Log.e(TAG, "Error al conectar.", e);
-            }
-
-            try {
-                Log.i(TAG, "Suscrito a " + topicRoot + "presencia");
-                client.subscribe(topicRoot + "presencia", qos);
-                client.setCallback(this);
-
-            } catch (MqttException e) {
-                Log.e(TAG, "Error al suscribir.", e);
-            }
-
-            Button bSonnoff = vista.findViewById(R.id.sonoff);
-            bSonnoff.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    cambiarValor();
-                }
-            });
 
             nadie_llama.setVisibility(View.INVISIBLE);
             pregunta.setVisibility(View.VISIBLE);
@@ -154,18 +121,14 @@ public class TimbreFragment extends Fragment implements MqttCallback {
                 }
             });
 
-            new
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
 
-                    Handler().
+                    storageRef = FirebaseStorage.getInstance().getReference();
 
-                    postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-
-                            storageRef = FirebaseStorage.getInstance().getReference();
-
-                        }
-                    }, 30000);
+                }
+            }, 30000);
 
             storageRef = FirebaseStorage.getInstance().
 
@@ -174,62 +137,32 @@ public class TimbreFragment extends Fragment implements MqttCallback {
 
             FirebaseFirestore ff = FirebaseFirestore.getInstance();
 
-            ff.collection("imagenes_timbre").
+            ff.collection("imagenes_timbre").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                @Override
+                public void onSuccess(QuerySnapshot documentSnapshots) {
+                    if (documentSnapshots.isEmpty()) {
+                        Log.d(TAG, "onSuccess: LIST EMPTY");
+                        return;
+                    } else if (ultimaFoto(documentSnapshots) != null) {
+                        // Convert the whole Query Snapshot to a list
+                        // of objects directly! No need to fetch each
+                        // document.
 
-                    get()
-                    .
-
-                            addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                                @Override
-                                public void onSuccess(QuerySnapshot documentSnapshots) {
-                                    if (documentSnapshots.isEmpty()) {
-                                        Log.d(TAG, "onSuccess: LIST EMPTY");
-                                        return;
-                                    } else if (ultimaFoto(documentSnapshots) != null) {
-                                        // Convert the whole Query Snapshot to a list
-                                        // of objects directly! No need to fetch each
-                                        // document.
-
-                                        Log.d(TAG, "onSuccess: " + documentSnapshots.getDocuments().toString());
-                                        Glide.with(getContext())
-                                                .load(ultimaFoto(documentSnapshots))
-                                                .into(imagen);
-                                    } else {
-                                        imagen.setImageResource(R.drawable.applogo);
-                                    }
-                                }
-                            });
+                        Log.d(TAG, "onSuccess: " + documentSnapshots.getDocuments().toString());
+                        Glide.with(getContext())
+                                .load(ultimaFoto(documentSnapshots))
+                                .into(imagen);
+                    } else {
+                        imagen.setImageResource(R.drawable.applogo);
+                    }
+                }
+            });
         } else {
             vista = inflater.inflate(R.layout.fragment_anonimo, container, false);
         }
 
         //bajarFichero();
         return vista;
-    }
-
-    private void cambiarValor() {
-
-        try {
-
-            String mess;
-            if (!valorMQTT) {
-                mess = "ON";
-                valorMQTT = true;
-            } else {
-
-                valorMQTT = false;
-                mess = "OFF";
-            }
-
-            Log.i(TAG, "Publicando mensaje: " + mess);
-            MqttMessage message = new MqttMessage(mess.getBytes());
-            message.setQos(qos);
-            message.setRetained(false);
-            client.publish(topicRoot + "cmnd/POWER", message);
-
-        } catch (MqttException e) {
-            Log.e(TAG, "Error al publicar.", e);
-        }
     }
 
     private URL ultimaFoto(QuerySnapshot qs) {
@@ -291,29 +224,5 @@ public class TimbreFragment extends Fragment implements MqttCallback {
                 //client.set
             }
         }.run();
-    }
-
-    @Override
-    public void connectionLost(Throwable cause) {
-
-        Log.d(TAG, "Conexión perdida");
-    }
-
-    @Override
-    public void messageArrived(String topic, MqttMessage message) throws Exception {
-
-        String payload = new String(message.getPayload());
-        Log.d(TAG, "Recibiendo: " + topic + "->" + payload);
-
-        if (payload.equals("presencia")) {
-
-            db.collection("Datos").document("Datos").update("presencia", true);
-        }
-    }
-
-    @Override
-    public void deliveryComplete(IMqttDeliveryToken token) {
-
-        Log.d(TAG, "Entrega completa");
     }
 }

@@ -97,16 +97,6 @@
             app:layout_constraintHorizontal_bias="0.68"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <Button
-            android:id="@+id/sonoff"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Hacer foto"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/timbre_boton_no" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

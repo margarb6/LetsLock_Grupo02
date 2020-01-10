@@ -11,6 +11,7 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.View;
 import android.widget.Button;
 
 import androidx.annotation.NonNull;
@@ -30,6 +31,14 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
+import org.eclipse.paho.client.mqttv3.MqttCallback;
+import org.eclipse.paho.client.mqttv3.MqttClient;
+import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
+import org.eclipse.paho.client.mqttv3.MqttException;
+import org.eclipse.paho.client.mqttv3.MqttMessage;
+import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
+
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.UUID;
@@ -37,6 +46,10 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 
+import static com.example.serpumar.comun.Mqtt.broker;
+import static com.example.serpumar.comun.Mqtt.clientId;
+import static com.example.serpumar.comun.Mqtt.qos;
+import static com.example.serpumar.comun.Mqtt.topicRoot;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
 
@@ -59,7 +72,7 @@ import static java.util.concurrent.TimeUnit.SECONDS;
  *
  * @see <a href="https://github.com/androidthings/contrib-drivers#readme">https://github.com/androidthings/contrib-drivers#readme</a>
  */
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements MqttCallback {
 
     public Datos dato;
     private ArduinoUart uart = new ArduinoUart("UART0", 9600);
@@ -85,6 +98,7 @@ public class MainActivity extends Activity {
     private HandlerThread mCameraThread;
     private Handler temporizadorHandler = new Handler();
 
+    private MqttClient client;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,9 +107,6 @@ public class MainActivity extends Activity {
 
         Log.i("Prueba", "Lista de UART disponibles: " + ArduinoUart.disponibles());
 
-        update();
-        initPIO();
-
         mCameraThread = new HandlerThread("CameraBackground");
         mCameraThread.start();
         mCameraHandler = new Handler(mCameraThread.getLooper());
@@ -103,14 +114,58 @@ public class MainActivity extends Activity {
         mCamera = DoorbellCamera.getInstance();
         mCamera.initializeCamera(this, mCameraHandler, mOnImageAvailableListener);
 
+        update();
+        initPIO();
 
-        final ScheduledExecutorService scheduler =
-                Executors.newScheduledThreadPool(1);
+        //final ScheduledExecutorService scheduler =
+          //      Executors.newScheduledThreadPool(1);
 
-        final ScheduledFuture<?> runnableHandle =
+        /*final ScheduledFuture<?> runnableHandle =
                 scheduler.scheduleAtFixedRate(runnable, 0, 30, SECONDS);
         final ScheduledFuture<?> runnableRFIDHandle =
-                scheduler.scheduleAtFixedRate(runnableRFID, 0, 30, SECONDS);
+                scheduler.scheduleAtFixedRate(runnableRFID, 0, 30, SECONDS);*/
+
+        try {
+            client = new MqttClient(broker, clientId, new MemoryPersistence());
+            MqttConnectOptions connOpts = new MqttConnectOptions();
+            connOpts.setCleanSession(true);
+            connOpts.setKeepAliveInterval(60);
+            connOpts.setWill(topicRoot + "WillTopic", "App conectada".getBytes(), qos, false);
+            client.connect(connOpts);
+
+        } catch (MqttException e) {
+            Log.e(TAG, "Error al conectar.", e);
+        }
+
+        //PRESENCIA
+        try {
+            Log.i(TAG, "Suscrito a " + topicRoot + "presencia");
+            client.subscribe(topicRoot + "presencia", qos);
+            client.setCallback(this);
+
+        } catch (MqttException e) {
+            Log.e(TAG, "Error al suscribir.", e);
+        }
+
+        //DISTANCIA
+        try {
+            Log.i(TAG, "Suscrito a " + topicRoot + "distancia");
+            client.subscribe(topicRoot + "distancia", qos);
+            client.setCallback(this);
+
+        } catch (MqttException e) {
+            Log.e(TAG, "Error al suscribir.", e);
+        }
+
+        //RFID
+        try {
+            Log.i(TAG, "Suscrito a " + topicRoot + "rfid");
+            client.subscribe(topicRoot + "rfid", qos);
+            client.setCallback(this);
+
+        } catch (MqttException e) {
+            Log.e(TAG, "Error al suscribir.", e);
+        }
 
         /* try {
             handler.post(runnableRFID);
@@ -121,78 +176,6 @@ public class MainActivity extends Activity {
         }*/
 
 
-    }
-
-
-    private Runnable runnable = new Runnable() {
-        @Override
-        public void run() {
-            try {
-                String distancia = getDistancia();
-                Log.d(TAG, "Recibido de Arduino de DISTANCIA: " + distancia);
-                String presencia = getPresencia();
-                Log.d(TAG, "Recibido de Arduino de PRESENCIA: " + presencia);
-                dato = new Datos(distancia, presencia, tag);
-                Log.d("Datos recibidos: ", dato.getDistancia() + dato.getPresencia() + dato.getTag());
-                enviarDatosFirestore(dato);
-                handler.postDelayed(runnable, INTERVALO);
-                // 5. Programamos siguiente llamada dentro de INTERVALO ms
-            } catch (Exception e) {
-                Log.e(TAG, "Error al recibir Datos", e);
-            }
-        }
-    };
-
-    private Runnable runnableRFID = new Runnable() {
-        @Override
-        public void run() {
-            try {
-                Log.d(TAG, "Llega a RFID??");
-                tag = getEtiquetasRFID();
-                if (!tag.equals("")) {
-                    enviarDatosFirestoreTag(tag);
-                }
-                handler.postDelayed(runnableRFID, INTERVALO_TAG);
-                // 5. Programamos siguiente llamada dentro de INTERVALO ms
-            } catch (Exception e) {
-                Log.e(TAG, "Error al recibir Datos", e);
-            }
-        }
-    };
-
-
-    public String getDistancia() {
-        uart.escribir("D");
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            Log.w(TAG, "Error en sleep()", e);
-        }
-        String distancia = uart.leer();
-        return distancia;
-    }
-
-    public String getPresencia() {
-        uart.escribir("P");
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            Log.w(TAG, "Error en sleep()", e);
-        }
-        String presencia = uart.leer();
-        return presencia;
-    }
-
-    public String getEtiquetasRFID() {
-        uart.escribir("G");
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            Log.w(TAG, "Error en sleep()", e);
-        }
-        String tag = uart.leer();
-        Log.d(TAG, "Recibido de Arduino de RFID: " + tag);
-        return tag;
     }
 
     public void abrirPuerta() {
@@ -217,34 +200,6 @@ public class MainActivity extends Activity {
         //Log.d(TAG, "Recibido de Arduino de CerrarPuerta: " + s);
     }
 
-    public void abrirPuertaRFID() {
-
-        String tag = getEtiquetasRFID();
-
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e) {
-            Log.w(TAG, "Error en sleep()", e);
-        }
-        Log.d(TAG, "EtiquetaRFID: " + tag);
-        if (tag.equals(" 04 2A C1 5A 51 59 80 ")) { //Etiqueta 3
-            abrirPuerta();
-        } else {
-            Log.d(TAG, "Este usuario no existe");
-        }
-    }
-
-    public void enviarDatosFirestore(Datos dato) {
-        db.collection("Datos").document("Datos").update("distancia", dato.getDistancia());
-        //db.collection("Datos").document("Datos").update("presencia", dato.getPresencia());
-
-        //db.collection("Datos").document("Datos").update("tag","12345");
-    }
-
-
-    public void enviarDatosFirestoreTag(String tag) {
-        db.collection("Datos").document("Datos").update("tag", tag);
-    }
 
     private void update() {
         db.collection("Datos").document("Puerta").addSnapshotListener(new EventListener<DocumentSnapshot>() {
@@ -272,7 +227,14 @@ public class MainActivity extends Activity {
                 Log.d(TAG, documentSnapshot.get("presencia").toString());
                 if (documentSnapshot.getBoolean("presencia")) {
                     Log.d("CAMARA", "Detecta presencia");
+                    mCamera.takePicture();
+                    try {
+                        Thread.sleep(15000);
+                    } catch (InterruptedException exc) {
+                        Log.w(TAG, "Error en sleep()", exc);
+                    }
                     db.collection("Datos").document("Datos").update("presencia", false);
+
                 }
             }
         });
@@ -340,6 +302,7 @@ public class MainActivity extends Activity {
 
             final Bitmap bitmap = BitmapFactory.decodeByteArray(
                     imageBytes, 0, imageBytes.length);
+            Log.d("bitmap", "Bitmap" + bitmap);
             /*runOnUiThread(new Runnable() {
                 @Override public void run() {
                     ImageView imageView = findViewById(R.id.imageView);
@@ -374,5 +337,47 @@ public class MainActivity extends Activity {
         });
     }
 
+    @Override
+    public void connectionLost(Throwable cause) {
 
+        Log.d(TAG, "Conexión perdida");
+    }
+
+    @Override
+    public void messageArrived(String topic, MqttMessage message) throws Exception {
+
+        String payload = new String(message.getPayload());
+        Log.d(TAG, "Recibiendo: " + topic + "->" + payload);
+
+        if (payload.equals("presencia")) {
+
+            db.collection("Datos").document("Datos").update("presencia", true);
+        } else if(topic.equals("david/team_2/distancia")) {
+            try {
+                int res = Integer.parseInt(payload);
+                db.collection("Datos").document("Datos").update("distancia", res);
+            } catch (Exception e) {
+                Log.e("Error", "No es un valor");
+            }
+        } else if(topic.equals("david/team_2/rfid")) {
+            db.collection("Datos").document("Datos").update("tag", payload);
+            if(payload.equals("451193908189128")){
+                db.collection("Datos").document("Puerta").update("puerta", true);
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException exc) {
+                    Log.w(TAG, "Error en sleep()", exc);
+                }
+                db.collection("Datos").document("Puerta").update("puerta", false);
+
+            }
+
+        }
+    }
+
+    @Override
+    public void deliveryComplete(IMqttDeliveryToken token) {
+
+        Log.d(TAG, "Entrega completa");
+    }
 }
