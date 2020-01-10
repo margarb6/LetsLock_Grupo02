@@ -32,8 +32,6 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-import org.w3c.dom.Text;
-
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -111,7 +109,7 @@ public class EditarPerfilFragment extends Fragment {
             public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
                 Log.d("Almacenamiento", "Fichero bajado");
                 ImageView fotoContenedor = vista.findViewById(R.id.FotoEditar);
-                RoundedBitmapDrawable roundedDrawable = RoundedBitmapDrawableFactory.create(getActivity().getResources(), BitmapFactory.decodeFile(path));
+                RoundedBitmapDrawable roundedDrawable = RoundedBitmapDrawableFactory.create(getResources(), BitmapFactory.decodeFile(path));
                 roundedDrawable.setCircular(true);
                 fotoContenedor.setImageDrawable(roundedDrawable);
             }
@@ -119,7 +117,7 @@ public class EditarPerfilFragment extends Fragment {
             @Override
             public void onFailure(@NonNull Exception exception) {
                 if (usuario.getPhotoUrl() != null) {
-                    DescargarFoto fotoDes = new DescargarFoto(EditarPerfilFragment.this, R.id.FotoEditar);
+                    DescargarFoto fotoDes = new DescargarFoto(EditarPerfilFragment.this.getActivity(), R.id.FotoEditar);
                     fotoDes.execute(usuario.getPhotoUrl().toString());
                     Log.e("Almacenamiento", "ERROR: bajando fichero");
                 }
@@ -149,7 +147,7 @@ public class EditarPerfilFragment extends Fragment {
         });
 
         //Añadimos un AlertDialog para guardar los datos en firestore y el storage
-        Button guardar = vista.findViewById(R.id.button);
+        Button guardar = vista.findViewById(R.id.button_guardar);
         guardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
