@@ -141,7 +141,7 @@ public class PopUpChat extends Activity {
             }
 
             //Si no se puede obtener ponemos como predeterminada la del usuario de google
-        })/*.addOnFailureListener(new OnFailureListener() {
+        }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception exception) {
                             if (fotoUrl != null) {
@@ -149,7 +149,7 @@ public class PopUpChat extends Activity {
                                 fotoDes.execute(fotoUrl);
                             }
                         }
-        })*/;
+        });
 
         btnPermisos.setOnClickListener(new View.OnClickListener() {
             @Override

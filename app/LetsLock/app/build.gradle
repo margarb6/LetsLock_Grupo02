@@ -92,8 +92,6 @@ implementation 'com.google.maps.android:android-maps-utils:0.5+'
     implementation 'com.getbase:floatingactionbutton:1.10.1'
 
 
-=======
->>>>>>> Stashed changes
 }
 
 apply plugin: 'com.google.gms.google-services'
