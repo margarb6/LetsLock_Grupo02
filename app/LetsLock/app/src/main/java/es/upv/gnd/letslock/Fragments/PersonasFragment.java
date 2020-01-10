@@ -23,57 +23,28 @@ public class PersonasFragment extends Fragment {
 
     View vista;
 
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference usuarios_coleccion = FirebaseFirestore.getInstance().collection("usuarios");
     private RecyclerView recyclerView;
     private AdaptadorPersonas adaptador;
-    //public AdaptadorUsuarios adaptador;
-    //ArrayList<Usuario> usuarios;
-    // private FirestoreRecyclerAdapter<Usuario,AdaptadorUsuarios.UsuariosViewHolder> adaptador2;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         vista = inflater.inflate(R.layout.fragment_personas, container, false);
-
         setUpRecycler();
-
-       /* adaptador2 = new FirestoreRecyclerAdapter<Usuario, AdaptadorUsuarios.UsuariosViewHolder>(opciones) {
-
-            View view;
-
-            @Override
-            protected void onBindViewHolder(@NonNull AdaptadorUsuarios.UsuariosViewHolder viewHolder, int i, @NonNull Usuario usuario) {
-                viewHolder.guardarUsuario(usuario.getNombre(), usuario.getFotoUrl(), usuario.isPermisos() + "", getActivity());
-            }
-
-            @NonNull
-            @Override
-            public AdaptadorUsuarios.UsuariosViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                view = LayoutInflater.from(parent.getContext())
-                        .inflate(R.layout.elemento_lista, parent, false);
-                return new AdaptadorUsuarios.UsuariosViewHolder(view);
-
-            }
-        };
-
-        recyclerView.setAdapter(adaptador2);*/
 
         return vista;
     }
 
     private void setUpRecycler() {
 
-        Query query = usuarios_coleccion.orderBy("nombre", Query.Direction.DESCENDING);
-        FirestoreRecyclerOptions<Usuario> opciones = new FirestoreRecyclerOptions
-                .Builder<Usuario>().setQuery(query, Usuario.class).build();
+        Query query = usuarios_coleccion;
+        FirestoreRecyclerOptions<Usuario> opciones = new FirestoreRecyclerOptions.Builder<Usuario>().setQuery(query, Usuario.class).build();
 
-        adaptador = new AdaptadorPersonas(opciones);
+        adaptador = new AdaptadorPersonas(opciones, getContext());
 
         recyclerView = vista.findViewById(R.id.recyclerView);
-        //recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(adaptador);
-
     }
 
     @Override

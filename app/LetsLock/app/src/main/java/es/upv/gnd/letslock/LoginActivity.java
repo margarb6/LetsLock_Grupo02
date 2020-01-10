@@ -28,6 +28,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -69,7 +70,7 @@ public class LoginActivity extends Activity {
                 if (!ui.getProviderId().equals("firebase")) {
 
                     anonimo = false;
-                    editor.putBoolean("anonimo",false);
+                    editor.putBoolean("anonimo", false);
                     editor.commit();
 
                     switch (ui.getProviderId()) {
@@ -87,10 +88,10 @@ public class LoginActivity extends Activity {
                     }
                 }
             }
-            if (anonimo){
+            if (anonimo) {
 
                 cambioActivity("como usuario anónimo");
-                editor.putBoolean("anonimo",anonimo);
+                editor.putBoolean("anonimo", anonimo);
                 editor.commit();
             }
 
@@ -98,14 +99,15 @@ public class LoginActivity extends Activity {
         } else {
 
             startActivityForResult(AuthUI.getInstance()
-                    .createSignInIntentBuilder()
-                    .setLogo(R.drawable.applogonombre)
-                    .setTheme(R.style.FirebaseUITema)
-                    .setAvailableProviders(Arrays.asList(
-                            new AuthUI.IdpConfig.EmailBuilder().setAllowNewAccounts(true).build(),
-                            new AuthUI.IdpConfig.GoogleBuilder().build(),
-                            new AuthUI.IdpConfig.AnonymousBuilder().build(),
-                            new AuthUI.IdpConfig.PhoneBuilder().build())).build(), RC_SIGN_IN);
+                            .createSignInIntentBuilder()
+                            .setLogo(R.drawable.applogonombre)
+                            .setTheme(R.style.FirebaseUITema)
+                            .setAvailableProviders(Arrays.asList(
+                                    new AuthUI.IdpConfig.EmailBuilder().setAllowNewAccounts(true).build(),
+                                    new AuthUI.IdpConfig.GoogleBuilder().build(),
+                                    new AuthUI.IdpConfig.AnonymousBuilder().build(),
+                                    new AuthUI.IdpConfig.PhoneBuilder().build())).build(),
+                    RC_SIGN_IN);
 
         }
     }
@@ -146,9 +148,7 @@ public class LoginActivity extends Activity {
 
                     String fotoURL = String.valueOf(usuario.getPhotoUrl());
                     userBD.setUsuario(new Usuario(nombre, false, String.format("%04d", rand.nextInt(10000)), fotoURL));
-                }
-
-                else nombre = usuarioBD.getNombre();
+                } else nombre = usuarioBD.getNombre();
 
                 editor.putBoolean("permisos", usuarioBD.isPermisos());
                 editor.commit();
@@ -156,8 +156,12 @@ public class LoginActivity extends Activity {
                 casaBD.setCasa(usuario.getUid(), getApplicationContext());
 
 
-
                 cambioActivity(nombre);
+            }
+
+            @Override
+            public void getAllUsuariosCallback(ArrayList<String> idUsuarios, ArrayList<Usuario> usuario) {
+
             }
         });
     }

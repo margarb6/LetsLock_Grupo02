@@ -933,6 +933,7 @@
     </layout-to-restore>
   </component>
   <component name="editorHistoryManager">
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 =======
     <entry file="file://$PROJECT_DIR$/app/src/main/java/es/upv/gnd/letslock/bbdd/AdaptadorUsuariosFirestoreUI.java" />
@@ -1125,6 +1126,11 @@
           <caret line="30" selection-start-line="30" selection-end-line="30" />
         </state>
       </provider>
+=======
+    <entry file="file://$PROJECT_DIR$/androidthings_datos/src/main/res/layout/activity_main.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor" />
+>>>>>>> Stashed changes
     </entry>
     <entry file="file://$PROJECT_DIR$/androidthings_datos/build.gradle">
       <provider selected="true" editor-type-id="text-editor">

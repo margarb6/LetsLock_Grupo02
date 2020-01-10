@@ -37,10 +37,21 @@
         android:id="@+id/btnSolicitarCodigo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
         android:text="ACCEDER COMO INVITADO"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pinview" />
+
+    <Button
+        android:id="@+id/llamarTimbre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="LLAMAR AL TIMBRE"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSolicitarCodigo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

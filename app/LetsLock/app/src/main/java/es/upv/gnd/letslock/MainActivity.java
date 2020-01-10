@@ -76,6 +76,11 @@ public class MainActivity extends AppCompatActivity {
                 //Creamos el eventListener que nos permite cambiar de fragment
                 navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
             }
+
+            @Override
+            public void getAllUsuariosCallback(ArrayList<String> idUsuarios, ArrayList<Usuario> usuario) {
+
+            }
         });
 
         //Inicializamos la toolbar
@@ -161,7 +166,7 @@ public class MainActivity extends AppCompatActivity {
 
             case R.id.nav_ajustes:
 
-                Intent intent2 = new Intent(this, PreferenciasActivity.class);
+                Intent intent2 = new Intent(this, ChatActivity.class);
                 startActivity(intent2);
                 break;
         }
@@ -234,7 +239,7 @@ public class MainActivity extends AppCompatActivity {
 
                 Log.i("aa", String.valueOf(navigation.getMenu().findItem(R.id.menu_inferior_personas).setChecked(true)));
 
-            } else if (fragmentAnterior instanceof PersonasFragment) {
+            } else if (fragmentAnterior instanceof ChatFragment) {
 
                 Log.i("aa", String.valueOf(navigation.getMenu().findItem(R.id.menu_inferior_chat).setChecked(true)));
             }

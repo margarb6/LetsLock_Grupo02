@@ -13,6 +13,8 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import es.upv.gnd.letslock.utils.Utils;
+
 public class JavaMailAPI extends AsyncTask<Void,Void,Void>  {
 
     //Add those line in dependencies
