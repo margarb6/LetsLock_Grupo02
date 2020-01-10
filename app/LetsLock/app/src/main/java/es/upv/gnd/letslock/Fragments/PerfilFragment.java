@@ -1,7 +1,8 @@
 package es.upv.gnd.letslock.Fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -27,6 +28,7 @@ import com.google.firebase.storage.StorageReference;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import es.upv.gnd.letslock.DescargarFoto;
@@ -51,6 +53,7 @@ public class PerfilFragment extends Fragment {
         TextView telefono = vista.findViewById(R.id.telefono);
         TextView iden = vista.findViewById(R.id.iden);
         final TextView permisos = vista.findViewById(R.id.permisos);
+        final TextView pin= vista.findViewById(R.id.pin);
 
         //Establecemos a cada TextView el valor de firebase auth
         email.setText(usuario.getEmail());
@@ -95,15 +98,13 @@ public class PerfilFragment extends Fragment {
             @Override
             public void onFailure(@NonNull Exception exception) {
                 if (usuario.getPhotoUrl()!=null){
-                    DescargarFoto fotoDes= new DescargarFoto(PerfilFragment.this,R.id.FotoPerfil);
+                    DescargarFoto fotoDes= new DescargarFoto(PerfilFragment.this.getActivity(),R.id.FotoPerfil);
                     fotoDes.execute(usuario.getPhotoUrl().toString());
                 }
             }
         });
 
-
-
-        //Obtenemos el nombre y los permisos del usuario
+        //Obtenemos el nombre, los permisos del usuario y el pin de la bd.
         final Usuarios userBD = new Usuarios();
         userBD.getUsuario(new UsuariosCallback() {
 
@@ -111,10 +112,18 @@ public class PerfilFragment extends Fragment {
                 if (usuarioBD.isPermisos()) permisos.setText("Propietario de la casa");
                 else permisos.setText("Habitante");
                 nombre.setText(usuarioBD.getNombre());
+                pin.setText(usuarioBD.getPin());
+            }
+
+            @Override
+            public void getAllUsuariosCallback(ArrayList<String> idUsuarios, ArrayList<Usuario> usuario) {
+
             }
         });
         return vista;
     }
+
+
 }
 
 

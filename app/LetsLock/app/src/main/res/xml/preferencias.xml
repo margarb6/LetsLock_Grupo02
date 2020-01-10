@@ -1,89 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:backgroundTint="?attr/colorPrimary"
     android:key="preferencias_principal">
+
     <PreferenceCategory android:title="General">
-    <CheckBoxPreference
-        android:key="musica"
-        android:title="Reproducir música"
-        android:summary="Se reproduce música de fondo"
-        android:icon="@drawable/ic_music_note_black_24dp"
-        app:iconSpaceReserved="false"/>
-    <ListPreference
-        android:key="graficos"
-        android:title="Tipo de gráficos"
-        android:summary="Se escoge la representación de gráficos"
-        android:icon="@drawable/ic_gradient_black_24dp"
-        app:iconSpaceReserved="false"
-        android:entries="@array/tiposGraficos"
-        android:entryValues="@array/tiposGraficosValores"
-        android:defaultValue="0"/>
-    <EditTextPreference
-        android:key="fragmentos"
-        android:title="Número de Fragmentos"
-        android:summary="En cuantos trozos se divide la aplicación"
-        app:iconSpaceReserved="false"
-        android:icon="@drawable/ic_filter_frames_black_24dp"
-        android:inputType="number"
-        android:defaultValue="4"/>
-    </PreferenceCategory>
-    <PreferenceCategory android:title="Notificaiones">
-        <CheckBoxPreference
-            android:key="activar"
-            android:title="Activar notificaiones"
-            app:iconSpaceReserved="false"
-            android:icon="@drawable/ic_notifications_active_black_24dp" />
-        <EditTextPreference
-            android:key="jugadores"
-            android:title="Número máximo de notificaiones"
-            android:summary="Cantidad de notificaciones mostradas a la vez"
-            android:icon="@drawable/ic_format_list_numbered_black_24dp"
-            app:iconSpaceReserved="false"
+        <SwitchPreference
+            android:defaultValue="false"
+            android:forceDarkAllowed="true"
+            android:icon="@drawable/ic_music_note_black_24dp"
+            android:key="@string/musica"
+            android:summary="Se reproduce música de fondo"
+            android:title="Reproducir música"
+            app:iconSpaceReserved="true" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:icon="@drawable/ic_moon"
+            android:key="@string/modo_noche"
+            android:summary="Activar modo noche"
+            android:title="Modo noche"
+            app:iconSpaceReserved="true" />
+        EditTextPreference
+            android:defaultValue="4"
+            android:icon="@drawable/ic_filter_frames_black_24dp"
             android:inputType="number"
-            android:defaultValue="6"/>
+            android:key="fragmentos"
+            android:summary="En cuantos trozos se divide la aplicación"
+            android:title="Número de Fragmentos"
+            app:iconSpaceReserved="false" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="Notificaciones">
+        <SwitchPreference
+            android:icon="@drawable/ic_notifications_active_black_24dp"
+            android:key="@string/buzonn"
+            android:title="Buzon inteligente"
+            android:summary="Activar el servicio y notificaciones del buzon"
+            app:iconSpaceReserved="false" />
+        <EditTextPreference
+            android:defaultValue="6"
+            android:icon="@drawable/ic_format_list_numbered_black_24dp"
+            android:inputType="number"
+            android:key="jugadores"
+            android:summary="Cantidad de notificaciones mostradas a la vez"
+            android:title="Número máximo de notificaiones"
+            app:iconSpaceReserved="false" />
         <ListPreference
-            android:key="conexion"
-            android:title="Sonido y vibracion"
-            android:summary="Se escoge la representación de gráficos"
-            android:icon="@drawable/ic_vibration_black_24dp"
-            app:iconSpaceReserved="false"
+            android:defaultValue="0"
             android:entries="@array/tiposConexion"
             android:entryValues="@array/tiposConexionValores"
-            android:defaultValue="0"/>
+            android:icon="@drawable/ic_vibration_black_24dp"
+            android:key="conexion"
+            android:summary="Se escoge la representación de gráficos"
+            android:title="Sonido y vibracion"
+            app:iconSpaceReserved="false" />
     </PreferenceCategory>
     <PreferenceCategory android:title="Servicio técnico">
         <Preference
+            android:icon="@drawable/ic_attachment_black_24dp"
             android:key="@string/pagina_web"
             android:onClick="verPgWeb"
             android:title="Contactar via web"
-            app:iconSpaceReserved="false"
-            android:icon="@drawable/ic_attachment_black_24dp" />
+            app:iconSpaceReserved="false" />
+        <Preference
+            android:id="@+id/preference"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/ic_supervisor_account_black_24dp"
+            android:key="@string/contacto"
+            android:title="Contactar via chat"
+            app:iconSpaceReserved="false" />
         <Preference
             android:key="@string/email"
             android:onClick="verPgWeb"
             android:title="Contactar via email"
-            app:iconSpaceReserved="false"
-            android:icon="@drawable/ic_email_black_24dp" />
+            app:icon="@drawable/ic_email_black_24dp"
+            app:iconSpaceReserved="false" />
         <Preference
+            android:icon="@drawable/ic_call_black_24dp"
             android:key="@string/llamar_telefono"
             android:onClick="llamarTelefono"
-            android:title="Contactar via telefono"
-            android:icon="@drawable/ic_call_black_24dp" />
+            android:title="Contactar via telefono" />
         <Preference
+            android:icon="@drawable/ic_location_on_black_24dp"
             android:key="@string/localizacion"
             android:onClick="abrirMaps"
             android:title="Taller más cercano"
-            app:iconSpaceReserved="false"
-            android:icon="@drawable/ic_location_on_black_24dp" />
+            app:iconSpaceReserved="false" />
 
     </PreferenceCategory>
     <PreferenceCategory android:title="Información">
         <Preference
+            android:icon="@drawable/ic_info_black_24dp"
             android:key="@string/acerca_de"
             android:onClick="lanzarAcercaDe"
-            android:title="Acerca de"
+            android:title="Tutoriales"
             app:iconSpaceReserved="false"
-            android:icon="@drawable/ic_info_black_24dp"/>
+            />
     </PreferenceCategory>
 </PreferenceScreen>
 

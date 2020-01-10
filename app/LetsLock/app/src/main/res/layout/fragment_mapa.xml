@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/mapa"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <com.getbase.floatingactionbutton.FloatingActionsMenu
+        android:id="@+id/btnFloatingMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        app:layout_constraintBottom_toBottomOf="@+id/mapa"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/mapa"
+        app:layout_constraintVertical_bias="0.75"
+        fab:fab_addButtonColorNormal="?attr/colorPrimaryDark">
+
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnFabBorrar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_icon="@drawable/delete"
+            app:fab_size="mini"
+            app:fab_title="Borrar"
+            fab:fab_colorNormal="?attr/colorPrimary" />
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnFabRuta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_size="mini"
+
+            app:fab_title="Nueva ruta"
+            fab:fab_colorNormal="?attr/colorPrimary"
+            fab:fab_icon="@drawable/ic_ruta" />
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnFabCasa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_icon="@drawable/house_icon_white"
+            app:fab_size="mini"
+            app:fab_title="neicnei"
+            fab:fab_colorNormal="?attr/colorPrimary"
+            />
+
+    </com.getbase.floatingactionbutton.FloatingActionsMenu>
+
+    <TextView
+        android:id="@+id/txtDuration"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="#A6888888"
+        android:paddingLeft="5dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/btnWalking"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/mapa" />
+
+    <LinearLayout
+        android:id="@+id/greybg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#99888888"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/btnDirCasa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_btn"
+            android:padding="10dp"
+            android:text="Registrar mi casa"
+            android:textAlignment="center" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnDriving"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="96dp"
+        android:background="@drawable/car"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnWalking"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/walk"
+        app:layout_constraintEnd_toStartOf="@+id/btnDriving"
+        app:layout_constraintTop_toTopOf="@+id/mapa" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

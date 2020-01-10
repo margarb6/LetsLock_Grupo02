@@ -1,29 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout3"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="4dp">
-    <ImageView android:id="@+id/foto_lista"
-        android:layout_width="?android:attr/listPreferredItemHeight"
-        android:layout_height="?android:attr/listPreferredItemHeight"
+    android:layout_height="120dp"
+    android:layout_margin="10dp"
+    android:background="#53C4D8">
+
+    <TextView
+        android:id="@+id/permiso_lista"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Permiso:"
+        app:layout_constraintStart_toStartOf="@+id/nombre"
+        app:layout_constraintTop_toBottomOf="@+id/nombre" />
+
+    <ImageView
+        android:id="@+id/foto_lista"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:contentDescription="fotografía"
         android:src="@drawable/applogo"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/nombre"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/nombre"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
         android:layout_marginTop="16dp"
         android:maxLines="2"
         android:text="Nombre del usuario"
         android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="18sp"
         android:textStyle=""
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/foto_lista"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/info_cambio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Cambiar permisos"
+        android:textSize="10sp"
+        app:layout_constraintStart_toStartOf="@+id/nombre"
+        app:layout_constraintTop_toBottomOf="@+id/permiso_lista" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

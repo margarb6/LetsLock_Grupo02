@@ -15,6 +15,7 @@ import android.widget.MediaController;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.graphics.drawable.RoundedBitmapDrawable;
 import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
@@ -26,28 +27,63 @@ import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.tabs.TabLayout;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import es.upv.gnd.letslock.Fragments.EditarPerfilFragment;
 import es.upv.gnd.letslock.Fragments.PerfilFragment;
+import es.upv.gnd.letslock.Fragments.PersonasFragment;
+import es.upv.gnd.letslock.bbdd.Usuario;
+import es.upv.gnd.letslock.bbdd.Usuarios;
+import es.upv.gnd.letslock.bbdd.UsuariosCallback;
 
 public class TabsActivity extends AppCompatActivity {
 
     //Request code de las fotos
     final static int RESULTADO_GALERIA = 2;
     final static int RESULTADO_FOTO = 3;
+    private boolean anonimo = false;
+    private boolean existe= true;
+
+    static {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        SharedPreferences prefs = getSharedPreferences("Usuario", Context.MODE_PRIVATE);
+        if (prefs.contains("anonimo")) anonimo = prefs.getBoolean("anonimo", false);
+        Usuarios userBD = new Usuarios();
+
         setContentView(R.layout.activity_tabs);
+
+
+        userBD.getUsuario(new UsuariosCallback() {
+            public void getUsuariosCallback(Usuario usuarioBD) {
+                //Si no tiene permisos no puede ver el fragment
+                if (!usuarioBD.isPermisos() || anonimo) {
+
+                    existe= false;
+                }
+
+                ViewPager viewPager = findViewById(R.id.viewpager);
+                viewPager.setAdapter(new MiPagerAdapter(getSupportFragmentManager()));
+                TabLayout tabs = findViewById(R.id.tabs);
+                tabs.setupWithViewPager(viewPager);
+
+                //Creamos el eventListener que nos permite cambiar de fragment
+            }
+
+            @Override
+            public void getAllUsuariosCallback(ArrayList<String> idUsuarios, ArrayList<Usuario> usuario) {
+
+            }
+        });
 
         //Inicializamos la toolbar
 
-        ViewPager viewPager = findViewById(R.id.viewpager);
-        viewPager.setAdapter(new MiPagerAdapter(getSupportFragmentManager()));
-        TabLayout tabs = findViewById(R.id.tabs);
-        tabs.setupWithViewPager(viewPager);
+
     }
 
     //Inicializa el menu
@@ -75,32 +111,49 @@ public class TabsActivity extends AppCompatActivity {
             super(fm);
         }
 
-        @Override public Fragment getItem(int position) {
+        @Override
+        public Fragment getItem(int position) {
 
             Fragment fragment = null;
             switch (position) {
 
-                case 0: fragment = new PerfilFragment();
+                case 0:
+                    fragment = new PerfilFragment();
                     break;
 
-                case 1: fragment = new EditarPerfilFragment();
+                case 1:
+                    fragment = new EditarPerfilFragment();
+                    break;
+                case 2:
+                    fragment = new PersonasFragment();
                     break;
             }
 
             return fragment;
         }
 
-        @Override public int getCount() {
+        @Override
+        public int getCount() {
 
-            return 2;
+            int numero= 3;
+
+            if(!existe) numero= 2;
+
+            return numero;
         }
 
-        @Override public CharSequence getPageTitle(int position) {
+        @Override
+        public CharSequence getPageTitle(int position) {
 
             switch (position) {
 
-                case 0: return "Perfil";
-                case 1: return "Editar Perfil";
+                case 0:
+                    return "Perfil";
+                case 1:
+                    return "Editar Perfil";
+                case 2:
+                    return "Lista personas";
+
             }
             return null;
         }
@@ -113,14 +166,15 @@ public class TabsActivity extends AppCompatActivity {
 
         super.onActivityResult(requestCode, resultCode, data);
 
-        Uri foto= Uri.parse("content://");
-        if (requestCode == RESULTADO_FOTO) { if (resultCode == Activity.RESULT_OK && foto!=null) {
+        Uri foto = Uri.parse("content://");
+        if (requestCode == RESULTADO_FOTO) {
+            if (resultCode == Activity.RESULT_OK && foto != null) {
 
             } else {
                 Toast.makeText(this, "Error en captura", Toast.LENGTH_LONG).show();
             }
 
-        //Si funciona coge una foto de la galería y se realiza correctamente establecemos la uri de la foto a la de la galería
+            //Si funciona coge una foto de la galería y se realiza correctamente establecemos la uri de la foto a la de la galería
         } else if (requestCode == RESULTADO_GALERIA) {
             if (resultCode == Activity.RESULT_OK) {
                 foto = data.getData();
@@ -132,20 +186,19 @@ public class TabsActivity extends AppCompatActivity {
 
         try {
 
-            Bitmap bitmap= MediaStore.Images.Media.getBitmap(getContentResolver(),foto);
+            Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), foto);
             RoundedBitmapDrawable roundedDrawable = RoundedBitmapDrawableFactory.create(this.getResources(), bitmap);
             roundedDrawable.setCornerRadius(bitmap.getHeight());
             roundedDrawable.setCircular(true);
-            ImageView a= findViewById(R.id.FotoEditar);
+            ImageView a = findViewById(R.id.FotoEditar);
             a.setImageDrawable(roundedDrawable);
+            SharedPreferences prefs = getSharedPreferences("Foto_perfil", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putString("image", "" + foto);
+            editor.commit();
 
-        }catch (IOException ioEx){
+        } catch (IOException ioEx) {
             ioEx.printStackTrace();
         }
-
-        SharedPreferences prefs = getSharedPreferences("Foto_perfil", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
-        editor.putString("image", "" + foto);
-        editor.commit();
     }
 }

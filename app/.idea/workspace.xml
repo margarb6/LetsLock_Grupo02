@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3e997227-f819-4475-bc05-136d17733a21" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/LetsLock/app/src/main/res/drawable-v21/alerta.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LetsLock/app/src/main/res/drawable-v21/notificacion_fondo.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LetsLock/app/src/main/res/drawable-v21/timbre.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LetsLock/app/src/main/res/layout/notificacion_lista.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LetsLock/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/LetsLock/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LetsLock/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/LetsLock/.idea/caches/gradle_models.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LetsLock/app/src/main/java/es/upv/gnd/letslock/Fragments/NotificacionesFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/LetsLock/app/src/main/java/es/upv/gnd/letslock/Fragments/NotificacionesFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LetsLock/app/src/main/res/layout/fragment_notificaciones.xml" beforeDir="false" afterPath="$PROJECT_DIR$/LetsLock/app/src/main/res/layout/fragment_notificaciones.xml" afterDir="false" />
-    </list>
+    <list default="true" id="3e997227-f819-4475-bc05-136d17733a21" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,14 +22,14 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/LetsLock" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunDashboard">
