@@ -111,10 +111,15 @@ public class ChatFragment extends Fragment {
             @Override
             protected void populateView(View v, ChatMessage model, int position) {
 
+                ImageView messageFoto;
                 TextView messageText, messageUser, myMessage;
+
                 myMessage = v.findViewById(R.id.my_message_body);
                 messageText = v.findViewById(R.id.message_body);
                 messageUser = v.findViewById(R.id.name);
+                messageFoto = v.findViewById(R.id.imageView3);
+
+                messageFoto.setVisibility(View.GONE);
 
 
                 if(model.getMessageUser().equals(usuario.getUid())) {

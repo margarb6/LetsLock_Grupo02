@@ -147,7 +147,7 @@ public class EditarPerfilFragment extends Fragment {
         });
 
         //Añadimos un AlertDialog para guardar los datos en firestore y el storage
-        Button guardar = vista.findViewById(R.id.button_guardar);
+        Button guardar = vista.findViewById(R.id.button);
         guardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

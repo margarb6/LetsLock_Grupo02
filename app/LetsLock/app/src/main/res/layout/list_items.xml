@@ -55,16 +55,17 @@
         android:paddingTop="11dp"
         android:paddingRight="14dp"
         android:paddingBottom="11dp"
+        android:textColor="#48494B"
         android:textSize="18sp"
         android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
-        android:textColor="#48494B"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/name" />
 
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
+        android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/message_body"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
