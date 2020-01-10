@@ -50,4 +50,26 @@ public class PreferenciasActivity extends Activity {
         Intent i = new Intent(this, AcercaDeActivity.class);
         startActivity(i);
     }
+
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(this, AnimacionPreferenciasActivity.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(i);
+    }
+
+    public void changePreferencesTheme() {
+        SharedPreferences preferenciaNoche = androidx.preference.PreferenceManager.getDefaultSharedPreferences(this);
+
+        boolean estaModoNoche = preferenciaNoche.getBoolean("modo_noche", false);
+
+        if (estaModoNoche) {
+            setTheme(R.style.DarkThemePreferences);
+        } else {
+            setTheme(R.style.LightTheme);
+        }
+
+    }
+
+
 }
